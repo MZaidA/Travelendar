@@ -10,7 +10,7 @@ package travlendar;
  * @author USER
  */
 public class transportasi {
-    private Integer KodeModaTransportasi;
+    private String KodeModaTransportasi;
     private String ModaTransportasi;  
 
     public transportasi()
@@ -19,14 +19,14 @@ public class transportasi {
     /**
      * @return the KodeModaTransportasi
      */
-    public Integer getKodeModaTransportasi() {
+    public String getKodeModaTransportasi() {
         return KodeModaTransportasi;
     }
 
     /**
      * @param KodeModaTransportasi the KodeModaTransportasi to set
      */
-    public void setKodeModaTransportasi(Integer KodeModaTransportasi) {
+    public void setKodeModaTransportasi(String KodeModaTransportasi) {
         this.KodeModaTransportasi = KodeModaTransportasi;
     }
 
