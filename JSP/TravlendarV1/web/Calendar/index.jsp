@@ -13,7 +13,7 @@
 		<script src='lib/jquery.min.js'></script>
 		<script src='lib/moment.min.js'></script>
 		<script src='lib/fullcalendar.min.js'></script>
-        <title>JSP Page</title>
+        <title>Calendar</title>
 
 
     <script>
