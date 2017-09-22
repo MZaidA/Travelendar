@@ -5,7 +5,9 @@
         <group>
             <file>file:/D:/Program/Travlander/JSP/TravlendarV1/web/Calendar/lib/fullcalendar.min.js</file>
             <file>file:/D:/Program/Travlander/JSP/TravlendarV1/web/Calendar/index.jsp</file>
-            <file>file:/D:/Program/Travlander/JSP/TravlendarV1/web/UpcomingEvent/index.jsp</file>
+            <file>file:/D:/Program/Travlander/JSP/TravlendarV1/web/Menu/index.jsp</file>
+            <file>file:/D:/Program/Travlander/JSP/TravlendarV1/web/Home/css/Style.css</file>
+            <file>file:/D:/Program/Travlander/JSP/TravlendarV1/web/Home/index.jsp</file>
         </group>
     </open-files>
 </project-private>
