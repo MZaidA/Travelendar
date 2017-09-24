@@ -13,12 +13,11 @@ h1 {
 	font-size:70px;
 }
 
-.fixedposition{
-	position:fixed;
-}
 
 .navbar{
-	margin:0;
+	position:fixed;
+	top:0;
+	width:100%;
     padding: 5px 16px; /*top & bottom paddings are 14px right and left paddings are 16px*/
     overflow: hidden;
     background-color: #0080C0;/*Biru*/
@@ -43,10 +42,12 @@ li a:hover, .dropdown:hover .dropbtn {
 li.dropdown {
     display: inline-block;
 }
-
+.dropbtn{
+	margin-right:30px;
+}
 .dropdown-content {
     display: none;
-    position: absolute;
+    position: fixed;
 	overflow:auto;
     background-color: #f1f1f1;
     max-width: 250px;
@@ -136,6 +137,7 @@ li.dropdown {
 	font-size:24px;
     text-align: center;
 }
+
 
 .inlinedisplay #countdown{
 	display:inline-block;
