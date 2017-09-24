@@ -1,0 +1,3 @@
+Warna boxstyle1
+Hari ini: hex #66ff91
+Besok/Minggu depan: hex #ffde66
