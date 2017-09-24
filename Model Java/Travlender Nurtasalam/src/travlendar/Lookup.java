@@ -11,38 +11,39 @@ import java.sql.Time;
  * @author USER
  */
 public class Lookup {
-    private String IdTabelLookup;
-    private double JarakTempuh;
+    private String idTabelLookup;
+    private double jarakTempuh;
+    private String jenisKendaraan;
     private Time waktuTempuh;
-    private String TempatAsal;
-    private String TempatTujuan;
+    private String tempatAsal;
+    private String tempatTujuan;
 
     /**
      * @return the IdTabelLookup
      */
     public String getIdTabelLookup() {
-        return IdTabelLookup;
+        return idTabelLookup;
     }
 
     /**
-     * @param IdTabelLookup the IdTabelLookup to set
+     * @param idTabelLookup the IdTabelLookup to set
      */
-    public void setIdTabelLookup(String IdTabelLookup) {
-        this.IdTabelLookup = IdTabelLookup;
+    public void setidTabelLookup(String idTabelLookup) {
+        this.setIdTabelLookup(idTabelLookup);
     }
 
     /**
      * @return the JarakTempuh
      */
-    public double getJarakTempuh() {
-        return JarakTempuh;
+    public double getjarakTempuh() {
+        return jarakTempuh;
     }
 
     /**
-     * @param JarakTempuh the JarakTempuh to set
+     * @param jarakTempuh the JarakTempuh to set
      */
-    public void setJarakTempuh(double JarakTempuh) {
-        this.JarakTempuh = JarakTempuh;
+    public void setjarakTempuh(double jarakTempuh) {
+        this.jarakTempuh = jarakTempuh;
     }
 
     /**
@@ -63,27 +64,48 @@ public class Lookup {
      * @return the TempatAsal
      */
     public String getTempatAsal() {
-        return TempatAsal;
+        return tempatAsal;
     }
 
     /**
-     * @param TempatAsal the TempatAsal to set
+     * @param tempatAsal the TempatAsal to set
      */
-    public void setTempatAsal(String TempatAsal) {
-        this.TempatAsal = TempatAsal;
+    public void settempatAsal(String tempatAsal) {
+        this.tempatAsal = tempatAsal;
     }
 
     /**
      * @return the TempatTujuan
      */
-    public String getTempatTujuan() {
-        return TempatTujuan;
+    public String gettempatTujuan() {
+        return tempatTujuan;
     }
 
     /**
-     * @param TempatTujuan the TempatTujuan to set
+     * @param tempatTujuan the TempatTujuan to set
      */
-    public void setTempatTujuan(String TempatTujuan) {
-        this.TempatTujuan = TempatTujuan;
+    public void settempatTujuan(String tempatTujuan) {
+        this.tempatTujuan = tempatTujuan;
+    }   
+
+    /**
+     * @param idTabelLookup the idTabelLookup to set
+     */
+    public void setIdTabelLookup(String idTabelLookup) {
+        this.idTabelLookup = idTabelLookup;
+    }
+
+    /**
+     * @return the jenisKendaraan
+     */
+    public String getjenisKendaraan() {
+        return jenisKendaraan;
+    }
+
+    /**
+     * @param jenisKendaraan the jenisKendaraan to set
+     */
+    public void setjenisKendaraan(String jenisKendaraan) {
+        this.jenisKendaraan = jenisKendaraan;
     }
 }
