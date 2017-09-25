@@ -14,57 +14,122 @@
 </head>
 <body>
 
+    <%
+        String userName = request.getParameter("username");
+        %>
+    
 <div class="navbar">
 <ul style="list-style-type: none;">
-<img src="css/icon/logocontoh.png" width="130" height="40">
-  <li style="float:right;margin-top:0px;"class="dropdown">
+<img src="css/icon/LogoKelompokB1.png" width="145" height="50">
+  <li style="float:right;"class="dropdown">
     <div id="menuBtn" class="dropbtn"><img src="css/icon/showmenu.png" alt="Menu" width="40" height="40"></div>
     	<div id="myDropdown" class="dropdown-content">
-        	<a href="#UserProfile"><div class="t2">USERNAME</div><img src="css/icon/user.png" alt="css/icon/user.png" width="40" height="40"></a>
-        	<a href="/Travlendar/Home"><img src="css/icon/home.png" alt="Menu" width="40" height="40"><div class="t1">Home</div></a>
-        	<a href="/Travlendar/Calendar"><img src="css/icon/calendar1.png" alt="Menu" width="40" height="40"><div class="t1">Calendar</div></a>
-        	<a href="#LogOut"><img src="css/icon/logout.png" alt="Menu" width="40" height="40"><div class="t1">Log Out</div></a>
+        	<a href="\Travlendar\UserProfile"><div class="t2"><%= userName%></div><img src="css/icon/user.png" alt="css/icon/user.png" width="40" height="40"></a>
+        	<a href="\Travlendar\Home"><img src="css/icon/home.png" alt="Menu" width="40" height="40"><div class="t1">Home</div></a>
+        	<a href="\Travlendar\Calendar"><img src="css/icon/calendar1.png" alt="Menu" width="40" height="40"><div class="t1">Calendar</div></a>
+        	<a href="\Travlendar\Login"><img src="css/icon/logout.png" alt="Menu" width="40" height="40"><div class="t1">Log Out</div></a>
         </div>
   </li>
 </ul>
 </div>
-
+<br><br><br><br><br><br><br>
 <h1> Upcoming Event </h1>
-
-<div class="relative">
 	<div class="boxstyle1">
     	<div class="row">
     		<div class="column">
-       			<content style="font-size:23px;">Rapat Ianugurasi<br></content>
-            	<content style="font-size:16px;">Time: 20/09/2017 10:20 - 12:30</content>
+       			<div class="t3">Ke Kantor DPRD Banka</div>
+            	<div class="t4">Time: 20/09/2017 06:45 - 08:30</div>
             </div>
-            <div class="column" style="margin-top:2%;text-align:center;">
+            <div class="column2">
             	<div id="countdown"></div> 
             </div>
-            <div class="column" style="margin-top:2%;text-align:center;">
-    			<button><a href="#EventDetails">Event details</a></button>
+            <div class="column3">
+    			<a href="Menu.html" class="button1">Event details</a>
 			</div>
    		</div>
   </div>
-</div>
 
-<div class="relative">
-	<div class="boxstyle1">
+
+	<div class="boxstyle11">
     	<div class="row">
     		<div class="column">
-       			<content style="font-size:23px;">Survey Villa<br></content>
-            	<content style="font-size:16px;">Time: 20/09/2017 13:00 - 14:00</content>
+       			<div class="t3">Ke bandara</div>
+            	<div class="t4">Time: 20/09/2017 10:00 - 11:00</div>
             </div>
-            <div class="column" style="margin-top:2%;text-align:center;">
+            <div class="column2">
             	<div id="countdown2"></div>
             </div>
-            <div class="column" style="margin-top:2%;text-align:center;">
-    			<button><a href="#EventDetails">Event details</a></button>
+            <div class="column3">
+    			<a href="Menu.html" class="button1">Event details</a>
 			</div>
    		</div>
   </div>
-</div>
+  
+  	<div class="boxstyle11">
+    	<div class="row">
+    		<div class="column">
+       			<div class="t3">Ke Bandara Halim Perdanakusuma<br></div>
+            	<div class="t4">Time: 20/09/2017 13:00 - 17:00</div>
+            </div>
+            <div class="column2" style="margin-top:2%;text-align:center;color:white;">
+            	<div id="countdown2"></div>
+            </div>
+            <div class="column3">
+    			<a href="Menu.html" class="button1">Event details</a>
+			</div>
+   		</div>
+  </div>
 
+  	<div class="boxstyle11">
+    	<div class="row">
+    		<div class="column">
+       			<div class="t3">Ke Tanggerang<br></div>
+            	<div class="t4">Time: 20/09/2017 18:00 - 20:00</div>
+            </div>
+            <div class="column2" style="margin-top:2%;text-align:center;color:white;">
+            	<div id="countdown2"></div>
+            </div>
+            <div class="column3">
+    			<a href="Menu.html" class="button1">Event details</a>
+			</div>
+   		</div>
+  </div>
+  
+    <div class="boxstyle11">
+    	<div class="row">
+    		<div class="column">
+       			<div class="t3">Ke Bandara Halim Perdanakusuma <br></div>
+            	<div class="t4">Time: 20/09/2017 21:00 - 22:00</div>
+            </div>
+            <div class="column2" style="margin-top:2%;text-align:center;color:white;">
+            	<div id="countdown2"></div>
+            </div>
+            <div class="column3">
+    			<a href="Menu.html" class="button1">Event details</a>
+			</div>
+   		</div>
+  </div>
+  
+      <div class="boxstyle11">
+    	<div class="row">
+    		<div class="column">
+       			<div class="t3">Ke Rumah<br></div>
+            	<div class="t4">Time: 20/09/2017 21:00 - 22:00</div>
+            </div>
+            <div class="column2" style="margin-top:2%;text-align:center;color:white;">
+            	<div id="countdown2"></div>
+            </div>
+            <div class="column3">
+    			<a href="Menu.html" class="button1">Event details</a>
+			</div>
+   		</div>
+  </div>
+  <div class="boxstyle3">
+	<div class="hoverbutton">
+     <a href="\Travlendar\CreateAgenda"><img src="css/icon/sign_add.png" alt="Menu" width="50" height="50"><div class="t5">Add Event</div></a>
+     </div>
+    </div>
+<br><br><br><br><br><br>
 <div class="footer">
 Lander 2017
 </div>
@@ -114,7 +179,7 @@ function countdown2(setdetik){
     }
     tick();
 }
-countdown2(500); 
+countdown2(100); 
 
 // Get the button, and when the user clicks on it, execute myFunction
 document.getElementById("menuBtn").onclick = function() {myFunction()};

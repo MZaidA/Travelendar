@@ -20,11 +20,11 @@
 <h1>Menu</h1>
     <ol>
         <li><a href="/Travlendar/Home/index.jsp">Home</a></li>
-        <li><a href="UserProfile">User Profile</a></li>
-        <li><a href="ManageLocation.html">Manage Location</a></li>
-        <li><a href="ManageTransportation.html">Manage of Transportation</a></li>
-        <li><a href="#DM">Distance Matriks</a></li>
-        <li><a href="ManageEstimateTime.html">Manage Estimate Time</a></li>
+        <li><a href="/Travlendar/UserProfile">User Profile</a></li>
+        <li><a href="/Travlendar/ManageLocation">Manage Location</a></li>
+        <li><a href="/Travlendar/ManageTransportation">Manage of Transportation</a></li>
+        <li><a href="/Travlendar/DistanceMatrix">Distance Matriks</a></li>
+        <li><a href="/Travlendar/ManageEstimateTime">Manage Estimate Time</a></li>
     </ol>
 </div>
 </body>
