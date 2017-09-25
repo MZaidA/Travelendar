@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/styleMenu.css">
-<title>Travelendar</title>
+<title>ManageEstimatedTime</title>
 </head>
 
 <body>
@@ -11,7 +11,8 @@
 <h1>Manage Estimated Time</h1>
 <p>Menu yang dapat melakukan update,add, dan list Estimasi Waktu</p>
 
-<div style="overflow-x:auto;">
+<div class="wrapper">
+<div class="batas">
   <table>
     <tr>
       <th>No</th>
@@ -23,38 +24,69 @@
     </tr>
     <tr>
       <td>1</td>
-      <td>Polban-Ciwaruga</td>
-      <td>1 KM</td>
-      <td>Car</td>
-      <td>2</td>
+      <td>Rumah-Kantor DPRD</td>
+      <td>65,7 KM</td>
+      <td>Walk</td>
+      <td>788</td>
       <td><a href="#Update">Update</a></td>
     </tr>
     <tr>
       <td>2</td>
-      <td>Polban-Ciwaruga</td>
-      <td>1 KM</td>
-      <td>Motorcycle</td>
-      <td>1</td>
+      <td>Rumah-Kantor DPRD</td>
+      <td>65,7 KM</td>
+      <td>Bicycle</td>
+      <td>263</td>
       <td><a href="#Update">Update</a></td>
     </tr>
     <tr>
       <td>3</td>
-      <td>Ciwaruga-Cimahi</td>
-      <td>3 KM</td>
-      <td>Car</td>
-      <td>15</td>
+      <td>Rumah-Kantor DPRD</td>
+      <td>65,7 KM</td>
+      <td>Motorcycle</td>
+      <td>66</td>
       <td><a href="#Update">Update</a></td>
     </tr>
     <tr>
       <td>4</td>
-      <td>Ciwaruga-Cimahi</td>
-      <td>3 KM</td>
+      <td>Rumah-Kantor DPRD</td>
+      <td>65,7 KM</td>
+      <td>Car</td>
+      <td>79</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+     <tr>
+      <td>5</td>
+      <td>Kantor DPRD - Bandara Banka</td>
+      <td>60,9 KM</td>
       <td>Motorcycle</td>
-      <td>20</td>
+      <td>61</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+     <tr>
+      <td>6</td>
+      <td>Kantor DPRD - Bandara Banka</td>
+      <td>60,9 KM</td>
+      <td>Car</td>
+      <td>73</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+     <tr>
+      <td>7</td>
+      <td>Bandara Banka - Bandara Halim Perdanakusuma</td>
+      <td>736 KM</td>
+      <td>Car</td>
+      <td>883</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+     <td>8</td>
+      <td>Bandara Banka - Bandara Halim Perdanakusuma</td>
+      <td>736 KM</td>
+      <td>Plane</td>
+      <td>49</td>
       <td><a href="#Update">Update</a></td>
     </tr>
   </table>
-<div>
+  </div>
 <br><br>
 <div class="form">
 	<form action="/action_page.php">
@@ -62,8 +94,13 @@
     <label for="country">Location</label>	
     <select id="Locarion" name="location"> 
       <option value="blank"></option>
-      <option value="">Polban-Ciwaruga</option>
-      <option value="">Ciwaruga-Cimahi</option>
+      <option value="">Rumah-Kantor DPRD</option>
+      <option value="">Kantor DPRD-Bandara Banka</option>
+      <option value="">Bandara Banka-Bandara Halim Perdanakusuma</option>
+      <option value="">Jakarta-Tangerang</option>
+      <option value="">Tangerang-Bandara Halim Perdanakusuma</option>
+      <option value="">Bandara Halim Perdanakusuma-Bandara Banka</option>
+      <option value="">Bandara Banka-Rumah</option>
     </select>
         <label for="country">Mode Transportation</label>	
     <select id="mTransportation" name="mTransportation">
@@ -79,7 +116,7 @@
       <option value="">Bus</option>
       <option value="">Train</option>
       <option value="">Ship</option>
-      <option value="">Plan</option>
+      <option value="">Plane</option>
     </select>
     
     <label for="fname">Distance</label>
@@ -95,6 +132,7 @@
 </div>
 <br>
 <a href="Menu.html" class="button1">Home</a>
+</div>
 <br><br><br><br>
 </body>
 </html>
