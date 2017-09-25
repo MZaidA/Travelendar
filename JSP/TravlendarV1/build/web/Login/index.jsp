@@ -61,7 +61,7 @@ h2 {
     <h2>go ahead and sign in to get started</h2>
 </div>
 
-<form autocomplete="on" action="/Travlendar/Home/" method="POST">
+<form autocomplete="on" action="/Travlendar/Home/index.jsp" method="POST">
     <input type="text" class="Username" name="username" placeholder="username"><br>
     <input type="password" class="Username" name="password" placeholder="password"><br>
     <input type="submit" class="button" value="Login">
