@@ -16,43 +16,50 @@
   <table>
       <tr>
         <th>No</th>
-        <th>Loc A - Loc B</th>
+        <th>Starting Location</th>
+        <th>Final Location</th>
         <th>Distance (KM)</th>
         <th>Edit</th>
       </tr>
     <tr>
       <td>1</td>
-      <td>Kantor DPRD - Bandara Banka</td>
+      <td>Kantor DPRD</td>
+      <td>Bandara Banka</td>
       <td>60,9</td>
       <td><a href="#Update">Update</a></td>
     </tr>
     <tr>
       <td>2</td>
-      <td>Rumah - Kantor DPRD</td>
+      <td>Rumah</td>
+      <td>Kantor DPRD</td>
       <td>65,7</td>
       <td><a href="#Update">Update</a></td>
     </tr>
     <tr>
       <td>3</td>
-      <td>Bandara Banka - Bandara Halim Perdanakusuma</td>
+      <td>Bandara Banka</td>
+      <td>Bandara Halim Perdanakusuma</td>
       <td>736</td>
       <td><a href="#Update">Update</a></td>
     </tr>
      <tr>
       <td>4</td>
-      <td>Jakarta - Tangerang </td>
+      <td>Jakarta</td>
+      <td>Tangerang</td>
       <td>31,3</td>
       <td><a href="#Update">Update</a></td>
     </tr>
      <tr>
       <td>5</td>
-      <td>Bandara Banka - Rumah</td>
+      <td>Bandara Banka</td>
+      <td>Rumah</td>
       <td>13,4</td>
       <td><a href="#Update">Update</a></td>
     </tr>
      <tr>
       <td>6</td>
-      <td>Tanggerang - Bandara Halim Perdanakusuma</td>
+      <td>Tanggerang</td>
+      <td>Bandara Halim Perdanakusuma</td>
       <td>31,3</td>
       <td><a href="#Update">Update</a></td>
     </tr>
@@ -60,18 +67,27 @@
   </div><!--class "Batas"-->
 <br><br>
     <div class="form">
-        <form action="/action_page.php">
-    <label for="LocAtoB">Location</label>
-    <select id="Locarion" name="location"> 
+     <form action="/action_page.php">
+    	<label for="stLoc">Start Location</label>
+    	 <select id="stLocation" name="location"> 
           <option value="blank"></option>
-          <option value="">Rumah-Kantor DPRD</option>
-          <option value="">Kantor DPRD-Bandara Banka</option>
-          <option value="">Bandara Banka-Bandara Halim Perdanakusuma</option>
-          <option value="">Jakarta-Tangerang</option>
-          <option value="">Tangerang-Bandara Halim Perdanakusuma</option>
-          <option value="">Bandara Halim Perdanakusuma-Bandara Banka</option>
-          <option value="">Bandara Banka-Rumah</option>
-        </select>
+          <option value="">Rumah</option>
+          <option value="">Kantor DPRD</option>
+          <option value="">Bandara Banka</option>
+          <option value="">Bandara Halim Perdanakusuma</option>
+          <option value="">Jakarta</option>
+          <option value="">Tangerang</option>
+		 </select>
+    	<label for="finalLoc">Final Location</label>
+    	 <select id="finalLocation" name="location"> 
+          <option value="blank"></option>
+          <option value="">Rumah</option>
+          <option value="">Kantor DPRD</option>
+          <option value="">Bandara Banka</option>
+          <option value="">Bandara Halim Perdanakusuma</option>
+          <option value="">Jakarta</option>
+          <option value="">Tangerang</option>
+         </select>
             <label for="fname">Distance</label>
         <input type="text" id="distance" name="Distance" placeholder="Distance... KM">
       

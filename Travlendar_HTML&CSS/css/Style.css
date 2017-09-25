@@ -16,10 +16,10 @@ h1 {
 
 .navbar{
 	position:fixed;
+	z-index:1;
 	top:0;
 	width:100%;
     padding: 5px 16px; /*top & bottom paddings are 14px right and left paddings are 16px*/
-    overflow: hidden;
     background-color: #0080C0;/*Biru*/
 }
 
@@ -85,6 +85,7 @@ li.dropdown {
 .t3{font-size:23px;color:white;	font-family:"Lucida Console", Monaco, monospace;}
 .t4{font-size:16px;color:white;}
 
+
 /*Style buat Box*/
 .boxstyle1 {
 	margin-bottom:10px;
@@ -95,6 +96,7 @@ li.dropdown {
 	border-radius:10px;
     border-left: 7px solid #66FF91;
     padding: 10px;
+	z-index:0;
 }
 
 .boxstyle11 {
@@ -107,6 +109,7 @@ li.dropdown {
 	border-radius:10px;
     border-left: 7px solid #ffde66;
     padding: 10px;
+	z-index:0;
 }
 
 .boxstyle2 {
@@ -118,11 +121,28 @@ li.dropdown {
 	width:50%;
 	left:25%;
 	top:80px;
+	z-index:-1;
 }
+
+.boxstyle3 {
+	position:relative;
+	left:50%;
+	width:50px;
+	height:50px;
+	text-align:center;
+}
+.hoverbutton:hover{
+	transition-duration: 0.4s;
+}
+.hoverbutton a:link{text-decoration:none;color:white;}
+.hoverbutton a:visited{text-decoration:none;color:white;}
+.hoverbutton a:hover{text-decoration:none;color:Red}
+.hoverbutton:hover{text-decoration:none;color:Red;box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);}
+.hoverbutton a:active {text-decoration: underline;color:#333}/* selected link */
 
 .boxstyle2 a:link{text-decoration:none;color:Black;}
 .boxstyle2 a:visited{text-decoration:none;color:Blue;}
-.boxstyle2 a:hover{text-decoration:none;color:Red}
+.boxstyle2 a:hover{text-decoration:none;color:Red;}
 .boxstyle2 a:active {text-decoration: underline;color:#333}/* selected link */
 
 
@@ -137,7 +157,6 @@ li.dropdown {
 	font-size:24px;
     text-align: center;
 }
-
 
 .inlinedisplay #countdown{
 	display:inline-block;
@@ -155,6 +174,7 @@ li.dropdown {
 .column2{
 	margin-top:2%;
 	text-align:center;
+	color:white;
     float: left;
     width: 33%;
 }
