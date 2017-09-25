@@ -13,7 +13,6 @@ h1 {
 	font-size:70px;
 }
 
-
 .navbar{
 	position:fixed;
 	z-index:1;
@@ -121,7 +120,7 @@ li.dropdown {
 	width:50%;
 	left:25%;
 	top:80px;
-	z-index:-1;
+	z-index:0;
 }
 
 .boxstyle3 {
