@@ -22,7 +22,7 @@
     	<div id="myDropdown" class="dropdown-content">
         	<a href="#UserProfile"><div class="t2">USERNAME</div><img src="css/icon/user.png" alt="css/icon/user.png" width="40" height="40"></a>
         	<a href="#Home"><img src="css/icon/home.png" alt="Menu" width="40" height="40"><div class="t1">Home</div></a>
-        	<a href="#Calendar"><img src="css/icon/calendar1.png" alt="Menu" width="40" height="40"><div class="t1">Calendar</div></a>
+        	<a href="/Travlendar/Calendar"><img src="css/icon/calendar1.png" alt="Menu" width="40" height="40"><div class="t1">Calendar</div></a>
         	<a href="#LogOut"><img src="css/icon/logout.png" alt="Menu" width="40" height="40"><div class="t1">Log Out</div></a>
         </div>
   </li>
