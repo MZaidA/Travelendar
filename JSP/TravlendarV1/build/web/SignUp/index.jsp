@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="navbar">
-   <a href="#" class="active" >SIGN IN</a>
+   <a href="\Travlendar\Login" class="active" >SIGN IN</a>
 </div>
 
 <div class="content-wrapper">

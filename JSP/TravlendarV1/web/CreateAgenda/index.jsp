@@ -40,7 +40,7 @@
   </form>
 </div>
 <br>
-<a href="Menu.html" class="button1">Home</a>
+<a href="\Travlendar\Home" class="button1">Home</a>
 <br><br><br><br>
 </body>
 </html>

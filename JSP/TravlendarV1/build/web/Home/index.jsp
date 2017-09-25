@@ -22,8 +22,8 @@
     	<div id="myDropdown" class="dropdown-content">
         	<a href="#UserProfile"><div class="t2">USERNAME</div><img src="css/icon/user.png" alt="css/icon/user.png" width="40" height="40"></a>
         	<a href="#Home"><img src="css/icon/home.png" alt="Menu" width="40" height="40"><div class="t1">Home</div></a>
-        	<a href="/Travlendar/Calendar"><img src="css/icon/calendar1.png" alt="Menu" width="40" height="40"><div class="t1">Calendar</div></a>
-        	<a href="#LogOut"><img src="css/icon/logout.png" alt="Menu" width="40" height="40"><div class="t1">Log Out</div></a>
+        	<a href="#Calendar"><img src="css/icon/calendar1.png" alt="Menu" width="40" height="40"><div class="t1">Calendar</div></a>
+        	<a href="\Travlendar\Login"><img src="css/icon/logout.png" alt="Menu" width="40" height="40"><div class="t1">Log Out</div></a>
         </div>
   </li>
 </ul>
@@ -33,10 +33,10 @@
 	<div class="boxstyle1">
     	<div class="row">
     		<div class="column">
-       			<div class="t3">Ke Kantor DPRD Banka<br></div>
+       			<div class="t3">Ke Kantor DPRD Banka</div>
             	<div class="t4">Time: 20/09/2017 06:45 - 08:30</div>
             </div>
-            <div class="column2" style="margin-top:2%;text-align:center;color:white;">
+            <div class="column2">
             	<div id="countdown"></div> 
             </div>
             <div class="column3">
@@ -49,10 +49,10 @@
 	<div class="boxstyle11">
     	<div class="row">
     		<div class="column">
-       			<div class="t3">Ke bandara<br></div>
+       			<div class="t3">Ke bandara</div>
             	<div class="t4">Time: 20/09/2017 10:00 - 11:00</div>
             </div>
-            <div class="column2" style="margin-top:2%;text-align:center;color:white;">
+            <div class="column2">
             	<div id="countdown2"></div>
             </div>
             <div class="column3">
@@ -120,7 +120,12 @@
 			</div>
    		</div>
   </div>
-<br><br><br><br>
+  <div class="boxstyle3">
+	<div class="hoverbutton">
+     <a href="\Travlendar\CreateAgenda"><img src="css/icon/sign_add.png" alt="Menu" width="50" height="50"><div class="t5">Add Event</div></a>
+     </div>
+    </div>
+<br><br><br><br><br><br>
 <div class="footer">
 Lander 2017
 </div>
@@ -170,7 +175,7 @@ function countdown2(setdetik){
     }
     tick();
 }
-countdown2(500); 
+countdown2(100); 
 
 // Get the button, and when the user clicks on it, execute myFunction
 document.getElementById("menuBtn").onclick = function() {myFunction()};

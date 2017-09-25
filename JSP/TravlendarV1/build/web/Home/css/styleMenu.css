@@ -5,22 +5,25 @@ body {
     background-image: url("icon/wallpaperhome.png");
 	background-attachment: fixed;
 }
-body {
-	margin:0;
-    background-image: url("icon/wallpaperhome.png");
-	background-attachment: fixed;
-}
 
-table {
-	border: 3px solid black;
+.wrapper{
 	position:relative;
 	left:25%;
-    border-collapse:separate;
-    width: 50%;
+	width: 50%;
+}
+table{
+	border: 3px solid black;
+    border-collapse:collapse;
+	width:100%;
+}
+
+.batas{
+	height:200px;
+	overflow:auto;
 }
 
 th, td {
-    text-align: left;
+    text-align: center;
     padding: 8px;
 }
 
@@ -73,7 +76,7 @@ input[type=submit]:hover {
 .form {
 	position:relative;
 	left:25%;
-	width:47%;
+	width:50%;
     border-radius: 10px;
     background-color: #f2f2f2;
     padding: 20px;
