@@ -2,8 +2,6 @@
 /* CSS Document */
 body {
 	margin:0;
-    background-image: url("icon/wallpaperhome.png");
-	background-attachment: fixed;
 }
 
 h1 {
@@ -13,61 +11,58 @@ h1 {
 	font-size:70px;
 }
 
-.navbar{
-	position:fixed;
-	z-index:1;
-	top:0;
+.header {
+    background-color: #0080C0;
+    padding: 20px 0px;
 	width:100%;
-    padding: 5px 16px; /*top & bottom paddings are 14px right and left paddings are 16px*/
-    background-color: #0080C0;/*Biru*/
 }
 
-.navbar li{
-	font-family:"Courier New", Courier, ;
-	font-size:25px;
+.navbar{
+	overflow:hidden;
 	float:left;
-	margin-top:10px;
-	border-right:1px solid #bbb;
+	width:30%;
+	height:617px;
+    background-color: #07709F;/*Biru*/ 
 }
 
-.navbar li:last-child{
+navbar, ul li{
+	list-style-type:none;
+}
+
+.navbar a{
+	font-family:"Courier New", Courier;
+	color:#f2f2f2;
+	display:block;
+	padding: 14px 16px; /*top & bottom paddings are 14px right and left paddings are 16px*/
 	border-right:none;
+	text-decoration:none;
 }
 
 li a:hover, .dropdown:hover .dropbtn {
-    background-color: #ddd;
+    background-color: rgba(129, 128, 130, 0.5);
 }
 
-li.dropdown {
-    display: inline-block;
-}
 .dropbtn{
-	margin-right:30px;
+	margin-right:10px;
 }
 .dropdown-content {
     display: none;
-    position: fixed;
-	overflow:auto;
+	position:absolute;
     background-color: #f1f1f1;
     max-width: 250px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-	right:0;
-	margin-right:16px;
-	text-align:center;		
+	margin-right:16px;	
 	padding: 12px 0px;
-}
-
-.dropdown-content img{
-	border-radius: 50%;
-	margin-top:10px;
+	right:0;
+	float:right;
 }
 
 .dropdown-content a {
 	color: black;
     padding: 12px 16px;
     text-decoration:none;
-    display: inline-block;
+    display: block;
 }
 
 .dropdown-content a:hover {
@@ -77,12 +72,13 @@ li.dropdown {
     background-color: #ddd;
 }
 
-.show {display:inline;}
+.show {display:block;}
 
 .t1{font-size:14px;}
 .t2{font-size:20px;width:200px;}
 .t3{font-size:23px;color:white;	font-family:"Lucida Console", Monaco, monospace;}
 .t4{font-size:16px;color:white;}
+.text-navbar{margin-top:6px;margin-left:40px;}
 
 
 /*Style buat Box*/
@@ -103,7 +99,6 @@ li.dropdown {
 	position:relative;
 	left: 25%;
 	width: 50%;
-	height: 100%;
     background-color: #ff9166;
 	border-radius:10px;
     border-left: 7px solid #ffde66;
@@ -147,11 +142,10 @@ li.dropdown {
 
 /* Style the footer */
 .footer {
-	position:fixed;
 	bottom:0;
 	width:100%;
     background-color: #0080C0;
-    padding: 10px;
+    padding: 10px 0px;
 	color:white;
 	font-size:24px;
     text-align: center;
@@ -163,6 +157,13 @@ li.dropdown {
 }
 
 /* Create three equal columns that floats next to each other */
+.column.content
+{	
+	overflow:auto;
+	background-color: #f1f1f1;
+	width: 70%;
+	height:617px;
+}
 .column {
     float: left;
     width: 33%;
@@ -192,21 +193,41 @@ li.dropdown {
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width:700px) {
+@media (max-width:600px) {
+	.column.content
+	{
+	width: 100%;
+	height:0%;
+	overflow:hidden;
+
+	}
     .column {
         width: 100%;
     }
+	.column2 {
+        width: 100%;
+    }
+	.column3 {
+        width: 100%;
+    }
+	.navbar{
+		width: 100%;
+		height:0%;
+	}
+	.navbar a{
+		float:left;
+		display:block;
+	}
 }
-
 .button1{
 	border:none;
 	text-decoration:none;	
-	font-family:"Lucida Console", Monaco, monospace;
+	font-family:'Anton', sans-serif;
 	background-color:#008CBA;
 	color:white;
 	font-size:15px;
-	padding:5px 5px;
-	border-radius:8px;
+	padding:3px 3px;
+	border-radius:5px;
 	transition-duration: 0.4s;
 }
 
