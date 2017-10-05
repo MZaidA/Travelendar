@@ -1,0 +1,216 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	margin:0;
+    background-image: url("icon/wallpaperhome.png");
+	background-attachment: fixed;
+}
+
+h1 {
+	font-family:"Lucida Console", Monaco, monospace;
+    color: navy;
+	text-align:center;
+	font-size:70px;
+}
+
+.navbar{
+	position:fixed;
+	z-index:1;
+	top:0;
+	width:100%;
+    padding: 5px 16px; /*top & bottom paddings are 14px right and left paddings are 16px*/
+    background-color: #0080C0;/*Biru*/
+}
+
+.navbar li{
+	font-family:"Courier New", Courier ;
+	font-size:25px;
+	float:left;
+	margin-top:10px;
+	border-right:1px solid #bbb;
+}
+
+.navbar li:last-child{
+	border-right:none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #ddd;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+.dropbtn{
+	margin-right:30px;
+}
+.dropdown-content {
+    display: none;
+    position: fixed;
+	overflow:auto;
+    background-color: #f1f1f1;
+    max-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+	right:0;
+	margin-right:16px;
+	text-align:center;		
+	padding: 12px 0px;
+}
+
+.dropdown-content img{
+	border-radius: 50%;
+	margin-top:10px;
+}
+
+.dropdown-content a {
+	color: black;
+    padding: 12px 16px;
+    text-decoration:none;
+    display: inline-block;
+}
+
+.dropdown-content a:hover {
+	background-color: #ddd}
+
+.dropdown:hover .dropbtn {
+    background-color: #ddd;
+}
+
+.show {display:inline;}
+
+.t1{font-size:14px;}
+.t2{font-size:20px;width:200px;}
+.t3{font-size:23px;color:white;	font-family:"Lucida Console", Monaco, monospace;}
+.t4{font-size:16px;color:white;}
+
+
+/*Style buat Box*/
+.boxstyle1 {
+	margin-bottom:10px;
+	position:relative;
+	left: 25%;
+	width: 50%;
+    background-color: #ff9166;
+	border-radius:10px;
+    border-left: 7px solid #66FF91;
+    padding: 10px;
+	z-index:0;
+}
+
+.boxstyle11 {
+	margin-bottom:10px;
+	position:relative;
+	left: 25%;
+	width: 50%;
+	height: 100%;
+    background-color: #ff9166;
+	border-radius:10px;
+    border-left: 7px solid #ffde66;
+    padding: 10px;
+	z-index:0;
+}
+
+.boxstyle2 {
+	position:relative;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding: 20px;
+	margin-top: 10px;
+	width:50%;
+	left:25%;
+	top:80px;
+	z-index:0;
+}
+
+.boxstyle3 {
+	position:relative;
+	left:50%;
+	width:50px;
+	height:50px;
+	text-align:center;
+}
+.hoverbutton:hover{
+	transition-duration: 0.4s;
+}
+.hoverbutton a:link{text-decoration:none;color:white;}
+.hoverbutton a:visited{text-decoration:none;color:white;}
+.hoverbutton a:hover{text-decoration:none;color:Red}
+.hoverbutton:hover{text-decoration:none;color:Red;box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);}
+.hoverbutton a:active {text-decoration: underline;color:#333}/* selected link */
+
+.boxstyle2 a:link{text-decoration:none;color:Black;}
+.boxstyle2 a:visited{text-decoration:none;color:Blue;}
+.boxstyle2 a:hover{text-decoration:none;color:Red;}
+.boxstyle2 a:active {text-decoration: underline;color:#333}/* selected link */
+
+
+/* Style the footer */
+.footer {
+	position:fixed;
+	bottom:0;
+	width:100%;
+    background-color: #0080C0;
+    padding: 10px;
+	color:white;
+	font-size:24px;
+    text-align: center;
+}
+
+.inlinedisplay #countdown{
+	display:inline-block;
+	float:right;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33%;
+    padding: 0px;
+}
+
+
+.column2{
+	margin-top:2%;
+	text-align:center;
+	color:white;
+    float: left;
+    width: 33%;
+}
+.column3 {
+	margin-top:2%;
+	text-align:center;
+    float: left;
+    width: 33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width:700px) {
+    .column {
+        width: 100%;
+    }
+}
+
+.button1{
+	border:none;
+	text-decoration:none;	
+	font-family:"Lucida Console", Monaco, monospace;
+	background-color:#008CBA;
+	color:white;
+	font-size:15px;
+	padding:5px 5px;
+	border-radius:8px;
+	transition-duration: 0.4s;
+}
+
+.button1:link{text-decoration:none;color:black;}
+.button1:visited{text-decoration:none;color:black;}
+.button1:hover{text-decoration:none;color:white;box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);}
+.button1:active {text-decoration: none;color:black;}/* selected link */
