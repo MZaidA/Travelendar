@@ -5,7 +5,7 @@ body {
 }
 
 h1 {
-	font-family:"Lucida Console", Monaco, monospace;
+	font-family: 'Boogaloo', cursive;
     color: navy;
 	text-align:center;
 	font-size:70px;
@@ -25,9 +25,21 @@ h1 {
     background-color: #07709F;/*Biru*/ 
 }
 
-navbar, ul li{
+.navbar, ul li{
 	list-style-type:none;
 }
+
+.navbar a{transition-duration: 0.4s;}
+.navbar a:hover{
+	background-color:#CCC;
+	padding-left:60px;
+	color:black;
+	}
+	
+.navbar a:active{
+	background-color:#FC6;
+	padding-left:60px;
+	}
 
 .navbar a{
 	font-family:"Courier New", Courier;
@@ -38,18 +50,35 @@ navbar, ul li{
 	text-decoration:none;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: rgba(129, 128, 130, 0.5);
+.dropbtn {
+	width:20px;
+	height:20px;
+	background-image:url(../css/icon/showmenu2.png);
+	background-size:contain;
+	margin-right:16px;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
 
-.dropbtn{
-	margin-right:10px;
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #CCC;
 }
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+	float:right;
+}
+
 .dropdown-content {
     display: none;
 	position:absolute;
     background-color: #f1f1f1;
-    max-width: 250px;
+    min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 	margin-right:16px;	
@@ -58,27 +87,24 @@ li a:hover, .dropdown:hover .dropbtn {
 	float:right;
 }
 
+/* Links inside the dropdown */
 .dropdown-content a {
-	color: black;
+    color: black;
     padding: 12px 16px;
-    text-decoration:none;
+    text-decoration: none;
     display: block;
 }
 
-.dropdown-content a:hover {
-	background-color: #ddd}
-
-.dropdown:hover .dropbtn {
-    background-color: #ddd;
-}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #999}
 
 .show {display:block;}
 
 .t1{font-size:14px;}
 .t2{font-size:20px;width:200px;}
-.t3{font-size:23px;color:white;	font-family:"Lucida Console", Monaco, monospace;}
-.t4{font-size:16px;color:white;}
-.text-navbar{margin-top:6px;margin-left:40px;}
+.t3{font-size:23px;color:white;	font-family: 'Chewy', cursive;}
+.t4{font-size:16px;color:white;font-family: 'Glegoo', serif;}
+.text-navbar{margin-top:6px;margin-left:40px;font-family: 'Acme', sans-serif;}
 
 
 /*Style buat Box*/
@@ -107,24 +133,22 @@ li a:hover, .dropdown:hover .dropbtn {
 }
 
 .boxstyle2 {
-	position:relative;
     border-radius: 10px;
     background-color: #f2f2f2;
     padding: 20px;
 	margin-top: 10px;
 	width:50%;
-	left:25%;
+	text-align:center;
 	top:80px;
 	z-index:0;
 }
 
-.boxstyle3 {
-	position:relative;
-	left:50%;
-	width:50px;
-	height:50px;
+.boxstyle3 {	
 	text-align:center;
 }
+.boxstyle3 a{transition-duration: 0.4s;}
+.boxstyle3 a:hover{background-color:pink;}
+
 .hoverbutton:hover{
 	transition-duration: 0.4s;
 }
@@ -215,8 +239,13 @@ li a:hover, .dropdown:hover .dropbtn {
 		height:0%;
 	}
 	.navbar a{
+		transition-duration: 0.4s;
 		float:left;
 		display:block;
+	}
+	.navbar a:hover{
+		padding-top:20px;
+		padding-left:17px;
 	}
 }
 .button1{

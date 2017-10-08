@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <title>Travlendar</title>
 <link rel="stylesheet" href="css/Style.css">
-<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anton|Acme|Boogaloo|Chewy|Glegoo" rel="stylesheet">
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -11,11 +13,13 @@
 
 <div class="header">
 <img src="css/icon/LogoKelompokB1.png" width="145" height="50" style="margin-left:30px;">
-    <div id="menuBtn" class="dropbtn" style="float:right;"><img src="css/icon/showmenu.png" alt="Menu" width="40" height="40"></div>
-    	<div id="myDropdown" class="dropdown-content">
-            <div style="width:100%;"><a href="#UserProfile"><img src="css/icon/user.png" width="30" height="30" style="float:left;"><div class="text-navbar">Nelfs</div></a></div>
-        	<div style="width:100%;"><a href="#LogOut"><img src="css/icon/logout.png" width="35" height="35" style="float:left;"><div class="text-navbar" style="padding-bottom:5px;">Log Out</div></a></div>
-        </div>
+	<div class="dropdown">
+        <div onclick="dropdownfunction()" class="dropbtn"></div>
+            <div id="myDropdown" class="dropdown-content">
+                <div style="width:100%;"><a href="#UserProfile"><img src="css/icon/user.png" width="30" height="30" style="float:left;"><div class="text-navbar">Nelfs</div></a></div>
+                <div style="width:100%;"><a href="#LogOut"><img src="css/icon/logout.png" width="35" height="35" style="float:left;"><div class="text-navbar" style="padding-bottom:5px;">Log Out</div></a></div>
+            </div>
+	</div>
 </div>
 
 <div class="row">
@@ -119,9 +123,7 @@
       </div>
 		
       <div class="boxstyle3">
-        <div class="hoverbutton">
          <a href="CreateAgenda.html"><img src="css/icon/sign_add.png" alt="Menu" width="50" height="50"></a>
-         </div>
         </div>
     </div>
 </div>
@@ -176,12 +178,26 @@ function countdown2(setdetik){
 }
 countdown2(100); 
 
-// Get the button, and when the user clicks on it, execute myFunction
-document.getElementById("menuBtn").onclick = function() {myFunction()};
 
-/* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
-function myFunction() {
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function dropdownfunction() {
     document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
 }
 
 
