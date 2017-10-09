@@ -1,83 +1,124 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     9/19/2017 12:00:01 PM                        */
+/* Created on:     09/10/2017 19:56:36                          */
 /*==============================================================*/
 
 
-drop table if exists AGENDA;
+drop table if exists EVENT;
 
-drop table if exists AKUN;
+drop table if exists LOCATION;
 
-drop table if exists KENDARAAN;
+drop table if exists PRIVATE_TRANSPORTATION;
 
-drop table if exists TABEL_LOOKUP;
+drop table if exists PRIVATE_TRANSPORTATION_TRAVELING;
+
+drop table if exists PUBLIC_TRANSPORTATION;
+
+drop table if exists PUBLIC_TRANSPORTATION_TRAVELING;
 
 /*==============================================================*/
-/* Table: AGENDA                                                */
+/* Table: EVENT                                                 */
 /*==============================================================*/
-create table AGENDA
+create table EVENT
 (
-   ID_AKUN              char(4) not null,
-   ID_KENDARAAN         char(3) not null,
-   ID_AGENDA            char(5) not null,
-   NAMA_AGENDA          varchar(40),
-   WAKTU_AWAL           datetime,
-   WAKTU_AKHIR          datetime,
-   LOKASI_AWAL          varchar(60),
-   LOKASI_AKHIR         varchar(60),
-   primary key (ID_AKUN, ID_KENDARAAN, ID_AGENDA)
+   EVENT_CODE           char(4) not null,
+   LOCATION_CODE        char(4) not null,
+   LOC_LOCATION_CODE    char(4),
+   PUBLIC_TRANSPORTATION_CODE char(5),
+   PRIVATE_TRANSPORTATION_CODE char(5),
+   EVENT_NAME           varchar(40) not null,
+   ARRIVAL_AT_LOCATION  datetime not null,
+   EVENT_FINISHED       datetime not null,
+   DESCRIPTION          varchar(200),
+   DEPARTURE_TO_EVENT   datetime,
+   primary key (EVENT_CODE)
 );
 
 /*==============================================================*/
-/* Table: AKUN                                                  */
+/* Table: LOCATION                                              */
 /*==============================================================*/
-create table AKUN
+create table LOCATION
 (
-   ID_AKUN              char(4) not null,
-   ID_KENDARAAN         char(3),
-   ID_TABEL_LOOKUP      char(5),
-   NAMA_ASLI            varchar(30),
-   USERNAME             varchar(20),
-   EMAIL                varchar(40),
-   PASSWORD             varchar(20),
-   primary key (ID_AKUN)
+   LOCATION_CODE        char(4) not null,
+   LOCATION_NAME        varchar(40) not null,
+   primary key (LOCATION_CODE)
 );
 
 /*==============================================================*/
-/* Table: KENDARAAN                                             */
+/* Table: PRIVATE_TRANSPORTATION                                */
 /*==============================================================*/
-create table KENDARAAN
+create table PRIVATE_TRANSPORTATION
 (
-   ID_KENDARAAN         char(3) not null,
-   NAMA_KENDARAAN       varchar(30),
-   JENIS_KENDARAAN      varchar(10),
-   MEDAN_KENDARAAN      varchar(10),
-   primary key (ID_KENDARAAN)
+   PRIVATE_TRANSPORTATION_CODE char(5) not null,
+   PRIVATE_TRANSPORTATION_NAME varchar(40) not null,
+   primary key (PRIVATE_TRANSPORTATION_CODE)
 );
 
 /*==============================================================*/
-/* Table: TABEL_LOOKUP                                          */
+/* Table: PRIVATE_TRANSPORTATION_TRAVELING                      */
 /*==============================================================*/
-create table TABEL_LOOKUP
+create table PRIVATE_TRANSPORTATION_TRAVELING
 (
-   ID_KENDARAAN         char(3) not null,
-   ID_TABEL_LOOKUP      char(5) not null,
-   JARAK_TEMPUH         double,
-   WAKTU_TEMPUH         time,
-   TEMPAT_ASAL          varchar(60),
-   TEMPAT_TUJUAN        varchar(60),
-   primary key (ID_KENDARAAN, ID_TABEL_LOOKUP)
+   PRIVATE_TRANSPORTATION_TRAVELING_CODE char(5) not null,
+   LOCATION_CODE        char(4) not null,
+   LOC_LOCATION_CODE    char(4) not null,
+   PRIVATE_TRANSPORTATION_CODE char(5) not null,
+   TIME_ESTIMATION      time not null,
+   primary key (PRIVATE_TRANSPORTATION_TRAVELING_CODE)
 );
 
-alter table AGENDA add constraint FK_RELATIONSHIP_1 foreign key (ID_AKUN)
-      references AKUN (ID_AKUN) on delete restrict on update restrict;
+/*==============================================================*/
+/* Table: PUBLIC_TRANSPORTATION                                 */
+/*==============================================================*/
+create table PUBLIC_TRANSPORTATION
+(
+   PUBLIC_TRANSPORTATION_CODE char(5) not null,
+   PUBLIC_TRANSPORTATION_TYPE varchar(40) not null,
+   PUBLIC_TRANSPORTATION_NAME varchar(40) not null,
+   primary key (PUBLIC_TRANSPORTATION_CODE)
+);
 
-alter table AGENDA add constraint FK_RELATIONSHIP_4 foreign key (ID_KENDARAAN)
-      references KENDARAAN (ID_KENDARAAN) on delete restrict on update restrict;
+/*==============================================================*/
+/* Table: PUBLIC_TRANSPORTATION_TRAVELING                       */
+/*==============================================================*/
+create table PUBLIC_TRANSPORTATION_TRAVELING
+(
+   PUBLIC_TRANSPORTATION_TRAVELING_CODE char(5) not null,
+   LOCATION_CODE        char(4) not null,
+   LOC_LOCATION_CODE    char(4) not null,
+   PUBLIC_TRANSPORTATION_CODE char(5) not null,
+   ARRIVAL_SCHEDULE     datetime not null,
+   DEPARTURE_SCHEDULE   datetime not null,
+   primary key (PUBLIC_TRANSPORTATION_TRAVELING_CODE)
+);
 
-alter table AKUN add constraint FK_RELATIONSHIP_5 foreign key (ID_KENDARAAN, ID_TABEL_LOOKUP)
-      references TABEL_LOOKUP (ID_KENDARAAN, ID_TABEL_LOOKUP) on delete restrict on update restrict;
+alter table EVENT add constraint FK_RELATIONSHIP_1 foreign key (LOCATION_CODE)
+      references LOCATION (LOCATION_CODE) on delete restrict on update restrict;
 
-alter table TABEL_LOOKUP add constraint FK_RELATIONSHIP_6 foreign key (ID_KENDARAAN)
-      references KENDARAAN (ID_KENDARAAN) on delete restrict on update restrict;
+alter table EVENT add constraint FK_RELATIONSHIP_10 foreign key (PUBLIC_TRANSPORTATION_CODE)
+      references PUBLIC_TRANSPORTATION (PUBLIC_TRANSPORTATION_CODE) on delete restrict on update restrict;
+
+alter table EVENT add constraint FK_RELATIONSHIP_14 foreign key (LOC_LOCATION_CODE)
+      references LOCATION (LOCATION_CODE) on delete restrict on update restrict;
+
+alter table EVENT add constraint FK_RELATIONSHIP_9 foreign key (PRIVATE_TRANSPORTATION_CODE)
+      references PRIVATE_TRANSPORTATION (PRIVATE_TRANSPORTATION_CODE) on delete restrict on update restrict;
+
+alter table PRIVATE_TRANSPORTATION_TRAVELING add constraint FK_RELATIONSHIP_15 foreign key (LOC_LOCATION_CODE)
+      references LOCATION (LOCATION_CODE) on delete restrict on update restrict;
+
+alter table PRIVATE_TRANSPORTATION_TRAVELING add constraint FK_RELATIONSHIP_16 foreign key (LOCATION_CODE)
+      references LOCATION (LOCATION_CODE) on delete restrict on update restrict;
+
+alter table PRIVATE_TRANSPORTATION_TRAVELING add constraint FK_RELATIONSHIP_8 foreign key (PRIVATE_TRANSPORTATION_CODE)
+      references PRIVATE_TRANSPORTATION (PRIVATE_TRANSPORTATION_CODE) on delete restrict on update restrict;
+
+alter table PUBLIC_TRANSPORTATION_TRAVELING add constraint FK_RELATIONSHIP_11 foreign key (LOCATION_CODE)
+      references LOCATION (LOCATION_CODE) on delete restrict on update restrict;
+
+alter table PUBLIC_TRANSPORTATION_TRAVELING add constraint FK_RELATIONSHIP_12 foreign key (PUBLIC_TRANSPORTATION_CODE)
+      references PUBLIC_TRANSPORTATION (PUBLIC_TRANSPORTATION_CODE) on delete restrict on update restrict;
+
+alter table PUBLIC_TRANSPORTATION_TRAVELING add constraint FK_RELATIONSHIP_13 foreign key (LOC_LOCATION_CODE)
+      references LOCATION (LOCATION_CODE) on delete restrict on update restrict;
 
