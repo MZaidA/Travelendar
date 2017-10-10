@@ -1,0 +1,89 @@
+<!DOCTYPE>
+<head>
+<link href="style/TransportationPage.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div class="wrapper">
+        <li><strong>Admin</strong>TRAVELENDAR</li> 	
+    </div>
+	<div id="sidebar">
+        <li><a href="LocationPage.html">Manage Location</a></li>
+        <li class="select">Manage Distance</li>
+        <li><a href="TransportationaPage.html">Manage Transport</a></li>
+        <li><a href="EstimatedTimePage.html">Manage Estimated Time</a></li>
+    </div>
+    <div id="mainPanel" style="overflow-x:auto;">
+        <h1>MANAGE DISTANCE</h1>
+        <table>
+          <tr>
+            <th>No</th>
+            <th>Location A</th>
+            <th>Location B</th>
+            <th>Distance (KM)</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Kantor DPRD</td>
+            <td>Bandara Bangka</td>
+            <td>60,9</td>
+            <td><a href="#Update">Update</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Rumah</td>
+            <td>Kantor DPRD</td>
+            <td>65,7</td>
+            <td><a href="#Update">Update</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Bandara Bangka</td>
+            <td>Bandara Halim Perdanakusuma</td>
+            <td>73,6</td>
+            <td><a href="#Update">Update</a></td>
+          </tr>
+           <tr>
+            <td>4</td>
+            <td>Jakarta</td>
+            <td>Tangerang</td>
+            <td>31,3</td>
+            <td><a href="#Update">Update</a></td>
+          </tr>
+           <tr>
+            <td>5</td>
+            <td>Bandara Bangka</td>
+            <td>Rumah</td>
+            <td>13,4</td>
+            <td><a href="#Update">Update</a></td>
+          </tr>
+        </table>
+    </div>
+    <div class="form">
+            <form action="/action_page.php">
+            <label for="LocationA">Location A</label>	
+            <select id="Locationa" name="Locationa">
+              <option value="rumah">Rumah</option>
+              <option value="kantor_dprd">Kantor DPRD</option>
+              <option value="bandara_banka">Bandara Banka</option>
+              <option value="bandara_halim">Bandara Halim Perdanakusuma</option>
+              <option value="jakarta">Jakarta</option>
+              <option value="tangerang">Tangerang</option>
+            </select>
+            <label for="LocationB">Location B</label>	
+            <select id="Locationb" name="Locationb">
+              <option value="rumah">Rumah</option>
+              <option value="kantor_dprd">Kantor DPRD</option>
+              <option value="bandara_banka">Bandara Banka</option>
+              <option value="bandara_halim">Bandara Halim Perdanakusuma</option>
+              <option value="jakarta">Jakarta</option>
+              <option value="tangerang">Tangerang</option>
+            </select>
+            <label for="fname">Distance</label>
+              <input type="text" id="mDistance" name="Distance" placeholder="Distance...">
+              <input type="submit" value="Add">
+            </form>
+        </div> 
+</body>
+</html>

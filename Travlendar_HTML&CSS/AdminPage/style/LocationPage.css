@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background-color: #B1CFF3;
+}
+
+/*------- SIDEBAR & HEADER -------*/
+#sidebar {
+	position: fixed;
+	width: 200px;
+	height: 100%;
+	padding-top: 35px;
+	background: #07709F;
+	background-image:url(../image/Building_1.png);
+	background-position: 14% 74%;
+	background-repeat: no-repeat;
+}
+
+#sidebar li {
+	color: #fff;
+	list-style: none;
+	padding: 9px 15px;
+	border-bottom: 1px solid rgba(100,100,100,0.3);
+	text-decoration:none;
+}
+
+#sidebar .select{
+	background: #e84f0a;
+}
+
+#sidebar li:hover {
+	background-color: #519abb; /* Berubah warna ketika kena Mouse */
+}
+
+.wrapper li {
+	color: #fff;
+	background-color: #06648f;
+	font: sans "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	list-style: none;
+	width: 170px;
+	padding: 9px 15px;
+	border-bottom: 1px solid rgba(100,100,100,0.3);
+	text-decoration: none;
+}
+
+#mainPanel h1{
+	text-align: left;
+	position: relative;
+	width: 40%;
+	left: 46%;
+}
+
+/*----------------Tabel-----------*/
+table {
+	border: 3px solid black;
+	position:relative;
+	left:33%;
+    border-collapse:separate;
+    width: 50%;
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #6CF}
+tr:nth-child(odd){background-color: #09F}
+
+th {
+    background-color: #000;
+    color: white; /*Font Color*/
+}
+tr:hover {background-color: #f5f5f5}
+
+/*----------FORM-------------*/
+.form {
+	position:relative;
+	left:33%;
+	width:47%;
+    border-radius: 10px;
+    background-color: #586DF5;
+	padding: 20px;
+	margin-top:60px;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #09F;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #6CF;
+}

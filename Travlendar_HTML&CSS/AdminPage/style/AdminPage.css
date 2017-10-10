@@ -1,0 +1,85 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background-color: #B1CFF3;
+}
+/*------- SIDEBAR & HEADER -------*/
+#sidebar {
+	position: fixed;
+	width: 200px;
+	height: 100%;
+	padding-top: 35px;
+	background: #07709F;
+	background-image:url(../image/Building_1.png);
+	background-position: 14% 74%;
+	background-repeat: no-repeat;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+#sidebar li {
+	color: #fff;
+	list-style: none;
+	padding: 9px 15px;
+	border-bottom: 1px solid rgba(100,100,100,0.3);
+	text-decoration:none;
+}
+
+#sidebar li:hover {
+	background-color: #9bc5d8; /* Berubah warna ketika kena Mouse */
+}
+
+.wrapper li {
+	color: #fff;
+	background-color: #06648f;
+	font: sans "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	list-style: none;
+	width: 170px;
+	padding: 9px 15px;
+	border-bottom: 1px solid rgba(100,100,100,0.3);
+	text-decoration: none;
+}
+
+img {
+	padding: 13px;
+}
+/*----------------------------------*/
+
+/*------- PANEL CARD -------*/
+.panel-content {
+	background-color: #F16BA8;
+	color: white;
+	width: 33%;
+	margin-left: 285px;
+	margin-top: 70px;
+	padding: 20px;
+}
+
+/*--------------------------*/
+
+/*------- TOGGLE BUTTON -------*/
+#sidebar .toggle-button {
+	position: absolute;
+	left: 230px;
+	top: 5px;
+}
+
+#sidebar .toggle-button span {
+	display: block;
+	width: 30px;
+	height: 5px;
+	background: #151719;
+	margin: 5px 0px;
+}
+/*-----------------------------*/
+
+#Location .view-box {
+	background-color: #CC3;
+}
