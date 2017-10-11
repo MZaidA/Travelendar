@@ -10,8 +10,6 @@
 
 body {
 	margin:0;
-    background-image: url("icon/wallpaperhome.png");
-	background-attachment: fixed;
 }
 
 
@@ -254,7 +252,7 @@ hr.fc-divider {
 	border-collapse: collapse;
 	border-spacing: 0;
 	font-size: 1em; /* normalize cross-browser */
-	color: #ffffff;
+	color: #000;
 }
 
 .fc th {
