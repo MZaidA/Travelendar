@@ -26,7 +26,6 @@
 <div class="header">
 <img src="../Assets/icon/Logo KelompokB1v2.png" width="145" height="50" style="margin-left:30px;">
 
-
 </div>
 
 <div class="row">
@@ -41,7 +40,7 @@
 
     <div class="column content">
     <h1> Upcoming Event </h1>
-		<div class="boxstyle1">
+	<div class="boxstyle1">
             <div class="row">
                 <div class="column">
                     <div class="t3">Ke Kantor DPRD Banka</div>
@@ -51,7 +50,12 @@
                     SUGGESTION
                 </div>
                 <div class="column3">
-                    <a href="#" class="button1">Event details</a>
+                        <div class="dropdown">
+                        <button onclick="dropdownFunctionOne()" class="dropbtn">Event Details</button>
+                          <div id="myDropdownOne" class="dropdown-content">
+                            Keterangan
+                          </div>
+                        </div>
                 </div>
             </div>
 		</div>
@@ -66,7 +70,12 @@
                     SUGGESTION
                 </div>
                 <div class="column3">
-                    <a href="#" class="button1">Event details</a>
+                    <div class="dropdown">
+                        <button onclick="dropdownFunctionTwo()" class="dropbtn">Event Details</button>
+                          <div id="myDropdownTwo" class="dropdown-content">
+                            Keterangan
+                          </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -111,12 +120,17 @@
                     SUGGESTION
                 </div>
                 <div class="column3">
-                    <a href="#" class="button1">Event details</a>
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">Event Details</button>
+                          <div id="myDropdown" class="dropdown-content">
+                            Keterangan
+                          </div>
+                        </div>
                 </div>
             </div>
       </div>
       
-          <div class="boxstyle11">
+        <div class="boxstyle11">
             <div class="row">
                 <div class="column">
                     <div class="t3">Ke Rumah<br></div>
@@ -126,12 +140,15 @@
                     SUGGESTION
                 </div>
                 <div class="column3">
-                    <div class="dropdown">
-                        <div onclick="myFunction" class="dropbtn">Event details</div>
+                        <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">Event Details</button>
+                          <div id="myDropdown" class="dropdown-content">
+                            Keterangan
+                          </div>
+                        </div>
                 </div>
             </div>
-      </div>
-		
+        </div>
     </div>
 </div>
     
@@ -144,9 +161,13 @@ Travlender 2017
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+function dropdownFunctionOne() {
+    document.getElementById("myDropdownOne").classList.toggle("show");
 }
+function dropdownFunctionTwo() {
+    document.getElementById("myDropdownTwo").classList.toggle("show");
+}
+
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
