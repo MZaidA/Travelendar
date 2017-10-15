@@ -28,7 +28,7 @@ public class EventDAO{
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/travtry", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/travlander_fix", "root", "");
         } catch (Exception e) {
             System.out.println(e);
         }
