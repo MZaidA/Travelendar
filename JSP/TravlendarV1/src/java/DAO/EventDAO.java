@@ -43,25 +43,26 @@ public class EventDAO{
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM event");
             ResultSet rs = ps.executeQuery();
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             DateFormat tf = new SimpleDateFormat("hh:mm:ss");
             while(rs.next()) {
                 Event event = new Event();
-                event.setEventId(rs.getInt("event_id"));
-                event.setEventName(rs.getString("event_name"));
+                event.setEventId(rs.getInt("EVENT_CODE"));
+                event.setEventName(rs.getString("EVENT_NAME"));
                 
-                arrival = rs.getString("arrival_time");
+                arrival = rs.getString("ARRIVAL_AT_LOCATION");
                 event.setArrivalTime(format.parse(arrival));
                 event.setArrivalDateStr(df.format(event.getArrivalTime()));
                 event.setArrivalTimeStr(tf.format(event.getArrivalTime()));
                 
-                end = rs.getString("end_time");
+                end = rs.getString("EVENT_FINISHED");
                 event.setEndTime(format.parse(end));
                 event.setEndDateStr(df.format(event.getEndTime()));
                 event.setEndTimeStr(tf.format(event.getEndTime()));
                 
+                event.setDescription("DESCRIPTION");
                 events.add(event);
             }
         }

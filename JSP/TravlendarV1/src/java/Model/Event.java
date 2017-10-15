@@ -18,6 +18,7 @@ import javafx.util.Pair;
 public class Event {
     private Integer eventId;
     private String eventName;
+    
     private Date endTime = new Date();
     private String endTimeStr;
     private String endDateStr;
@@ -27,8 +28,19 @@ public class Event {
     private String arrivalTimeStr;
     
     private Location location;
+    private String description;
+
+   
     private List<Suggestion> suggestions = new ArrayList<Suggestion>();
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
     public String getEndDateStr() {
         return endDateStr;
     }
