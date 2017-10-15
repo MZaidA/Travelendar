@@ -4,7 +4,11 @@
     Author     : afadh
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="DAO.EventDAO, Model.Event, java.util.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -15,6 +19,12 @@
     <script src='../Assets/lib/moment.min.js'></script>
     <script src='../Assets/lib/fullcalendar.min.js'></script>
         <title>JSP Page</title>
+         <%
+            List<Event> events = EventDAO.getAll();
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat tf = new SimpleDateFormat("hh:mm:ss");
+            request.setAttribute("events", events);
+        %>
     <script>
 
 	$(document).ready(function() {
@@ -23,78 +33,23 @@
 			header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'listDay,listWeek,month'
+				right: 'month,agendaWeek,agendaDay,listWeek'
 			},
-
-			// customize the button names,
-			// otherwise they'd all just say "list"
-			views: {
-				listDay: { buttonText: 'list day' },
-				listWeek: { buttonText: 'list week' }
-			},
-
-			defaultView: 'month',
-			defaultDate: '2017-09-12',
+			defaultDate: '2017-10-12',
 			navLinks: true, // can click day/week names to navigate views
-			editable: true,
+			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			events: [
-				{
-					title: 'Tisigram',
-					start: '2017-09-01'
-				},
-				{
-					title: 'Long Event',
-					start: '2017-09-07',
-					end: '2017-09-10'
-				},
-				{
-					id: 123,
-					title: 'Repeating Event',
-					start: '2017-09-19T16:00:00'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2017-09-16T16:00:00'
-				},
-				{
-					title: 'Conference',
-					start: '2017-09-11',
-					end: '2017-09-13'
-				},
-				{
-					title: 'Meeting',
-					start: '2017-09-12T10:30:00',
-					end: '2017-09-12T12:30:00'
-				},
-				{
-					title: 'Lunch',
-					start: '2017-09-12T12:00:00'
-				},
-				{
-					title: 'Meeting',
-					start: '2017-09-12T14:30:00'
-				},
-				{
-					title: 'Happy Hour',
-					start: '2017-09-12T17:30:00'
-				},
-				{
-					title: 'Dinner',
-					start: '2017-09-12T20:00:00'
-				},
-				{
-					title: 'Birthday Party',
-					start: '2017-09-13T07:00:00'
-				},
-				{
-					title: 'Click for Google',
-					url: 'http://google.com/',
-					start: '2017-09-28'
-				}
+				 <c:forEach items="${events}" var="item">
+                                {
+                                        title: '${item.eventName}',
+                                        start: '${item.arrivalDateStr}T${item.arrivalTimeStr}',
+                                        end: '${item.endDateStr}T${item.endTimeStr}',
+                                },
+                                </c:forEach>
 			]
 		});
+		
 	});
 
 </script>
