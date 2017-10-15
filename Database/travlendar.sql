@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     15/10/2017 18:06:20                          */
+/* Created on:     15/10/2017 19:53:12                          */
 /*==============================================================*/
 
 
@@ -46,13 +46,10 @@ create table EVENT
    LOC_LOCATION_ID      int not null,
    PRIVATE_ID           char(6),
    EVENT_NAME           varchar(40) not null,
+   ARRIVAL_AT_LOCATION  datetime,
+   EVENT_FINISHED       datetime,
    DESCRIPTION          varchar(200),
-   ARRIVAL_AT_LOCATION_DATE date,
-   ARRIVAL_AT_LOCATION_TIME time,
-   EVENT_FINISHED_DATE  date,
-   EVENT_FINISHED_TIME  time,
-   DEPARTURE_TO_LOCATION_DATE date,
-   DEPARTURE_TO_LOCATION_TIME time,
+   DEPARTURE_TO_LOCATION datetime,
    primary key (EVENT_ID)
 );
 
@@ -97,7 +94,7 @@ create table PRIVATE_TRANSPORTATION_TRAVELING
    LOCATION_ID          int not null,
    LOC_LOCATION_ID      int not null,
    PRIVATE_ID           char(6) not null,
-   TIME_ESTIMATION      time not null,
+   TRAVELING_TIME       bigint not null,
    primary key (PRIVATE_TRAVELING_ID)
 );
 
@@ -132,10 +129,8 @@ create table PUBLIC_TRANSPORTATION_TRAVELING
    LOCATION_ID          int not null,
    LOC_LOCATION_ID      int not null,
    PUBLIC_ID            char(6) not null,
-   ARRIVAL_SCHEDULE_DATE date not null,
-   ARRIVAL_SCHEDULE_TIME time not null,
-   DEPARTURE_SCHEDULE_DATE date not null,
-   DEPARTURE_SCHEDULE_TIME time not null,
+   ARRIVAL_SCHEDULE     datetime not null,
+   DEPARTURE_SCHEDULE   datetime not null,
    primary key (PUBLIC_TRAVELING_ID)
 );
 
