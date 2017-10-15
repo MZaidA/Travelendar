@@ -8,86 +8,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-<style>
-.navbar{
-	position:fixed;
-	z-index:10;
-	top:0;
-	margin-left:-10px;
-	width:100%;
-    padding: 5px 16px; /*top & bottom paddings are 14px right and left paddings are 16px*/
-    background-color: #0080C0;/*Biru*/
-}
-
-.navbar li{
-	font-family:"Courier New", Courier;
-	font-size:25px;
-	float:left;
-	margin-top:10px;
-	border-right:1px solid #bbb;
-}
-
-.navbar li:last-child{
-	border-right:none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: #ddd;
-}
-
-li.dropdown {
-    display: inline-block;
-}
-.dropbtn{
-	margin-right:30px;
-}
-.dropdown-content {
-    display: none;
-    position: fixed;
-	overflow:auto;
-    background-color: #f1f1f1;
-    max-width: 250px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-	right:0;
-	margin-right:16px;
-	text-align:center;		
-	padding: 12px 0px;
-}
-
-.dropdown-content img{
-	border-radius: 50%;
-	margin-top:10px;
-}
-
-.dropdown-content a {
-	color: black;
-    padding: 12px 16px;
-    text-decoration:none;
-    display: inline-block;
-}
-
-.dropdown-content a:hover {
-	background-color: #ddd}
-
-.dropdown:hover .dropbtn {
-    background-color: #ddd;
-}
-
-.show {display:inline;}
-
-.t1{font-size:13px;}
-.t2{font-size:20px;width:200px;}
-.t3{font-size:23px;color:white;	font-family:"Lucida Console", Monaco, monospace;}
-.t4{font-size:16px;color:white;}
-</style>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel='stylesheet' href='lib/fullcalendar.css'/>
-        
-		<script src='lib/jquery.min.js'></script>
-		<script src='lib/moment.min.js'></script>
-		<script src='lib/fullcalendar.min.js'></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel='stylesheet' href='../Assets/lib/fullcalendar.css'/>
+    <link rel='stylesheet' href='../Assets/css/Style.css'/>
+    <script src='../Assets/lib/jquery.min.js'></script>
+    <script src='../Assets/lib/moment.min.js'></script>
+    <script src='../Assets/lib/fullcalendar.min.js'></script>
         <title>JSP Page</title>
     <script>
 
@@ -172,53 +98,28 @@ li.dropdown {
 	});
 
 </script>
-<style>
-
-	body {
-		margin: 40px 10px;
-		padding: 0;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		font-size: 14px;
-	}
-
-	#calendar {
-		max-width: 900px;
-		margin: 0 auto;
-	}
-
-</style>
 </head>
 <body>
+    
+<div class="header">
+<img src="../Assets/icon/Logo KelompokB1v2.png" width="145" height="50" style="margin-left:30px;">
 
-<div class="navbar">
-<ul style="list-style-type: none;">
-<img src="css/icon/LogoKelompokB1.png" width="145" height="50">
-  <li style="float:right;"class="dropdown">
-    <div id="menuBtn" class="dropbtn"><img src="css/icon/showmenu.png" alt="Menu" width="40" height="40"></div>
-    	<div id="myDropdown" class="dropdown-content">
-        	<a href="\Travlendar\UserProfile"><div class="t2">USERNAME</div><img src="css/icon/user.png" alt="css/icon/user.png" width="40" height="40"></a>
-        	<a href="\Travlendar\Home"><img src="css/icon/home.png" alt="Menu" width="40" height="40"><div class="t1">Home</div></a>
-        	<a href="\Travlendar\Calendar"><img src="css/icon/calendar1.png" alt="Menu" width="40" height="40"><div class="t1">Calendar</div></a>
-        	<a href="\Travlendar\Login"><img src="css/icon/logout.png" alt="Menu" width="40" height="40"><div class="t1">Log Out</div></a>
-        </div>
-  </li>
-</ul>
 </div>
 
-<br><br><br><br>
+<div class="row">
+    <div class="navbar">
+        <ul>
+          <li><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
+          <li class="selected"><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
+          <li><a href="../CreateAgenda"><img src="../Assets/icon/add.png" width="28" height="28" style="float:left;"><div class="text-navbar">Add Agenda</div></a></li>
+          <li><a href="#"><img src="../Assets/icon/manage.png" width="28" height="28" style="float:left;"><div class="text-navbar">Manage</div></a></li>
+        </ul>
+    </div><!--Class Navbar-->
 
+    <div class="column content">
+    <br />
 	<div id='calendar'></div>
-    
-    <script>
-	// Get the button, and when the user clicks on it, execute myFunction
-document.getElementById("menuBtn").onclick = function() {myFunction()};
-
-/* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-	</script>
+    </div>
 
 </body>
 

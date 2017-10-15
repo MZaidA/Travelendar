@@ -8,12 +8,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="css/styleMenu.css">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Travelendar</title>
-<link href="jquery/jquery-ui.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../Assets/css/Style.css"/>
+    <link href="../Assets/jquery/jquery-ui.css" rel="stylesheet"/> <!--DatePicker css-->
+    <script src="../Assets/jquery/jquery-3.2.1.min.js"></script>
+    <script>
+    $(document).ready(function(){
+            $(".notfirst").click(function() {
+                    $("#demo").hide(1000)});
+    });
+    $(document).ready(function(){
+            $(".first").click(function() {
+                    $("#demo").show(1000)});
+    });
+    </script>
+    
+    <title>Travelendar</title>
 
 </head>
 
@@ -23,35 +33,33 @@
         String userName = request.getParameter("userName");
         %>
 
-<div class="navbar">
-<ul style="list-style-type: none;">
-<img src="css/icon/LogoKelompokB1.png" width="145" height="50">
-  <li style="float:right;"class="dropdown">
-    <div id="menuBtn" class="dropbtn"><img src="css/icon/showmenu.png" alt="Menu" width="40" height="40"></div>
-    	<div id="myDropdown" class="dropdown-content">
-        	<a href="\Travlendar\UserProfile"><div class="t2"> <%= userName %> </div><img src="css/icon/user.png" alt="css/icon/user.png" width="40" height="40"></a>
-        	<a href="\Travlendar\Home"><img src="css/icon/home.png" alt="Menu" width="40" height="40"><div class="t1">Home</div></a>
-        	<a href="\Travlendar\Calendar"><img src="css/icon/calendar1.png" alt="Menu" width="40" height="40"><div class="t1">Calendar</div></a>
-        	<a href="\Travlendar\Logins"><img src="css/icon/logout.png" alt="Menu" width="40" height="40"><div class="t1">Log Out</div></a>
-        </div>
-  </li>
-</ul>
+<div class="header">
+<img src="../Assets/icon/Logo KelompokB1v2.png" width="145" height="50" style="margin-left:30px;">
 </div>
-<br><br><br><br><br><br><br>
+
+<div class="row">
+    <div class="navbar">
+        <ul>
+          <li><a href="../Home"><img src="css/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
+          <li><a href="../Calendar"><img src="css/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
+          <li class="selected"><a href="../CreateAgenda"><img src="../Assets/icon/add.png" width="28" height="28" style="float:left;"><div class="text-navbar">Add Agenda</div></a></li>
+          <li><a href="#"><img src="../Assets/icon/manage.png" width="28" height="28" style="float:left;"><div class="text-navbar">Manage</div></a></li>
+        </ul>
+    </div><!--Class Navbar-->
+
+<div class="column content">
 <h1>Create a New Agenda</h1>
 
-<div style="overflow-x:auto;">
-<div>
-<br><br>
+
 <div class="form">
 	<form action="/action_page.php">
 
     <label for="fname">Event Name</label>
     <input type="text" id="eventName" name="EventName" placeholder="...">
     
-    <label for="stLoc">Location</label>
-	 <select id="stLocation" name="location"> 
-      <option value="blank"></option>
+    <div id="demo" style="display:none">
+    <label for="stLoc">Start Location</label>
+	<select class="classic" name="location">
       <option value="">Rumah</option>
       <option value="">Kantor DPRD</option>
       <option value="">Bandara Banka</option>
@@ -59,28 +67,50 @@
       <option value="">Jakarta</option>
       <option value="">Tangerang</option>
 	 </select>
-    
+    </div>
+    <button type="button" class="notfirst">Not First Event</button>
+    <button type="button" class="first">First Event</button>
+    <br/>
+    <label for="stLoc">Location</label>
+    <br/>
+	 <select class="classic" name="location">
+      <option value="">Rumah</option>
+      <option value="">Kantor DPRD</option>
+      <option value="">Bandara Banka</option>
+      <option value="">Bandara Halim Perdanakusuma</option>
+      <option value="">Jakarta</option>
+      <option value="">Tangerang</option>
+	 </select>
+     <br/>
     <label for="fname">Start Date</label>
     <input type="text" style="width:40%;" id="datepicker">
-    
+
     <label for="fname">Time</label>
-    <input type="text" style="width:40%;" placeholder="hh:mm:ss">
-    <br>
+	<input type="text" id="timepicker-one" name="timepicker-one" class="timepicker" style="width:30%;"/>
+    <br />
     <label for="fname">End Date</label>
     <input type="text" style="width:40%;" id="datepicker2">
-    
     <label for="fname">Time</label>
-    <input type="text" style="width:40%;" placeholder="hh:mm:ss">
+	<input type="text" id="timepicker-two" name="timepicker-two" class="timepicker" style="width:30%;"/>
+    <br />
     
     <label for="fname">Keterangan</label>
     <input type="text" id="keterangan" name="Keterangan" placeholder="...">
 
     <input type="submit" value="Add">
   </form>
+	</div>
 </div>
 <br><br><br><br>
-<script src="jquery/external/jquery/jquery.js"></script>
-<script src="jquery/jquery-ui.js"></script>
+<link rel="stylesheet" href="../Assets/css/wickedpicker.min.css"/> <!--TimePicker css-->
+<script src="../Assets/jquery/external/jquery/jquery.js"></script>
+<script src="../Assets/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="../Assets/js/wickedpicker.min.js"></script>
+
+
+<script>
+var timepickers = $('.timepicker').wickedpicker(); console.log(timepickers.wickedpicker('time', 1)); //JS console: time of timepicker-two
+</script>
 <script>
 $( "#datepicker" ).datepicker({
 	inline: true
@@ -89,14 +119,6 @@ $( "#datepicker" ).datepicker({
 $( "#datepicker2" ).datepicker({
 	inline: true
 });
-
-// Get the button, and when the user clicks on it, execute myFunction
-document.getElementById("menuBtn").onclick = function() {myFunction()};
-
-/* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
 
 
 </script>
