@@ -8,22 +8,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/styleMenu.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Assets/css/LocationPage.css">
 <style>
 
 </style>
 </head>
 <body>
-
-<h1>Manage Location</h1>
-<p>Menu yang dapat melakukan update,add, dan list nama lokasi-lokasi</p>
-
-<div style="overflow-x:auto;">
-  <table>
+	<div class="wrapper">
+        <li><strong>Admin</strong>TRAVELENDAR</li> 	
+    </div>
+	<div id="sidebar">
+        <li><a href="../ManageLocation/index.jsp">Manage Location</a></li>
+        <li><a href="../DistancePage/index.jsp">Manage Distance</a></li>
+        <li><a href="../TransportationPage/index.jsp">Manage Transport</a></li>
+        <li><a href="../EstimatedTimePage/index.jsp">Manage Estimated Time</a></li>
+    </div>
+    <div id="mainPanel" style="overflow-x:auto;">
+        <h1>MANAGE LOCATION</h1>
+        <table>
     <tr>
       <th>No</th>
       <th>Nama Lokasi</th>
-      <th>Edit</th>
+      <th>Action</th>
 
     </tr>
     <tr>
@@ -42,26 +49,15 @@
       <td><a href="#Update">Update</a></td>
     </tr>
   </table>
-</div>
-<br><br>
-<div class="form">
-	<form >
-    <label for="fname">Location</label>
-    <input type="text" id="lname" name="Location" placeholder="Location..">
-
-    <label for="country">Country</label>	
-    <select id="country" name="country">
-      <option value="australia">Australia</option>
-      <option value="canada">Canada</option>
-      <option value="usa">USA</option>
-    </select>
-  
-    <input type="submit" value="Add">
-  </form>
-</div>
-<br>
-<a href="/Travlendar/Home" class="button1">Home</a>
-<br><br><br><br>
-
+    </div>
+    <div class="form">
+            <form action="/action_page.php">
+            <label for="fname">Location</label>
+            <input type="text" id="mLocation" name="Location" placeholder="Location...">
+            
+            <input type="submit" value="Add">
+            </form>
+        </div> 
 </body>
 </html>
+

@@ -25,12 +25,6 @@
     
 <div class="header">
 <img src="../Assets/icon/Logo KelompokB1v2.png" width="145" height="50" style="margin-left:30px;">
-<div class="dropdown">
-<button onclick="myFunction()" class="dropbtn">Keterangan</button>
-  <div id="myDropdown" class="dropdown-content">
-HALO
-  </div>
-</div>
 
 
 </div>
@@ -41,7 +35,7 @@ HALO
           <li class="selected"><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
           <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
           <li><a href="../CreateAgenda"><img src="../Assets/icon/add.png" width="28" height="28" style="float:left;"><div class="text-navbar">Add Agenda</div></a></li>
-          <li><a href="#"><img src="../Assets/icon/manage.png" width="28" height="28" style="float:left;"><div class="text-navbar">Manage</div></a></li>
+          <li><a href="../AdminPage"><img src="../Assets/icon/manage.png" width="28" height="28" style="float:left;"><div class="text-navbar">Manage</div></a></li>
         </ul>
     </div><!--Class Navbar-->
 
@@ -134,9 +128,6 @@ HALO
                 <div class="column3">
                     <div class="dropdown">
                         <div onclick="myFunction" class="dropbtn">Event details</div>
-                        <div id="myDropdown" class="dropdown-content">
-                            <a>Keterangan</a>
-                        </div>
                 </div>
             </div>
       </div>
