@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2017 at 02:16 PM
+-- Generation Time: Oct 16, 2017 at 03:04 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -147,10 +147,10 @@ INSERT INTO `district` (`DISTRICT_ID`, `PROVINCE_ID`, `DISTRICT_NAME`) VALUES
 
 CREATE TABLE `event` (
   `EVENT_ID` int(11) NOT NULL,
-  `PUBLIC_ID` char(6) DEFAULT NULL,
+  `PUBLIC_ID` int(11) DEFAULT NULL,
   `LOCATION_ID` int(11) DEFAULT NULL,
   `LOC_LOCATION_ID` int(11) NOT NULL,
-  `PRIVATE_ID` char(6) DEFAULT NULL,
+  `PRIVATE_ID` int(11) DEFAULT NULL,
   `EVENT_NAME` varchar(40) NOT NULL,
   `ARRIVAL_AT_LOCATION` datetime DEFAULT NULL,
   `EVENT_FINISHED` datetime DEFAULT NULL,
@@ -206,7 +206,7 @@ CREATE TABLE `location` (
 --
 
 CREATE TABLE `private_transportation` (
-  `PRIVATE_ID` char(6) NOT NULL,
+  `PRIVATE_ID` int(11) NOT NULL,
   `PRIVATE_TYPE` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -217,10 +217,10 @@ CREATE TABLE `private_transportation` (
 --
 
 CREATE TABLE `private_transportation_traveling` (
-  `PRIVATE_TRAVELING_ID` char(6) NOT NULL,
+  `PRIVATE_TRAVELING_ID` int(11) NOT NULL,
   `LOCATION_ID` int(11) NOT NULL,
   `LOC_LOCATION_ID` int(11) NOT NULL,
-  `PRIVATE_ID` char(6) NOT NULL,
+  `PRIVATE_ID` int(11) NOT NULL,
   `TRAVELING_TIME` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -283,7 +283,7 @@ INSERT INTO `province` (`PROVINCE_ID`, `ISLAND_ID`, `PROVINCE_NAME`) VALUES
 --
 
 CREATE TABLE `public_transportation` (
-  `PUBLIC_ID` char(6) NOT NULL,
+  `PUBLIC_ID` int(11) NOT NULL,
   `PUBLIC_TYPE` varchar(40) NOT NULL,
   `PUBLIC_NAME` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -295,10 +295,10 @@ CREATE TABLE `public_transportation` (
 --
 
 CREATE TABLE `public_transportation_traveling` (
-  `PUBLIC_TRAVELING_ID` char(6) NOT NULL,
+  `PUBLIC_TRAVELING_ID` int(11) NOT NULL,
   `LOCATION_ID` int(11) NOT NULL,
   `LOC_LOCATION_ID` int(11) NOT NULL,
-  `PUBLIC_ID` char(6) NOT NULL,
+  `PUBLIC_ID` int(11) NOT NULL,
   `ARRIVAL_SCHEDULE` datetime NOT NULL,
   `DEPARTURE_SCHEDULE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -310,9 +310,8 @@ CREATE TABLE `public_transportation_traveling` (
 --
 
 CREATE TABLE `transportation_base` (
-  `BASE_ID` int(11) NOT NULL,
-  `LOCATION_ID` int(11) NOT NULL,
-  `PUBLIC_ID` char(6) NOT NULL
+  `PUBLIC_ID` int(11) NOT NULL,
+  `LOCATION_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -390,9 +389,8 @@ ALTER TABLE `public_transportation_traveling`
 -- Indexes for table `transportation_base`
 --
 ALTER TABLE `transportation_base`
-  ADD PRIMARY KEY (`BASE_ID`),
-  ADD KEY `FK_MENGAMBIL_KENDARAAN_UMUM_UNTUK_TRANSPORTATION_BASE` (`PUBLIC_ID`),
-  ADD KEY `FK_MENGAMBIL_LOKASI_BANDARA` (`LOCATION_ID`);
+  ADD PRIMARY KEY (`PUBLIC_ID`,`LOCATION_ID`),
+  ADD KEY `FK_TRANSPORTATION_BASE2` (`LOCATION_ID`);
 
 --
 -- Constraints for dumped tables
@@ -445,8 +443,8 @@ ALTER TABLE `public_transportation_traveling`
 -- Constraints for table `transportation_base`
 --
 ALTER TABLE `transportation_base`
-  ADD CONSTRAINT `FK_MENGAMBIL_KENDARAAN_UMUM_UNTUK_TRANSPORTATION_BASE` FOREIGN KEY (`PUBLIC_ID`) REFERENCES `public_transportation` (`PUBLIC_ID`),
-  ADD CONSTRAINT `FK_MENGAMBIL_LOKASI_BANDARA` FOREIGN KEY (`LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
+  ADD CONSTRAINT `FK_TRANSPORTATION_BASE` FOREIGN KEY (`PUBLIC_ID`) REFERENCES `public_transportation` (`PUBLIC_ID`),
+  ADD CONSTRAINT `FK_TRANSPORTATION_BASE2` FOREIGN KEY (`LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
