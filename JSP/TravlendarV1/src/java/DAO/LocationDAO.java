@@ -45,7 +45,7 @@ public class LocationDAO{
                 loc.setLocationName(rs.getString("LOCATION_NAME"));
                 loc.setAddress(rs.getString("ADDRESS"));
                 
-                loc.setDistrict(rs.getInt("DISTRICT_ID"));
+                loc.setDistrictId(rs.getInt("DISTRICT_ID"));
                 
                 locations.add(loc);
             }
@@ -121,7 +121,7 @@ public class LocationDAO{
                 loc.setLocationName(rs.getString("LOCATION_NAME"));
                 loc.setAddress(rs.getString("ADDRESS"));
                 
-                loc.setDistrict(rs.getInt("DISTRICT_ID"));
+                loc.setDistrictId(rs.getInt("DISTRICT_ID"));
                 
             }
         }

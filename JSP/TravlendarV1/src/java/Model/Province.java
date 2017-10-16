@@ -3,18 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package travlendar;
+package Model;
 
 /**
  *
  * @author HP1
  */
-public class Province extends District{
+public class Province extends Island{
     private String provinceName;
-
-    public Province(String _locationName) {
-        super(_locationName);
-    }
+    private Integer provinceId;
 
     /**
      * @return the provinceName
@@ -28,6 +25,20 @@ public class Province extends District{
      */
     public void setProvinceName(String provinceName) {
         this.provinceName = provinceName;
+    }
+
+    /**
+     * @return the provinceId
+     */
+    public Integer getProvinceId() {
+        return provinceId;
+    }
+
+    /**
+     * @param provinceId the provinceId to set
+     */
+    public void setProvinceId(Integer provinceId) {
+        this.provinceId = provinceId;
     }
     
     
