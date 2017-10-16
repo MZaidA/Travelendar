@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="../Assets/css/TransportationPage.css">
+        <link rel="stylesheet" href="../Assets/css/manageStyle.css"/>
         <title>Travlendar</title>
     </head>
     <body>
@@ -22,7 +22,7 @@
         <li><a href="../TransportationPage/index.jsp">Manage Transport</a></li>
         <li><a href="../EstimatedTimePage/index.jsp">Manage Estimated Time</a></li>
     </div>
-    <div id="mainPanel" style="overflow-x:auto;">
+    <div id="mainPanel" style="overflow-x:hidden;">
         <h1>MANAGE TRANSPORTATION</h1>
         <table>
           <tr>
@@ -87,6 +87,8 @@
           </tr>
         </table>
     </div>
+        <br>
+        <br>
     <div class="form">
             <form action="/action_page.php">
             <label for="fname">Transportaion Mode</label>

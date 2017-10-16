@@ -5,10 +5,10 @@ body {
 }
 
 h1 {
-	font-family: 'Boogaloo', cursive;
-        color: navy;
-	text-align:center;
-	font-size:70px;
+    font-family: 'Boogaloo', cursive;
+    color: navy;
+    text-align:center;
+    font-size:70px;
 }
 
 .header {
@@ -18,10 +18,10 @@ h1 {
 }
 
 .navbar{
-	overflow:hidden;
-	float:left;
-	width:30%;
-	height:617px;
+    overflow:hidden;
+    float:left;
+    width:30%;
+    height:617px;
     background-color: #07709F;/*Biru*/ 
 }
 
@@ -51,25 +51,16 @@ h1 {
 	text-decoration:none;	
 	font-family:'Acme', sans-serif;
 	background-color:#008CBA;
-	color:#000;
+	color:black;
 	font-size:15px;
 	padding:3px 3px;
 	border-radius:5px;
+	transition-duration: 0.4s;
 }
-
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
-    text-decoration:none;
-    color:white;
-    transition-duration: 0.4s;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
-
 .dropdown {
     position: relative;
     display: inline-block;
 }
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -79,17 +70,22 @@ h1 {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
+.dropdown-content a:hover {background-color: #f1f1f1}
 
-.dropdown a:hover {background-color: #f1f1f1}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
-.show {display:block;}
+.dropdown:hover .dropbtn{
+    text-decoration:none;
+    color:white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);}
 
 .t1{font-size:14px;}
 .t2{font-size:20px;width:200px;}
@@ -321,14 +317,13 @@ select {
 
   /* reset */
 
-  margin: 0;      
+  margin: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
 
 /* arrows */
 
@@ -366,9 +361,6 @@ select.classic:focus {
   outline: 0;
 }
 
-
-
-
 select.round {
   background-image:
     linear-gradient(45deg, transparent 50%, gray 50%),
@@ -402,10 +394,6 @@ select.round:focus {
   border-color: green;
   outline: 0;
 }
-
-
-
-
 
 select.minimal {
   background-image:
@@ -446,3 +434,4 @@ select:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 #000;
 }
+

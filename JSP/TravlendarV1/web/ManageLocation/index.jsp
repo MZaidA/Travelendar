@@ -9,10 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="../Assets/css/LocationPage.css">
-<style>
-
-</style>
+<link rel="stylesheet" href="../Assets/css/manageStyle.css"/>
 </head>
 <body>
 	<div class="wrapper">
@@ -24,7 +21,7 @@
         <li><a href="../TransportationPage/index.jsp">Manage Transport</a></li>
         <li><a href="../EstimatedTimePage/index.jsp">Manage Estimated Time</a></li>
     </div>
-    <div id="mainPanel" style="overflow-x:auto;">
+    <div id="mainPanel" style="overflow-x:hidden;">
         <h1>MANAGE LOCATION</h1>
         <table>
     <tr>
@@ -50,6 +47,8 @@
     </tr>
   </table>
     </div>
+    <br>
+    <br>
     <div class="form">
             <form action="/action_page.php">
             <label for="fname">Location</label>

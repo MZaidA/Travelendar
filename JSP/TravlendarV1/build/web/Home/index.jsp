@@ -11,11 +11,9 @@
 <html>
 <head>
 <title>Travlendar</title>
-<link rel="stylesheet" href="../Assets/css/Style.css">
-<link href="../Assets/font?family=Anton|Acme|Boogaloo|Chewy|Glegoo" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../Assets/css/Style.css"/>
+<link href="../Assets/font?family=Anton|Acme|Boogaloo|Chewy|Glegoo" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
 
@@ -34,13 +32,13 @@
           <li class="selected"><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
           <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
           <li><a href="../CreateAgenda"><img src="../Assets/icon/add.png" width="28" height="28" style="float:left;"><div class="text-navbar">Add Agenda</div></a></li>
-          <li><a href="../AdminPage"><img src="../Assets/icon/manage.png" width="28" height="28" style="float:left;"><div class="text-navbar">Manage</div></a></li>
+          <li><a href="../ManageLocation"><img src="../Assets/icon/manage.png" width="28" height="28" style="float:left;"><div class="text-navbar">Manage</div></a></li>
         </ul>
     </div><!--Class Navbar-->
 
     <div class="column content">
     <h1> Upcoming Event </h1>
-	<div class="boxstyle1">
+        <div class="boxstyle1">
             <div class="row">
                 <div class="column">
                     <div class="t3">Ke Kantor DPRD Banka</div>
@@ -50,15 +48,15 @@
                     SUGGESTION
                 </div>
                 <div class="column3">
-                        <div class="dropdown">
-                        <button onclick="dropdownFunctionOne()" class="dropbtn">Event Details</button>
-                          <div id="myDropdownOne" class="dropdown-content">
-                            Keterangan
-                          </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Event Details</button>
+                        <div class="dropdown-content">
+                          Keterangan
                         </div>
+                    </div>
                 </div>
             </div>
-		</div>
+        </div>
         
         <div class="boxstyle11">
             <div class="row">
@@ -71,11 +69,11 @@
                 </div>
                 <div class="column3">
                     <div class="dropdown">
-                        <button onclick="dropdownFunctionTwo()" class="dropbtn">Event Details</button>
-                          <div id="myDropdownTwo" class="dropdown-content">
-                            Keterangan
-                          </div>
+                        <button class="dropbtn">Event Details</button>
+                        <div class="dropdown-content">
+                          Keterangan
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,7 +88,12 @@
                     SUGGESTION
                 </div>
                 <div class="column3">
-                    <a href="#" class="button1">Event details</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Event Details</button>
+                        <div class="dropdown-content">
+                          Keterangan
+                        </div>
+                    </div>
                 </div>
             </div>
       </div>
@@ -105,7 +108,12 @@
                     SUGGESTION
                 </div>
                 <div class="column3">
-                    <a href="#" class="button1">Event details</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Event Details</button>
+                        <div class="dropdown-content">
+                          Keterangan
+                        </div>
+                    </div>
                 </div>
             </div>
       </div>
@@ -121,16 +129,16 @@
                 </div>
                 <div class="column3">
                     <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn">Event Details</button>
-                          <div id="myDropdown" class="dropdown-content">
-                            Keterangan
-                          </div>
+                        <button class="dropbtn">Event Details</button>
+                        <div class="dropdown-content">
+                          Keterangan
                         </div>
+                    </div>
                 </div>
             </div>
       </div>
       
-        <div class="boxstyle11">
+          <div class="boxstyle11">
             <div class="row">
                 <div class="column">
                     <div class="t3">Ke Rumah<br></div>
@@ -140,14 +148,15 @@
                     SUGGESTION
                 </div>
                 <div class="column3">
-                        <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn">Event Details</button>
-                          <div id="myDropdown" class="dropdown-content">
-                            Keterangan
-                          </div>
+                         <div class="dropdown">
+                        <button class="dropbtn">Event Details</button>
+                        <div class="dropdown-content">
+                          Keterangan
                         </div>
+                    </div>
                 </div>
             </div>
+		
         </div>
     </div>
 </div>
@@ -156,34 +165,6 @@
 <div class="footer">
 Travlender 2017
 </div>
-
-
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function dropdownFunctionOne() {
-    document.getElementById("myDropdownOne").classList.toggle("show");
-}
-function dropdownFunctionTwo() {
-    document.getElementById("myDropdownTwo").classList.toggle("show");
-}
-
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
 
 </body>
 </html>
