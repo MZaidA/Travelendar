@@ -28,7 +28,7 @@ public class EventDAO{
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/travlander_fix", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/trav_v1_5", "root", "");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -49,7 +49,9 @@ public class EventDAO{
             DateFormat tf = new SimpleDateFormat("hh:mm:ss");
             while(rs.next()) {
                 Event event = new Event();
-                event.setEventId(rs.getInt("EVENT_CODE"));
+                event.setEventId(rs.getInt("EVENT_ID"));
+		event.setLocationId(rs.getInt("LOCATION_ID"));
+		event.setLoc2Id(rs.getInt("LOC_LOCATION_ID"));
                 event.setEventName(rs.getString("EVENT_NAME"));
                 
                 arrival = rs.getString("ARRIVAL_AT_LOCATION");
@@ -62,7 +64,7 @@ public class EventDAO{
                 event.setEndDateStr(df.format(event.getEndTime()));
                 event.setEndTimeStr(tf.format(event.getEndTime()));
                 
-                event.setDescription("DESCRIPTION");
+                event.setDescription(rs.getString("DESCRIPTION"));
                 events.add(event);
             }
         }

@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="DAO.EventDAO, Model.Event, java.util.*"%>
 
 
 <!DOCTYPE html>
@@ -18,7 +20,9 @@
 <body>
 
     <%
-        String userName = request.getParameter("username");
+        List<Event> events = EventDAO.getAll();
+        request.setAttribute("events", events);
+        System.out.println(events.get(0).getArrivalDateStr());
         %>
     
 <div class="header">
@@ -38,11 +42,12 @@
 
     <div class="column content">
     <h1> Upcoming Event </h1>
+        <c:forEach items="${events}" var="item">
         <div class="boxstyle1">
             <div class="row">
                 <div class="column">
-                    <div class="t3">Ke Kantor DPRD Banka</div>
-                    <div class="t4">Time: 20/09/2017 06:45 - 08:30</div>
+                    <div class="t3">${item.eventName}</div>
+                    <div class="t4">Time: ${item.arrivalDateStr} ${item.arrivalTimeStr} - ${item.endTimeStr}</div>
                 </div>
                 <div class="column2">
                     SUGGESTION
@@ -51,14 +56,15 @@
                     <div class="dropdown">
                         <button class="dropbtn">Event Details</button>
                         <div class="dropdown-content">
-                          Keterangan
+                          ${item.description}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </c:forEach>
         
-        <div class="boxstyle11">
+<!--        <div class="boxstyle11">
             <div class="row">
                 <div class="column">
                     <div class="t3">Ke bandara</div>
@@ -96,9 +102,9 @@
                     </div>
                 </div>
             </div>
-      </div>
+      </div>-->
     
-      <div class="boxstyle11">
+<!--      <div class="boxstyle11">
       <div class="row">
                 <div class="column">
                     <div class="t3">Ke Tangerang<br></div>
@@ -116,9 +122,9 @@
                     </div>
                 </div>
             </div>
-      </div>
+      </div>-->
       
-        <div class="boxstyle11">
+<!--        <div class="boxstyle11">
             <div class="row">
                 <div class="column">
                     <div class="t3">Ke Bandara Halim Perdanakusuma <br></div>
@@ -135,10 +141,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
       </div>
       
-          <div class="boxstyle11">
+<!--          <div class="boxstyle11">
             <div class="row">
                 <div class="column">
                     <div class="t3">Ke Rumah<br></div>
@@ -157,7 +163,7 @@
                 </div>
             </div>
 		
-        </div>
+        </div>-->
     </div>
 </div>
     
