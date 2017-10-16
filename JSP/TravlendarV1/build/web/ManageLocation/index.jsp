@@ -5,11 +5,18 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="DAO.LocationDAO, Model.Location, java.util.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="../Assets/css/manageStyle.css"/>
+<title>JSP Page</title>
+         <%
+            List<Location> locations = LocationDAO.getAll();
+            request.setAttribute("locations", locations);
+        %>
 </head>
 <body>
 	<div class="wrapper">
@@ -27,27 +34,15 @@
       <th>Action</th>
 
     </tr>
+    <c:forEach items="${events}" var="item">
     <tr>
-      <td>1</td>
-      <td>Polban</td>
-      <td>Jl. Kampus POLBAN</td>
-      <td>Bandung</td>
+      <td> ${loop.index+1}</td>
+      <td> ${item.locationName} </td>
+      <td> ${item.address}</td>
+      <td> ${item.district}</td>
       <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
     </tr>
-    <tr>
-      <td>2</td>
-      <td>Ciwaruga</td>
-      <td>Jl. Kampus POLBAN</td>
-      <td>Bandung</td>
-      <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Pasteur</td>
-      <td>Jl. Kampus POLBAN</td>
-      <td>Bandung</td>
-      <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
-    </tr>
+    </c:forEach>
   </table>
     </div>
     <br>
