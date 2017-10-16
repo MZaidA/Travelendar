@@ -9,7 +9,7 @@ package travlendar;
  *
  * @author HP1
  */
-public class District extends Location{
+public class District{
     private String districtName;
 
     

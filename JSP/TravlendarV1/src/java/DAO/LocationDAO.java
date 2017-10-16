@@ -41,8 +41,12 @@ public class LocationDAO{
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 Location loc = new Location();
-                loc.setKode(rs.getString("kode"));
-                loc.setNama(rs.getString("nama"));
+                loc.setLocationId(rs.getInt("LOCATION_ID"));
+                loc.setLocationName(rs.getString("LOCATION_NAME"));
+                loc.setAddress(rs.getString("ADDRESS"));
+                
+                loc.setDistrict(rs.getInt("DISTRICT_ID"));
+                
                 locations.add(loc);
             }
         }
@@ -56,9 +60,13 @@ public class LocationDAO{
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO location(kode, nama) VALUES (?, ?)");
-            ps.setString(1, _location.getKode());
-            ps.setString(2, _location.getNama());
+            PreparedStatement ps = con.prepareStatement("INSERT INTO location(LOCATION_ID, LOCATION_NAME, ADDRESS, DISTRICT_ID) VALUES (?, ?, ?, ?)");
+            ps.setInt(1, _location.getLocationId());
+            ps.setString(2, _location.getLocationName());
+            ps.setString(3, _location.getAddress());
+            
+            ps.setInt(1, _location.getDistrictId());
+            
             status = ps.executeUpdate();
         }
         catch(Exception e) {
@@ -71,8 +79,8 @@ public class LocationDAO{
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("DELETE FROM location WHERE kode=?");
-            ps.setString(1, _location.getKode());
+            PreparedStatement ps = con.prepareStatement("DELETE FROM location WHERE LOCATION_ID=?");
+            ps.setInt(1, _location.getLocationId());
             status = ps.executeUpdate();
         }
         catch(Exception e) {
@@ -85,9 +93,14 @@ public class LocationDAO{
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps=con.prepareStatement("update location set nama=? where kode=?");  
-            ps.setString(1, _location.getNama());
-            ps.setString(2, _location.getKode());
+            PreparedStatement ps=con.prepareStatement("update location set LOCATION_NAME=?, ADDRESS=?, DISTRICT_ID where LOCATION_ID=?");  
+            
+            ps.setString(1, _location.getLocationName());
+            ps.setString(2, _location.getAddress());
+            
+            ps.setInt(3, _location.getDistrictId());
+            
+            ps.setInt(4, _location.getLocationId());
             status = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
@@ -99,13 +112,17 @@ public class LocationDAO{
         Location loc = null;
         try{
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM location WHERE kode=?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM location WHERE LOCATION_ID=?");
             ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 loc = new Location();
-                loc.setKode(rs.getString("kode"));
-                loc.setNama(rs.getString("nama"));
+                loc.setLocationId(rs.getInt("LOCATION_ID"));
+                loc.setLocationName(rs.getString("LOCATION_NAME"));
+                loc.setAddress(rs.getString("ADDRESS"));
+                
+                loc.setDistrict(rs.getInt("DISTRICT_ID"));
+                
             }
         }
         catch(Exception e) {
