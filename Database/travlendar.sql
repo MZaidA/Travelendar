@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     15/10/2017 19:53:12                          */
+/* Created on:     16/10/2017 20:10:24                          */
 /*==============================================================*/
 
 
@@ -41,10 +41,10 @@ create table DISTRICT
 create table EVENT
 (
    EVENT_ID             int not null,
-   PUBLIC_ID            char(6),
+   PUBLIC_ID            int,
    LOCATION_ID          int,
    LOC_LOCATION_ID      int not null,
-   PRIVATE_ID           char(6),
+   PRIVATE_ID           int,
    EVENT_NAME           varchar(40) not null,
    ARRIVAL_AT_LOCATION  datetime,
    EVENT_FINISHED       datetime,
@@ -80,7 +80,7 @@ create table LOCATION
 /*==============================================================*/
 create table PRIVATE_TRANSPORTATION
 (
-   PRIVATE_ID           char(6) not null,
+   PRIVATE_ID           int not null,
    PRIVATE_TYPE         varchar(40) not null,
    primary key (PRIVATE_ID)
 );
@@ -90,10 +90,10 @@ create table PRIVATE_TRANSPORTATION
 /*==============================================================*/
 create table PRIVATE_TRANSPORTATION_TRAVELING
 (
-   PRIVATE_TRAVELING_ID char(6) not null,
+   PRIVATE_TRAVELING_ID int not null,
    LOCATION_ID          int not null,
    LOC_LOCATION_ID      int not null,
-   PRIVATE_ID           char(6) not null,
+   PRIVATE_ID           int not null,
    TRAVELING_TIME       bigint not null,
    primary key (PRIVATE_TRAVELING_ID)
 );
@@ -114,7 +114,7 @@ create table PROVINCE
 /*==============================================================*/
 create table PUBLIC_TRANSPORTATION
 (
-   PUBLIC_ID            char(6) not null,
+   PUBLIC_ID            int not null,
    PUBLIC_TYPE          varchar(40) not null,
    PUBLIC_NAME          varchar(40) not null,
    primary key (PUBLIC_ID)
@@ -125,10 +125,10 @@ create table PUBLIC_TRANSPORTATION
 /*==============================================================*/
 create table PUBLIC_TRANSPORTATION_TRAVELING
 (
-   PUBLIC_TRAVELING_ID  char(6) not null,
+   PUBLIC_TRAVELING_ID  int not null,
    LOCATION_ID          int not null,
    LOC_LOCATION_ID      int not null,
-   PUBLIC_ID            char(6) not null,
+   PUBLIC_ID            int not null,
    ARRIVAL_SCHEDULE     datetime not null,
    DEPARTURE_SCHEDULE   datetime not null,
    primary key (PUBLIC_TRAVELING_ID)
@@ -139,10 +139,9 @@ create table PUBLIC_TRANSPORTATION_TRAVELING
 /*==============================================================*/
 create table TRANSPORTATION_BASE
 (
-   BASE_ID              int not null,
+   PUBLIC_ID            int not null,
    LOCATION_ID          int not null,
-   PUBLIC_ID            char(6) not null,
-   primary key (BASE_ID)
+   primary key (PUBLIC_ID, LOCATION_ID)
 );
 
 alter table DISTRICT add constraint FK_MENGAMBIL_PROVINSI foreign key (PROVINCE_ID)
@@ -184,9 +183,9 @@ alter table PUBLIC_TRANSPORTATION_TRAVELING add constraint FK_MENGAMBIL_LOKASI_A
 alter table PUBLIC_TRANSPORTATION_TRAVELING add constraint FK_MENGAMBIL_LOKASI_AWAL_UNTUK_KENDARAAN_UMUM foreign key (LOCATION_ID)
       references LOCATION (LOCATION_ID) on delete restrict on update restrict;
 
-alter table TRANSPORTATION_BASE add constraint FK_MENGAMBIL_KENDARAAN_UMUM_UNTUK_TRANSPORTATION_BASE foreign key (PUBLIC_ID)
+alter table TRANSPORTATION_BASE add constraint FK_TRANSPORTATION_BASE foreign key (PUBLIC_ID)
       references PUBLIC_TRANSPORTATION (PUBLIC_ID) on delete restrict on update restrict;
 
-alter table TRANSPORTATION_BASE add constraint FK_MENGAMBIL_LOKASI_BANDARA foreign key (LOCATION_ID)
+alter table TRANSPORTATION_BASE add constraint FK_TRANSPORTATION_BASE2 foreign key (LOCATION_ID)
       references LOCATION (LOCATION_ID) on delete restrict on update restrict;
 
