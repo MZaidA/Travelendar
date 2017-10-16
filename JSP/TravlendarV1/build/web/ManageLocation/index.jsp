@@ -54,10 +54,15 @@
     <br>
     <div class="form">
             <form action="/action_page.php">
-            <label for="fname">Location</label>
+            <label for="fLocation">Location</label>
             <input type="text" id="mLocation" name="Location" placeholder="Location...">
-            
-            <input type="submit" value="Add">
+            <label for="faddres">Address</label>
+            <input type="text" id="mAddress" name="Address" placeholder="Address...">
+            <label for="fCity">City</label>
+            <select class="minimal">
+                <option>Subang</option>
+            </select>
+            <input type="submit">
             </form>
         </div> 
 </body>
