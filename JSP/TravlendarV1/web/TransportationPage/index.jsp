@@ -16,12 +16,7 @@
 	<div class="wrapper">
         <li><strong>Admin</strong>TRAVELENDAR</li> 	
     </div>
-	<div id="sidebar">
-        <li><a href="../ManageLocation/index.jsp">Manage Location</a></li>
-        <li><a href="../DistancePage/index.jsp">Manage Distance</a></li>
-        <li><a href="../TransportationPage/index.jsp">Manage Transport</a></li>
-        <li><a href="../EstimatedTimePage/index.jsp">Manage Estimated Time</a></li>
-    </div>
+	<%@ include file = "../navbarManage.jsp" %>
     <div id="mainPanel" style="overflow-x:hidden;">
         <h1>MANAGE TRANSPORTATION</h1>
         <table>
@@ -29,61 +24,73 @@
             <th>No</th>
             <th>Code</th>
             <th>Transportaion Mode</th>
+            <th>Action</th>
           </tr>
           <tr>
             <td>1</td>
             <td>P01</td>
             <td>Walk</td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
           <tr>
             <td>2</td>
             <td>P02</td>
             <td>Bicycle</td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
           <tr>
             <td>3</td>
             <td>P03</td>
             <td>Motorcycle</td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>4</td>
             <td>P04</td>
             <td>Car</td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>5</td>
             <td>U01</td>
             <td>Angkot</td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>6</td>
             <td>U02</td>
             <td>Ojek</td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>7</td>
             <td>U03</td>
             <td>Taksi</td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>8</td>
             <td>U04</td>
             <td>Bus</td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>9</td>
             <td>U05</td>
             <td>Train</td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>10</td>
             <td>U06</td>
             <td>Ship</td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>11</td>
             <td>U07</td>
             <td>Plan</td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
         </table>
     </div>

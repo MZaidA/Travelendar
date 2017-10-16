@@ -5,6 +5,10 @@ JSP
 *F
 + 0 index.jsp
 ManageLocation/index.jsp
++ 1 navbarManage.jsp
+ManageLocation/../navbarManage.jsp
 *L
-5,59:44
+5,14:49
+1#1,7:63
+18#0,41:70
 *E
