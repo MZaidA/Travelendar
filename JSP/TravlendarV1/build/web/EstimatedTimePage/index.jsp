@@ -16,12 +16,7 @@
 	<div class="wrapper">
         <li><strong>Admin</strong>TRAVELENDAR</li> 	
     </div>
-	<div id="sidebar">
-        <li><a href="../ManageLocation/index.jsp">Manage Location</a></li>
-        <li><a href="../DistancePage/index.jsp">Manage Distance</a></li>
-        <li><a href="../TransportationPage/index.jsp">Manage Transport</a></li>
-        <li><a href="../EstimatedTimePage/index.jsp">Manage Estimated Time</a></li>
-    </div>
+        <%@ include file = "../navbarManage.jsp" %>
     <div id="mainPanel" style="overflow-x:hidden;">
         <h1>MANAGE ESTIMATED TIME</h1>
         <table>
@@ -37,77 +32,77 @@
             <td>Rumah - Kantor DPRD</td>
             <td>Walk</td>
             <td>788</td>
-            <td><a href="#Update">Update</a></td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
           <tr>
             <td>2</td>
             <td>Rumah - Kantor DPRD</td>
             <td>Bicycle</td>
             <td>263</td>
-            <td><a href="#Update">Update</a></td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
           <tr>
             <td>3</td>
             <td>Rumah - Kantor DPRD</td>
             <td>Motorcycle</td>
             <td>66</td>
-            <td><a href="#Update">Update</a></td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>4</td>
             <td>Rumah - Kantor DPRD</td>
             <td>Car</td>
             <td>79</td>
-            <td><a href="#Update">Update</a></td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>5</td>
             <td>Rumah - Kantor DPRD</td>
             <td>Angkot</td>
             <td>113</td>
-            <td><a href="#Update">Update</a></td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>6</td>
             <td>Rumah - Kantor DPRD</td>
             <td>Ojek</td>
             <td>66</td>
-            <td><a href="#Update">Update</a></td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>7</td>
             <td>Rumah - Kantor DPRD</td>
             <td>Taksi</td>
             <td>79</td>
-            <td><a href="#Update">Update</a></td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>8</td>
             <td>Rumah - Kantor DPRD</td>
             <td>Bus</td>
             <td>99</td>
-            <td><a href="#Update">Update</a></td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>9</td>
             <td>Rumah - Kantor DPRD</td>
             <td>Train</td>
             <td>41</td>
-            <td><a href="#Update">Update</a></td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>10</td>
             <td>Rumah - Kantor DPRD</td>
             <td>Ship</td>
             <td>131</td>
-            <td><a href="#Update">Update</a></td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>11</td>
             <td>Rumah - Kantor DPRD</td>
             <td>Plane</td>
             <td>4</td>
-            <td><a href="#Update">Update</a></td>
+            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
         </table>
     </div>

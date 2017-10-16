@@ -5,6 +5,10 @@ JSP
 *F
 + 0 index.jsp
 DistancePage/index.jsp
++ 1 navbarManage.jsp
+DistancePage/../navbarManage.jsp
 *L
-5,97:44
+5,15:49
+1#1,7:64
+19#0,78:71
 *E

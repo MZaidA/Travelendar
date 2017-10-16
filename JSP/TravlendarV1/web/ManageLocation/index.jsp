@@ -15,35 +15,38 @@
 	<div class="wrapper">
         <li><strong>Admin</strong>TRAVELENDAR</li> 	
     </div>
-	<div id="sidebar">
-        <li><a href="../ManageLocation/index.jsp">Manage Location</a></li>
-        <li><a href="../DistancePage/index.jsp">Manage Distance</a></li>
-        <li><a href="../TransportationPage/index.jsp">Manage Transport</a></li>
-        <li><a href="../EstimatedTimePage/index.jsp">Manage Estimated Time</a></li>
-    </div>
+        <%@ include file = "../navbarManage.jsp" %>
     <div id="mainPanel" style="overflow-x:hidden;">
         <h1>MANAGE LOCATION</h1>
         <table>
     <tr>
       <th>No</th>
       <th>Nama Lokasi</th>
+      <th>Alamat</th>
+      <th>Kota</th>
       <th>Action</th>
 
     </tr>
     <tr>
       <td>1</td>
       <td>Polban</td>
-      <td><a href="#Update">Update</a></td>
+      <td>Jl. Kampus POLBAN</td>
+      <td>Bandung</td>
+      <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
     </tr>
     <tr>
       <td>2</td>
       <td>Ciwaruga</td>
-      <td><a href="#Update">Update</a></td>
+      <td>Jl. Kampus POLBAN</td>
+      <td>Bandung</td>
+      <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
     </tr>
     <tr>
       <td>3</td>
       <td>Pasteur</td>
-      <td><a href="#Update">Update</a></td>
+      <td>Jl. Kampus POLBAN</td>
+      <td>Bandung</td>
+      <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
     </tr>
   </table>
     </div>
