@@ -60,7 +60,12 @@
             <input type="text" id="mAddress" name="Address" placeholder="Address...">
             <label for="fCity">City</label>
             <select class="minimal">
-                <option>Subang</option>
+                <option>Rumah</option>
+                <option>Kantor DPRD</option>
+                <option>Bandara Banka</option>
+                <option>Bandara Halim Perdanakusuma</option>
+                <option>Jakarta</option>
+                <option>Tangerang</option>
             </select>
             <input type="submit">
             </form>

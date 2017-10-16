@@ -22,8 +22,8 @@
         <table>
           <tr>
             <th>No</th>
-            <th>Location A</th>
-            <th>Location B</th>
+            <th>Start Location</th>
+            <th>Finish Location</th>
             <th>Distance (KM)</th>
             <th>Action</th>
           </tr>
@@ -68,7 +68,7 @@
         <br>
     <div class="form">
             <form action="/action_page.php">
-            <label for="LocationA">Location A</label>	
+            <label for="startLoc">Start Location</label>	
             <select id="Locationa" name="Locationa">
               <option value="rumah">Rumah</option>
               <option value="kantor_dprd">Kantor DPRD</option>
@@ -77,7 +77,7 @@
               <option value="jakarta">Jakarta</option>
               <option value="tangerang">Tangerang</option>
             </select>
-            <label for="LocationB">Location B</label>	
+            <label for="finishLoc">Finish Location</label>	
             <select id="Locationb" name="Locationb">
               <option value="rumah">Rumah</option>
               <option value="kantor_dprd">Kantor DPRD</option>
@@ -88,7 +88,7 @@
             </select>
             <label for="fname">Distance</label>
               <input type="text" id="mDistance" name="Distance" placeholder="Distance...">
-              <input type="submit" value="Add">
+              <input type="submit">
             </form>
         </div> 
 </body>
