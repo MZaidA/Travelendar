@@ -1,0 +1,36 @@
+=======Transportasi menyesuaikan dengan kondisi realita=======
+kapal		pulau antar pulau TIDAK BISA provinsi antar provinsi atau pulau antar pulau
+pesawat 	provinsi antar provinsi	atau pulau antar pulau TIDAK BISA kota antar kota
+kereta		kota antar kota atau provinsi antar provinsi TIDAK BISA pulau antar pulau
+
+=======Pesawat (Soal jadwal sudah saya terterakan di data kasus v2.2 sheet transportation mode)=======
+bandara di prov. bangka-belitung : Bandara Depati Amir-Pangkal pinang(PGK)-p.bangka
+bandara di pov. jakarta : Bandara Soekarno Hatta-Cengkareng(CGK)
+			  Bandara Halim Perdanakusuma (HLP)-Tangerang
+
+=================Kapal==================
+pelabuhan di prov. Bangka belitung : pangkal balam
+jadwal kapal pelni bukit raya
+TANJUNG PRIOK	BELINYU	01-01-2017 | 08:00	02-01-2017 | 10:00
+BELINYU	TANJUNG PRIOK	15-01-2017 | 22:00	16-01-2017 | 23:59
+TANJUNG PRIOK	BELINYU	17-01-2017 | 10:00	18-01-2017 | 12:00
+BELINYU	TANJUNG PRIOK	29-01-2017 | 21:00	30-01-2017 | 23:00
+
+==================Bus===================
+jadwal kendaraan umum di jakarta
+jalan kaki 12 menit
+bank indonesia-halte busway harmoni 18.45 - 18.51 (transjakarta stasiun kota)
+halte busway harmoni- indosiar 18.56 - 19.03 (transjakarta term.lebak bulus)
+indosiar - Tangerang City Business Park, Jl. Jenderal Sudirman 19.24 - 20.09 (PDD ATPB3 Poris Plawad)
+jalan kaki 1 menit
+Tangerang City Business Park, Jl. Imam Bonjol - Permata Medang, Jl. Imam Bonjol 20.29 - 21.59 (Angkot R06A Bojong Nangka)
+jalan kaki 20 menit
+Universitas Multimedia Nusantara
+
+//======Kereta (Tidak saya sarankan, masih bingung)=====
+//jakarta pusat ke tangerang
+//stasiun gondangdia -stasiun juanda 18.38 - 18.43 (KAI Komuter Bogor-JakartaKota JAKK)
+//jalan kaki 4 menit
+//halte juanda - taman kota 18.51 - 19.07 (transjakarta 2B kalideres)
+//jalan 7 menit
+//taman kota - batu ceper 19.14 - 19.30 (KAI Komuter Tangeranng-Duri TNG)
