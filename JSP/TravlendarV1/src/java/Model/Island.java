@@ -11,7 +11,7 @@ package Model;
  */
 public class Island{
     private String islandName;
-    private Integer islandId;    
+private Integer islandId;    
     /**
      * @return the islandName
      */

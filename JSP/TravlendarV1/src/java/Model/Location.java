@@ -9,9 +9,8 @@ package Model;
  *
  * @author syamcode
  */
-public class Location{
+public class Location extends District{
     private Integer locationId;
-    private Integer districtId;
     private String locationName;
     private String address;
     
@@ -49,19 +48,5 @@ public class Location{
      */
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    /**
-     * @return the districtId
-     */
-    public Integer getDistrictId() {
-        return districtId;
-    }
-
-    /**
-     * @param districtId the districtId to set
-     */
-    public void setDistrictId(Integer districtId) {
-        this.districtId = districtId;
     }
 }

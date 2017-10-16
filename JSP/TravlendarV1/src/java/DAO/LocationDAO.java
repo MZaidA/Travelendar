@@ -6,7 +6,6 @@
 package DAO;
 
 import Model.Location;
-import Model.District;
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,7 +26,7 @@ public class LocationDAO{
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/lander_v1.5", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/trav", "root", "");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -130,26 +129,5 @@ public class LocationDAO{
             System.out.println(e);
         }
         return loc;
-    }
-   
-    public static List<District> getDistrict() {
-        List<District> districts = new ArrayList<District>();
-        try{
-            Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM district");
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()) {
-                District dis = new District();
-                dis.setDistrictId(rs.getInt("DISTRICT_ID"));
-                dis.setProvinceId(rs.getInt("PROVINCE_ID"));
-                dis.setDistrictName(rs.getString("DISTRICT_NAME"));
-                
-                districts.add(dis);
-            }
-        }
-        catch(Exception e) {
-            System.out.println(e);
-        }
-        return districts;
     }
 }
