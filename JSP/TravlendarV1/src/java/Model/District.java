@@ -9,9 +9,24 @@ package Model;
  *
  * @author HP1
  */
-public class District extends Province{
+public class District{
+
+    /**
+     * @return the provinceId
+     */
+    public Integer getProvinceId() {
+        return provinceId;
+    }
+
+    /**
+     * @param provinceId the provinceId to set
+     */
+    public void setProvinceId(Integer provinceId) {
+        this.provinceId = provinceId;
+    }
     private String districtName;
     private Integer districtId;
+    private Integer provinceId;
     
     public String getDistrictName() {
         return districtName;

@@ -17,6 +17,10 @@
             List<Location> locations = LocationDAO.getAll();
             request.setAttribute("locations", locations);
         %>
+        <%
+            List<District> distrits = LocationDAO.getDistrict();
+            request.setAttribute("locations", locations);
+        %>
 </head>
 <body>
 	<div class="wrapper">
@@ -34,12 +38,13 @@
       <th>Action</th>
 
     </tr>
-    <c:forEach items="${events}" var="item">
+    
+    <c:forEach items="${locations}" var="location">
     <tr>
       <td> ${loop.index+1}</td>
-      <td> ${item.locationName} </td>
-      <td> ${item.address}</td>
-      <td> ${item.district}</td>
+      <td> ${location.locationName} </td>
+      <td> ${location.address}</td>
+      <td> ${location.districtId}</td>
       <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
     </tr>
     </c:forEach>
@@ -48,6 +53,12 @@
     <br>
     <br>
     <div class="form">
+            <%@page import="DAO.LocationDAO"%>
+            <jsp:useBean id="loc" class="Model.Location"></jsp:useBean>
+            <jsp:setProperty property="*" name="loc"/>
+
+            <%--<jsp:getProperty property="LOCATION_ID" name="loc"></jsp:getProperty>--%>
+            
             <form action="/action_page.php">
             <label for="fLocation">Location</label>
             <input type="text" id="mLocation" name="Location" placeholder="Location...">
@@ -55,12 +66,9 @@
             <input type="text" id="mAddress" name="Address" placeholder="Address...">
             <label for="fCity">City</label>
             <select class="minimal">
-                <option>Rumah</option>
-                <option>Kantor DPRD</option>
-                <option>Bandara Banka</option>
-                <option>Bandara Halim Perdanakusuma</option>
-                <option>Jakarta</option>
-                <option>Tangerang</option>
+                <c:forEach items="${events}" var="item">
+                
+                </c:forEach>
             </select>
             <input type="submit">
             </form>
