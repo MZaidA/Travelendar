@@ -39,7 +39,7 @@
       <td> ${loop.index+1}</td>
       <td> ${item.locationName} </td>
       <td> ${item.address}</td>
-      <td> ${item.districtId}</td>
+      <td> ${item.districtName}</td>
       <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
     </tr>
     </c:forEach>

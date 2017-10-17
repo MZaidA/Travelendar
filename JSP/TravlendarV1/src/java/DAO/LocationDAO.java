@@ -26,7 +26,7 @@ public class LocationDAO{
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/trav_v1_5", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/lander_v1.5", "root", "");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -47,7 +47,16 @@ public class LocationDAO{
                 loc.setDistrictId(rs.getInt("DISTRICT_ID"));
                 locations.add(loc);
             }
-//            while(rs2.next())
+            for(int i = 0; i < locations.size() ; i++)
+            {
+                PreparedStatement ps2 = con.prepareStatement("SELECT * FROM district where DISTRICT_ID = ?");
+                ps2.setInt(1, locations.get(i).getDistrictId());
+                ResultSet rs2 = ps2.executeQuery();
+                while(rs2.next()) {
+                locations.get(i).setDistrictName(rs2.getString("DISTRICT_NAME"));
+                }
+            }
+            
         }
         catch(Exception e) {
             System.out.println(e);
