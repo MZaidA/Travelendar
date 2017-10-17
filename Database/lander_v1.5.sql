@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2017 at 03:04 PM
+-- Generation Time: Oct 17, 2017 at 08:17 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lander v1.5`
+-- Database: `lander_v1.5`
 --
 
 -- --------------------------------------------------------
@@ -146,7 +146,7 @@ INSERT INTO `district` (`DISTRICT_ID`, `PROVINCE_ID`, `DISTRICT_NAME`) VALUES
 --
 
 CREATE TABLE `event` (
-  `EVENT_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `EVENT_ID` int(11) NOT NULL,
   `PUBLIC_ID` int(11) DEFAULT NULL,
   `LOCATION_ID` int(11) DEFAULT NULL,
   `LOC_LOCATION_ID` int(11) NOT NULL,
@@ -174,7 +174,7 @@ CREATE TABLE `island` (
 --
 
 INSERT INTO `island` (`ISLAND_ID`, `ISLAND_NAME`) VALUES
-(1, 'Sumatra'),
+(1, 'Sumatera'),
 (2, 'Bangka'),
 (3, 'Belitung'),
 (4, 'Jawa'),
@@ -193,7 +193,7 @@ INSERT INTO `island` (`ISLAND_ID`, `ISLAND_NAME`) VALUES
 --
 
 CREATE TABLE `location` (
-  `LOCATION_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `LOCATION_ID` int(11) NOT NULL,
   `DISTRICT_ID` int(11) NOT NULL,
   `LOCATION_NAME` varchar(40) NOT NULL,
   `ADDRESS` varchar(200) NOT NULL
@@ -206,7 +206,7 @@ CREATE TABLE `location` (
 --
 
 CREATE TABLE `private_transportation` (
-  `PRIVATE_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `PRIVATE_ID` int(11) NOT NULL,
   `PRIVATE_TYPE` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -217,7 +217,7 @@ CREATE TABLE `private_transportation` (
 --
 
 CREATE TABLE `private_transportation_traveling` (
-  `PRIVATE_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `PRIVATE_TRAVELING_ID` int(11) NOT NULL,
   `LOCATION_ID` int(11) NOT NULL,
   `LOC_LOCATION_ID` int(11) NOT NULL,
   `PRIVATE_ID` int(11) NOT NULL,
@@ -241,7 +241,7 @@ CREATE TABLE `province` (
 --
 
 INSERT INTO `province` (`PROVINCE_ID`, `ISLAND_ID`, `PROVINCE_NAME`) VALUES
-(1, 1, 'Aceh'),
+(1, 1, 'ACEH'),
 (2, 1, 'SUMATERA UTARA'),
 (3, 1, 'SUMATERA BARAT'),
 (4, 1, 'RIAU'),
@@ -283,7 +283,7 @@ INSERT INTO `province` (`PROVINCE_ID`, `ISLAND_ID`, `PROVINCE_NAME`) VALUES
 --
 
 CREATE TABLE `public_transportation` (
-  `PUBLIC_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `PUBLIC_ID` int(11) NOT NULL,
   `PUBLIC_TYPE` varchar(40) NOT NULL,
   `PUBLIC_NAME` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -295,7 +295,7 @@ CREATE TABLE `public_transportation` (
 --
 
 CREATE TABLE `public_transportation_traveling` (
-  `PUBLIC_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `PUBLIC_TRAVELING_ID` int(11) NOT NULL,
   `LOCATION_ID` int(11) NOT NULL,
   `LOC_LOCATION_ID` int(11) NOT NULL,
   `PUBLIC_ID` int(11) NOT NULL,
@@ -392,6 +392,55 @@ ALTER TABLE `transportation_base`
   ADD PRIMARY KEY (`PUBLIC_ID`,`LOCATION_ID`),
   ADD KEY `FK_TRANSPORTATION_BASE2` (`LOCATION_ID`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `district`
+--
+ALTER TABLE `district`
+  MODIFY `DISTRICT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `EVENT_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `island`
+--
+ALTER TABLE `island`
+  MODIFY `ISLAND_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `LOCATION_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `private_transportation`
+--
+ALTER TABLE `private_transportation`
+  MODIFY `PRIVATE_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `private_transportation_traveling`
+--
+ALTER TABLE `private_transportation_traveling`
+  MODIFY `PRIVATE_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `province`
+--
+ALTER TABLE `province`
+  MODIFY `PROVINCE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `public_transportation`
+--
+ALTER TABLE `public_transportation`
+  MODIFY `PUBLIC_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `public_transportation_traveling`
+--
+ALTER TABLE `public_transportation_traveling`
+  MODIFY `PUBLIC_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
