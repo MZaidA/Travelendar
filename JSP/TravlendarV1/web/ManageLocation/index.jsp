@@ -40,13 +40,20 @@
       <th>Action</th>
 
     </tr>
+<<<<<<< HEAD
     
+=======
+>>>>>>> c79ed66619b864303136ead9fde3ef20f7fccf77
     <c:forEach items="${locations}" var="item">
     <tr>
       <td> ${loop.index+1}</td>
       <td> ${item.locationName} </td>
       <td> ${item.address}</td>
+<<<<<<< HEAD
       <td> ${item.districtId}</td>
+=======
+      <td> ${item.districtName}</td>
+>>>>>>> c79ed66619b864303136ead9fde3ef20f7fccf77
       <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
     </tr>
     </c:forEach>

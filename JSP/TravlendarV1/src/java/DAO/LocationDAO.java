@@ -45,11 +45,19 @@ public class LocationDAO{
                 loc.setLocationId(rs.getInt("LOCATION_ID"));
                 loc.setLocationName(rs.getString("LOCATION_NAME"));
                 loc.setAddress(rs.getString("ADDRESS"));
-                
                 loc.setDistrictId(rs.getInt("DISTRICT_ID"));
-                
                 locations.add(loc);
             }
+            for(int i = 0; i < locations.size() ; i++)
+            {
+                PreparedStatement ps2 = con.prepareStatement("SELECT * FROM district where DISTRICT_ID = ?");
+                ps2.setInt(1, locations.get(i).getDistrictId());
+                ResultSet rs2 = ps2.executeQuery();
+                while(rs2.next()) {
+                locations.get(i).setDistrictName(rs2.getString("DISTRICT_NAME"));
+                }
+            }
+            
         }
         catch(Exception e) {
             System.out.println(e);
