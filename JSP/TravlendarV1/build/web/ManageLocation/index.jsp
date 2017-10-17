@@ -4,8 +4,10 @@
     Author     : Cecep Sutisna
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="DAO.LocationDAO, Model.Location, java.util.*"%>
+<%@page import="Model.District"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -16,6 +18,10 @@
          <%
             List<Location> locations = LocationDAO.getAll();
             request.setAttribute("locations", locations);
+        %>
+        <%
+            List<District> districts = LocationDAO.getDistrict();
+            request.setAttribute("districts", districts);
         %>
 </head>
 <body>
@@ -34,15 +40,17 @@
       <th>Action</th>
 
     </tr>
-    <c:forEach items="${events}" var="item">
+    
+    <c:forEach items="${locations}" var="item">
     <tr>
       <td> ${loop.index+1}</td>
       <td> ${item.locationName} </td>
       <td> ${item.address}</td>
-      <td> ${item.district}</td>
+      <td> ${item.districtId}</td>
       <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
     </tr>
     </c:forEach>
+    
   </table>
     </div>
     <br>
@@ -55,12 +63,9 @@
             <input type="text" id="mAddress" name="Address" placeholder="Address...">
             <label for="fCity">City</label>
             <select class="minimal">
-                <option>Rumah</option>
-                <option>Kantor DPRD</option>
-                <option>Bandara Banka</option>
-                <option>Bandara Halim Perdanakusuma</option>
-                <option>Jakarta</option>
-                <option>Tangerang</option>
+                <c:forEach items="${districts}" var="item">
+                <option>${item.districtName}</option>
+                </c:forEach>
             </select>
             <input type="submit">
             </form>
