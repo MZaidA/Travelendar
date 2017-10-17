@@ -27,7 +27,7 @@ public class LocationDAO{
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/lander_v1_5", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/lander_v1.5", "root", "");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -89,8 +89,11 @@ public class LocationDAO{
         int status = 0;
         try {
             Connection con = getConnection();
+            PreparedStatement ps2 = con.prepareStatement("DELETE FROM event WHERE LOCATION_ID=?");
             PreparedStatement ps = con.prepareStatement("DELETE FROM location WHERE LOCATION_ID=?");
+            ps2.setInt(1, _location.getLocationId());
             ps.setInt(1, _location.getLocationId());
+            ps2.executeUpdate();
             status = ps.executeUpdate();
         }
         catch(Exception e) {
