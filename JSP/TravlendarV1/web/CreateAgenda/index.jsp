@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="DAO.LocationDAO, Model.Location, java.util.*" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -32,7 +34,10 @@
     <%
         String userName = request.getParameter("userName");
         %>
-
+<% 
+    List<Location> locations = LocationDAO.getAll();
+    request.setAttribute("locations", locations);
+%>
 <div class="header">
 <img src="../Assets/icon/Logo KelompokB1v2.png" width="145" height="50" style="margin-left:30px;">
 </div>
@@ -52,20 +57,17 @@
 
 
 <div class="form">
-	<form action="/action_page.php">
+	<form action="addagenda.jsp">
 
     <label for="fname">Event Name</label>
-    <input type="text" id="eventName" name="EventName" placeholder="...">
+    <input type="text" id="eventName" name="eventName" placeholder="...">
     
     <div id="demo" style="display:none">
     <label for="stLoc">Start Location</label>
-	<select class="classic" name="location">
-      <option value="">Rumah</option>
-      <option value="">Kantor DPRD</option>
-      <option value="">Bandara Banka</option>
-      <option value="">Bandara Halim Perdanakusuma</option>
-      <option value="">Jakarta</option>
-      <option value="">Tangerang</option>
+	<select class="classic" name="loc2Id">
+      <c:forEach items="${locations}" var="item">
+      <option value="${item.locationId}">${item.locationName}</option>
+      </c:forEach>
 	 </select>
     </div>
     <button type="button" class="notfirst">Not First Event</button>
@@ -73,29 +75,26 @@
     <br/>
     <label for="stLoc">Location</label>
     <br/>
-	 <select class="classic" name="location">
-      <option value="">Rumah</option>
-      <option value="">Kantor DPRD</option>
-      <option value="">Bandara Banka</option>
-      <option value="">Bandara Halim Perdanakusuma</option>
-      <option value="">Jakarta</option>
-      <option value="">Tangerang</option>
+	 <select class="classic" name="locationId">
+      <c:forEach items="${locations}" var="item">
+      <option value="${item.locationId}">${item.locationName}</option>
+      </c:forEach>
 	 </select>
      <br/>
     <label for="fname">Start Date</label>
-    <input type="text" style="width:40%;" id="datepicker">
+    <input type="text" style="width:40%;" id="datepicker" name="startDate">
 
     <label for="fname">Time</label>
-	<input type="text" id="timepicker-one" name="timepicker-one" class="timepicker" style="width:30%;"/>
+	<input name="startTime" type="text" id="timepicker-one" name="timepicker-one" class="timepicker" style="width:30%;"/>
     <br />
     <label for="fname">End Date</label>
-    <input type="text" style="width:40%;" id="datepicker2">
+    <input name="endDate" type="text" style="width:40%;" id="datepicker2">
     <label for="fname">Time</label>
-	<input type="text" id="timepicker-two" name="timepicker-two" class="timepicker" style="width:30%;"/>
+	<input name="endTime" type="text" id="timepicker-two" name="timepicker-two" class="timepicker" style="width:30%;"/>
     <br />
     
     <label for="fname">Keterangan</label>
-    <input type="text" id="keterangan" name="Keterangan" placeholder="...">
+    <input type="text" id="keterangan" name="description" placeholder="...">
 
     <input type="submit" value="Add">
   </form>
