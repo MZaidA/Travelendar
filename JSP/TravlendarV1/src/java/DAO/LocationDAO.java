@@ -26,7 +26,7 @@ public class LocationDAO{
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/trav", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/trav_v1_5", "root", "");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -44,11 +44,10 @@ public class LocationDAO{
                 loc.setLocationId(rs.getInt("LOCATION_ID"));
                 loc.setLocationName(rs.getString("LOCATION_NAME"));
                 loc.setAddress(rs.getString("ADDRESS"));
-                
                 loc.setDistrictId(rs.getInt("DISTRICT_ID"));
-                
                 locations.add(loc);
             }
+//            while(rs2.next())
         }
         catch(Exception e) {
             System.out.println(e);
