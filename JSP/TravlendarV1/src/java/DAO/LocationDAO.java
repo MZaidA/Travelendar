@@ -70,11 +70,12 @@ public class LocationDAO{
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO location(LOCATION_ID, LOCATION_NAME, ADDRESS, DISTRICT_ID) VALUES (?, ?, ?, ?)");
+            
             ps.setInt(1, _location.getLocationId());
             ps.setString(2, _location.getLocationName());
             ps.setString(3, _location.getAddress());
             
-            ps.setInt(1, _location.getDistrictId());
+            ps.setInt(4, _location.getDistrictId());
             
             status = ps.executeUpdate();
         }

@@ -56,18 +56,20 @@
     <br>
     <br>
     <div class="form">
-            <form action="/action_page.php">
+            <form action="addLocation.jsp">
+            <label for="fLocation">ID</label>
+            <input type="text" id="mLocation" name="locationId" placeholder="ID..">
             <label for="fLocation">Location</label>
-            <input type="text" id="mLocation" name="Location" placeholder="Location...">
+            <input type="text" id="mLocation" name="locationName" placeholder="Location...">
             <label for="faddres">Address</label>
-            <input type="text" id="mAddress" name="Address" placeholder="Address...">
+            <input type="text" id="mAddress" name="address" placeholder="Address...">
             <label for="fCity">City</label>
-            <select class="minimal">
+            <select name="districtId" class="minimal">
                 <c:forEach items="${districts}" var="item">
-                <option>${item.districtName}</option>
+                <option value="${item.districtId}">${item.districtName}</option>
                 </c:forEach>
             </select>
-            <input type="submit">
+            <input type="submit" name="submit" value="Add">
             </form>
         </div> 
 </body>
