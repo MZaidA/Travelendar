@@ -22,8 +22,8 @@
     <%
         List<Event> events = EventDAO.getAll();
         request.setAttribute("events", events);
-        System.out.println(events.get(0).getArrivalDateStr());
-        %>
+        
+%>
     
 <div class="header">
 <img src="../Assets/icon/Logo KelompokB1v2.png" width="145" height="50" style="margin-left:30px;">

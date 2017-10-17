@@ -27,7 +27,7 @@ public class LocationDAO{
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/lander_v1.5", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/lander1_5", "root", "");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -69,14 +69,10 @@ public class LocationDAO{
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO location(LOCATION_ID, LOCATION_NAME, ADDRESS, DISTRICT_ID) VALUES (?, ?, ?, ?)");
-            
-            ps.setInt(1, _location.getLocationId());
-            ps.setString(2, _location.getLocationName());
-            ps.setString(3, _location.getAddress());
-            
-            ps.setInt(4, _location.getDistrictId());
-            
+            PreparedStatement ps = con.prepareStatement("INSERT INTO location(LOCATION_NAME, ADDRESS, DISTRICT_ID) VALUES (?, ?, ?)");
+            ps.setString(1, _location.getLocationName());
+            ps.setString(2, _location.getAddress());
+            ps.setInt(3, _location.getDistrictId());
             status = ps.executeUpdate();
         }
         catch(Exception e) {

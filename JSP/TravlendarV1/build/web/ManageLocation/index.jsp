@@ -57,8 +57,6 @@
     <br>
     <div class="form">
             <form action="addLocation.jsp">
-            <label for="fLocation">ID</label>
-            <input type="text" id="mLocation" name="locationId" placeholder="ID..">
             <label for="fLocation">Location</label>
             <input type="text" id="mLocation" name="locationName" placeholder="Location...">
             <label for="faddres">Address</label>
