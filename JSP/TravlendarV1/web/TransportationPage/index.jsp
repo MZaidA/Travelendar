@@ -37,12 +37,12 @@
             <th>Transportaion Mode</th>
             <th>Action</th>
           </tr>
-          <c:forEach items="${transports}" var="item">
+          <c:forEach items="${transports}" var="item" varStatus="loop">
             <tr>
               <td> ${loop.index+1}</td>
               <td> ${item.privateId} </td>
               <td> ${item.privateType}</td>
-              <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
+              <td><a href="updateTransportPrivate.jsp" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
             </tr>
            </c:forEach>
         
@@ -73,7 +73,7 @@
             <td>1</td>
             <td>U00001</td>
             <td>Angkot</td>
-            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
+            <td><a href="updateTransportPublic.jsp" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>2</td>

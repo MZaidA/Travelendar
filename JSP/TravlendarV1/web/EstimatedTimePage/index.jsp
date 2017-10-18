@@ -13,7 +13,7 @@
         <title>Travlendar</title>
     </head>
     <body>
-	<div class="wrapper">
+    <div class="wrapper">
         <li><strong>Admin</strong>TRAVELENDAR</li> 	
     </div>
         <%@ include file = "../navbarManage.jsp" %>
@@ -39,7 +39,7 @@
             <td>Kantor DPRD</td>
             <td>Walk</td>
             <td>788</td>
-            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
+            <td><a href="updateEstimatedTimePrivate.jsp" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
           <tr>
             <td>2</td>
@@ -122,7 +122,7 @@
             <td>Bus</td>
             <td>07:00</td>
             <td>10:00</td>
-            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
+            <td><a href="updateEstimatedTimePublic.jsp" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
            <tr>
             <td>2</td>
