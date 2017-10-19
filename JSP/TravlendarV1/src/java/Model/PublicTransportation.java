@@ -10,6 +10,7 @@ package Model;
  * @author HP1
  */
 public class PublicTransportation {
+    private int publicId;
     private String publicName;
     private String publicType;
     
@@ -39,6 +40,20 @@ public class PublicTransportation {
      */
     public void setPublicType(String publicType) {
         this.publicType = publicType;
+    }
+
+    /**
+     * @return the publicId
+     */
+    public int getPublicId() {
+        return publicId;
+    }
+
+    /**
+     * @param publicId the publicId to set
+     */
+    public void setPublicId(int publicId) {
+        this.publicId = publicId;
     }
     
     
