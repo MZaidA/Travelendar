@@ -56,7 +56,7 @@
     <br>
     <br>
     <div class="form">
-            <form action="addLocation.jsp">
+        <form action="addLocation.jsp">
             <label for="fLocation">Location</label>
             <input type="text" id="mLocation" name="locationName" placeholder="Location...">
             <label for="faddres">Address</label>
@@ -64,12 +64,12 @@
             <label for="fCity">City</label>
             <select name="districtId" class="minimal">
                 <c:forEach items="${districts}" var="item">
-                <option value="${item.districtId}">${item.districtName}</option>
+                    <option value="${item.districtId}">${item.districtName}</option>
                 </c:forEach>
             </select>
             <input type="submit" name="submit" value="Add">
-            </form>
-        </div>
+        </form>
+    </div>
     <script src="../Assets/js/editAction.js"></script>
 </body>
 </html>

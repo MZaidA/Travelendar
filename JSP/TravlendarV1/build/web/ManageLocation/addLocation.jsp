@@ -5,7 +5,12 @@
 <%--<jsp:getProperty property="locationName" name="loc"></jsp:getProperty>--%>
 <%
     int status = LocationDAO.save(loc);
-    if(status!=0) {
+    if(status!=0) 
+    {
+        response.sendRedirect("index.jsp");
+    }
+    else
+    {
         response.sendRedirect("index.jsp");
     }
     

@@ -27,7 +27,7 @@ public class LocationDAO{
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/lander1_5", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/lander_v1.5", "root", "");
         } catch (Exception e) {
             System.out.println(e);
         }

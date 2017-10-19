@@ -25,7 +25,7 @@
         %>
 </head>
 <body>
-	<div class="wrapper">
+    <div class="wrapper">
         <li><strong>Admin</strong>TRAVELENDAR</li> 	
     </div>
         <%@ include file = "../navbarManage.jsp" %>
@@ -41,13 +41,13 @@
 
     </tr>
     
-    <c:forEach items="${locations}" var="item">
+    <c:forEach items="${locations}" var="item" varStatus="loop">
     <tr>
       <td> ${loop.index+1}</td>
       <td> ${item.locationName} </td>
       <td> ${item.address}</td>
       <td> ${item.districtName}</td>
-      <td><a href="#Update" class="button1">Update</a> <a href="deleteLocation.jsp?locationId=${item.locationId}" class="button1">Delete</a></td>
+      <td><a href="updateForm.jsp" class="button1">Update</a> <a href="deleteLocation.jsp?locationId=${item.locationId}" class="button1">Delete</a></td>
     </tr>
     </c:forEach>
     
@@ -56,7 +56,7 @@
     <br>
     <br>
     <div class="form">
-            <form action="addLocation.jsp">
+        <form action="addLocation.jsp">
             <label for="fLocation">Location</label>
             <input type="text" id="mLocation" name="locationName" placeholder="Location...">
             <label for="faddres">Address</label>
@@ -64,12 +64,13 @@
             <label for="fCity">City</label>
             <select name="districtId" class="minimal">
                 <c:forEach items="${districts}" var="item">
-                <option value="${item.districtId}">${item.districtName}</option>
+                    <option value="${item.districtId}">${item.districtName}</option>
                 </c:forEach>
             </select>
             <input type="submit" name="submit" value="Add">
-            </form>
-        </div> 
+        </form>
+    </div>
+    <script src="../Assets/js/editAction.js"></script>
 </body>
 </html>
 

@@ -7,12 +7,9 @@ package DAO;
 
 import Model.PrivateTransportation;
 import com.mysql.jdbc.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,7 +25,7 @@ public class TransportPrivateDAO{
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/lander1_5", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/lander_v1.5", "root", "");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -54,17 +51,13 @@ public class TransportPrivateDAO{
         return transports;
     }
 
-    public static PrivateTransportation get() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static int save(PrivateTransportation privateTransport) {
+    public static int save(PrivateTransportation _PrivateTransportation) {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO event(event_name, arrival_time, end_time, ) VALUES (?, ?, ?)");
-            ps.setInt(1, privateTransport.getPrivateId());
-            ps.setString(2, privateTransport.getPrivateType());
+            PreparedStatement ps = con.prepareStatement("INSERT INTO private_transportation(PRIVATE_ID, PRIVATE_TYPE) VALUES (?, ?)");
+            ps.setInt(1, _PrivateTransportation.getPrivateId());
+            ps.setString(2, _PrivateTransportation.getPrivateType());
             status = ps.executeUpdate();
         }
         catch(Exception e) {
@@ -73,12 +66,18 @@ public class TransportPrivateDAO{
         return status;
     }
 
-    public static void update(PrivateTransportation _location) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public static void delete(PrivateTransportation _location) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static int delete(PrivateTransportation _PrivateTransportation) {
+        int status = 0;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("DELETE FROM private_transportation WHERE PRIVATE_ID=?");
+            ps.setInt(1, _PrivateTransportation.getPrivateId());
+            status = ps.executeUpdate();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return status;
     }
     
 }

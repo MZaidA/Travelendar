@@ -32,7 +32,7 @@
             <td>Kantor DPRD</td>
             <td>Bandara Bangka</td>
             <td>60,9</td>
-            <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
+            <td><a href="updateDistance.jsp" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
           <tr>
             <td>2</td>
