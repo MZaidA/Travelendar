@@ -30,7 +30,7 @@
     </div>
         <%@ include file = "../navbarManage.jsp" %>
             <div id="mainPanel">
-                 <h1>UPDATE LOCATION</h1>
+                <h1>UPDATE LOCATION</h1>
                 <div class="form">
                     <form action="#">
                     <label for="fLocation">Location</label>

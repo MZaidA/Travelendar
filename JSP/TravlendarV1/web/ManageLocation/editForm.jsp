@@ -48,5 +48,6 @@
                     <input type="submit" name="submit" value="Edit">
                 </form>
             </div>
+        </div>
     </body>
 </html>

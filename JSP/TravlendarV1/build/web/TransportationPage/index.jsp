@@ -49,7 +49,7 @@
                             <td> ${item.privateId} </td>
                             <td> ${item.privateType}</td>
                             <td>
-                                <a href="updateTransportPrivateForm.jsp?privateId=${item.privateId}" class="button1">Update</a>
+                                <a href="editTransportPrivateForm.jsp?privateId=${item.privateId}" class="button1">Update</a>
                                 <a href="deletePrivateTransportation.jsp?privateId=${item.privateId}" class="button1">Delete</a>
                             </td>
                         </tr>

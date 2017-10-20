@@ -5,11 +5,14 @@
  */
 package DAO;
 
+import static DAO.LocationDAO.getConnection;
+import Model.Location;
 import Model.PrivateTransportation;
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -50,6 +53,25 @@ public class TransportPrivateDAO{
         }
         return transports;
     }
+    
+    public static PrivateTransportation getPrTransportById(String id) throws SQLException {
+        PrivateTransportation Transport = null;
+        try{
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM private_transportation WHERE PRIVATE_ID=?");
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                Transport = new PrivateTransportation();
+                Transport.setPrivateId(rs.getInt("PRIVATE_ID"));
+                Transport.setPrivateType(rs.getString("PRIVATE_TYPE"));
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return Transport;
+    }
 
     public static int save(PrivateTransportation _PrivateTransportation) {
         int status = 0;
@@ -61,6 +83,21 @@ public class TransportPrivateDAO{
             status = ps.executeUpdate();
         }
         catch(Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
+    
+    public static int update(PrivateTransportation _PrivateTransportation) {
+        int status = 0;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps=con.prepareStatement("update private_transportation set PRIVATE_TYPE=? where PRIVATE_ID=?");  
+
+            ps.setString(1, _PrivateTransportation.getPrivateType());
+            ps.setInt(2, _PrivateTransportation.getPrivateId());
+            status = ps.executeUpdate();
+        } catch (Exception e) {
             System.out.println(e);
         }
         return status;
