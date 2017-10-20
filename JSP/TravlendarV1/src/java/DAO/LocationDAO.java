@@ -102,13 +102,11 @@ public class LocationDAO{
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps=con.prepareStatement("update location set LOCATION_NAME=?, ADDRESS=?, DISTRICT_ID where LOCATION_ID=?");  
+            PreparedStatement ps=con.prepareStatement("update location set LOCATION_NAME=?, ADDRESS=?, DISTRICT_ID=? where LOCATION_ID=?");  
             
             ps.setString(1, _location.getLocationName());
-            ps.setString(2, _location.getAddress());
-            
+            ps.setString(2, _location.getAddress());           
             ps.setInt(3, _location.getDistrictId());
-            
             ps.setInt(4, _location.getLocationId());
             status = ps.executeUpdate();
         } catch (Exception e) {
@@ -129,9 +127,7 @@ public class LocationDAO{
                 loc.setLocationId(rs.getInt("LOCATION_ID"));
                 loc.setLocationName(rs.getString("LOCATION_NAME"));
                 loc.setAddress(rs.getString("ADDRESS"));
-                
                 loc.setDistrictId(rs.getInt("DISTRICT_ID"));
-                
             }
         }
         catch(Exception e) {
