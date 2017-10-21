@@ -83,4 +83,41 @@ public class PublicTransportationDAO {
         return status;
     }
     
+    public static int update(PublicTransportation _publicTransportation) {
+        int status = 0;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("update public_transportation set PUBLIC_TYPE=?, PUBLIC_NAME=? where PUBLIC_ID=?");  
+            
+            ps.setString(1, _publicTransportation.getPublicType());
+            ps.setString(2, _publicTransportation.getPublicName());           
+            ps.setInt(3, _publicTransportation.getPublicId());
+            status = ps.executeUpdate();
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
+    
+    public static PublicTransportation getPublicTransportationById(String id) throws SQLException {
+        PublicTransportation pub = null;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM public_transportation WHERE PUBLIC_ID=?");
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                pub = new PublicTransportation();
+                pub.setPublicId(rs.getInt("PUBLIC_ID"));
+                pub.setPublicType(rs.getString("PUBLIC_TYPE"));
+                pub.setPublicName(rs.getString("PUBLIC_NAME"));
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return pub;
+    }
+    
 }

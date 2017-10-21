@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="../Assets/css/manageStyle.css"/>
-        <title>JSP Page</title>
+        <title>Update Private Transportation - Travlendar</title>
     </head>
     <body>
         <div class="wrapper">
@@ -31,7 +31,7 @@
                 <input type="hidden" id="mTransportation" name="privateId" value="<%=transport.getPrivateId()%>">
                 <label for="fname">Transportaion Mode</label>
                 <input type="text" id="mTransportation" name="privateType" placeholder="Transportation...">
-                <input type="submit">
+                <input type="submit" value="Update">
                 </form>
             </div>
         </div>

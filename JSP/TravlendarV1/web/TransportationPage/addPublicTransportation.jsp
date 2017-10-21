@@ -12,7 +12,7 @@
     if(status != 0) {
         response.sendRedirect("index.jsp");
     }
-    else {
-        response.sendRedirect("index.jsp");
-    }
+        else {
+            response.sendRedirect("index.jsp");
+        }
 %>

@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="../Assets/css/manageStyle.css"/>
-        <title>Travlendar</title>
+        <title>Manage Transportation - Travlendar</title>
         <%
             List<PrivateTransportation> transports = TransportPrivateDAO.getAll();
             request.setAttribute("transports", transports);
@@ -62,7 +62,7 @@
                 <form action="addPrivateTransport.jsp">
                     <label for="fname">Transportation Type</label>
                     <input type="text" id="mTransportation" name="privateType" placeholder="Transportation...">          
-                    <input type="submit">
+                    <input type="submit" name="submit" value="Add">
                 </form>
             </div>
         </div>
@@ -85,6 +85,7 @@
                             <td> ${item.publicType}</td>
                             <td> ${item.publicName}</td>
                             <td>
+                                <a href="updatePublicTransportationForm.jsp?publicId=${item.publicId}" class="button1">Update</a>
                                 <a href="deletePublicTransportation.jsp?publicId=${item.publicId}" class="button1">Delete</a>
                             </td>
                         </tr>
@@ -95,11 +96,11 @@
             <br>
             <div class="form">
                 <form action="addPublicTransportation.jsp">
-                    <label for="fPublicTransportation">Transportation Type</label>
-                    <input type="text" id="mPublicTransportation" name="publicType" placeholder="Public Transportation...">
-                    <label for="fPublicTransportation">Transportation Name</label>
-                    <input type="text" id="mPublicTransportation" name="publicName" placeholder="Public Transportation...">
-                    <input type="submit">
+                    <label for="fPublicType">Transportation Type</label>
+                    <input type="text" id="mPublicType" name="publicType" placeholder="Transportation Type...">
+                    <label for="fPublicName">Transportation Name</label>
+                    <input type="text" id="mPublicName" name="publicName" placeholder="Transportation Name...">
+                    <input type="submit" name="submit" value="Add">
                 </form>
             </div>
         </div>
