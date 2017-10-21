@@ -5,6 +5,8 @@
  */
 package Model;
 
+import static DAO.EventDAO.getConnection;
+import static DAO.LocationDAO.getConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,8 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.sql.Date;
 
 /**
  *
@@ -25,8 +27,6 @@ public class Public_Transportation_Travelling_DAO {
      * @param args the command line arguments
      */
     
-    public class PTransportationTravelling{
-        
         Connection con = null;
         public void connect(){
             try{
@@ -62,19 +62,46 @@ public class Public_Transportation_Travelling_DAO {
         int status = 0;
         try {
             Statement st = con.createStatement();
-            String query = "INSERT INTO public_transportation_traveling(arrival_schedule, departure_schedule) VALUES (?, ?)";
-            ResultSet rs = st.executeQuery(query);
-            Date tDate = rs.getDate();
-            rs.getDate(1, ptt.getArrivalSchedule());
-            rs.setString(2, ptt.getDepartureSchedule());
-            status = rs.executeUpdate();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO Public_Transportation_Traveling(arrival_schedule,departure_schedule) VALUES (?, ?, ?, ?, ?, ?)");
+            ps.setDate(1, new Date(ptt.getArrivalSchedule().getTime()));
+            ps.setDate(2, new Date(ptt.getDepartureSchedule().getTime()));
+            status = ps.executeUpdate();
         }
         catch(Exception e) {
             System.out.println(e);
         }
         return status;
     }
-        
+     
+        public int update(PublicTransportationTravelling ptt) {
+            int status = 0;
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE Public_Transportation_Traveling set LOCATION_ID=?, LOC_LOCATION_ID=?, PUBLIC_ID=?, ARRIVAL_SCHEDULE=?, DEPARTURE_SCHEDULE=? WHERE PUBLIC_TRAVELING_ID=?");
+            ps.setInt(1, ptt.getLocation_id());
+            ps.setInt(2, ptt.getLOC_location_id());
+            ps.setInt(3, ptt.getPublic_id());
+            ps.setDate(4, (Date) ptt.getArrivalSchedule());
+            ps.setDate(5, (Date) ptt.getDepartureSchedule());
+            ps.setInt(6, ptt.getPublic_traveling_id());
+            status = ps.executeUpdate();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
+    
+    public int delete(PublicTransportationTravelling ptt) {
+        int status = 0;
+        try {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM Public_Transportation_Travelling WHERE PUBLIC_TRAVELING_ID=?");
+            ps.setInt(1, ptt.getPublic_traveling_id());
+            status = ps.executeUpdate();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return status;
     }
     
 }
