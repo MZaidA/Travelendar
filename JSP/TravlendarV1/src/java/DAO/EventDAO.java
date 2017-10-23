@@ -55,9 +55,9 @@ public class EventDAO{
                 event.setEventName(rs.getString("EVENT_NAME"));
                 
                 arrival = rs.getString("ARRIVAL_AT_LOCATION");
-                event.setArrivalTime(format.parse(arrival));
-                event.setArrivalDateStr(df.format(event.getArrivalTime()));
-                event.setArrivalTimeStr(tf.format(event.getArrivalTime()));
+                event.setArrivalTime(format.parse(arrival)); //menyamakan format sesuai yang ada pada database
+                event.setArrivalDateStr(df.format(event.getArrivalTime())); //membuat date bertipe string agar dapat dibaca JSON
+                event.setArrivalTimeStr(tf.format(event.getArrivalTime())); //membuat time bertipe string agar dapat dibaca JSON
                 
                 end = rs.getString("EVENT_FINISHED");
                 event.setEndTime(format.parse(end));
@@ -156,7 +156,7 @@ public class EventDAO{
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELETE FROM event WHERE EVENT_ID=?");
+            PreparedStatement ps = con.prepareStatement("DELETE FROM event WHERE EVENT_ID=?");
             ps.setInt(1, event.getEventId());
             status = ps.executeUpdate();
         }
