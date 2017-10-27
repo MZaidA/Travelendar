@@ -165,9 +165,7 @@
 		
         </div>-->
     </div>
-</div>
     
-
 <div class="footer">
 Travlender 2017
 </div>

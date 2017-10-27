@@ -12,8 +12,9 @@
 <head>
 
     <link rel="stylesheet" href="../Assets/css/Style.css"/>
-    <link href="../Assets/jquery/jquery-ui.css" rel="stylesheet"/> <!--DatePicker css-->
-    <script src="../Assets/jquery/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="../Assets/datetimepick/dist/jquery-ui.css"/> <!--http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css-->
+    <link rel="stylesheet" href="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.css"/>
+    
     <script>
     $(document).ready(function(){
             $(".notfirst").click(function() {
@@ -48,7 +49,7 @@
           <li><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
           <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
           <li class="selected"><a href="../CreateAgenda"><img src="../Assets/icon/add.png" width="28" height="28" style="float:left;"><div class="text-navbar">Add Agenda</div></a></li>
-           <li><a href="../AdminPage"><img src="../Assets/icon/manage.png" width="28" height="28" style="float:left;"><div class="text-navbar">Manage</div></a></li>
+           <li><a href="../ManageLocation"><img src="../Assets/icon/manage.png" width="28" height="28" style="float:left;"><div class="text-navbar">Manage</div></a></li>
         </ul>
     </div><!--Class Navbar-->
 
@@ -57,17 +58,16 @@
 
 
 <div class="form">
-	<form action="addagenda.jsp">
-
+    <form name="myform">
     <label for="fname">Event Name</label>
-    <input type="text" id="eventName" name="eventName" placeholder="...">
-    
+    <input type="text" id="eventName" name="eventName" placeholder="..."/>
     <div id="demo" style="display:none">
     <label for="stLoc">Start Location</label>
 	<select class="classic" name="loc2Id">
-      <c:forEach items="${locations}" var="item">
-      <option value="${item.locationId}">${item.locationName}</option>
-      </c:forEach>
+            <c:forEach items="${locations}" var="item">
+            <option value="${item.locationId}">${item.locationName}</option>
+            </c:forEach>
+            <option value="Bandung">Bandung</option>
 	 </select>
     </div>
     <button type="button" class="notfirst">Not First Event</button>
@@ -75,51 +75,95 @@
     <br/>
     <label for="stLoc">Location</label>
     <br/>
-	 <select class="classic" name="locationId">
-      <c:forEach items="${locations}" var="item">
-      <option value="${item.locationId}">${item.locationName}</option>
-      </c:forEach>
-	 </select>
+	<select class="classic" name="locationId">
+      <!-- <c:forEach items="${locations}" var="item">
+      <option name="id" value="${item.locationId}">${item.locationName}</option>
+      </c:forEach>-->
+        <option value="Pesawat">Pesawat</option>
+        <option value="Mobil">Mobil</option>
+	</select>
      <br/>
-    <label for="fname">Start Date</label>
-    <input type="text" style="width:40%;" id="datepicker" name="startDate">
-
-    <label for="fname">Time</label>
-	<input name="startTime" type="text" id="timepicker-one" name="timepicker-one" class="timepicker" style="width:30%;"/>
-    <br />
-    <label for="fname">End Date</label>
-    <input name="endDate" type="text" style="width:40%;" id="datepicker2">
-    <label for="fname">Time</label>
-	<input name="endTime" type="text" id="timepicker-two" name="timepicker-two" class="timepicker" style="width:30%;"/>
+    <label for="fname">Start Date & Time</label>
+    <input type="text" name="dateTime1" id="dateTime1" placeholder="Click Here" />
+ 
+    <br/>
+    <label for="fname">End Date & Time</label>
+    <input type="text" name="dateTime2" id="dateTime2" placeholder="Click Here" />
     <br />
     
     <label for="fname">Keterangan</label>
-    <input type="text" id="keterangan" name="description" placeholder="...">
+    <input type="text" id="keterangan" name="description" placeholder="..."/>
 
-    <input type="submit" value="Add">
+    <input type="button" value="Add" onClick="validateTransport(this.form)"/>
   </form>
+
 	</div>
+    </div>
 </div>
-<br><br><br><br>
-<link rel="stylesheet" href="../Assets/css/wickedpicker.min.css"/> <!--TimePicker css-->
-<script src="../Assets/jquery/external/jquery/jquery.js"></script>
-<script src="../Assets/jquery/jquery-ui.js"></script>
-<script type="text/javascript" src="../Assets/js/wickedpicker.min.js"></script>
+<div class="footer">
+Travlender 2017
+</div>
+
+
+<script type="text/javascript" src="../Assets/datetimepick/jquery/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../Assets/datetimepick/jquery/ui/1.11.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="../Assets/datetimepick/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
+<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-sliderAccess.js"></script>
 
 
 <script>
-var timepickers = $('.timepicker').wickedpicker(); console.log(timepickers.wickedpicker('time', 1)); //JS console: time of timepicker-two
+var myControl=  {
+	create: function(tp_inst, obj, unit, val, min, max, step){
+		$('<input class="ui-timepicker-input" value="'+val+'" style="width:50%">')
+			.appendTo(obj)
+			.spinner({
+				min: min,
+				max: max,
+				step: step,
+				change: function(e,ui){ // key events
+						// don't call if api was used and not key press
+						if(e.originalEvent !== undefined)
+							tp_inst._onTimeChange();
+						tp_inst._onSelectHandler();
+					},
+				spin: function(e,ui){ // spin events
+						tp_inst.control.value(tp_inst, obj, unit, ui.value);
+						tp_inst._onTimeChange();
+						tp_inst._onSelectHandler();
+					}
+			});
+		return obj;
+	},
+	options: function(tp_inst, obj, unit, opts, val){
+		if(typeof(opts) == 'string' && val !== undefined)
+			return obj.find('.ui-timepicker-input').spinner(opts, val);
+		return obj.find('.ui-timepicker-input').spinner(opts);
+	},
+	value: function(tp_inst, obj, unit, val){
+		if(val !== undefined)
+			return obj.find('.ui-timepicker-input').spinner('value', val);
+		return obj.find('.ui-timepicker-input').spinner('value');
+	}
+};
+
+$('#dateTime1').datetimepicker({
+	controlType: myControl
+});
+$('#dateTime2').datetimepicker();
 </script>
 <script>
-$( "#datepicker" ).datepicker({
-	inline: true
-});
-
-$( "#datepicker2" ).datepicker({
-	inline: true
-});
-
-
+function validateTransport(form) {
+    var transporPublic = form.locationId.value;
+    if (transporPublic == "Pesawat"){
+        alert ("Tambah Menu");
+    }
+    else
+    {
+        alert("Langsung");
+        location ="addagenda.jsp";
+    }
+}
 </script>
 </body>
 </html>
