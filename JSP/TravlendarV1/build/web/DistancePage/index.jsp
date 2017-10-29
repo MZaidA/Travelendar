@@ -17,9 +17,9 @@
         <li><strong>Admin</strong>TRAVELENDAR</li> 	
     </div>
 	<%@ include file = "../navbarManage.jsp" %>
-    <div id="mainPanel" style="overflow-x:hidden;">
+    <div id="mainPanel">
         <h1>MANAGE DISTANCE</h1>
-        <table>
+        <table align="center">
           <tr>
             <th>No</th>
             <th>Start Location</th>
@@ -63,7 +63,7 @@
             <td><a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a></td>
           </tr>
         </table>
-    </div>
+    
         <br>
         <br>
     <div class="form">
@@ -90,6 +90,7 @@
               <input type="text" id="mDistance" name="Distance" placeholder="Distance...">
               <input type="submit">
             </form>
-        </div> 
+        </div>
+    </div>
 </body>
 </html>

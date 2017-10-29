@@ -28,15 +28,16 @@
             <li><strong>Admin</strong>TRAVELENDAR</li> 	
         </div>
 	<%@ include file="../navbarManage.jsp"%>
+        
+        <div id="mainPanel">
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Private')" id="defaultOpen">Private</button>
             <button class="tablinks" onclick="openTab(event, 'Public')">Public</button>
         </div>
-        
+            <br/>
         <div id="Private" class="tabcontent">
-            <div id="mainPanel" style="overflow-x:hidden;">        
                 <h1>MANAGE PRIVATE TRANSPORTATION</h1>
-                <table>
+                <table align="center">
                     <tr>
                         <th>Index</th>
                         <th>Identifier</th>
@@ -55,7 +56,7 @@
                         </tr>
                     </c:forEach>
                 </table>
-            </div>
+            
             <br>
             <br>
             <div class="form">
@@ -64,13 +65,13 @@
                     <input type="text" id="mTransportation" name="privateType" placeholder="Transportation...">          
                     <input type="submit" name="submit" value="Add">
                 </form>
-            </div>
+            </div>  
         </div>
         
         <div id="Public" class="tabcontent">
-            <div id="mainPanel" style="overflow-x:hidden;">        
+               
                 <h1>MANAGE PUBLIC TRANSPORTATION</h1>
-                <table>
+                <table align="center">
                     <tr>
                         <th>Index</th>
                         <th>Identifier</th>
@@ -91,7 +92,7 @@
                         </tr>
                     </c:forEach>
                 </table>
-            </div>
+            
             <br>
             <br>
             <div class="form">
@@ -103,6 +104,7 @@
                     <input type="submit" name="submit" value="Add">
                 </form>
             </div>
+        </div>
         </div>
         
         <script>

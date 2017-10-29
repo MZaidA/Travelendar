@@ -33,14 +33,18 @@
             <li><strong>Admin</strong>TRAVELENDAR</li> 	
         </div>
         <%@include file = "../navbarManage.jsp"%>
-        <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Private')" id="defaultOpen">Private</button>
-            <button class="tablinks" onclick="openTab(event, 'Public')">Public</button>
-        </div>
+        
+           
+        <div id="mainPanel" style="overflow-x:hidden;">
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Private')" id="defaultOpen">Private</button>
+                <button class="tablinks" onclick="openTab(event, 'Public')">Public</button>
+            </div>
+            <br/>
         <div id="Private" class="tabcontent">
-            <div id="mainPanel" style="overflow-x:hidden;">
+            
                 <h1>MANAGE PRIVATE TRANSPORTATION TRAVELING</h1>
-                <table>
+                <table align="center">
                     <tr>
                         <th>No</th>
                         <th>Starting Location</th> 
@@ -63,7 +67,7 @@
                         </tr>
                     </c:forEach>
                 </table>
-            </div>
+            
             <br>
             <br>
             <div class="form">
@@ -94,9 +98,9 @@
         </div>
         
         <div id="Public" class="tabcontent">
-            <div id="mainPanel" style="overflow-x:hidden;">
+            
                 <h1>MANAGE ESTIMATED TIME PUBLIC</h1>
-                <table>
+                <table align="center">
                     <tr>
                         <th>No</th>
                         <th>Start Location</th> 
@@ -129,7 +133,7 @@
                         </td>
                     </tr>
                 </table>
-            </div>
+            
             <br>
             <br>
             <div class="form">
@@ -166,6 +170,7 @@
                     <input type="submit">
                 </form>
             </div>
+        </div>
         </div>
         <script>
             function openTab(evt, cityName) {

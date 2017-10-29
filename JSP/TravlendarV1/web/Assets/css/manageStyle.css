@@ -35,7 +35,6 @@ body {
 	color: #fff;
 	list-style: none;
 	padding: 9px 15px;
-	border-bottom: 1px solid rgba(100,100,100,0.3);
 	text-decoration:none;
 }
 
@@ -64,6 +63,7 @@ a {
     padding: 9px 15px;
     border-bottom: 1px solid rgba(100,100,100,0.3);
     text-decoration: none;
+    z-index: 1;
 }
 
 /*-----------------------------*/
@@ -75,9 +75,10 @@ a {
 }
 /*----------------Tabel-----------*/
 table {
+    position: relative;
+    left:6.5%;
+    text-align: center;
     border: 3px solid black;
-    position:relative;
-    left:30%;
     border-collapse:separate;
     width: 53%;
 }
@@ -366,3 +367,46 @@ div.tab button.active {
 .modal-body {padding: 2px 16px;}
 
 /*------------------------------*/
+
+/*Responsive Web*/
+@media (max-width:750px) {
+    #mainPanel{
+        margin-top: 200px;
+    }
+    #mainPanel h1{
+        
+        left: 0%;
+    }
+    #sidebar{
+        width: 100%;
+        height: 100px;
+        z-index: 1;
+    }
+    
+    #sidebar li{
+        float: left;
+    }
+    #sidebar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    table{
+        left: 0%;
+        overflow-x: scroll;
+    }
+    .wrapper li{
+        text-align: center;
+        width: 100%;
+    }
+    .form{
+        left:20%;
+    }
+    div.tab{
+        overflow:visible;
+        border: none;
+        left:0px;
+    }
+    
+}

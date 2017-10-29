@@ -29,9 +29,9 @@
         <li><strong>Admin</strong>TRAVELENDAR</li> 	
     </div>
         <%@ include file = "../navbarManage.jsp" %>
-    <div id="mainPanel" style="overflow-x:hidden;">
+  <div id="mainPanel">
         <h1>MANAGE LOCATION</h1>
-        <table>
+  <table align="center">
     <tr>
       <th>No</th>
       <th>Nama Lokasi</th>
@@ -52,7 +52,7 @@
     </c:forEach>
     
   </table>
-    </div>
+    
     <br>
     <br>
     <div class="form">
@@ -69,6 +69,7 @@
             </select>
             <input type="submit" name="submit" value="Add">
         </form>
+    </div>
     </div>
     <script src="../Assets/js/editAction.js"></script>
 </body>
