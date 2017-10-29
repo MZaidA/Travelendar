@@ -44,9 +44,9 @@ public class EventDAO{
             PreparedStatement ps = con.prepareStatement("SELECT * FROM event");
             ResultSet rs = ps.executeQuery();
             
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            DateFormat tf = new SimpleDateFormat("hh:mm:ss");
+            DateFormat tf = new SimpleDateFormat("HH:mm:ss");
             while(rs.next()) {
                 Event event = new Event();
                 event.setEventId(rs.getInt("EVENT_ID"));
@@ -84,9 +84,9 @@ public class EventDAO{
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            DateFormat tf = new SimpleDateFormat("hh:mm:ss");
+            DateFormat tf = new SimpleDateFormat("HH:mm:ss");
             while(rs.next()) {
                 event = new Event();
                 event.setEventId(rs.getInt("EVENT_ID"));
