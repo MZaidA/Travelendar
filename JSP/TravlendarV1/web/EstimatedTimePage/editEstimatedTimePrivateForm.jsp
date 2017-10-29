@@ -1,16 +1,28 @@
 <%-- 
-    Document   : editEstimatedTime
+    Document   : editEstimatedTimePrivateForm
     Created on : Oct 18, 2017, 11:32:58 PM
-    Author     : GL 553 VD380 i7
+    Author     : Cecep Sutisna
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="DAO.PrivateTransportationTravelingDAO, Model.PrivateTransportationTraveling, java.util.*"%>
+<%@page import="Model.Location"%>
+<%@page import="Model.PrivateTransportation"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="../Assets/css/manageStyle.css"/>
-        <title>JSP Page</title>
+        <title>Update Private Traveling - Travlendar</title>
+        <%
+            List<Location> locations = PrivateTransportationTravelingDAO.getLocation();
+            request.setAttribute("locations", locations);
+        %>
+        <%
+            List<PrivateTransportation> privateTransportations = PrivateTransportationTravelingDAO.getPrivateTransportation();
+            request.setAttribute("privateTransportations", privateTransportations);
+        %>
     </head>
     <body>
         <div class="wrapper">
@@ -18,39 +30,37 @@
         </div>
         <%@ include file = "../navbarManage.jsp" %>
         <div id="mainPanel" style="overflow-x:hidden;">
-            <h1>UPDATE ESTIMATED TIME PRIVATE</h1>
+            <% 
+                String privateTravelingId = request.getParameter("privateTravelingId");
+                PrivateTransportationTraveling priv = PrivateTransportationTravelingDAO.getPrivateTravelingById(privateTravelingId);
+            %>
+            <h1>UPDATE PRIVATE TRANSPORTATION TRAVELING</h1>
             <div class="form">
-	    <form action="/action_page.php">
-            <label for="LocationA">Location A</label>	
-                <select class="minimal" id="Locationa" name="Locationa">
-                    <option value="rumah">Rumah</option>
-                    <option value="kantor_dprd">Kantor DPRD</option>
-                    <option value="bandara_banka">Bandara Banka</option>
-                    <option value="bandara_halim">Bandara Halim Perdanakusuma</option>
-                    <option value="jakarta">Jakarta</option>
-                    <option value="tangerang">Tangerang</option>
-                </select>
-            <label for="LocationB">Location B</label>	
-                <select class="minimal" id="Locationb" name="Locationb">
-                    <option value="rumah">Rumah</option>
-                    <option value="kantor_dprd">Kantor DPRD</option>
-                    <option value="bandara_banka">Bandara Banka</option>
-                    <option value="bandara_halim">Bandara Halim Perdanakusuma</option>
-                    <option value="jakarta">Jakarta</option>
-                    <option value="tangerang">Tangerang</option>
-                </select>
-            <label for="fname">Transportaion Mode</label>
-                <select class="minimal">
-                    <option>Walk</option>
-                    <option>Bicycle</option>
-                    <option>Motorcycle</option>
-                    <option>Car</option>
-                </select>
-            <label for="fname">Time(Minutes)</label>
-                <input type="text" id="Time" name="Time" placeholder="Time(Minutes)...">            
-            <input type="submit">
-            </form>
+                <form action="editEstimatedTimePrivate.jsp">
+                    <input type="hidden" id="mPrivateTravelingId" name="privateTravelingId" value="<%=priv.getPrivateTravelingId()%>">
+                    <label for="fLocation">Starting Location</label>
+                    <select name="locationId" class="minimal">
+                        <c:forEach items="${locations}" var="item">
+                            <option value="${item.locationId}">${item.locationName}</option>
+                        </c:forEach>
+                    </select>
+                    <label for="fLocation">Destination</label>
+                    <select name="locLocationId" class="minimal">
+                        <c:forEach items="${locations}" var="item">
+                            <option value="${item.locationId}">${item.locationName}</option>
+                        </c:forEach>
+                    </select>
+                    <label for="fPrivateTransportation">Transportation Type</label>
+                    <select name="privateId" class="minimal">
+                        <c:forEach items="${privateTransportations}" var="item">
+                            <option value="${item.privateId}">${item.privateType}</option>
+                        </c:forEach>
+                    </select>
+                    <label for="fTravelingTime">Traveling Time</label>
+                    <input type="text" id="mTravelingTime" name="travelingTime" placeholder="Traveling Time...">
+                    <input type="submit" name="submit" value="Update">
+                </form>
+            </div>
         </div>
-    </div>
     </body>
 </html>
