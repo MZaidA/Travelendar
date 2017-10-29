@@ -1,17 +1,21 @@
 <%-- 
-    Document   : editEstimatedTmePrivate
-    Created on : Oct 29, 2017, 12:24:51 PM
+    Document   : editEstimatedTimePrivate
+    Created on : Oct 21, 2017, 10:07:33 PM
     Author     : Cecep Sutisna
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@page import="DAO.PrivateTransportationTravelingDAO"%>
+<jsp:useBean id="priv" class="Model.PrivateTransportationTraveling"></jsp:useBean>
+<jsp:setProperty property="*" name="priv"/>
+
+<% 
+    int status = PrivateTransportationTravelingDAO.update(priv);
+    if(status != 0)
+    {
+        response.sendRedirect("index.jsp");
+    }
+        else 
+        {
+            response.sendRedirect("index.jsp");
+        }
+%>
