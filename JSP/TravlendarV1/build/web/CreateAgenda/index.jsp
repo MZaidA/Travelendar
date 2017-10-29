@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../Assets/css/Style.css"/>
     <link rel="stylesheet" href="../Assets/datetimepick/dist/jquery-ui.css"/> <!--http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css-->
     <link rel="stylesheet" href="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.css"/>
-    
+    <script type="text/javascript" src="../Assets/datetimepick/jquery/jquery-1.11.1.min.js"></script>
     <script>
     $(document).ready(function(){
             $(".notfirst").click(function() {
@@ -24,6 +24,7 @@
             $(".first").click(function() {
                     $("#demo").show(1000)});
     });
+
     </script>
     
     <title>Travelendar</title>
@@ -70,19 +71,33 @@
             <option value="Bandung">Bandung</option>
 	 </select>
     </div>
-    <button type="button" class="notfirst">Not First Event</button>
-    <button type="button" class="first">First Event</button>
+    <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
+    <input type="radio" class="first" name="firstornot">First Event</input>
     <br/>
     <label for="stLoc">Location</label>
     <br/>
-	<select class="classic" name="locationId">
+    <select class="classic" name="locationId" id="Test" onClick="showBandara(locationId.value)">
       <!-- <c:forEach items="${locations}" var="item">
       <option name="id" value="${item.locationId}">${item.locationName}</option>
       </c:forEach>-->
+        <option value=""></option>
         <option value="Pesawat">Pesawat</option>
         <option value="Mobil">Mobil</option>
 	</select>
      <br/>
+    <div id="bandara" style="display:none">
+        <label for="stLoc">Bandara 1</label>
+	<select class="classic" name="loc2Id">
+            <option value="Bandara1">Bandara1</option>
+            <option value="Bandara1">Bandara2</option>
+	</select>
+        <label for="stLoc">Bandara 2</label>
+	<select class="classic" name="loc2Id">
+            <option value="Bandara1">Bandara1</option>
+            <option value="Bandara2">Bandara2</option>
+	</select>
+    </div>
+    
     <label for="fname">Start Date & Time</label>
     <input type="text" name="dateTime1" id="dateTime1" placeholder="Click Here" />
  
@@ -105,7 +120,7 @@ Travlender 2017
 </div>
 
 
-<script type="text/javascript" src="../Assets/datetimepick/jquery/jquery-1.11.1.min.js"></script>
+
 <script type="text/javascript" src="../Assets/datetimepick/jquery/ui/1.11.0/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.js"></script>
 <script type="text/javascript" src="../Assets/datetimepick/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
@@ -153,10 +168,19 @@ $('#dateTime1').datetimepicker({
 $('#dateTime2').datetimepicker();
 </script>
 <script>
+function showBandara(value){
+    if(value == "Pesawat"){
+        document.getElementById("bandara").style.display ='block';
+    }
+    else{
+        document.getElementById("bandara").style.display ='none';
+    }
+}
 function validateTransport(form) {
     var transporPublic = form.locationId.value;
     if (transporPublic == "Pesawat"){
         alert ("Tambah Menu");
+        document.getElementById(bandara).style.display ='block';
     }
     else
     {
