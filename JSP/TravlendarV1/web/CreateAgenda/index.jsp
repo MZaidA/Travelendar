@@ -18,11 +18,11 @@
     <script>
     $(document).ready(function(){
             $(".notfirst").click(function() {
-                    $("#demo").hide(1000)});
+                    $("#demo").hide(10)});
     });
     $(document).ready(function(){
             $(".first").click(function() {
-                    $("#demo").show(1000)});
+                    $("#demo").show(10)});
     });
 
     </script>
