@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2017 at 08:17 AM
+-- Generation Time: Oct 29, 2017 at 02:35 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lander_v1.5`
+-- Database: `travlendar`
 --
 
 -- --------------------------------------------------------
@@ -147,14 +147,13 @@ INSERT INTO `district` (`DISTRICT_ID`, `PROVINCE_ID`, `DISTRICT_NAME`) VALUES
 
 CREATE TABLE `event` (
   `EVENT_ID` int(11) NOT NULL,
-  `PUBLIC_ID` int(11) DEFAULT NULL,
-  `LOCATION_ID` int(11) DEFAULT NULL,
-  `LOC_LOCATION_ID` int(11) NOT NULL,
-  `PRIVATE_ID` int(11) DEFAULT NULL,
+  `SCHEDULED_TRANSPORTATION_ID` int(11) DEFAULT NULL,
+  `EVENT_LOCATION_ID` int(11) DEFAULT NULL,
+  `START_LOCATION_ID` int(11) NOT NULL,
+  `UNSCHEDULED_TRANSPORTATION_ID` int(11) DEFAULT NULL,
   `EVENT_NAME` varchar(40) NOT NULL,
-  `ARRIVAL_AT_LOCATION` datetime DEFAULT NULL,
-  `EVENT_FINISHED` datetime DEFAULT NULL,
-  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `ARRIVAL_AT_LOCATION` datetime NOT NULL,
+  `EVENT_FINISHED` datetime NOT NULL,
   `DEPARTURE_TO_LOCATION` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -202,31 +201,6 @@ CREATE TABLE `location` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `private_transportation`
---
-
-CREATE TABLE `private_transportation` (
-  `PRIVATE_ID` int(11) NOT NULL,
-  `PRIVATE_TYPE` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `private_transportation_traveling`
---
-
-CREATE TABLE `private_transportation_traveling` (
-  `PRIVATE_TRAVELING_ID` int(11) NOT NULL,
-  `LOCATION_ID` int(11) NOT NULL,
-  `LOC_LOCATION_ID` int(11) NOT NULL,
-  `PRIVATE_ID` int(11) NOT NULL,
-  `TRAVELING_TIME` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `province`
 --
 
@@ -241,67 +215,40 @@ CREATE TABLE `province` (
 --
 
 INSERT INTO `province` (`PROVINCE_ID`, `ISLAND_ID`, `PROVINCE_NAME`) VALUES
-(1, 1, 'ACEH'),
-(2, 1, 'SUMATERA UTARA'),
-(3, 1, 'SUMATERA BARAT'),
-(4, 1, 'RIAU'),
-(5, 1, 'JAMBI'),
-(6, 1, 'SUMATERA SELATAN'),
-(7, 1, 'BENGKULU'),
-(8, 1, 'LAMPUNG'),
-(9, 2, 'KEP. BANGKA BELITUNG'),
-(10, 11, 'KEP. RIAU'),
-(11, 4, 'DKI JAKARTA'),
-(12, 4, 'JAWA BARAT'),
-(13, 4, 'JAWA TENGAH'),
-(14, 4, 'BANTEN'),
-(15, 4, 'JAWA TIMUR'),
-(16, 4, 'YOGYAKARTA'),
-(17, 7, 'BALI'),
-(18, 8, 'NUSA TENGGARA BARAT'),
-(19, 9, 'NUSA TENGGARA TIMUR'),
-(20, 5, 'KALIMANTAN BARAT'),
-(21, 5, 'KALIMANTAN TENGAH'),
-(22, 5, 'KALIMANTAN SELATAN'),
-(23, 5, 'KALIMANTAN TIMUR'),
-(24, 5, 'KALIMANTAN UTARA'),
-(25, 6, 'SULAWESI UTARA'),
-(26, 6, 'SULAWESI TENGAH'),
-(27, 6, 'SULAWESI SELATAN'),
-(28, 6, 'SULAWESI TENGGARA'),
-(29, 6, 'GORONTALO'),
-(30, 6, 'SULAWESI BARAT'),
-(31, 10, 'MALUKU'),
-(32, 10, 'MALUKU UTARA'),
-(33, 10, 'PAPUA'),
-(34, 10, 'PAPUA BARAT');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `public_transportation`
---
-
-CREATE TABLE `public_transportation` (
-  `PUBLIC_ID` int(11) NOT NULL,
-  `PUBLIC_TYPE` varchar(40) NOT NULL,
-  `PUBLIC_NAME` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `public_transportation_traveling`
---
-
-CREATE TABLE `public_transportation_traveling` (
-  `PUBLIC_TRAVELING_ID` int(11) NOT NULL,
-  `LOCATION_ID` int(11) NOT NULL,
-  `LOC_LOCATION_ID` int(11) NOT NULL,
-  `PUBLIC_ID` int(11) NOT NULL,
-  `ARRIVAL_SCHEDULE` datetime NOT NULL,
-  `DEPARTURE_SCHEDULE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(1, 1, 'Aceh'),
+(2, 1, 'Sumatera Utara'),
+(3, 1, 'Sumatera Barat'),
+(4, 1, 'Riau'),
+(5, 1, 'Jambi'),
+(6, 1, 'Sumatera Selatan'),
+(7, 1, 'Bengkulu'),
+(8, 1, 'Lampung'),
+(9, 2, 'Kep. Bangka Belitung'),
+(10, 11, 'Kep. Riau'),
+(11, 4, 'DKI Jakarta'),
+(12, 4, 'Jawa Barat'),
+(13, 4, 'Jawa Tengah'),
+(14, 4, 'Banten'),
+(15, 4, 'Jawa Timur'),
+(16, 4, 'Yogyakarta'),
+(17, 7, 'Bali'),
+(18, 8, 'Nusa Tenggara Barat'),
+(19, 9, 'Nusa Tenggara Timur'),
+(20, 5, 'Kalimantan Barat'),
+(21, 5, 'Kalimantan Tengah'),
+(22, 5, 'Kalimantan Selatan'),
+(23, 5, 'Kalimantan Timur'),
+(24, 5, 'Kalimantan Utara'),
+(25, 6, 'Sulawesi Utara'),
+(26, 6, 'Sulawesi Tengah'),
+(27, 6, 'Sulawesi Selatan'),
+(28, 6, 'Sulawesi Tenggara'),
+(29, 6, 'Gorontalo'),
+(30, 6, 'Sulawesi Barat'),
+(31, 10, 'Maluku'),
+(32, 10, 'Maluku Utara'),
+(33, 10, 'Papua'),
+(34, 10, 'Papua Barat');
 
 -- --------------------------------------------------------
 
@@ -310,7 +257,7 @@ CREATE TABLE `public_transportation_traveling` (
 --
 
 CREATE TABLE `transportation_base` (
-  `PUBLIC_ID` int(11) NOT NULL,
+  `SCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL,
   `LOCATION_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -323,17 +270,17 @@ CREATE TABLE `transportation_base` (
 --
 ALTER TABLE `district`
   ADD PRIMARY KEY (`DISTRICT_ID`),
-  ADD KEY `FK_MENGAMBIL_PROVINSI` (`PROVINCE_ID`);
+  ADD KEY `FK_MENGAMBIL_DATA_PROVINSI` (`PROVINCE_ID`);
 
 --
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`EVENT_ID`),
-  ADD KEY `FK_MEMILIH_KENDARAAN_PRIBADI_SESUAI_SARAN` (`PRIVATE_ID`),
-  ADD KEY `FK_MEMILIH_KENDARAAN_UMUM_SESUAI_SARAN` (`PUBLIC_ID`),
-  ADD KEY `FK_MEMILIH_LOKASI_AWAL_UNTUK_EVENT_PERTAMA` (`LOCATION_ID`),
-  ADD KEY `FK_MEMILIH_LOKASI_EVENT` (`LOC_LOCATION_ID`);
+  ADD KEY `FK_MEMILIH_KENDARAAN_TERJADWAL_SESUAI_SARAN` (`SCHEDULED_TRANSPORTATION_ID`),
+  ADD KEY `FK_MEMILIH_KENDARAAN_TIDAK_TERJADWAL_SESUAI_SARAN` (`UNSCHEDULED_TRANSPORTATION_ID`),
+  ADD KEY `FK_MEMILIH_LOKASI_AWAL_UNTUK_EVENT_PERTAMA` (`EVENT_LOCATION_ID`),
+  ADD KEY `FK_MEMILIH_LOKASI_EVENT` (`START_LOCATION_ID`);
 
 --
 -- Indexes for table `island`
@@ -346,50 +293,20 @@ ALTER TABLE `island`
 --
 ALTER TABLE `location`
   ADD PRIMARY KEY (`LOCATION_ID`),
-  ADD KEY `FK_MENGAMBIL_KABUPATEN_KOTA` (`DISTRICT_ID`);
-
---
--- Indexes for table `private_transportation`
---
-ALTER TABLE `private_transportation`
-  ADD PRIMARY KEY (`PRIVATE_ID`);
-
---
--- Indexes for table `private_transportation_traveling`
---
-ALTER TABLE `private_transportation_traveling`
-  ADD PRIMARY KEY (`PRIVATE_TRAVELING_ID`),
-  ADD KEY `FK_MENGAMBIL_KENDARAAN_PRIBADI` (`PRIVATE_ID`),
-  ADD KEY `FK_MENGAMBIL_LOKASI_AKHIR_UNTUK_KENDARAAN_PRIBADI` (`LOCATION_ID`),
-  ADD KEY `FK_MENGAMBIL_LOKASI_AWAL_UNTUK_KENDARAAN_PRIBADI` (`LOC_LOCATION_ID`);
+  ADD KEY `FK_MENGAMBIL_DATA_KABUPATEN_KOTA` (`DISTRICT_ID`);
 
 --
 -- Indexes for table `province`
 --
 ALTER TABLE `province`
   ADD PRIMARY KEY (`PROVINCE_ID`),
-  ADD KEY `FK_MENGAMBIL_PULAU` (`ISLAND_ID`);
-
---
--- Indexes for table `public_transportation`
---
-ALTER TABLE `public_transportation`
-  ADD PRIMARY KEY (`PUBLIC_ID`);
-
---
--- Indexes for table `public_transportation_traveling`
---
-ALTER TABLE `public_transportation_traveling`
-  ADD PRIMARY KEY (`PUBLIC_TRAVELING_ID`),
-  ADD KEY `FK_MENGAMBIL_KENDARAAN_UMUM` (`PUBLIC_ID`),
-  ADD KEY `FK_MENGAMBIL_LOKASI_AKHIR_UNTUK_KENDARAAN_UMUM` (`LOC_LOCATION_ID`),
-  ADD KEY `FK_MENGAMBIL_LOKASI_AWAL_UNTUK_KENDARAAN_UMUM` (`LOCATION_ID`);
+  ADD KEY `FK_MENGAMBIL_DATA_PULAU` (`ISLAND_ID`);
 
 --
 -- Indexes for table `transportation_base`
 --
 ALTER TABLE `transportation_base`
-  ADD PRIMARY KEY (`PUBLIC_ID`,`LOCATION_ID`),
+  ADD PRIMARY KEY (`SCHEDULED_TRANSPORTATION_ID`,`LOCATION_ID`),
   ADD KEY `FK_TRANSPORTATION_BASE2` (`LOCATION_ID`);
 
 --
@@ -410,37 +327,17 @@ ALTER TABLE `event`
 -- AUTO_INCREMENT for table `island`
 --
 ALTER TABLE `island`
-  MODIFY `ISLAND_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ISLAND_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
   MODIFY `LOCATION_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `private_transportation`
---
-ALTER TABLE `private_transportation`
-  MODIFY `PRIVATE_ID` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `private_transportation_traveling`
---
-ALTER TABLE `private_transportation_traveling`
-  MODIFY `PRIVATE_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `province`
 --
 ALTER TABLE `province`
   MODIFY `PROVINCE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
---
--- AUTO_INCREMENT for table `public_transportation`
---
-ALTER TABLE `public_transportation`
-  MODIFY `PUBLIC_ID` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `public_transportation_traveling`
---
-ALTER TABLE `public_transportation_traveling`
-  MODIFY `PUBLIC_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -449,50 +346,34 @@ ALTER TABLE `public_transportation_traveling`
 -- Constraints for table `district`
 --
 ALTER TABLE `district`
-  ADD CONSTRAINT `FK_MENGAMBIL_PROVINSI` FOREIGN KEY (`PROVINCE_ID`) REFERENCES `province` (`PROVINCE_ID`);
+  ADD CONSTRAINT `FK_MENGAMBIL_DATA_PROVINSI` FOREIGN KEY (`PROVINCE_ID`) REFERENCES `province` (`PROVINCE_ID`);
 
 --
 -- Constraints for table `event`
 --
 ALTER TABLE `event`
-  ADD CONSTRAINT `FK_MEMILIH_KENDARAAN_PRIBADI_SESUAI_SARAN` FOREIGN KEY (`PRIVATE_ID`) REFERENCES `private_transportation` (`PRIVATE_ID`),
-  ADD CONSTRAINT `FK_MEMILIH_KENDARAAN_UMUM_SESUAI_SARAN` FOREIGN KEY (`PUBLIC_ID`) REFERENCES `public_transportation` (`PUBLIC_ID`),
-  ADD CONSTRAINT `FK_MEMILIH_LOKASI_AWAL_UNTUK_EVENT_PERTAMA` FOREIGN KEY (`LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`),
-  ADD CONSTRAINT `FK_MEMILIH_LOKASI_EVENT` FOREIGN KEY (`LOC_LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
+  ADD CONSTRAINT `FK_MEMILIH_KENDARAAN_TERJADWAL_SESUAI_SARAN` FOREIGN KEY (`SCHEDULED_TRANSPORTATION_ID`) REFERENCES `scheduled_transportation` (`SCHEDULED_TRANSPORTATION_ID`),
+  ADD CONSTRAINT `FK_MEMILIH_KENDARAAN_TIDAK_TERJADWAL_SESUAI_SARAN` FOREIGN KEY (`UNSCHEDULED_TRANSPORTATION_ID`) REFERENCES `unscheduled_transportation` (`UNSCHEDULED_TRANSPORTATION_ID`),
+  ADD CONSTRAINT `FK_MEMILIH_LOKASI_AWAL_UNTUK_EVENT_PERTAMA` FOREIGN KEY (`EVENT_LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`),
+  ADD CONSTRAINT `FK_MEMILIH_LOKASI_EVENT` FOREIGN KEY (`START_LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
 
 --
 -- Constraints for table `location`
 --
 ALTER TABLE `location`
-  ADD CONSTRAINT `FK_MENGAMBIL_KABUPATEN_KOTA` FOREIGN KEY (`DISTRICT_ID`) REFERENCES `district` (`DISTRICT_ID`);
-
---
--- Constraints for table `private_transportation_traveling`
---
-ALTER TABLE `private_transportation_traveling`
-  ADD CONSTRAINT `FK_MENGAMBIL_KENDARAAN_PRIBADI` FOREIGN KEY (`PRIVATE_ID`) REFERENCES `private_transportation` (`PRIVATE_ID`),
-  ADD CONSTRAINT `FK_MENGAMBIL_LOKASI_AKHIR_UNTUK_KENDARAAN_PRIBADI` FOREIGN KEY (`LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`),
-  ADD CONSTRAINT `FK_MENGAMBIL_LOKASI_AWAL_UNTUK_KENDARAAN_PRIBADI` FOREIGN KEY (`LOC_LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
+  ADD CONSTRAINT `FK_MENGAMBIL_DATA_KABUPATEN_KOTA` FOREIGN KEY (`DISTRICT_ID`) REFERENCES `district` (`DISTRICT_ID`);
 
 --
 -- Constraints for table `province`
 --
 ALTER TABLE `province`
-  ADD CONSTRAINT `FK_MENGAMBIL_PULAU` FOREIGN KEY (`ISLAND_ID`) REFERENCES `island` (`ISLAND_ID`);
-
---
--- Constraints for table `public_transportation_traveling`
---
-ALTER TABLE `public_transportation_traveling`
-  ADD CONSTRAINT `FK_MENGAMBIL_KENDARAAN_UMUM` FOREIGN KEY (`PUBLIC_ID`) REFERENCES `public_transportation` (`PUBLIC_ID`),
-  ADD CONSTRAINT `FK_MENGAMBIL_LOKASI_AKHIR_UNTUK_KENDARAAN_UMUM` FOREIGN KEY (`LOC_LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`),
-  ADD CONSTRAINT `FK_MENGAMBIL_LOKASI_AWAL_UNTUK_KENDARAAN_UMUM` FOREIGN KEY (`LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
+  ADD CONSTRAINT `FK_MENGAMBIL_DATA_PULAU` FOREIGN KEY (`ISLAND_ID`) REFERENCES `island` (`ISLAND_ID`);
 
 --
 -- Constraints for table `transportation_base`
 --
 ALTER TABLE `transportation_base`
-  ADD CONSTRAINT `FK_TRANSPORTATION_BASE` FOREIGN KEY (`PUBLIC_ID`) REFERENCES `public_transportation` (`PUBLIC_ID`),
+  ADD CONSTRAINT `FK_TRANSPORTATION_BASE` FOREIGN KEY (`SCHEDULED_TRANSPORTATION_ID`) REFERENCES `scheduled_transportation` (`SCHEDULED_TRANSPORTATION_ID`),
   ADD CONSTRAINT `FK_TRANSPORTATION_BASE2` FOREIGN KEY (`LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
 COMMIT;
 
