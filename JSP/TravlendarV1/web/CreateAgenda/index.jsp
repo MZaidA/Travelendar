@@ -68,13 +68,20 @@
             <c:forEach items="${locations}" var="item">
             <option value="${item.locationId}">${item.locationName}</option>
             </c:forEach>
-            <option value="Bandung">Bandung</option>
 	 </select>
     </div>
     <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
     <input type="radio" class="first" name="firstornot">First Event</input>
     <br/>
-    <label for="stLoc">Location</label>
+    
+    <label for="fname">Location</label>
+    <select class="classic" name="loc2Id">
+            <c:forEach items="${locations}" var="item">
+            <option value="${item.locationId}">${item.locationName}</option>
+            </c:forEach>
+    </select>
+    
+    <label for="stLoc">Transportation</label>
     <br/>
     <select class="classic" name="locationId" id="Test" onClick="showBandara(locationId.value)">
       <!-- <c:forEach items="${locations}" var="item">
