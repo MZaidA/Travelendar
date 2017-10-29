@@ -40,6 +40,7 @@ public class EventDAO{
         try{
             String arrival;
             String end;
+            String departure;
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM event");
             ResultSet rs = ps.executeQuery();
@@ -50,8 +51,8 @@ public class EventDAO{
             while(rs.next()) {
                 Event event = new Event();
                 event.setEventId(rs.getInt("EVENT_ID"));
-		event.setLocationId(rs.getInt("LOCATION_ID"));
-		event.setLoc2Id(rs.getInt("LOC_LOCATION_ID"));
+                event.setLocationId(rs.getInt("LOCATION_ID"));
+                event.setLoc2Id(rs.getInt("LOC_LOCATION_ID"));
                 event.setEventName(rs.getString("EVENT_NAME"));
                 
                 arrival = rs.getString("ARRIVAL_AT_LOCATION");
@@ -63,6 +64,11 @@ public class EventDAO{
                 event.setEndTime(format.parse(end));
                 event.setEndDateStr(df.format(event.getEndTime()));
                 event.setEndTimeStr(tf.format(event.getEndTime()));
+                
+//                departure = rs.getString("DEPARTURE_TO_LOCATION");
+//                event.setDepartureToLocation(format.parse(departure));
+//                event.setDepartureDateStr(df.format(event.getDepartureToLocation()));
+//                event.setDepartureTimeStr(tf.format(event.getDepartureToLocation()));
                 
                 event.setDescription(rs.getString("DESCRIPTION"));
                 events.add(event);

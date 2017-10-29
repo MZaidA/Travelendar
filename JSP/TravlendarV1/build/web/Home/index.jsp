@@ -47,7 +47,9 @@
             <div class="row">
                 <div class="column">
                     <div class="t3">${item.eventName}</div>
-                    <div class="t4">Time: ${item.arrivalDateStr} ${item.arrivalTimeStr} - ${item.endTimeStr}</div>
+                    <div class="t4">Date & Time Arrival: ${item.arrivalDateStr} ${item.arrivalTimeStr}</div>
+                    <div class="t4">Date & Time End Event: ${item.endDateStr} ${item.endTimeStr}</div>
+                    <div class="t4">Date & Time Departure To Next Event: ${item.departureDateStr} ${item.departureTimeStr}</div>
                 </div>
                 <div class="column2">
                     SUGGESTION

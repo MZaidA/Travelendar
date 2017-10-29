@@ -29,6 +29,10 @@ public class Event {
     private String arrivalDateStr;
     private String arrivalTimeStr;
     
+    private Date departureToLocation = new Date();
+    private String departureDateStr;
+    private String departureTimeStr;
+
     private Location location;
     private String description;
 
@@ -70,6 +74,30 @@ public class Event {
 
     public String getArrivalDateStr() {
         return arrivalDateStr;
+    }
+
+    public Date getDepartureToLocation() {
+        return departureToLocation;
+    }
+
+    public void setDepartureToLocation(Date departureToLocation) {
+        this.departureToLocation = departureToLocation;
+    }
+
+    public String getDepartureDateStr() {
+        return departureDateStr;
+    }
+
+    public void setDepartureDateStr(String departureDateStr) {
+        this.departureDateStr = departureDateStr;
+    }
+
+    public String getDepartureTimeStr() {
+        return departureTimeStr;
+    }
+
+    public void setDepartureTimeStr(String departureTimeStr) {
+        this.departureTimeStr = departureTimeStr;
     }
 
     public void setArrivalDateStr(String arrivalDateStr) {
