@@ -6,11 +6,11 @@
 
 <%@page import="DAO.UnscheduledTransportationDAO"%>
 <jsp:useBean id="uns" class="Model.UnscheduledTransportation"></jsp:useBean>
-<jsp:setProperty property="*" name="uns"/>
+<jsp:setProperty property="*" name="uns"></jsp:setProperty>
 
 <% 
-    int i = UnscheduledTransportationDAO.update(uns);
-    if(i != 0)
+    int status = UnscheduledTransportationDAO.update(uns);
+    if(status != 0)
     {
         response.sendRedirect("index.jsp");
     }

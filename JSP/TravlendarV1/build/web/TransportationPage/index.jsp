@@ -53,7 +53,7 @@
                             <td> ${loop.index+1}</td>
                             <td> ${item.unscheduledTransportationType}</td>
                             <td>
-                                <a href="editUnscheduledTransportationForm.jsp?unscheduledTransportationId=${item.unscheduledTransportationId}" class="button1">Update</a>
+                                <a href="editUnscheduledTransportForm.jsp?unscheduledTransportationId=${item.unscheduledTransportationId}" class="button1">Update</a>
                                 <a href="deleteUnscheduledTransportation.jsp?unscheduledTransportationId=${item.unscheduledTransportationId}" class="button1">Delete</a>
                             </td>
                         </tr>

@@ -19,7 +19,7 @@
             <li><strong>Admin</strong>TRAVELENDAR</li> 	
         </div>
         <%@include file = "../navbarManage.jsp" %>
-        <div id="mainPanel" style="overflow-x:hidden;">
+        <div id="mainPanel">
             <% 
                 String unscheduledTransportationId = request.getParameter("unscheduledTransportationId");
                 UnscheduledTransportation uns = UnscheduledTransportationDAO.getUnscheduledTransportationById(unscheduledTransportationId);
@@ -27,9 +27,9 @@
             <h1>UPDATE UNSCHEDULED TRANSPORTATION</h1>
             <div class="form">
                 <form action="editUnscheduledTransportation.jsp">
-                <input type="hidden" id="mUnscheduledTransportationId" name="unsscheduledTransportationId" value="<%=uns.getUnscheduledTransportationType()%>">
+                <input type="hidden" id="mUnscheduledTransportationId" name="unscheduledTransportationId" value="<%=uns.getUnscheduledTransportationId()%>">
                 <label for="fname">Transportation Type</label>
-                <input type="text" id="mUnscheduledTransportationType" name="unscheduledTransportationType" placeholder="Transportation Type...">
+                <input type="text" id="mUnscheduledTransportationType" name="unscheduledTransportationType" placeholder="Transportation Type..." required>
                 <input type="submit" value="Update">
                 </form>
             </div>
