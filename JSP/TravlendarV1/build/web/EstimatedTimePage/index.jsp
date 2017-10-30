@@ -8,6 +8,8 @@
 <%@page import="DAO.UnscheduledTravelingTableDAO, Model.UnscheduledTravelingTable, java.util.*"%>
 <%@page import="Model.Location"%>
 <%@page import="Model.UnscheduledTransportation"%>
+<%@page import="Model.ScheduledTransportation, Model.ScheduledTravelingTable"%>
+<%@page import="DAO.ScheduledTravelingTableDAO"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -27,6 +29,16 @@
             List<UnscheduledTransportation> unscheduledTransportations = UnscheduledTravelingTableDAO.getUnscheduledTransportation();
             request.setAttribute("unscheduledTransportations", unscheduledTransportations);
         %>
+
+        <%
+            List<ScheduledTravelingTable> scheduledTravelingTables = ScheduledTravelingTableDAO.getAll();
+            request.setAttribute("scheduledTravelingTables", scheduledTravelingTables);
+        %>
+
+        <%
+            List<ScheduledTransportation> scheduledTransportations = ScheduledTravelingTableDAO.getScheduledTransportation();
+            request.setAttribute("scheduledTransportations", scheduledTransportations);
+        %>
     </head>
     <body>
         <div class="wrapper">
@@ -45,7 +57,7 @@
                 <table align="center">
                     <tr>
                         <th>No</th>
-                        <th>Starting Location</th> 
+                        <th>Start Location</th> 
                         <th>Destination</th>
                         <th>Transportation Type</th>
                         <th>Traveling Time (mins)</th>
@@ -102,65 +114,37 @@
                     <tr>
                         <th>No</th>
                         <th>Start Location</th> 
-                        <th>Finish Location</th>
+                        <th>Destination</th>
                         <th>Transportation Mode</th>
                         <th>Departure Time</th>
                         <th>Arrival Time</th>
                         <th>Action</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Rumah</td>
-                        <td>Kantor DPRD</td>
-                        <td>Bus</td>
-                        <td>07:00</td>
-                        <td>10:00</td>
-                        <td>
-                            <a href="updateEstimatedTimePublic.jsp" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Rumah</td>
-                        <td>Kantor DPRD</td>
-                        <td>Train</td>
-                        <td>07:00</td>
-                        <td>10:00</td>
-                        <td>
-                            <a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a>
-                        </td>
-                    </tr>
+                    
                 </table>
                 </div>
             <br>
             <br>
             <div class="form">
-	    	<form action="/action_page.php">
+	    	<form action="addScheduledTravellingTable.jsp">
                     <label for="LocationA">Location A</label>	
                     <select class="minimal" id="Locationa" name="Locationa">
-                        <option value="rumah">Rumah</option>
-                        <option value="kantor_dprd">Kantor DPRD</option>
-                        <option value="bandara_banka">Bandara Banka</option>
-                        <option value="bandara_halim">Bandara Halim Perdanakusuma</option>
-                        <option value="jakarta">Jakarta</option>
-                        <option value="tangerang">Tangerang</option>
+                        <c:forEach items="${locations}" var="item">
+                            <option value="${item.locationId}">${item.locationName}</option>
+                        </c:forEach>
                     </select>
                     <label for="LocationB">Location B</label>	
                     <select class="minimal" id="Locationb" name="Locationb">
-                        <option value="rumah">Rumah</option>
-                        <option value="kantor_dprd">Kantor DPRD</option>
-                        <option value="bandara_banka">Bandara Banka</option>
-                        <option value="bandara_halim">Bandara Halim Perdanakusuma</option>
-                        <option value="jakarta">Jakarta</option>
-                        <option value="tangerang">Tangerang</option>
+                        <c:forEach items="${locations}" var="item">
+                            <option value="${item.locationId}">${item.locationName}</option>
+                        </c:forEach>
                     </select>
-                    <label for="fname">Transportaion Mode</label>
+                    <!-- <label for="fname">Transportaion Name</label>
                     <select class="minimal">
-                        <option>Bus</option>
-                        <option>Train</option>
-                        <option>Ship</option>
-                        <option>Plane</option>
-                    </select>
+                        <c:forEach items="${scheduledTransportations}" var="item">
+                            <option value="${item.scheduledTransportationId}">${item.scheduledTransportationName}</option>
+                        </c:forEach>
+                    </select> -->
                     <label for="fname">Departure Time</label>
                     <input type="text" id="Dtime" name="departureTime" placeholder="departureTime..." required>
                     <label for="fname">Arrival Time</label>
