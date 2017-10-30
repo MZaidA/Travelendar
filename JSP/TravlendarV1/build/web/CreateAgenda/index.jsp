@@ -116,8 +116,7 @@
     <label for="fname">Keterangan</label>
     <input type="text" id="keterangan" name="description" placeholder="..."/>
 
-    <input type="button" value="Add Again" onClick="validateTransport(this.form)"/>
-    <input type="button" value="Done" onClick="validateTransport(this.form)"/>
+    <input type="button" value="Add" onClick="validateTransport(this.form)"/>
   </form>
 
 	</div>

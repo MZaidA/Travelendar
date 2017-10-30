@@ -34,9 +34,9 @@
   <table align="center">
     <tr>
       <th>No</th>
-      <th>Nama Lokasi</th>
-      <th>Alamat</th>
-      <th>Kota</th>
+      <th>Location Name</th>
+      <th>Address</th>
+      <th>City</th>
       <th>Action</th>
 
     </tr>

@@ -27,7 +27,7 @@ public class PrivateTransportationTravelingDAO {
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/lander_v1.5", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/travlendar", "root", "");
         }
         catch (Exception e) {
             System.out.println(e);
