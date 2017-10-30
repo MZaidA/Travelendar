@@ -105,7 +105,7 @@ public class UnscheduledTransportationDAO {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("DELETE FROM unscheduled_transportation WHERE SCHEDULED_TRANSPORTATION_ID=?");
+            PreparedStatement ps = con.prepareStatement("DELETE FROM unscheduled_transportation WHERE UNSCHEDULED_TRANSPORTATION_ID=?");
             ps.setInt(1, _unscheduledTransportation.getUnscheduledTransportationId());
             status = ps.executeUpdate();
         }
