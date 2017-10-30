@@ -9,9 +9,10 @@ package Model;
  *
  * @author HP1
  */
-public class Island{
+public class Island {
     private String islandName;
-private Integer islandId;    
+    private Integer islandId;    
+
     /**
      * @return the islandName
      */
@@ -39,5 +40,6 @@ private Integer islandId;
     public void setIslandId(Integer islandId) {
         this.islandId = islandId;
     }
+    
     
 }

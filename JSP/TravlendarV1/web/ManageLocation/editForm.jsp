@@ -34,9 +34,9 @@
             <div class="form">
                 <form action="editLocation.jsp" method="get">
                     <label for="fLocation">Location</label>
-                    <input type="text" id="mLocation" name="locationName" placeholder="Location..." required>
+                    <input type="text" id="mLocation" name="locationName" placeholder="Location..." >
                     <label for="faddres">Address</label>
-                    <input type="text" id="mAddress" name="address" placeholder="Address..." required>
+                    <input type="text" id="mAddress" name="address" placeholder="Address..." >
                     <label for="fCity">City</label>
 /                   <select name="districtId" class="minimal">
                         <c:forEach items="${districts}" var="item">

@@ -9,9 +9,10 @@ package Model;
  *
  * @author HP1
  */
-public class Province extends Island{
+public class Province {
     private String provinceName;
     private Integer provinceId;
+    private Integer islandId;
 
     /**
      * @return the provinceName
@@ -40,6 +41,20 @@ public class Province extends Island{
     public void setProvinceId(Integer provinceId) {
         this.provinceId = provinceId;
     }
-    
+
+    /**
+     * @return the islandId
+     */
+    public Integer getIslandId() {
+        return islandId;
+    }
+
+    /**
+     * @param islandId the islandId to set
+     */
+    public void setIslandId(Integer islandId) {
+        this.islandId = islandId;
+    }
+     
     
 }

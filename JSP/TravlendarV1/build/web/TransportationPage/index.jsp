@@ -30,7 +30,7 @@
     </head>
     <body>
         <div class="wrapper">
-            <li><strong>Admin</strong>TRAVELENDAR</li>
+            <li><strong>Admin</strong>TRAVELENDAR</li> 	
         </div>
 	<%@ include file="../navbarManage.jsp"%>
         <div id="mainPanel">
@@ -42,7 +42,6 @@
         
             <div id="Unscheduled" class="tabcontent">
                 <h1>MANAGE UNSCHEDULED TRANSPORTATION</h1>
-                <div style="overflow-x: auto;">
                 <table align="center">
                     <tr>
                         <th>No</th>
@@ -54,17 +53,16 @@
                             <td> ${loop.index+1}</td>
                             <td> ${item.privateType}</td>
                             <td>
-                                <a href="editUnscheduledTransportForm.jsp?privateId=${item.privateId}" class="button1">Update</a>
-                                <a href="deleteUnscheduledTransportation.jsp?privateId=${item.privateId}" class="button1">Delete</a>
+                                <a href="editTransportPrivateForm.jsp?privateId=${item.privateId}" class="button1">Update</a>
+                                <a href="deletePrivateTransportation.jsp?privateId=${item.privateId}" class="button1">Delete</a>
                             </td>
                         </tr>
                     </c:forEach>
                 </table>
-                </div>
                 <br>
                 <br>
                 <div class="form">
-                    <form action="addUnscheduledTransportation.jsp">
+                    <form action="addPrivateTransport.jsp">
                         <label for="fname">Transportation Type</label>
                         <input type="text" id="mTransportation" name="privateType" placeholder="Transportation Type...">          
                         <input type="submit" name="submit" value="Add">

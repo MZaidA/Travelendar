@@ -29,7 +29,6 @@ body {
 	background-image:url(../../Assets/icon/Building_1.png);
 	background-position: 14% 80%;
 	background-repeat: no-repeat;
-        z-index: 1;
 }
 
 #sidebar li {
@@ -69,19 +68,19 @@ a {
 
 /*-----------------------------*/
 
-#mainPanel{
-        border: none;
+#mainPanel h1{
 	position: relative;
-        width: 85%;
-        left: 200px;
+        left: 5%;
         text-align: center;
 }
 /*----------------Tabel-----------*/
 table {
+    position: relative;
+    left:6.5%;
     text-align: center;
     border: 3px solid black;
     border-collapse:separate;
-    width: 60%;
+    width: 53%;
 }
 
 th, td {
@@ -130,8 +129,7 @@ input[type=submit]:hover {
 
 .form {
     position:relative;
-    left: 23.5%;
-    text-align: left;
+    left:30%;
     width:50%;
     border-radius: 10px;
     background-color: #f2f2f2;
@@ -287,7 +285,8 @@ select:-moz-focusring {
 /* Style the tab */
 div.tab {
     position: relative;
-    width: 100%;
+    left: 200px;
+    width: auto;
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
@@ -373,8 +372,10 @@ div.tab button.active {
 @media (max-width:750px) {
     #mainPanel{
         margin-top: 200px;
-        left:0;
-        width:100%;
+    }
+    #mainPanel h1{
+        
+        left: 0%;
     }
     #sidebar{
         width: 100%;
@@ -393,10 +394,14 @@ div.tab button.active {
     }
     table{
         left: 0%;
+        overflow-x: scroll;
     }
     .wrapper li{
         text-align: center;
         width: 100%;
+    }
+    .form{
+        left:20%;
     }
     div.tab{
         overflow:visible;

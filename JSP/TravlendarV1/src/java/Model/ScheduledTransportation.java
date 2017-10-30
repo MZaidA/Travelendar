@@ -12,7 +12,6 @@ package Model;
 public class ScheduledTransportation {
     private int scheduledTransportationId;
     private String scheduledTransportationName;
-    private ScheduledTransportationModes scheduledTransportationModes;
     private int transportationId;
     private String transportationType;    
 
@@ -42,20 +41,6 @@ public class ScheduledTransportation {
      */
     public void setScheduledTransportationName(String scheduledTransportationName) {
         this.scheduledTransportationName = scheduledTransportationName;
-    }
-
-    /**
-     * @return the scheduledTransportationModes
-     */
-    public ScheduledTransportationModes getScheduledTransportationModes() {
-        return scheduledTransportationModes;
-    }
-
-    /**
-     * @param scheduledTransportationModes the scheduledTransportationModes to set
-     */
-    public void setScheduledTransportationModes(ScheduledTransportationModes scheduledTransportationModes) {
-        this.scheduledTransportationModes = scheduledTransportationModes;
     }
 
     /**

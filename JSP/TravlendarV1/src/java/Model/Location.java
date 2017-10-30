@@ -9,18 +9,12 @@ package Model;
  *
  * @author syamcode
  */
-public class Location extends District{
+public class Location {
     private Integer locationId;
     private String locationName;
     private String address;
-    
-    public String getLocationName() {
-        return locationName;
-    }
-    
-    public void setLocationName(String _locationName) {
-        locationName = _locationName;
-    }
+    private Integer districtId;
+    private String districtName;
 
     /**
      * @return the locationId
@@ -37,6 +31,20 @@ public class Location extends District{
     }
 
     /**
+     * @return the locationName
+     */
+    public String getLocationName() {
+        return locationName;
+    }
+
+    /**
+     * @param locationName the locationName to set
+     */
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    /**
      * @return the address
      */
     public String getAddress() {
@@ -49,4 +57,34 @@ public class Location extends District{
     public void setAddress(String address) {
         this.address = address;
     }
+
+    /**
+     * @return the districtId
+     */
+    public Integer getDistrictId() {
+        return districtId;
+    }
+
+    /**
+     * @param districtId the districtId to set
+     */
+    public void setDistrictId(Integer districtId) {
+        this.districtId = districtId;
+    }
+
+    /**
+     * @return the districtName
+     */
+    public String getDistrictName() {
+        return districtName;
+    }
+
+    /**
+     * @param districtName the districtName to set
+     */
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
+    }
+    
+    
 }

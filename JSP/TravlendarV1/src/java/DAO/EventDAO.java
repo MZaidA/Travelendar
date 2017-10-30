@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author afadh
  */
-public class EventDAO{
+public class EventDAO {
 
     public static Connection getConnection() {
         Connection con = null;
@@ -170,5 +170,5 @@ public class EventDAO{
         }
         return status;
     }
-    
+   
 }

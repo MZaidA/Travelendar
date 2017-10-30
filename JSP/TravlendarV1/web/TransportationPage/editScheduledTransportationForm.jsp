@@ -40,7 +40,7 @@
                         </c:forEach>
                     </select>
                     <label for="fScheduledTransportationName">Transportation Name</label>
-                    <input type="text" id="mScheduledTransportationName" name="scheduledTransportationName" placeholder="Transportation Name..." required>
+                    <input type="text" id="mScheduledTransportationName" name="scheduledTransportationName" placeholder="Transportation Name...">
                     <input type="submit" name="submit" value="Update">
                 </form>
             </div>

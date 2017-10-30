@@ -9,14 +9,18 @@ package Model;
  *
  * @author HP1
  */
-public class District extends Province{
+public class District {
     private String districtName;
     private Integer districtId;
-    
+    private Integer provinceId;
+
+    /**
+     * @return the districtName
+     */
     public String getDistrictName() {
         return districtName;
     }
-    
+
     /**
      * @param districtName the districtName to set
      */
@@ -36,6 +40,20 @@ public class District extends Province{
      */
     public void setDistrictId(Integer districtId) {
         this.districtId = districtId;
+    }
+
+    /**
+     * @return the provinceId
+     */
+    public Integer getProvinceId() {
+        return provinceId;
+    }
+
+    /**
+     * @param provinceId the provinceId to set
+     */
+    public void setProvinceId(Integer provinceId) {
+        this.provinceId = provinceId;
     }
     
     
