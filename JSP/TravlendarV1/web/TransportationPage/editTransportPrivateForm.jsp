@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="../Assets/css/manageStyle.css"/>
-        <title>Update Private Transportation - Travlendar</title>
+        <title>Update Unscheduled Transportation - Travlendar</title>
     </head>
     <body>
         <div class="wrapper">
@@ -25,12 +25,12 @@
             String privateId = request.getParameter("privateId");
             PrivateTransportation transport = TransportPrivateDAO.getPrTransportById(privateId);
             %>
-            <h1>UPDATE TRANSPORTATION PRIVATE</h1>
+            <h1>UPDATE UNSCHEDULED TRANSPORTATION</h1>
             <div class="form">
                 <form action="editTransportPrivate.jsp">
                 <input type="hidden" id="mTransportation" name="privateId" value="<%=transport.getPrivateId()%>">
-                <label for="fname">Transportaion Mode</label>
-                <input type="text" id="mTransportation" name="privateType" placeholder="Transportation...">
+                <label for="fname">Transportation Type</label>
+                <input type="text" id="mTransportation" name="privateType" placeholder="Transportation Type...">
                 <input type="submit" value="Update">
                 </form>
             </div>
