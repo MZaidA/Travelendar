@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2017 at 02:35 PM
+-- Generation Time: Oct 30, 2017 at 02:58 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -253,12 +253,86 @@ INSERT INTO `province` (`PROVINCE_ID`, `ISLAND_ID`, `PROVINCE_NAME`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `scheduled_transportation`
+--
+
+CREATE TABLE `scheduled_transportation` (
+  `SCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL,
+  `TRANSPORTATION_ID` int(11) NOT NULL,
+  `SCHEDULED_TRANSPORTATION_NAME` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `scheduled_transportation_modes`
+--
+
+CREATE TABLE `scheduled_transportation_modes` (
+  `TRANSPORTATION_ID` int(11) NOT NULL,
+  `TRANSPORTATION_TYPE` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `scheduled_transportation_modes`
+--
+
+INSERT INTO `scheduled_transportation_modes` (`TRANSPORTATION_ID`, `TRANSPORTATION_TYPE`) VALUES
+(1, 'Pesawat'),
+(2, 'Kereta'),
+(3, 'Kapal Laut'),
+(4, 'Bus'),
+(5, 'Travel');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `scheduled_traveling_table`
+--
+
+CREATE TABLE `scheduled_traveling_table` (
+  `SCHEDULED_TRAVELING_ID` int(11) NOT NULL,
+  `EVENT_LOCATION_ID` int(11) NOT NULL,
+  `START_LOCATION_ID` int(11) NOT NULL,
+  `SCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL,
+  `ARRIVAL_SCHEDULE` datetime NOT NULL,
+  `DEPARTURE_SCHEDULE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transportation_base`
 --
 
 CREATE TABLE `transportation_base` (
   `SCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL,
   `LOCATION_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `unscheduled_transportation`
+--
+
+CREATE TABLE `unscheduled_transportation` (
+  `UNSCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL,
+  `UNSCHEDULED_TRANSPORTATION_TYPE` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `unscheduled_traveling_table`
+--
+
+CREATE TABLE `unscheduled_traveling_table` (
+  `UNSCHEDULED_TRAVELING_ID` int(11) NOT NULL,
+  `EVENT_LOCATION_ID` int(11) NOT NULL,
+  `START_LOCATION_ID` int(11) NOT NULL,
+  `UNSCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL,
+  `TRAVELING_TIME` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -303,11 +377,48 @@ ALTER TABLE `province`
   ADD KEY `FK_MENGAMBIL_DATA_PULAU` (`ISLAND_ID`);
 
 --
+-- Indexes for table `scheduled_transportation`
+--
+ALTER TABLE `scheduled_transportation`
+  ADD PRIMARY KEY (`SCHEDULED_TRANSPORTATION_ID`),
+  ADD KEY `FK_MENGAMBIL_TIPE_KENDARAAN_HANYA_UNTUK_KENDARAAN_TERJADWAL` (`TRANSPORTATION_ID`);
+
+--
+-- Indexes for table `scheduled_transportation_modes`
+--
+ALTER TABLE `scheduled_transportation_modes`
+  ADD PRIMARY KEY (`TRANSPORTATION_ID`);
+
+--
+-- Indexes for table `scheduled_traveling_table`
+--
+ALTER TABLE `scheduled_traveling_table`
+  ADD PRIMARY KEY (`SCHEDULED_TRAVELING_ID`),
+  ADD KEY `FK_MENGAMBIL_DATA_KENDARAAN_TERJADWAL` (`SCHEDULED_TRANSPORTATION_ID`),
+  ADD KEY `FK_MENGAMBIL_LOKASI_AKHIR_UNTUK_PERJALANAN_TERJADWAL` (`START_LOCATION_ID`),
+  ADD KEY `FK_MENGAMBIL_LOKASI_AWAL_UNTUK_PERJALANAN_TERJADWAL` (`EVENT_LOCATION_ID`);
+
+--
 -- Indexes for table `transportation_base`
 --
 ALTER TABLE `transportation_base`
   ADD PRIMARY KEY (`SCHEDULED_TRANSPORTATION_ID`,`LOCATION_ID`),
   ADD KEY `FK_TRANSPORTATION_BASE2` (`LOCATION_ID`);
+
+--
+-- Indexes for table `unscheduled_transportation`
+--
+ALTER TABLE `unscheduled_transportation`
+  ADD PRIMARY KEY (`UNSCHEDULED_TRANSPORTATION_ID`);
+
+--
+-- Indexes for table `unscheduled_traveling_table`
+--
+ALTER TABLE `unscheduled_traveling_table`
+  ADD PRIMARY KEY (`UNSCHEDULED_TRAVELING_ID`),
+  ADD KEY `FK_MENGAMBIL_DATA_KENDARAAN_TIDAK_TERJADWAL` (`UNSCHEDULED_TRANSPORTATION_ID`),
+  ADD KEY `FK_MENGAMBIL_LOKASI_AKHIR_UNTUK_PERJALANAN_TIDAK_TERJADWAL` (`EVENT_LOCATION_ID`),
+  ADD KEY `FK_MENGAMBIL_LOKASI_AWAL_UNTUK_PERJALANAN_TIDAK_TERJADWAL` (`START_LOCATION_ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -338,6 +449,31 @@ ALTER TABLE `location`
 --
 ALTER TABLE `province`
   MODIFY `PROVINCE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `scheduled_transportation`
+--
+ALTER TABLE `scheduled_transportation`
+  MODIFY `SCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `scheduled_transportation_modes`
+--
+ALTER TABLE `scheduled_transportation_modes`
+  MODIFY `TRANSPORTATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `scheduled_traveling_table`
+--
+ALTER TABLE `scheduled_traveling_table`
+  MODIFY `SCHEDULED_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `unscheduled_transportation`
+--
+ALTER TABLE `unscheduled_transportation`
+  MODIFY `UNSCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `unscheduled_traveling_table`
+--
+ALTER TABLE `unscheduled_traveling_table`
+  MODIFY `UNSCHEDULED_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -370,11 +506,33 @@ ALTER TABLE `province`
   ADD CONSTRAINT `FK_MENGAMBIL_DATA_PULAU` FOREIGN KEY (`ISLAND_ID`) REFERENCES `island` (`ISLAND_ID`);
 
 --
+-- Constraints for table `scheduled_transportation`
+--
+ALTER TABLE `scheduled_transportation`
+  ADD CONSTRAINT `FK_MENGAMBIL_TIPE_KENDARAAN_HANYA_UNTUK_KENDARAAN_TERJADWAL` FOREIGN KEY (`TRANSPORTATION_ID`) REFERENCES `scheduled_transportation_modes` (`TRANSPORTATION_ID`);
+
+--
+-- Constraints for table `scheduled_traveling_table`
+--
+ALTER TABLE `scheduled_traveling_table`
+  ADD CONSTRAINT `FK_MENGAMBIL_DATA_KENDARAAN_TERJADWAL` FOREIGN KEY (`SCHEDULED_TRANSPORTATION_ID`) REFERENCES `scheduled_transportation` (`SCHEDULED_TRANSPORTATION_ID`),
+  ADD CONSTRAINT `FK_MENGAMBIL_LOKASI_AKHIR_UNTUK_PERJALANAN_TERJADWAL` FOREIGN KEY (`START_LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`),
+  ADD CONSTRAINT `FK_MENGAMBIL_LOKASI_AWAL_UNTUK_PERJALANAN_TERJADWAL` FOREIGN KEY (`EVENT_LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
+
+--
 -- Constraints for table `transportation_base`
 --
 ALTER TABLE `transportation_base`
   ADD CONSTRAINT `FK_TRANSPORTATION_BASE` FOREIGN KEY (`SCHEDULED_TRANSPORTATION_ID`) REFERENCES `scheduled_transportation` (`SCHEDULED_TRANSPORTATION_ID`),
   ADD CONSTRAINT `FK_TRANSPORTATION_BASE2` FOREIGN KEY (`LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
+
+--
+-- Constraints for table `unscheduled_traveling_table`
+--
+ALTER TABLE `unscheduled_traveling_table`
+  ADD CONSTRAINT `FK_MENGAMBIL_DATA_KENDARAAN_TIDAK_TERJADWAL` FOREIGN KEY (`UNSCHEDULED_TRANSPORTATION_ID`) REFERENCES `unscheduled_transportation` (`UNSCHEDULED_TRANSPORTATION_ID`),
+  ADD CONSTRAINT `FK_MENGAMBIL_LOKASI_AKHIR_UNTUK_PERJALANAN_TIDAK_TERJADWAL` FOREIGN KEY (`EVENT_LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`),
+  ADD CONSTRAINT `FK_MENGAMBIL_LOKASI_AWAL_UNTUK_PERJALANAN_TIDAK_TERJADWAL` FOREIGN KEY (`START_LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
