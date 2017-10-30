@@ -85,11 +85,20 @@ public class LocationDAO{
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps2 = con.prepareStatement("DELETE FROM event WHERE LOCATION_ID=?");
+            
+            //delete event terlebih dahulu sebelum delete lokasi
+            PreparedStatement ps2 = con.prepareStatement("DELETE FROM event WHERE EVENT_LOCATION_ID=?");
+            PreparedStatement ps3 = con.prepareStatement("DELETE FROM event WHERE START_LOCATION_ID=?");
+
+            //delete lokasi
             PreparedStatement ps = con.prepareStatement("DELETE FROM location WHERE LOCATION_ID=?");
+
             ps2.setInt(1, _location.getLocationId());
+            ps3.setInt(1, _location.getLocationId());
             ps.setInt(1, _location.getLocationId());
+            
             ps2.executeUpdate();
+            ps3.executeUpdate();
             status = ps.executeUpdate();
         }
         catch(Exception e) {

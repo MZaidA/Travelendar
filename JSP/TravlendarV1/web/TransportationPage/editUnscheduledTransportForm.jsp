@@ -27,7 +27,7 @@
             %>
             <h1>UPDATE UNSCHEDULED TRANSPORTATION</h1>
             <div class="form">
-                <form action="editTransportPrivate.jsp">
+                <form action="editUnscheduledTransportation.jsp">
                 <input type="hidden" id="mTransportation" name="privateId" value="<%=transport.getPrivateId()%>">
                 <label for="fname">Transportation Type</label>
                 <input type="text" id="mTransportation" name="privateType" placeholder="Transportation Type...">

@@ -53,8 +53,8 @@
                             <td> ${loop.index+1}</td>
                             <td> ${item.privateType}</td>
                             <td>
-                                <a href="editTransportPrivateForm.jsp?privateId=${item.privateId}" class="button1">Update</a>
-                                <a href="deletePrivateTransportation.jsp?privateId=${item.privateId}" class="button1">Delete</a>
+                                <a href="editUnscheduledTransportForm.jsp?privateId=${item.privateId}" class="button1">Update</a>
+                                <a href="deleteUnscheduledTransportation.jsp?privateId=${item.privateId}" class="button1">Delete</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -62,7 +62,7 @@
                 <br>
                 <br>
                 <div class="form">
-                    <form action="addPrivateTransport.jsp">
+                    <form action="addUnscheduledTransportation.jsp">
                         <label for="fname">Transportation Type</label>
                         <input type="text" id="mTransportation" name="privateType" placeholder="Transportation Type...">          
                         <input type="submit" name="submit" value="Add">
