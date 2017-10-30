@@ -90,12 +90,11 @@ public class UnscheduledTransportationDAO {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("update unscheduled_transportation set UNSCHEDULED_TRANSPORTATION_TYPE=? where UNSCHEDULED_TRANSPORTATION_ID=?");  
+            PreparedStatement ps=con.prepareStatement("update unscheduled_transportation set UNSCHEDULED_TRANSPORTATION_TYPE=? where UNSCHEDULED_TRANSPORTATION_ID=?");
             ps.setString(1, _unscheduledTransportation.getUnscheduledTransportationType());
             ps.setInt(2, _unscheduledTransportation.getUnscheduledTransportationId());
             status = ps.executeUpdate();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
         return status;
