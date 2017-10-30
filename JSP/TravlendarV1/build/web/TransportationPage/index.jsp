@@ -42,6 +42,7 @@
         
             <div id="Unscheduled" class="tabcontent">
                 <h1>MANAGE UNSCHEDULED TRANSPORTATION</h1>
+                <div style="overflow-x: auto;">
                 <table align="center">
                     <tr>
                         <th>No</th>
@@ -59,12 +60,13 @@
                         </tr>
                     </c:forEach>
                 </table>
+                </div>
                 <br>
                 <br>
                 <div class="form">
                     <form action="addPrivateTransport.jsp">
                         <label for="fname">Transportation Type</label>
-                        <input type="text" id="mTransportation" name="privateType" placeholder="Transportation Type...">          
+                        <input type="text" id="mTransportation" name="privateType" placeholder="Transportation Type..." required>          
                         <input type="submit" name="submit" value="Add">
                     </form>
                 </div>
@@ -72,6 +74,7 @@
         
             <div id="Scheduled" class="tabcontent">
                 <h1>MANAGE SCHEDULED TRANSPORTATION</h1>
+                <div style="overflow-x: auto;">
                 <table align="center">
                     <tr>
                         <th>No</th>
@@ -91,6 +94,7 @@
                         </tr>
                     </c:forEach>
                 </table>
+                </div>
                 <br>
                 <br>
                 <div class="form">
@@ -102,13 +106,12 @@
                             </c:forEach>
                         </select>
                         <label for="fScheduledTransportationName">Transportation Name</label>
-                        <input type="text" id="mScheduledTransportationName" name="scheduledTransportationName" placeholder="Transportation Name...">
-                        <input type="submit" name="submit" value="Add">  
+                        <input type="text" id="mScheduledTransportationName" name="scheduledTransportationName" placeholder="Transportation Name..." required>
+                        <input type="submit" name="submit" value="Add">
                     </form>
                 </div>
             </div>
         </div>
-        
         <script>
             function openTab(evt, cityName) {
                 var i, tabcontent, tablinks;
