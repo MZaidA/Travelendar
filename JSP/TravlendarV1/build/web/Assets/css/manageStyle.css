@@ -68,19 +68,18 @@ a {
 
 /*-----------------------------*/
 
-#mainPanel h1{
+#mainPanel{
 	position: relative;
-        left: 5%;
+        width: 90%;
+        left: 200px;
         text-align: center;
 }
 /*----------------Tabel-----------*/
 table {
-    position: relative;
-    left:6.5%;
     text-align: center;
     border: 3px solid black;
     border-collapse:separate;
-    width: 53%;
+    width: 60%;
 }
 
 th, td {
@@ -129,7 +128,8 @@ input[type=submit]:hover {
 
 .form {
     position:relative;
-    left:30%;
+    left: 23.5%;
+    text-align: left;
     width:50%;
     border-radius: 10px;
     background-color: #f2f2f2;
@@ -285,7 +285,6 @@ select:-moz-focusring {
 /* Style the tab */
 div.tab {
     position: relative;
-    left: 200px;
     width: auto;
     overflow: hidden;
     border: 1px solid #ccc;
@@ -373,9 +372,9 @@ div.tab button.active {
     #mainPanel{
         margin-top: 200px;
     }
-    #mainPanel h1{
+    #mainPanel{
         
-        left: 0%;
+        left: 0;
     }
     #sidebar{
         width: 100%;
