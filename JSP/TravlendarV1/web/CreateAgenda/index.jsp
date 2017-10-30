@@ -59,9 +59,9 @@
 
 
 <div class="form">
-    <form name="myform">
+    <form name="myform" action="addagenda.jsp">
     <label for="fname">Event Name</label>
-    <input type="text" id="eventName" name="eventName" placeholder="..."/>
+    <input type="text" id="eventName" name="eventName" placeholder="..." required/>
     <div id="demo" style="display:none">
     <label for="stLoc">Start Location</label>
 	<select class="classic" name="loc2Id">
@@ -106,17 +106,18 @@
     </div>
     
     <label for="fname">Start Date & Time</label>
-    <input type="text" name="dateTime1" id="dateTime1" placeholder="Click Here" />
+    <input type="text" name="dateTime1" id="dateTime1" placeholder="Click Here" required/>
  
     <br/>
     <label for="fname">End Date & Time</label>
-    <input type="text" name="dateTime2" id="dateTime2" placeholder="Click Here" />
+    <input type="text" name="dateTime2" id="dateTime2" placeholder="Click Here" required/>
     <br />
     
     <label for="fname">Keterangan</label>
     <input type="text" id="keterangan" name="description" placeholder="..."/>
 
-    <input type="button" value="Add" onClick="validateTransport(this.form)"/>
+    
+    <input type="submit" name="submit" value="Add"/>
   </form>
 
 	</div>
@@ -172,7 +173,9 @@ var myControl=  {
 $('#dateTime1').datetimepicker({
 	controlType: myControl
 });
-$('#dateTime2').datetimepicker();
+$('#dateTime2').datetimepicker({
+        controlType: myControl
+});
 </script>
 <script>
 function showBandara(value){
@@ -181,18 +184,6 @@ function showBandara(value){
     }
     else{
         document.getElementById("bandara").style.display ='none';
-    }
-}
-function validateTransport(form) {
-    var transporPublic = form.locationId.value;
-    if (transporPublic == "Pesawat"){
-        alert ("Tambah Menu");
-        document.getElementById(bandara).style.display ='block';
-    }
-    else
-    {
-        alert("Langsung");
-        location ="addagenda.jsp";
     }
 }
 </script>
