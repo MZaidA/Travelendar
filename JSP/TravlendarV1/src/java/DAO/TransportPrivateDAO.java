@@ -39,12 +39,12 @@ public class TransportPrivateDAO{
         List<PrivateTransportation> transports = new ArrayList<PrivateTransportation>();
         try{
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM private_transportation");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM unscheduled_transportation");
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 PrivateTransportation transport = new PrivateTransportation();
-                transport.setPrivateId(rs.getInt("PRIVATE_ID"));
-		transport.setPrivateType(rs.getString("PRIVATE_TYPE"));
+                transport.setPrivateId(rs.getInt("UNSCHEDULED_TRANSPORTATION_ID"));
+		transport.setPrivateType(rs.getString("UNSCHEDULED_TRANSPORTATION_TYPE"));
                 transports.add(transport);
             }
         }
@@ -58,13 +58,13 @@ public class TransportPrivateDAO{
         PrivateTransportation Transport = null;
         try{
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM private_transportation WHERE PRIVATE_ID=?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM unscheduled_transportation WHERE UNSCHEDULED_TRANSPORTATION_ID=?");
             ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 Transport = new PrivateTransportation();
-                Transport.setPrivateId(rs.getInt("PRIVATE_ID"));
-                Transport.setPrivateType(rs.getString("PRIVATE_TYPE"));
+                Transport.setPrivateId(rs.getInt("UNSCHEDULED_TRANSPORTATION_ID"));
+                Transport.setPrivateType(rs.getString("UNSCHEDULED_TRANSPORTATION_TYPE"));
             }
         }
         catch(Exception e) {
@@ -77,7 +77,7 @@ public class TransportPrivateDAO{
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO private_transportation(PRIVATE_ID, PRIVATE_TYPE) VALUES (?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO unscheduled_transportation(UNSCHEDULED_TRANSPORTATION_ID, UNSCHEDULED_TRANSPORTATION_TYPE) VALUES (?, ?)");
             ps.setInt(1, _PrivateTransportation.getPrivateId());
             ps.setString(2, _PrivateTransportation.getPrivateType());
             status = ps.executeUpdate();
@@ -92,7 +92,7 @@ public class TransportPrivateDAO{
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps=con.prepareStatement("update private_transportation set PRIVATE_TYPE=? where PRIVATE_ID=?");  
+            PreparedStatement ps=con.prepareStatement("update unscheduled_transportation set PRIVATE_TYPE=? where UNSCHEDULED_TRANSPORTATION_ID=?");  
 
             ps.setString(1, _PrivateTransportation.getPrivateType());
             ps.setInt(2, _PrivateTransportation.getPrivateId());
@@ -107,7 +107,7 @@ public class TransportPrivateDAO{
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("DELETE FROM private_transportation WHERE PRIVATE_ID=?");
+            PreparedStatement ps = con.prepareStatement("DELETE FROM unscheduled_transportation WHERE UNSCHEDULED_TRANSPORTATION_ID=?");
             ps.setInt(1, _PrivateTransportation.getPrivateId());
             status = ps.executeUpdate();
         }
