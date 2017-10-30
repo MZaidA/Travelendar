@@ -5,9 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="DAO.TransportPrivateDAO, Model.PrivateTransportation, java.util.*"%>
-<%@page import="Model.District"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="DAO.UnscheduledTransportationDAO, Model.UnscheduledTransportation, java.util.*"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,20 +16,20 @@
     </head>
     <body>
         <div class="wrapper">
-        <li><strong>Admin</strong>TRAVELENDAR</li> 	
+            <li><strong>Admin</strong>TRAVELENDAR</li> 	
         </div>
-        <%@ include file = "../navbarManage.jsp" %>
+        <%@include file = "../navbarManage.jsp" %>
         <div id="mainPanel" style="overflow-x:hidden;">
             <% 
-            String privateId = request.getParameter("privateId");
-            PrivateTransportation transport = TransportPrivateDAO.getPrTransportById(privateId);
+                String unscheduledTransportationId = request.getParameter("unscheduledTransportationId");
+                UnscheduledTransportation uns = UnscheduledTransportationDAO.getUnscheduledTransportationById(unscheduledTransportationId);
             %>
             <h1>UPDATE UNSCHEDULED TRANSPORTATION</h1>
             <div class="form">
                 <form action="editUnscheduledTransportation.jsp">
-                <input type="hidden" id="mTransportation" name="privateId" value="<%=transport.getPrivateId()%>">
+                <input type="hidden" id="mUnscheduledTransportationId" name="unsscheduledTransportationId" value="<%=uns.getUnscheduledTransportationType()%>">
                 <label for="fname">Transportation Type</label>
-                <input type="text" id="mTransportation" name="privateType" placeholder="Transportation Type..." required>
+                <input type="text" id="mUnscheduledTransportationType" name="unscheduledTransportationType" placeholder="Transportation Type...">
                 <input type="submit" value="Update">
                 </form>
             </div>

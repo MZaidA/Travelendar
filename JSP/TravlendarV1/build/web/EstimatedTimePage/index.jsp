@@ -5,9 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="DAO.PrivateTransportationTravelingDAO, Model.PrivateTransportationTraveling, java.util.*"%>
+<%@page import="DAO.UnscheduledTravelingTableDAO, Model.UnscheduledTravelingTable, java.util.*"%>
 <%@page import="Model.Location"%>
-<%@page import="Model.PrivateTransportation"%>
+<%@page import="Model.UnscheduledTransportation"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -16,16 +16,16 @@
         <link rel="stylesheet" href="../Assets/css/manageStyle.css"/>
         <title>Manage Private Traveling - Travlendar</title>
         <%
-            List<PrivateTransportationTraveling> privateTransportationTravelings = PrivateTransportationTravelingDAO.getAll();
-            request.setAttribute("privateTransportationTravelings", privateTransportationTravelings);
+            List<UnscheduledTravelingTable> unscheduledTravelingTables = UnscheduledTravelingTableDAO.getAll();
+            request.setAttribute("unscheduledTravelingTables", unscheduledTravelingTables);
         %>
         <%
-            List<Location> locations = PrivateTransportationTravelingDAO.getLocation();
+            List<Location> locations = UnscheduledTravelingTableDAO.getLocation();
             request.setAttribute("locations", locations);
         %>
         <%
-            List<PrivateTransportation> privateTransportations = PrivateTransportationTravelingDAO.getPrivateTransportation();
-            request.setAttribute("privateTransportations", privateTransportations);
+            List<UnscheduledTransportation> unscheduledTransportations = UnscheduledTravelingTableDAO.getUnscheduledTransportation();
+            request.setAttribute("unscheduledTransportations", unscheduledTransportations);
         %>
     </head>
     <body>
@@ -34,13 +34,13 @@
         </div>
         <%@include file = "../navbarManage.jsp"%>
             <div class="tab">
-                <button class="tablinks" onclick="openTab(event, 'Private')" id="defaultOpen">Private</button>
-                <button class="tablinks" onclick="openTab(event, 'Public')">Public</button>
+                <button class="tablinks" onclick="openTab(event, 'Unscheduled')" id="defaultOpen">Unscheduled</button>
+                <button class="tablinks" onclick="openTab(event, 'Scheduled')">Scheduled</button>
             </div>
             <br/>
             <div id="mainPanel">
-        <div id="Private" class="tabcontent">
-                <h1>MANAGE PRIVATE TRANSPORTATION TRAVELING</h1>
+        <div id="Unscheduled" class="tabcontent">
+                <h1>MANAGE UNSCHEDULED TRAVELING</h1>
                 <div style="overflow-x: auto;">
                 <table align="center">
                     <tr>
@@ -51,16 +51,16 @@
                         <th>Traveling Time (mins)</th>
                         <th>Action</th>
                     </tr>
-                    <c:forEach items="${privateTransportationTravelings}" var="item" varStatus="loop">
+                    <c:forEach items="${unscheduledTravelingTables}" var="item" varStatus="loop">
                         <tr>
                             <td>${loop.index+1}</td>
-                            <td>${item.locationName} </td>
-                            <td>${item.locLocationName}</td>
-                            <td>${item.privateType}</td>
+                            <td>${item.startLocationName} </td>
+                            <td>${item.eventLocationName}</td>
+                            <td>${item.unscheduledTransportationType}</td>
                             <td>${item.travelingTime}</td>
                             <td>
-                                <a href="editEstimatedTimePrivateForm.jsp?privateTravelingId=${item.privateTravelingId}" class="button1">Update</a>
-                                <a href="deleteEstimatedTimePrivate.jsp?privateTravelingId=${item.privateTravelingId}" class="button1">Delete</a>
+                                <a href="editUnscheduledTravelingTableForm.jsp?unscheduledTravelingId=${item.unscheduledTravelingId}" class="button1">Update</a>
+                                <a href="deleteUnscheduledTravelingTable.jsp?unscheduledTravelingId=${item.unscheduledTravelingId}" class="button1">Delete</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -69,23 +69,23 @@
             <br>
             <br>
             <div class="form">
-                <form action="addEstimatedTimePrivate.jsp">
+                <form action="addUnscheduledTravelingTable.jsp">
                     <label for="fLocation">Starting Location</label>
-                    <select name="locationId" class="minimal">
+                    <select name="startLocationId" class="minimal">
                         <c:forEach items="${locations}" var="item">
                             <option value="${item.locationId}">${item.locationName}</option>
                         </c:forEach>
                     </select>
                     <label for="fLocation">Destination</label>
-                    <select name="locLocationId" class="minimal">
+                    <select name="eventLocationId" class="minimal">
                         <c:forEach items="${locations}" var="item">
                             <option value="${item.locationId}">${item.locationName}</option>
                         </c:forEach>
                     </select>
-                    <label for="fPrivateTransportation">Transportation Type</label>
-                    <select name="privateId" class="minimal">
-                        <c:forEach items="${privateTransportations}" var="item">
-                            <option value="${item.privateId}">${item.privateType}</option>
+                    <label for="fUnscheduledTransportation">Transportation Type</label>
+                    <select name="unscheduledTransportationId" class="minimal">
+                        <c:forEach items="${unscheduledTransportations}" var="item">
+                            <option value="${item.unscheduledTransportationId}">${item.unscheduledTransportationType}</option>
                         </c:forEach>
                     </select>
                     <label for="fTravelingTime">Traveling Time</label>
@@ -95,10 +95,9 @@
             </div>
         </div>
         
-        <div id="Public" class="tabcontent">
-            
-                <h1>MANAGE ESTIMATED TIME PUBLIC</h1>
-                <div style="overflow-x: auto;">
+        <div id="Scheduled" class="tabcontent">
+            <h1>MANAGE SCHEDULED TRAVELING</h1>
+            <div style="overflow-x: auto;">
                 <table align="center">
                     <tr>
                         <th>No</th>

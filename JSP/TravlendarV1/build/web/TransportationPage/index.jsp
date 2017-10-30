@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="DAO.TransportPrivateDAO, Model.PrivateTransportation, java.util.*"%>
+<%@page import="DAO.UnscheduledTransportationDAO, Model.UnscheduledTransportation, java.util.*"%>
 <%@page import="DAO.ScheduledTransportationDAO, Model.ScheduledTransportation, java.util.*"%>
 <%@page import="Model.ScheduledTransportationModes"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -16,8 +16,8 @@
         <link rel="stylesheet" href="../Assets/css/manageStyle.css"/>
         <title>Manage Transportation - Travlendar</title>
         <%
-            List<PrivateTransportation> transports = TransportPrivateDAO.getAll();
-            request.setAttribute("transports", transports);
+            List<UnscheduledTransportation> unscheduledTransportations = UnscheduledTransportationDAO.getAll();
+            request.setAttribute("unscheduledTransportations", unscheduledTransportations);
         %>
         <%
             List<ScheduledTransportation> scheduledTransportations = ScheduledTransportationDAO.getAll();
@@ -32,7 +32,7 @@
         <div class="wrapper">
             <li><strong>Admin</strong>TRAVELENDAR</li> 	
         </div>
-	<%@ include file="../navbarManage.jsp"%>
+	<%@include file="../navbarManage.jsp"%>
         <div id="mainPanel">
             <div class="tab">
                 <button class="tablinks" onclick="openTab(event, 'Unscheduled')" id="defaultOpen">Unscheduled</button>
@@ -42,31 +42,29 @@
         
             <div id="Unscheduled" class="tabcontent">
                 <h1>MANAGE UNSCHEDULED TRANSPORTATION</h1>
-                <div style="overflow-x: auto;">
                 <table align="center">
                     <tr>
                         <th>No</th>
                         <th>Transportation Type</th>
                         <th>Action</th>
                     </tr>
-                    <c:forEach items="${transports}" var="item" varStatus="loop">
+                    <c:forEach items="${unscheduledTransportations}" var="item" varStatus="loop">
                         <tr>
                             <td> ${loop.index+1}</td>
-                            <td> ${item.privateType}</td>
+                            <td> ${item.unscheduledTransportationType}</td>
                             <td>
-                                <a href="editTransportPrivateForm.jsp?privateId=${item.privateId}" class="button1">Update</a>
-                                <a href="deletePrivateTransportation.jsp?privateId=${item.privateId}" class="button1">Delete</a>
+                                <a href="editUnscheduledTransportationForm.jsp?unscheduledTransportationId=${item.unscheduledTransportationId}" class="button1">Update</a>
+                                <a href="deleteUnscheduledTransportation.jsp?unscheduledTransportationId=${item.unscheduledTransportationId}" class="button1">Delete</a>
                             </td>
                         </tr>
                     </c:forEach>
                 </table>
-                </div>
                 <br>
                 <br>
                 <div class="form">
-                    <form action="addPrivateTransport.jsp">
+                    <form action="addUnscheduledTransportation.jsp">
                         <label for="fname">Transportation Type</label>
-                        <input type="text" id="mTransportation" name="privateType" placeholder="Transportation Type..." required>          
+                        <input type="text" id="mUnscheduledTransportationType" name="unscheduledTransportationType" placeholder="Transportation Type...">          
                         <input type="submit" name="submit" value="Add">
                     </form>
                 </div>
@@ -74,7 +72,6 @@
         
             <div id="Scheduled" class="tabcontent">
                 <h1>MANAGE SCHEDULED TRANSPORTATION</h1>
-                <div style="overflow-x: auto;">
                 <table align="center">
                     <tr>
                         <th>No</th>
@@ -94,7 +91,6 @@
                         </tr>
                     </c:forEach>
                 </table>
-                </div>
                 <br>
                 <br>
                 <div class="form">
@@ -106,12 +102,13 @@
                             </c:forEach>
                         </select>
                         <label for="fScheduledTransportationName">Transportation Name</label>
-                        <input type="text" id="mScheduledTransportationName" name="scheduledTransportationName" placeholder="Transportation Name..." required>
-                        <input type="submit" name="submit" value="Add">
+                        <input type="text" id="mScheduledTransportationName" name="scheduledTransportationName" placeholder="Transportation Name...">
+                        <input type="submit" name="submit" value="Add">  
                     </form>
                 </div>
             </div>
         </div>
+        
         <script>
             function openTab(evt, cityName) {
                 var i, tabcontent, tablinks;

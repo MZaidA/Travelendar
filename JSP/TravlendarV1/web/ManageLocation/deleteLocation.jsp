@@ -6,17 +6,16 @@
 
 <%@page import="DAO.LocationDAO"%>
 <jsp:useBean id="loc" class="Model.Location"></jsp:useBean>
-    
 <jsp:setProperty property="*" name="loc"/>
 
 <%
-  int status = LocationDAO.delete(loc);
-  if(status!=0) 
-  {
-      response.sendRedirect("index.jsp");
-  }
-  else 
-  {
-      response.sendRedirect("index.jsp");
-  }
+    int status = LocationDAO.delete(loc);
+    if(status != 0) 
+    {
+        response.sendRedirect("index.jsp");
+    }
+        else 
+        {
+            response.sendRedirect("index.jsp");
+        }
 %>

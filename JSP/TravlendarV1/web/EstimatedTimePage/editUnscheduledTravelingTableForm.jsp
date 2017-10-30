@@ -5,9 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="DAO.PrivateTransportationTravelingDAO, Model.PrivateTransportationTraveling, java.util.*"%>
+<%@page import="DAO.UnscheduledTravelingTableDAO, Model.UnscheduledTravelingTable, java.util.*"%>
 <%@page import="Model.Location"%>
-<%@page import="Model.PrivateTransportation"%>
+<%@page import="Model.UnscheduledTransportation"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -16,12 +16,12 @@
         <link rel="stylesheet" href="../Assets/css/manageStyle.css"/>
         <title>Update Private Traveling - Travlendar</title>
         <%
-            List<Location> locations = PrivateTransportationTravelingDAO.getLocation();
+            List<Location> locations = UnscheduledTravelingTableDAO.getLocation();
             request.setAttribute("locations", locations);
         %>
         <%
-            List<PrivateTransportation> privateTransportations = PrivateTransportationTravelingDAO.getPrivateTransportation();
-            request.setAttribute("privateTransportations", privateTransportations);
+            List<UnscheduledTransportation> unscheduledTransportations = UnscheduledTravelingTableDAO.getUnscheduledTransportation();
+            request.setAttribute("unscheduledTransportations", unscheduledTransportations);
         %>
     </head>
     <body>
@@ -31,13 +31,13 @@
         <%@ include file = "../navbarManage.jsp" %>
         <div id="mainPanel" style="overflow-x:hidden;">
             <% 
-                String privateTravelingId = request.getParameter("privateTravelingId");
-                PrivateTransportationTraveling priv = PrivateTransportationTravelingDAO.getPrivateTravelingById(privateTravelingId);
+                String unscheduledTravelingId = request.getParameter("unscheduledTravelingId");
+                UnscheduledTravelingTable priv = UnscheduledTravelingTableDAO.getUncheduledTravelingTableById(unscheduledTravelingId);
             %>
             <h1>UPDATE PRIVATE TRANSPORTATION TRAVELING</h1>
             <div class="form">
-                <form action="editEstimatedTimePrivate.jsp">
-                    <input type="hidden" id="mPrivateTravelingId" name="privateTravelingId" value="<%=priv.getPrivateTravelingId()%>">
+                <form action="editUnscheduledTravelingTable.jsp">
+                    <input type="hidden" id="mUnscheduledTravelingId" name="unscheduledTravelingId" value="<%=priv.getUnscheduledTravelingId()%>">
                     <label for="fLocation">Starting Location</label>
                     <select name="locationId" class="minimal">
                         <c:forEach items="${locations}" var="item">
@@ -50,10 +50,10 @@
                             <option value="${item.locationId}">${item.locationName}</option>
                         </c:forEach>
                     </select>
-                    <label for="fPrivateTransportation">Transportation Type</label>
-                    <select name="privateId" class="minimal">
-                        <c:forEach items="${privateTransportations}" var="item">
-                            <option value="${item.privateId}">${item.privateType}</option>
+                    <label for="fUnscheduledTransportation">Transportation Type</label>
+                    <select name="unscheduledTransportationId" class="minimal">
+                        <c:forEach items="${unscheduledTransportations}" var="item">
+                            <option value="${item.unscheduledTransportationId}">${item.unscheduledTransportationType}</option>
                         </c:forEach>
                     </select>
                     <label for="fTravelingTime">Traveling Time</label>

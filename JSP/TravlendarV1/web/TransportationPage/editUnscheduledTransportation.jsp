@@ -4,19 +4,18 @@
     Author     : GL 553 VD380 i7
 --%>
 
-<%@page import="DAO.TransportPrivateDAO"%>
-<jsp:useBean id="tpriv" class="Model.PrivateTransportation"></jsp:useBean>
-<jsp:setProperty property="*" name="tpriv"/>
-<%--<jsp:getProperty name="loc" property="kode"></jsp:getProperty>
-<jsp:getProperty name="loc" property="nama"></jsp:getProperty>--%>
+<%@page import="DAO.UnscheduledTransportationDAO"%>
+<jsp:useBean id="uns" class="Model.UnscheduledTransportation"></jsp:useBean>
+<jsp:setProperty property="*" name="uns"/>
+
 <% 
-    int i = TransportPrivateDAO.update(tpriv);
-    if(i!=0)
+    int i = UnscheduledTransportationDAO.update(uns);
+    if(i != 0)
     {
         response.sendRedirect("index.jsp");
     }
-    else 
-    {
-        response.sendRedirect("index.jsp");
-    }
+        else 
+        {
+            response.sendRedirect("index.jsp");
+        }
 %>
