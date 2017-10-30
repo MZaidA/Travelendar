@@ -29,6 +29,7 @@ body {
 	background-image:url(../../Assets/icon/Building_1.png);
 	background-position: 14% 80%;
 	background-repeat: no-repeat;
+        z-index: 1;
 }
 
 #sidebar li {
@@ -69,8 +70,9 @@ a {
 /*-----------------------------*/
 
 #mainPanel{
+        border: none;
 	position: relative;
-        width: 90%;
+        width: 85%;
         left: 200px;
         text-align: center;
 }
@@ -285,7 +287,7 @@ select:-moz-focusring {
 /* Style the tab */
 div.tab {
     position: relative;
-    width: auto;
+    width: 100%;
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
@@ -371,10 +373,8 @@ div.tab button.active {
 @media (max-width:750px) {
     #mainPanel{
         margin-top: 200px;
-    }
-    #mainPanel{
-        
-        left: 0;
+        left:0;
+        width:100%;
     }
     #sidebar{
         width: 100%;
@@ -393,14 +393,10 @@ div.tab button.active {
     }
     table{
         left: 0%;
-        overflow-x: scroll;
     }
     .wrapper li{
         text-align: center;
         width: 100%;
-    }
-    .form{
-        left:20%;
     }
     div.tab{
         overflow:visible;

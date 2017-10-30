@@ -31,6 +31,7 @@
         <%@ include file = "../navbarManage.jsp" %>
   <div id="mainPanel">
         <h1>MANAGE LOCATION</h1>
+<div style="overflow-x: auto;">
   <table align="center">
     <tr>
       <th>No</th>
@@ -50,17 +51,16 @@
       <td><a href="editForm.jsp?locationId=${item.locationId}" class="button1">Update</a> <a href="deleteLocation.jsp?locationId=${item.locationId}" class="button1">Delete</a></td>
     </tr>
     </c:forEach>
-    
   </table>
-    
+</div>
     <br>
     <br>
     <div class="form">
         <form action="addLocation.jsp">
             <label for="fLocation">Location</label>
-            <input type="text" id="mLocation" name="locationName" placeholder="Location...">
+            <input type="text" id="mLocation" name="locationName" placeholder="Location..." required>
             <label for="faddres">Address</label>
-            <input type="text" id="mAddress" name="address" placeholder="Address...">
+            <input type="text" id="mAddress" name="address" placeholder="Address..." required>
             <label for="fCity">City</label>
             <select name="districtId" class="minimal">
                 <c:forEach items="${districts}" var="item">

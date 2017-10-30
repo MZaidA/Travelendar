@@ -30,7 +30,7 @@
                 <form action="editUnscheduledTransportation.jsp">
                 <input type="hidden" id="mTransportation" name="privateId" value="<%=transport.getPrivateId()%>">
                 <label for="fname">Transportation Type</label>
-                <input type="text" id="mTransportation" name="privateType" placeholder="Transportation Type...">
+                <input type="text" id="mTransportation" name="privateType" placeholder="Transportation Type..." required>
                 <input type="submit" value="Update">
                 </form>
             </div>

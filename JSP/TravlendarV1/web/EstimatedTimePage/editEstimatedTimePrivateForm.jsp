@@ -57,7 +57,7 @@
                         </c:forEach>
                     </select>
                     <label for="fTravelingTime">Traveling Time</label>
-                    <input type="text" id="mTravelingTime" name="travelingTime" placeholder="Traveling Time...">
+                    <input type="text" id="mTravelingTime" name="travelingTime" placeholder="Traveling Time..." required>
                     <input type="submit" name="submit" value="Update">
                 </form>
             </div>

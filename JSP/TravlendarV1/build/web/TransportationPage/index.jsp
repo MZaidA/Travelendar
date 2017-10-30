@@ -30,7 +30,7 @@
     </head>
     <body>
         <div class="wrapper">
-            <li><strong>Admin</strong>TRAVELENDAR</li> 	
+            <li><strong>Admin</strong>TRAVELENDAR</li>
         </div>
 	<%@ include file="../navbarManage.jsp"%>
         <div id="mainPanel">
@@ -42,6 +42,7 @@
         
             <div id="Unscheduled" class="tabcontent">
                 <h1>MANAGE UNSCHEDULED TRANSPORTATION</h1>
+                <div style="overflow-x: auto;">
                 <table align="center">
                     <tr>
                         <th>No</th>
@@ -59,6 +60,7 @@
                         </tr>
                     </c:forEach>
                 </table>
+                </div>
                 <br>
                 <br>
                 <div class="form">

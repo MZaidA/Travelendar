@@ -44,6 +44,7 @@
         <div id="Private" class="tabcontent">
             
                 <h1>MANAGE PRIVATE TRANSPORTATION TRAVELING</h1>
+                <div style="overflow-x: auto;">
                 <table align="center">
                     <tr>
                         <th>No</th>
@@ -67,7 +68,7 @@
                         </tr>
                     </c:forEach>
                 </table>
-            
+                </div>
             <br>
             <br>
             <div class="form">
@@ -91,15 +92,15 @@
                         </c:forEach>
                     </select>
                     <label for="fTravelingTime">Traveling Time</label>
-                    <input type="text" id="mTravelingTime" name="travelingTime" placeholder="Traveling Time...">
+                    <input type="text" id="mTravelingTime" name="travelingTime" placeholder="Traveling Time..." required>
                     <input type="submit" name="submit" value="Add">
                 </form>
             </div>
         </div>
         
         <div id="Public" class="tabcontent">
-            
                 <h1>MANAGE ESTIMATED TIME PUBLIC</h1>
+                <div style="overflow-x: auto;">
                 <table align="center">
                     <tr>
                         <th>No</th>
@@ -133,7 +134,7 @@
                         </td>
                     </tr>
                 </table>
-            
+                </div>
             <br>
             <br>
             <div class="form">
@@ -164,9 +165,9 @@
                         <option>Plane</option>
                     </select>
                     <label for="fname">Departure Time</label>
-                    <input type="text" id="Dtime" name="departureTime" placeholder="departureTime...">
+                    <input type="text" id="Dtime" name="departureTime" placeholder="departureTime..." required>
                     <label for="fname">Arrival Time</label>
-                    <input type="text" id="Atime" name="arrivalTime" placeholder="arrivalTime...">
+                    <input type="text" id="Atime" name="arrivalTime" placeholder="arrivalTime..." required>
                     <input type="submit">
                 </form>
             </div>

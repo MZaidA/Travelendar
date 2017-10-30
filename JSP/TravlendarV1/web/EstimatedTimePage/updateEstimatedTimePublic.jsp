@@ -47,9 +47,9 @@
                 <option>Plane</option>
             </select>
             <label for="fname">Departure Time</label>
-            <input type="text" id="Dtime" name="departureTime" placeholder="departureTime...">
+            <input type="text" id="Dtime" name="departureTime" placeholder="departureTime..." required>
             <label for="fname">Arrival Time</label>
-            <input type="text" id="Atime" name="arrivalTime" placeholder="arrivalTime...">
+            <input type="text" id="Atime" name="arrivalTime" placeholder="arrivalTime..." required>
             <input type="submit">
             </form>
         </div>
