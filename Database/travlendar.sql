@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2017 at 09:39 AM
+-- Generation Time: Oct 31, 2017 at 02:22 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -137,7 +137,8 @@ INSERT INTO `district` (`DISTRICT_ID`, `PROVINCE_ID`, `DISTRICT_NAME`) VALUES
 (96, 2, 'Sibolga'),
 (97, 2, 'Tanjungbalai'),
 (98, 2, 'Tebingtinggi'),
-(99, 16, 'Yogyakarta');
+(99, 16, 'Yogyakarta'),
+(100, 9, 'Kabupaten Bangka Tengah');
 
 -- --------------------------------------------------------
 
@@ -156,6 +157,28 @@ CREATE TABLE `event` (
   `EVENT_FINISHED` datetime NOT NULL,
   `DEPARTURE_TO_LOCATION` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`EVENT_ID`, `SCHEDULED_TRANSPORTATION_ID`, `START_LOCATION_ID`, `EVENT_LOCATION_ID`, `UNSCHEDULED_TRANSPORTATION_ID`, `EVENT_NAME`, `ARRIVAL_AT_LOCATION`, `EVENT_FINISHED`, `DEPARTURE_TO_LOCATION`) VALUES
+(1, NULL, 5, 1, 2, 'Apel Pagi', '2016-10-25 06:45:00', '2016-10-25 08:30:00', '2016-10-25 05:15:00'),
+(2, NULL, 1, 6, 2, 'Perjalanan Dinas', '2016-10-25 10:50:00', '2016-10-25 11:50:00', '2016-10-25 09:10:00'),
+(3, 1, 6, 7, NULL, 'Perjalanan Dinas', '2016-10-25 13:05:00', '2016-10-25 13:35:00', '2016-10-25 11:50:00'),
+(4, NULL, 7, 2, 4, 'Perjalanan Dinas', '2016-10-25 14:30:00', '2016-10-25 15:30:00', '2016-10-25 13:45:00'),
+(5, NULL, 2, 3, 6, 'Istrahat', '2016-10-25 16:00:00', '2016-10-25 16:45:00', '2016-10-25 15:58:00'),
+(6, NULL, 3, 8, 5, 'Menjenguk Anak', '2016-10-25 17:15:00', '2016-10-25 17:35:00', '2016-10-25 16:00:00'),
+(7, 5, 8, 8, NULL, 'Menjenguk Anak', '2016-10-25 18:05:00', '2016-10-25 18:20:00', '2016-10-25 17:36:00'),
+(8, NULL, 9, 4, 5, 'Menjenguk Anak', '2016-10-25 19:00:00', '2016-10-26 04:50:00', '2016-10-25 18:24:00'),
+(9, NULL, 4, 9, 5, 'Istirahat', '2016-10-26 05:12:00', '2016-10-26 05:32:00', '2016-10-26 04:51:00'),
+(10, 5, 9, 8, NULL, 'Istirahat', '2016-10-26 06:03:00', '2016-10-26 06:03:00', '2016-10-26 05:32:00'),
+(11, NULL, 8, 3, 5, 'Istirahat', '2016-10-26 06:25:00', '2016-10-26 07:45:00', '2016-10-26 06:05:00'),
+(12, NULL, 3, 2, 6, 'Tugas Dinas', '2016-10-26 07:50:00', '2016-10-26 10:00:00', '2016-10-26 07:48:00'),
+(13, NULL, 2, 7, 4, 'Laporan Tugas Dinas', '2016-10-26 10:50:00', '2016-10-26 11:50:00', '2016-10-26 10:18:00'),
+(14, 1, 7, 6, NULL, 'Laporan Tugas Dinas', '2016-10-26 13:00:00', '2016-10-26 13:30:00', '2016-10-26 11:50:00'),
+(15, NULL, 6, 1, 2, 'Laporan Tugas Dinas', '2016-10-26 14:30:00', '2016-10-26 15:30:00', '2016-10-26 13:39:00'),
+(16, NULL, 1, 5, 1, 'Pulang ke Rumah', '2016-10-26 17:00:00', '2016-10-27 05:00:00', '2016-10-26 15:33:00');
 
 -- --------------------------------------------------------
 
@@ -197,6 +220,23 @@ CREATE TABLE `location` (
   `LOCATION_NAME` varchar(40) NOT NULL,
   `ADDRESS` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`LOCATION_ID`, `DISTRICT_ID`, `LOCATION_NAME`, `ADDRESS`) VALUES
+(1, 8, 'Kantor DPRD Provinsi Bangka', 'Jl. Komp. Perkantoran Gubenur No.31, Air Itam, Bukit Intan'),
+(2, 16, 'Kantor DPRD Provinsi Jakarta', 'Jalan Kebon Sirih No.18, RT.11/RW.2, Gambir, RT.11/RW.2, Gambir'),
+(3, 16, 'Istana Ratu Hotel', 'Jl. Jaksa No. 7 - 9, Menteng'),
+(4, 12, 'UMN', 'Jl. Scientia Boulevard, Gading Serpong'),
+(5, 8, 'Rumah', 'Sungai Selan'),
+(6, 100, 'Bandara Depati Amir', 'Jalan Soekarno Hatta, Dul, Pangkalan Baru, Beluluk, Pangkalan Baru, Beluluk, Pangkalan Baru'),
+(7, 12, 'Bandara Soekarno hatta', 'Tangerang City, Banten 19120'),
+(8, 15, 'Stasiun Duri', ' Jl. Duri Utara Raya, Duri Utara, Tambora'),
+(9, 12, 'Stasiun Tangerang', 'Sukarasa, Kecamatan Tangerang'),
+(10, 19, 'Pelabuhan Tanjung Priuk', 'Jl. Raya Pelabuhan  No. 9'),
+(11, 100, 'Pelabuhan Belinyu', 'Air Jukung, Belinyu');
 
 -- --------------------------------------------------------
 
@@ -262,6 +302,17 @@ CREATE TABLE `scheduled_transportation` (
   `SCHEDULED_TRANSPORTATION_NAME` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `scheduled_transportation`
+--
+
+INSERT INTO `scheduled_transportation` (`SCHEDULED_TRANSPORTATION_ID`, `TRANSPORTATION_ID`, `SCHEDULED_TRANSPORTATION_NAME`) VALUES
+(1, 1, 'Lion Air'),
+(2, 1, 'City Link'),
+(3, 1, 'Garuda Indonesia'),
+(4, 1, 'Sriwijaya'),
+(5, 2, 'Tangerang-Duri');
+
 -- --------------------------------------------------------
 
 --
@@ -299,6 +350,19 @@ CREATE TABLE `scheduled_traveling_table` (
   `DEPARTURE_SCHEDULE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `scheduled_traveling_table`
+--
+
+INSERT INTO `scheduled_traveling_table` (`SCHEDULED_TRAVELING_ID`, `START_LOCATION_ID`, `EVENT_LOCATION_ID`, `SCHEDULED_TRANSPORTATION_ID`, `ARRIVAL_SCHEDULE`, `DEPARTURE_SCHEDULE`) VALUES
+(1, 6, 7, 1, '2016-10-25 11:50:00', '2016-10-25 13:05:00'),
+(2, 6, 7, 2, '2016-10-25 14:05:00', '2016-10-25 13:00:00'),
+(3, 6, 7, 3, '2016-10-25 12:10:00', '2016-10-25 13:20:00'),
+(4, 6, 7, 4, '2016-10-25 11:10:00', '2016-10-25 12:20:00'),
+(5, 7, 6, 1, '2016-10-26 11:50:00', '2016-10-26 13:00:00'),
+(6, 8, 9, 5, '2016-10-25 17:36:00', '2016-10-25 18:05:00'),
+(7, 9, 8, 5, '2016-10-26 05:32:00', '2016-10-26 06:03:00');
+
 -- --------------------------------------------------------
 
 --
@@ -310,6 +374,22 @@ CREATE TABLE `transportation_base` (
   `LOCATION_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `transportation_base`
+--
+
+INSERT INTO `transportation_base` (`SCHEDULED_TRANSPORTATION_ID`, `LOCATION_ID`) VALUES
+(1, 6),
+(1, 7),
+(2, 6),
+(2, 7),
+(3, 6),
+(3, 7),
+(4, 6),
+(4, 7),
+(5, 8),
+(5, 9);
+
 -- --------------------------------------------------------
 
 --
@@ -320,6 +400,19 @@ CREATE TABLE `unscheduled_transportation` (
   `UNSCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL,
   `UNSCHEDULED_TRANSPORTATION_TYPE` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `unscheduled_transportation`
+--
+
+INSERT INTO `unscheduled_transportation` (`UNSCHEDULED_TRANSPORTATION_ID`, `UNSCHEDULED_TRANSPORTATION_TYPE`) VALUES
+(1, 'Motor Pribadi'),
+(2, 'Mobil Pribadi'),
+(3, 'Mobil Dinas'),
+(4, 'Mobil Taksi'),
+(5, 'Ojek'),
+(6, 'Jalan Kaki'),
+(7, 'Sepeda');
 
 -- --------------------------------------------------------
 
@@ -334,6 +427,78 @@ CREATE TABLE `unscheduled_traveling_table` (
   `UNSCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL,
   `TRAVELING_TIME` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `unscheduled_traveling_table`
+--
+
+INSERT INTO `unscheduled_traveling_table` (`UNSCHEDULED_TRAVELING_ID`, `EVENT_LOCATION_ID`, `START_LOCATION_ID`, `UNSCHEDULED_TRANSPORTATION_ID`, `TRAVELING_TIME`) VALUES
+(1, 5, 1, 6, 798),
+(2, 5, 1, 2, 79),
+(3, 5, 1, 4, 79),
+(4, 5, 1, 5, 79),
+(5, 5, 1, 1, 66),
+(6, 5, 1, 3, 79),
+(7, 1, 6, 1, 61),
+(8, 1, 6, 2, 73),
+(9, 1, 6, 3, 73),
+(10, 1, 6, 4, 73),
+(11, 1, 6, 5, 61),
+(12, 1, 11, 1, 165),
+(13, 1, 11, 2, 165),
+(14, 1, 11, 3, 165),
+(15, 1, 11, 4, 165),
+(16, 1, 11, 5, 165),
+(17, 7, 2, 3, 45),
+(18, 7, 2, 4, 45),
+(19, 7, 2, 5, 40),
+(20, 10, 2, 3, 0),
+(21, 10, 2, 4, 0),
+(22, 10, 2, 5, 0),
+(23, 2, 3, 3, 1),
+(24, 2, 3, 4, 1),
+(25, 2, 3, 5, 1),
+(26, 2, 3, 6, 1),
+(27, 2, 3, 7, 2),
+(28, 3, 8, 3, 30),
+(29, 3, 8, 4, 30),
+(30, 3, 8, 5, 20),
+(31, 9, 4, 3, 36),
+(32, 9, 4, 4, 36),
+(33, 9, 4, 5, 36),
+(34, 4, 9, 3, 36),
+(35, 4, 9, 4, 36),
+(36, 4, 9, 5, 36),
+(37, 8, 3, 3, 30),
+(38, 8, 3, 4, 30),
+(39, 8, 3, 5, 20),
+(40, 3, 2, 3, 1),
+(41, 3, 2, 4, 1),
+(42, 3, 2, 5, 1),
+(43, 3, 2, 6, 1),
+(44, 3, 2, 7, 2),
+(45, 2, 10, 3, 0),
+(46, 2, 10, 4, 0),
+(47, 2, 10, 5, 0),
+(48, 2, 7, 3, 45),
+(49, 2, 7, 4, 45),
+(50, 2, 7, 5, 40),
+(51, 6, 1, 1, 61),
+(52, 6, 1, 2, 73),
+(53, 6, 1, 3, 73),
+(54, 6, 1, 4, 73),
+(55, 6, 1, 5, 61),
+(56, 11, 1, 1, 165),
+(57, 11, 1, 2, 165),
+(58, 11, 1, 3, 165),
+(59, 11, 1, 4, 165),
+(60, 11, 1, 5, 165),
+(61, 1, 5, 6, 798),
+(62, 1, 5, 2, 79),
+(63, 1, 5, 4, 79),
+(64, 1, 5, 5, 79),
+(65, 1, 5, 1, 66),
+(66, 1, 5, 3, 79);
 
 --
 -- Indexes for dumped tables
@@ -428,12 +593,12 @@ ALTER TABLE `unscheduled_traveling_table`
 -- AUTO_INCREMENT for table `district`
 --
 ALTER TABLE `district`
-  MODIFY `DISTRICT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `DISTRICT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `EVENT_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EVENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `island`
 --
@@ -443,7 +608,7 @@ ALTER TABLE `island`
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `LOCATION_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `LOCATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `province`
 --
@@ -453,7 +618,7 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT for table `scheduled_transportation`
 --
 ALTER TABLE `scheduled_transportation`
-  MODIFY `SCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `scheduled_transportation_modes`
 --
@@ -463,17 +628,17 @@ ALTER TABLE `scheduled_transportation_modes`
 -- AUTO_INCREMENT for table `scheduled_traveling_table`
 --
 ALTER TABLE `scheduled_traveling_table`
-  MODIFY `SCHEDULED_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SCHEDULED_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `unscheduled_transportation`
 --
 ALTER TABLE `unscheduled_transportation`
-  MODIFY `UNSCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `UNSCHEDULED_TRANSPORTATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `unscheduled_traveling_table`
 --
 ALTER TABLE `unscheduled_traveling_table`
-  MODIFY `UNSCHEDULED_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `UNSCHEDULED_TRAVELING_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 --
 -- Constraints for dumped tables
 --
