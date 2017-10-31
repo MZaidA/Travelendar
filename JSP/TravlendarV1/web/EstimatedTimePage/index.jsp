@@ -33,14 +33,16 @@
             <li><strong>Admin</strong>TRAVELENDAR</li> 	
         </div>
         <%@include file = "../navbarManage.jsp"%>
+        <div id="mainPanel">
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Unscheduled')" id="defaultOpen">Unscheduled</button>
             <button class="tablinks" onclick="openTab(event, 'Scheduled')">Scheduled</button>
         </div>
         <div id="Unscheduled" class="tabcontent">
-            <div id="mainPanel" style="overflow-x:hidden;">
+
                 <h1>MANAGE UNSCHEDULED TRAVELING</h1>
-                <table>
+                <div style="overflow-x: auto;">
+                <table align="center">
                     <tr>
                         <th>No</th>
                         <th>Starting Location</th> 
@@ -63,7 +65,8 @@
                         </tr>
                     </c:forEach>
                 </table>
-            </div>
+                </div>
+ 
             <br>
             <br>
             <div class="form">
@@ -94,9 +97,10 @@
         </div>
         
         <div id="Scheduled" class="tabcontent">
-            <div id="mainPanel" style="overflow-x:hidden;">
+            
                 <h1>MANAGE ESTIMATED TIME PUBLIC</h1>
-                <table>
+                <div style="overflow-x:auto;">
+                <table align="center">
                     <tr>
                         <th>No</th>
                         <th>Start Location</th> 
@@ -129,7 +133,8 @@
                         </td>
                     </tr>
                 </table>
-            </div>
+                </div>
+            
             <br>
             <br>
             <div class="form">
@@ -166,6 +171,7 @@
                     <input type="submit">
                 </form>
             </div>
+        </div>
         </div>
         <script>
             function openTab(evt, cityName) {
