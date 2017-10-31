@@ -5,12 +5,11 @@
 --%>
 
 <%@page import="DAO.UnscheduledTravelingTableDAO"%>
-<jsp:useBean id="priv" class="Model.UnscheduledTravelingTable"></jsp:useBean>
-<jsp:setProperty property="*" name="priv"/>
-
+<jsp:useBean id="unst" class="Model.UnscheduledTravelingTable"></jsp:useBean>
+<jsp:setProperty property="*" name="unst"/>
 <%
-    int status = UnscheduledTravelingTableDAO.save(priv);
-    if(status != 0) 
+    int status = UnscheduledTravelingTableDAO.save(unst);
+    if(status != 0)
     {
         response.sendRedirect("index.jsp");
     }

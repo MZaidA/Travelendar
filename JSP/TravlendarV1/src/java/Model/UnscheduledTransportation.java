@@ -7,7 +7,7 @@ package Model;
 
 /**
  *
- * @author HP1
+ * @author Nino
  */
 public class UnscheduledTransportation {
     private int unscheduledTransportationId;
