@@ -112,7 +112,7 @@ public class UnscheduledTravelingTableDAO {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps=con.prepareStatement("update unscheduled_transportation_traveling set EVENT_LOCATION_ID=?, START_LOCATION_ID=?, UNSCHEDULED_TRANSPORTATION_ID=?, TRAVELING_TIME=? where UNSCHEDULED_TRAVELING_ID=?");
+            PreparedStatement ps=con.prepareStatement("update unscheduled_transportation_traveling set UNSCHEDULED_TRAVELING_ID=?, START_LOCATION_ID=?, UNSCHEDULED_TRANSPORTATION_ID=?, TRAVELING_TIME=? where UNSCHEDULED_TRAVELING_ID=?");
             ps.setInt(1, _unscheduledTravelingTable.getEventLocationId());
             ps.setInt(2, _unscheduledTravelingTable.getStartLocationId());           
             ps.setInt(3, _unscheduledTravelingTable.getUnscheduledTransportationId());
@@ -130,7 +130,7 @@ public class UnscheduledTravelingTableDAO {
         UnscheduledTravelingTable utt = null;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM unscheduled_traveling_table WHERE USNCHEDULED_TRAVELING_ID=?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM unscheduled_traveling_table WHERE UNsCHEDULED_TRAVELING_ID=?");
             ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {

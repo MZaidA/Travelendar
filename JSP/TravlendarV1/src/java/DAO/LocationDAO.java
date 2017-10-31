@@ -84,12 +84,16 @@ public class LocationDAO {
         int status = 0;
         try {
             Connection con = getConnection();
+            PreparedStatement ps4 = con.prepareStatement("DELETE FROM unscheduled_traveling_table WHERE (EVENT_LOCATION_ID = ?) OR (START_LOCATION_ID =?)");
             PreparedStatement ps2 = con.prepareStatement("DELETE FROM event WHERE EVENT_LOCATION_ID=?");
             PreparedStatement ps3 = con.prepareStatement("DELETE FROM event WHERE START_LOCATION_ID=?");
             PreparedStatement ps = con.prepareStatement("DELETE FROM location WHERE LOCATION_ID=?");
+            ps4.setInt(1, _location.getLocationId());
+            ps4.setInt(2, _location.getLocationId());
             ps2.setInt(1, _location.getLocationId());
             ps3.setInt(1, _location.getLocationId());
             ps.setInt(1, _location.getLocationId());
+            ps4.executeUpdate();
             ps2.executeUpdate();
             ps3.executeUpdate();
             status = ps.executeUpdate();
