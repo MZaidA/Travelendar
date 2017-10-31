@@ -7,17 +7,17 @@ package Model;
 
 /**
  *
- * @author Cecep Sutisna
+ * @author Nino
  */
 public class UnscheduledTravelingTable {
     private int unscheduledTravelingId;
-    private int eventLocationId;
-    private String eventLocationName;
-    private String startLocationName;
     private int startLocationId;
+    private int eventLocationId;
     private int unscheduledTransportationId;
-    private String unscheduledTransportationType;
     private long travelingTime;
+    private String startLocationName;
+    private String eventLocationName;
+    private String unscheduledTransportationType;
 
     /**
      * @return the unscheduledTravelingId
@@ -29,50 +29,8 @@ public class UnscheduledTravelingTable {
     /**
      * @param unscheduledTravelingId the unscheduledTravelingId to set
      */
-    public void setUncheduledTravelingId(int unscheduledTravelingId) {
+    public void setUnscheduledTravelingId(int unscheduledTravelingId) {
         this.unscheduledTravelingId = unscheduledTravelingId;
-    }
-
-    /**
-     * @return the eventLocationId
-     */
-    public int getEventLocationId() {
-        return eventLocationId;
-    }
-
-    /**
-     * @param eventLocationId the eventLocationId to set
-     */
-    public void setEventLocationId(int eventLocationId) {
-        this.eventLocationId = eventLocationId;
-    }
-
-    /**
-     * @return the eventLocationName
-     */
-    public String getEventLocationName() {
-        return eventLocationName;
-    }
-
-    /**
-     * @param eventLocationName the eventLocationName to set
-     */
-    public void setEventLocationName(String eventLocationName) {
-        this.eventLocationName = eventLocationName;
-    }
-
-    /**
-     * @return the startLocationName
-     */
-    public String getStartLocationName() {
-        return startLocationName;
-    }
-
-    /**
-     * @param startLocationName the startLocationName to set
-     */
-    public void setStartLocationName(String startLocationName) {
-        this.startLocationName = startLocationName;
     }
 
     /**
@@ -90,6 +48,20 @@ public class UnscheduledTravelingTable {
     }
 
     /**
+     * @return the eventLocationId
+     */
+    public int getEventLocationId() {
+        return eventLocationId;
+    }
+
+    /**
+     * @param eventLocationId the eventLocationId to set
+     */
+    public void setEventLocationId(int eventLocationId) {
+        this.eventLocationId = eventLocationId;
+    }
+
+    /**
      * @return the unscheduledTransportationId
      */
     public int getUnscheduledTransportationId() {
@@ -101,20 +73,6 @@ public class UnscheduledTravelingTable {
      */
     public void setUnscheduledTransportationId(int unscheduledTransportationId) {
         this.unscheduledTransportationId = unscheduledTransportationId;
-    }
-
-    /**
-     * @return the unscheduledTransportationType
-     */
-    public String getUnscheduledTransportationType() {
-        return unscheduledTransportationType;
-    }
-
-    /**
-     * @param unscheduledTransportationType the unscheduledTransportationType to set
-     */
-    public void setUnscheduledTransportationType(String unscheduledTransportationType) {
-        this.unscheduledTransportationType = unscheduledTransportationType;
     }
 
     /**
@@ -131,5 +89,47 @@ public class UnscheduledTravelingTable {
         this.travelingTime = travelingTime;
     }
 
+    /**
+     * @return the startLocationName
+     */
+    public String getStartLocationName() {
+        return startLocationName;
+    }
+
+    /**
+     * @param startLocationName the startLocationName to set
+     */
+    public void setStartLocationName(String startLocationName) {
+        this.startLocationName = startLocationName;
+    }
+
+    /**
+     * @return the eventLocationName
+     */
+    public String getEventLocationName() {
+        return eventLocationName;
+    }
+
+    /**
+     * @param eventLocationName the eventLocationName to set
+     */
+    public void setEventLocationName(String eventLocationName) {
+        this.eventLocationName = eventLocationName;
+    }
+
+    /**
+     * @return the unscheduledTransportationType
+     */
+    public String getUnscheduledTransportationType() {
+        return unscheduledTransportationType;
+    }
+
+    /**
+     * @param unscheduledTransportationType the unscheduledTransportationType to set
+     */
+    public void setUnscheduledTransportationType(String unscheduledTransportationType) {
+        this.unscheduledTransportationType = unscheduledTransportationType;
+    }
+    
     
 }
