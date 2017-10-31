@@ -26,7 +26,7 @@ public class UnscheduledTransportationDAO {
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com/sql12202281", "sql12202281", "vhcYQzrnci");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/travlendar", "root", "");
         }
         catch (Exception e) {
             System.out.println(e);
