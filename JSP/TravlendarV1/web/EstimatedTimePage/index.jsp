@@ -6,8 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="DAO.UnscheduledTravelingTableDAO, Model.UnscheduledTravelingTable, java.util.*"%>
+<%@page import="DAO.ScheduledTravelingTableDAO, Model.ScheduledTravelingTable, java.util.*"%>
 <%@page import="Model.Location"%>
 <%@page import="Model.UnscheduledTransportation"%>
+<%@page import="Model.ScheduledTransportation"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +20,6 @@
         <%
             List<UnscheduledTravelingTable> unscheduledTravelingTables = UnscheduledTravelingTableDAO.getAll();
             request.setAttribute("unscheduledTravelingTables", unscheduledTravelingTables);
-        %>
         <%
             List<Location> locations = UnscheduledTravelingTableDAO.getLocation();
             request.setAttribute("locations", locations);
@@ -27,6 +28,20 @@
             List<UnscheduledTransportation> unscheduledTransportations = UnscheduledTravelingTableDAO.getUnscheduledTransportation();
             request.setAttribute("unscheduledTransportations", unscheduledTransportations);
         %>
+        <title>Manage Scheduled Traveling - Travlendar</title>
+        <%
+            List<ScheduledTravelingTable> scheduledTravelingTables = ScheduledTravelingTableDAO.getAll();
+            request.setAttribute("scheduledTravelingTables", scheduledTravelingTables);
+        %>
+        <%
+            List<Location> slocations = ScheduledTravelingTableDAO.getLocation();
+            request.setAttribute("slocations", slocations);
+        %>
+        <%
+            List<ScheduledTransportation> scheduledTransportations = ScheduledTravelingTableDAO.getScheduledTransportation();
+            request.setAttribute("scheduledTransportations", scheduledTransportations);
+        %>
+        
     </head>
     <body>
         <div class="wrapper">
@@ -110,28 +125,20 @@
                         <th>Arrival Time</th>
                         <th>Action</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Rumah</td>
-                        <td>Kantor DPRD</td>
-                        <td>Bus</td>
-                        <td>07:00</td>
-                        <td>10:00</td>
-                        <td>
-                            <a href="updateEstimatedTimePublic.jsp" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Rumah</td>
-                        <td>Kantor DPRD</td>
-                        <td>Train</td>
-                        <td>07:00</td>
-                        <td>10:00</td>
-                        <td>
-                            <a href="#Update" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a>
-                        </td>
-                    </tr>
+                    <c:forEach items="${scheduledTravelingTables}" var="item" varStatus="loop">
+                        <tr>
+                            <td>${loop.index+1}</td>
+                            <td>${item.startLocationName} </td>
+                            <td>${item.eventLocationName}</td>
+                            <td>${item.scheduledTransportationType}</td>
+                            <td>${item.departureDateStr}</td>
+                            <td>${item.arrivalDateStr}</td>
+                            <td>
+                                <a href="editScheduledTravelingTableForm.jsp?unscheduledTravelingId=${item.scheduledTravelingId}" class="button1">Update</a>
+                                <a href="deleteScheduledTravelingTable.jsp?unscheduledTravelingId=${item.scheduledTravelingId}" class="button1">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
                 </table>
                 </div>
             

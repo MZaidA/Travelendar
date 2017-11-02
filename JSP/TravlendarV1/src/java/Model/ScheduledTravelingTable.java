@@ -11,42 +11,50 @@ import java.util.Date;
  * @author HP1
  */
 public class ScheduledTravelingTable {
-    private Date arrivalSchedule;
-    private Date departureSchedule;
+    private Date arrivalTimeSchedule = new Date();
+    private String arrivalDateStr;
+    private String arrivalTimeStr;
+    
+    private Date departureTimeSchedule  = new Date();
+    private String departureDateStr;
+    private String departureTimeStr;
+    
     private Integer scheduledTravelingId;
     private Integer startLocationId;
     private Integer eventLocationId;
     private Integer scheduledTransportationId;
+    
     private String startLocationName;
     private String eventLocationName;
+    private String scheduledTransportationType;
     private String scheduledTransportationName;
 
     /**
-     * @return the arrivalSchedule
+     * @return the arrivalTimeSchedule
      */
     public Date getArrivalSchedule() {
-        return arrivalSchedule;
+        return arrivalTimeSchedule;
     }
 
     /**
-     * @param arrivalSchedule the arrivalSchedule to set
+     * @param arrivalSchedule the arrivalTimeSchedule to set
      */
     public void setArrivalSchedule(Date arrivalSchedule) {
-        this.arrivalSchedule = arrivalSchedule;
+        this.arrivalTimeSchedule = arrivalSchedule;
     }
 
     /**
-     * @return the departureSchedule
+     * @return the departureTimeSchedule
      */
     public Date getDepartureSchedule() {
-        return departureSchedule;
+        return departureTimeSchedule;
     }
 
     /**
-     * @param departureSchedule the departureSchedule to set
+     * @param departureSchedule the departureTimeSchedule to set
      */
     public void setDepartureSchedule(Date departureSchedule) {
-        this.departureSchedule = departureSchedule;
+        this.departureTimeSchedule = departureSchedule;
     }
 
     /**
@@ -145,6 +153,76 @@ public class ScheduledTravelingTable {
      */
     public void setScheduledTransportationName(String scheduledTransportationName) {
         this.scheduledTransportationName = scheduledTransportationName;
+    }
+
+    /**
+     * @return the scheduledTransportationType
+     */
+    public String getScheduledTransportationType() {
+        return scheduledTransportationType;
+    }
+
+    /**
+     * @param scheduledTransportationType the scheduledTransportationType to set
+     */
+    public void setScheduledTransportationType(String scheduledTransportationType) {
+        this.scheduledTransportationType = scheduledTransportationType;
+    }
+
+    /**
+     * @return the arrivalDateStr
+     */
+    public String getArrivalDateStr() {
+        return arrivalDateStr;
+    }
+
+    /**
+     * @param arrivalDateStr the arrivalDateStr to set
+     */
+    public void setArrivalDateStr(String arrivalDateStr) {
+        this.arrivalDateStr = arrivalDateStr;
+    }
+
+    /**
+     * @return the arrivalTimeStr
+     */
+    public String getArrivalTimeStr() {
+        return arrivalTimeStr;
+    }
+
+    /**
+     * @param arrivalTimeStr the arrivalTimeStr to set
+     */
+    public void setArrivalTimeStr(String arrivalTimeStr) {
+        this.arrivalTimeStr = arrivalTimeStr;
+    }
+
+    /**
+     * @return the departureDateStr
+     */
+    public String getDepartureDateStr() {
+        return departureDateStr;
+    }
+
+    /**
+     * @param departureDateStr the departureDateStr to set
+     */
+    public void setDepartureDateStr(String departureDateStr) {
+        this.departureDateStr = departureDateStr;
+    }
+
+    /**
+     * @return the departureTimeStr
+     */
+    public String getDepartureTimeStr() {
+        return departureTimeStr;
+    }
+
+    /**
+     * @param departureTimeStr the departureTimeStr to set
+     */
+    public void setDepartureTimeStr(String departureTimeStr) {
+        this.departureTimeStr = departureTimeStr;
     }
     
     
