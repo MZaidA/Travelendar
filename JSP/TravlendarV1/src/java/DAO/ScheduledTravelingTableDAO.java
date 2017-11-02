@@ -105,6 +105,34 @@ public class ScheduledTravelingTableDAO {
         }
         return scheduledTravellingTables;
     }
+    
+    public static List<ScheduledTransportation> getScheduledTransportation() {
+        List<ScheduledTransportation> scheduledTransportations = new ArrayList<ScheduledTransportation>();
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM scheduled_transportation");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                ScheduledTransportation sch = new ScheduledTransportation();
+                sch.setScheduledTransportationId(rs.getInt("SCHEDULED_TRANSPORTATION_ID"));
+                sch.setTransportationId(rs.getInt("TRANSPORTATION_ID"));
+                sch.setScheduledTransportationName(rs.getString("SCHEDULED_TRANSPORTATION_NAME"));
+                scheduledTransportations.add(sch);
+            }
+            for(int i = 0; i < scheduledTransportations.size(); i++) {
+                PreparedStatement ps1 = con.prepareStatement("SELECT * FROM scheduled_transportation_modes where TRANSPORTATION_ID=?");
+                ps1.setInt(1, scheduledTransportations.get(i).getTransportationId());
+                ResultSet rs1 = ps1.executeQuery();
+                while(rs1.next()) {
+                    scheduledTransportations.get(i).setTransportationType(rs1.getString("TRANSPORTATION_TYPE"));
+                }
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return scheduledTransportations;
+    }
 /*
     public static int save(ScheduledTravelingTable _scheduledTravelingTable) {
         int status = 0;
@@ -181,32 +209,6 @@ public class ScheduledTravelingTableDAO {
         return locations;
     }
     
-    public static List<ScheduledTransportation> getScheduledTransportation() {
-        List<ScheduledTransportation> scheduledTransportations = new ArrayList<ScheduledTransportation>();
-        try {
-            Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM scheduled_transportation");
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()) {
-                ScheduledTransportation sch = new ScheduledTransportation();
-                sch.setScheduledTransportationId(rs.getInt("SCHEDULED_TRANSPORTATION_ID"));
-                sch.setTransportationId(rs.getInt("TRANSPORTATION_ID"));
-                sch.setScheduledTransportationName(rs.getString("SCHEDULED_TRANSPORTATION_NAME"));
-                scheduledTransportations.add(sch);
-            }
-            for(int i = 0; i < scheduledTransportations.size(); i++) {
-                PreparedStatement ps1 = con.prepareStatement("SELECT * FROM scheduled_transportation_modes where TRANSPORTATION_ID=?");
-                ps1.setInt(1, scheduledTransportations.get(i).getTransportationId());
-                ResultSet rs1 = ps1.executeQuery();
-                while(rs1.next()) {
-                    scheduledTransportations.get(i).setTransportationType(rs1.getString("TRANSPORTATION_TYPE"));
-                }
-            }
-        }
-        catch(Exception e) {
-            System.out.println(e);
-        }
-        return scheduledTransportations;
-    }*/
+    */
     
 }

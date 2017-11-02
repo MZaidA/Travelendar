@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="DAO.UnscheduledTravelingTableDAO, Model.UnscheduledTravelingTable, java.util.*"%>
-<%@page import="DAO.ScheduledTravelingTableDAO, Model.ScheduledTravelingTable, java.util.*"%>
+<%@page import="DAO.ScheduledTravelingTableDAO, Model.ScheduledTravelingTable"%>
 <%@page import="Model.Location"%>
 <%@page import="Model.UnscheduledTransportation"%>
 <%@page import="Model.ScheduledTransportation"%>
@@ -23,6 +23,7 @@
         <%
             List<UnscheduledTravelingTable> unscheduledTravelingTables = UnscheduledTravelingTableDAO.getAll();
             request.setAttribute("unscheduledTravelingTables", unscheduledTravelingTables);
+        %>    
         <%
             List<Location> locations = UnscheduledTravelingTableDAO.getLocation();
             request.setAttribute("locations", locations);
@@ -35,10 +36,6 @@
         <%
             List<ScheduledTravelingTable> scheduledTravelingTables = ScheduledTravelingTableDAO.getAll();
             request.setAttribute("scheduledTravelingTables", scheduledTravelingTables);
-        %>
-        <%
-            List<Location> slocations = ScheduledTravelingTableDAO.getLocation();
-            request.setAttribute("slocations", slocations);
         %>
         <%
             List<ScheduledTransportation> scheduledTransportations = ScheduledTravelingTableDAO.getScheduledTransportation();
@@ -128,45 +125,20 @@
                         <th>Arrival Time</th>
                         <th>Action</th>
                     </tr>
-<<<<<<< HEAD
                     <c:forEach items="${scheduledTravelingTables}" var="item" varStatus="loop">
                         <tr>
-                            <td>${loop.index+1}</td>
-                            <td>${item.startLocationName} </td>
-                            <td>${item.eventLocationName}</td>
-                            <td>${item.scheduledTransportationType}</td>
-                            <td>${item.departureDateStr}</td>
-                            <td>${item.arrivalDateStr}</td>
+                            <td>tes</td>
+                            <td>tes</td>
+                            <td>tes</td>
+                            <td>tes</td>
+                            <td>tes</td>
+                            <td>tes</td>
                             <td>
                                 <a href="editScheduledTravelingTableForm.jsp?unscheduledTravelingId=${item.scheduledTravelingId}" class="button1">Update</a>
                                 <a href="deleteScheduledTravelingTable.jsp?unscheduledTravelingId=${item.scheduledTravelingId}" class="button1">Delete</a>
                             </td>
                         </tr>
                     </c:forEach>
-=======
-                    <tr>
-                        <td>1</td>
-                        <td>Rumah</td>
-                        <td>Kantor DPRD</td>
-                        <td>Bus</td>
-                        <td>07:00</td>
-                        <td>10:00</td>
-                        <td>
-                            <a href="editScheduledTravelingTableForm.jsp" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Rumah</td>
-                        <td>Kantor DPRD</td>
-                        <td>Train</td>
-                        <td>07:00</td>
-                        <td>10:00</td>
-                        <td>
-                            <a href="editScheduledTravelingTableForm.jsp" class="button1">Update</a> <a href="#Delete" class="button1">Delete</a>
-                        </td>
-                    </tr>
->>>>>>> d1bead9d9a40ac7aff3e08af5db0d0f580e29ab8
                 </table>
                 </div>
             
@@ -174,30 +146,24 @@
             <br>
             <div class="form">
 	    	<form action="/action_page.php">
-                    <label for="LocationA">Location A</label>	
-                    <select class="minimal" id="Locationa" name="Locationa">
-                        <option value="rumah">Rumah</option>
-                        <option value="kantor_dprd">Kantor DPRD</option>
-                        <option value="bandara_banka">Bandara Banka</option>
-                        <option value="bandara_halim">Bandara Halim Perdanakusuma</option>
-                        <option value="jakarta">Jakarta</option>
-                        <option value="tangerang">Tangerang</option>
+                    <form action="addUnscheduledTravelingTable.jsp">
+                    <label for="fLocation">Starting Location</label>
+                    <select name="startLocationId" class="minimal">
+                        <c:forEach items="${locations}" var="item">
+                            <option value="${item.locationId}">${item.locationName}</option>
+                        </c:forEach>
                     </select>
-                    <label for="LocationB">Location B</label>	
-                    <select class="minimal" id="Locationb" name="Locationb">
-                        <option value="rumah">Rumah</option>
-                        <option value="kantor_dprd">Kantor DPRD</option>
-                        <option value="bandara_banka">Bandara Banka</option>
-                        <option value="bandara_halim">Bandara Halim Perdanakusuma</option>
-                        <option value="jakarta">Jakarta</option>
-                        <option value="tangerang">Tangerang</option>
+                    <label for="fLocation">Destination</label>
+                    <select name="eventLocationId" class="minimal">
+                        <c:forEach items="${locations}" var="item">
+                            <option value="${item.locationId}">${item.locationName}</option>
+                        </c:forEach>
                     </select>
-                    <label for="fname">Transportaion Mode</label>
-                    <select class="minimal">
-                        <option>Bus</option>
-                        <option>Train</option>
-                        <option>Ship</option>
-                        <option>Plane</option>
+                    <label for="fUnscheduledTransportation">Transportation Type</label>
+                    <select name="unscheduledTransportationId" class="minimal">
+                        <c:forEach items="${scheduledTransportations}" var="item">
+                            <option value="${item.scheduledTransportationId}">${item.scheduledTransportationName}</option>
+                        </c:forEach>
                     </select>
                     <label for="fname">Departure Time</label>
                     <input type="text" id="dateTime1" name="departureTime" placeholder="departureTime...">
