@@ -32,18 +32,18 @@
             <h1>UPDATE LOCATION</h1>
             <div class="form">
                 <form action="editLocation.jsp" method="get">
+                    <label for="locationId" hidden>Location</label>
+                    <input type="hidden" name="locationId" value="<%=loc.getLocationId()%>" >
                     <label for="fLocation">Location</label>
-                    <input type="text" id="mLocation" name="locationName" placeholder="Location..." required >
+                    <input type="text" id="mLocation" name="locationName" placeholder="Location..." required value="<%=loc.getLocationName()%>">
                     <label for="fAddres">Address</label>
-                    <input type="text" id="mAddress" name="address" placeholder="Address..." required>
+                    <input type="text" id="mAddress" name="address" placeholder="Address..." required value="<%=loc.getAddress()%>">
                     <label for="fCity">City</label>
 /                   <select name="districtId" class="minimal">
                         <c:forEach items="${districts}" var="item">
                             <option value="${item.districtId}">${item.districtName}</option>
                         </c:forEach>
                     </select>
-                    <label for="locationId" hidden>Location</label>
-                    <input type="hidden" name="locationId" value="<%=loc.getLocationId()%>" >
                     <input type="submit" name="submit" value="Update">
                 </form>
             </div>

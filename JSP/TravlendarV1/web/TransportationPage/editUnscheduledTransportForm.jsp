@@ -29,7 +29,7 @@
                 <form action="editUnscheduledTransportation.jsp">
                 <input type="hidden" id="mUnscheduledTransportationId" name="unscheduledTransportationId" value="<%=uns.getUnscheduledTransportationId()%>">
                 <label for="fname">Transportation Type</label>
-                <input type="text" id="mUnscheduledTransportationType" name="unscheduledTransportationType" placeholder="Transportation Type..." required>
+                <input type="text" id="mUnscheduledTransportationType" name="unscheduledTransportationType" placeholder="Transportation Type..." required value="<%=uns.getUnscheduledTransportationType()%>">
                 <input type="submit" value="Update">
                 </form>
             </div>
