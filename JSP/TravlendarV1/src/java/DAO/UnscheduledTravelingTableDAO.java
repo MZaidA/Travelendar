@@ -50,7 +50,6 @@ public class UnscheduledTravelingTableDAO {
                 unst.setTravelingTime(rs.getLong("TRAVELING_TIME"));
                 unscheduledTravelingTables.add(unst);
             }
-            
             for(int i = 0; i < unscheduledTravelingTables.size(); i++)
             {
                 PreparedStatement ps1 = con.prepareStatement("SELECT * FROM location where LOCATION_ID=?");
