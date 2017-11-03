@@ -21,8 +21,6 @@
         <title>JSP Page</title>
          <%
             List<Event> events = EventDAO.getAll();
-            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            DateFormat tf = new SimpleDateFormat("hh:mm:ss");
             request.setAttribute("events", events);
         %>
     <script>
