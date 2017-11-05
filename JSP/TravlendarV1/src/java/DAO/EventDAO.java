@@ -22,8 +22,9 @@ import java.util.logging.Logger;
  *
  * @author afadh
  */
-public class EventDAO {
+public class EventDAO{
 
+    
     public static Connection getConnection() {
         Connection con = null;
         try{
@@ -122,14 +123,17 @@ public class EventDAO {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO event(EVENT_NAME, LOCATION_ID, LOC_LOCATION_ID, ARRIVAL_AT_LOCATION, EVENT_FINISHED, DESCRIPTION) VALUES (?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO event(EVENT_NAME, EVENT_LOCATION_ID, START_LOCATION_ID, ARRIVAL_AT_LOCATION, EVENT_FINISHED, UNSCHEDULED_TRANSPORTATION_ID, DEPARTURE_TO_LOCATION) VALUES (?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, event.getEventName());
             ps.setInt(2, event.getLocationId());
             ps.setInt(3, event.getLoc2Id());
             ps.setDate(4, new Date(event.getArrivalTime().getTime()));
             ps.setDate(5, new Date(event.getEndTime().getTime()));
-            ps.setString(6, event.getDescription());
+            //ps.setString(6, event.getDescription());
+            ps.setInt(6, event.getUnscheduled_id());
+            ps.setDate(7, new Date(event.getDepartureToLocation().getTime()));
             status = ps.executeUpdate();
+            System.out.println(ps);
         }
         catch(Exception e) {
             System.out.println(e);
@@ -141,14 +145,16 @@ public class EventDAO {
                 int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE event set EVENT_NAME=?, LOCATION_ID=?, LOC_LOCATION_ID=?, ARRIVAL_AT_LOCATION=?, EVENT_FINISHED=?, DESCRIPTION=? WHERE EVENT_ID=?");
+            PreparedStatement ps = con.prepareStatement("UPDATE event set EVENT_NAME=?, EVENT_LOCATION_ID=?, START_LOCATION_ID=?, ARRIVAL_AT_LOCATION=?, EVENT_FINISHED=?, DESCRIPTION=? UNSCHEDULED_TRANSPORTATION_ID=? WHERE EVENT_ID=?");
             ps.setString(1, event.getEventName());
             ps.setInt(2, event.getLocationId());
             ps.setInt(3, event.getLoc2Id());
             ps.setDate(4, (Date) event.getArrivalTime());
             ps.setDate(5, (Date) event.getEndTime());
             ps.setString(6, event.getDescription());
-            ps.setInt(7, event.getEventId());
+            ps.setInt(7, event.getUnscheduled_id());
+            ps.setInt(8, event.getEventId());
+            System.out.print(ps);
             status = ps.executeUpdate();
         }
         catch(Exception e) {
@@ -170,5 +176,5 @@ public class EventDAO {
         }
         return status;
     }
-   
+    
 }
