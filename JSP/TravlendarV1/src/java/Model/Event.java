@@ -16,6 +16,20 @@ import javafx.util.Pair;
  * @author syamcode
  */
 public class Event {
+
+    /**
+     * @return the unscheduled_id
+     */
+    public Integer getUnscheduled_id() {
+        return unscheduled_id;
+    }
+
+    /**
+     * @param unscheduled_id the unscheduled_id to set
+     */
+    public void setUnscheduled_id(Integer unscheduled_id) {
+        this.unscheduled_id = unscheduled_id;
+    }
     private Integer eventId;
     private Integer locationId;
     private Integer loc2Id;
@@ -36,7 +50,7 @@ public class Event {
     private Location location;
     private String description;
 
-   
+   private Integer unscheduled_id;
     private List<Suggestion> suggestions = new ArrayList<Suggestion>();
 
     public Integer getLocationId() {

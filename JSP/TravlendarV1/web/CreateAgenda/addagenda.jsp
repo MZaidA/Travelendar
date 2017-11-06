@@ -4,6 +4,10 @@
     Author     : syamcode
 --%>
 
+<%@page import="Model.UnscheduledTravelingTable"%>
+<%@page import="Model.UnscheduledTravelingTable"%>
+<%@page import="DAO.UnscheduledTravelingTableDAO"%>
+<%@page import="DAO.SuggestionDAO"%>
 <%@page import="Model.Event"%>
 <%@page import="java.util.Locale"%>
 <%@page import="java.util.Date"%>
@@ -15,27 +19,37 @@
 
 <jsp:getProperty property="eventName" name="event"></jsp:getProperty>--%>
 <% 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh : mm a", Locale.US);
-    
+    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm");
     String eventName = request.getParameter("eventName");
-    Integer loc2Id = Integer.parseInt(request.getParameter("loc2Id"));
-    Integer locationId = Integer.parseInt(request.getParameter("locationId"));
-    String startDate = request.getParameter("startDate");
+    Integer startloc=0;
+    Integer locationId = Integer.parseInt(request.getParameter("eventLocationId"));
+    String arrivalTime = request.getParameter("arrivalTime");
     String endDate = request.getParameter("endDate");
-    String startTime = request.getParameter("startTime");
-    String endTime = request.getParameter("endTime");
     String description = request.getParameter("description");
+    Integer unscheduled_id = Integer.parseInt(request.getParameter("UNSCHEDULED_TRANSPORTATION_ID"));
+    Date start = dateFormat.parse(arrivalTime);
+    Date end = dateFormat.parse(endDate);
     
-    Date start = dateFormat.parse(startDate + " " + startTime);
-    Date end = dateFormat.parse(endDate + " " + endTime);
+    if(request.getParameter("startLocationId")!=null) {
+        startloc = Integer.parseInt(request.getParameter("startLocationId"));
+    }
+    else {
+        Event lastEvent= SuggestionDAO.getLastEvent(arrivalTime);
+            if(lastEvent!=null) {
+                startloc = lastEvent.getLocationId();
+            }
+    }
     
+    UnscheduledTravelingTable uns = UnscheduledTravelingTableDAO.getUnscheduledTravelingTableById(request.getParameter("UNSCHEDULED_TRANSPORTATION_ID"));
     Event event = new Event();
     event.setEventName(eventName);
-    event.setLoc2Id(loc2Id);
+    event.setLoc2Id(startloc);
     event.setLocationId(locationId);
     event.setArrivalTime(start);
     event.setEndTime(end);
     event.setDescription(description);
+    event.setUnscheduled_id(unscheduled_id);
+    event.setDepartureToLocation(new Date(start.getTime() - uns.getTravelingTime()*60000));
     
     int status = EventDAO.save(event);
     if(status!=0) {
