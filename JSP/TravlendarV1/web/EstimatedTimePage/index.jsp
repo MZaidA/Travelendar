@@ -51,7 +51,7 @@
         <div id="mainPanel">
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Unscheduled')" id="defaultOpen">Unscheduled</button>
-            <button class="tablinks" onclick="openTab(event, 'Scheduled')">Scheduled</button>
+            <button class="tablinks" onclick="openTab(event, 'Scheduled')" >Scheduled</button>
         </div>
         <div id="Unscheduled" class="tabcontent">
 
@@ -120,19 +120,19 @@
                         <th>No</th>
                         <th>Start Location</th> 
                         <th>Finish Location</th>
-                        <th>Transportation Mode</th>
+                        <th>Transportation Name</th>
                         <th>Departure Time</th>
                         <th>Arrival Time</th>
                         <th>Action</th>
                     </tr>
                     <c:forEach items="${scheduledTravelingTables}" var="item" varStatus="loop">
                         <tr>
-                            <td>tes</td>
-                            <td>tes</td>
-                            <td>tes</td>
-                            <td>tes</td>
-                            <td>tes</td>
-                            <td>tes</td>
+                            <td>${loop.index+1}</td>
+                            <td>${item.startLocationName}</td>
+                            <td>${item.eventLocationName}</td>
+                            <td>${item.scheduledTransportationName}</td>
+                            <td>${item.departureDateStr} ${item.departureTimeStr}</td>
+                            <td>${item.arrivalDateStr} ${item.arrivalTimeStr}</td>
                             <td>
                                 <a href="editScheduledTravelingTableForm.jsp?unscheduledTravelingId=${item.scheduledTravelingId}" class="button1">Update</a>
                                 <a href="deleteScheduledTravelingTable.jsp?unscheduledTravelingId=${item.scheduledTravelingId}" class="button1">Delete</a>

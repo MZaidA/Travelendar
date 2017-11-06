@@ -26,7 +26,6 @@ public class ScheduledTravelingTable {
     
     private String startLocationName;
     private String eventLocationName;
-    private String scheduledTransportationType;
     private String scheduledTransportationName;
 
     /**
@@ -153,20 +152,6 @@ public class ScheduledTravelingTable {
      */
     public void setScheduledTransportationName(String scheduledTransportationName) {
         this.scheduledTransportationName = scheduledTransportationName;
-    }
-
-    /**
-     * @return the scheduledTransportationType
-     */
-    public String getScheduledTransportationType() {
-        return scheduledTransportationType;
-    }
-
-    /**
-     * @param scheduledTransportationType the scheduledTransportationType to set
-     */
-    public void setScheduledTransportationType(String scheduledTransportationType) {
-        this.scheduledTransportationType = scheduledTransportationType;
     }
 
     /**

@@ -46,7 +46,7 @@ public class ScheduledTravelingTableDAO {
             String departure;
             
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM scheduled_transportation");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM scheduled_traveling_table");
             ResultSet rs = ps.executeQuery();
             
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -55,10 +55,10 @@ public class ScheduledTravelingTableDAO {
             
             while(rs.next()) {
                 ScheduledTravelingTable stt = new ScheduledTravelingTable();
+                stt.setScheduledTravelingId(rs.getInt("SCHEDULED_TRAVELING_ID"));
                 stt.setScheduledTransportationId(rs.getInt("scheduled_transportation_id"));
                 stt.setStartLocationId(rs.getInt("start_location_id"));
                 stt.setEventLocationId(rs.getInt("event_location_id"));
-                stt.setScheduledTransportationId(rs.getInt("scheduled_transportation_id"));
                 
                 arrival = rs.getString("arrival_schedule");
                 stt.setArrivalSchedule(format.parse(arrival));
@@ -72,33 +72,39 @@ public class ScheduledTravelingTableDAO {
                 
                 scheduledTravellingTables.add(stt);
             }
-             for(int i = 0; i < scheduledTravellingTables.size(); i++)
-            {
+            for(int i = 0; i < scheduledTravellingTables.size(); i++){
                 PreparedStatement ps1 = con.prepareStatement("SELECT * FROM location where LOCATION_ID=?");
-                PreparedStatement ps2 = con.prepareStatement("SELECT * FROM location where LOCATION_ID=?");
-                PreparedStatement ps3 = con.prepareStatement("SELECT * FROM scheduled_transportation where SCHEDULED_TRANSPORTATION_ID=?");
-                PreparedStatement ps4 = con.prepareStatement("SELECT * FROM scheduled_transportation where SCHEDULED_TRANSPORTATION_ID=?");
                 ps1.setInt(1, scheduledTravellingTables.get(i).getStartLocationId());
-                ps2.setInt(1, scheduledTravellingTables.get(i).getEventLocationId());
-                ps3.setInt(1, scheduledTravellingTables.get(i).getScheduledTransportationId());
-                ps4.setInt(1, scheduledTravellingTables.get(i).getScheduledTransportationId());
                 ResultSet rs1 = ps1.executeQuery();
-                ResultSet rs2 = ps2.executeQuery();
-                ResultSet rs3 = ps3.executeQuery();
-                ResultSet rs4= ps3.executeQuery();
                 while(rs1.next()) {
                     scheduledTravellingTables.get(i).setStartLocationName(rs1.getString("LOCATION_NAME"));
                 }
+                rs1.close();
+                ps1.close();
+            }
+            for(int i = 0; i < scheduledTravellingTables.size(); i++){
+                PreparedStatement ps3 = con.prepareStatement("SELECT * FROM scheduled_transportation where SCHEDULED_TRANSPORTATION_ID=?");
+                ps3.setInt(1, scheduledTravellingTables.get(i).getScheduledTransportationId());
+                ResultSet rs3= ps3.executeQuery();
+                while(rs3.next()) {
+                    scheduledTravellingTables.get(i).setScheduledTransportationName(rs3.getString("SCHEDULED_TRANSPORTATION_NAME"));
+                }
+                rs3.close();
+                ps3.close();
+            }
+            
+            for(int i = 0; i < scheduledTravellingTables.size(); i++){
+                PreparedStatement ps2 = con.prepareStatement("SELECT * FROM location where LOCATION_ID=?");
+                ps2.setInt(1, scheduledTravellingTables.get(i).getEventLocationId());
+                ResultSet rs2 = ps2.executeQuery();
                 while(rs2.next()) {
                     scheduledTravellingTables.get(i).setEventLocationName(rs2.getString("LOCATION_NAME"));
                 }
-                while(rs3.next()) {
-                    scheduledTravellingTables.get(i).setScheduledTransportationType(rs3.getString("SCHEDULED_TRANSPORTATION_TYPE"));
-                }
-                while(rs4.next()) {
-                    scheduledTravellingTables.get(i).setScheduledTransportationName(rs3.getString("SCHEDULED_TRANSPORTATION_NAME"));
-                }
+                rs2.close();
+                ps2.close();
             }
+            
+            
         }
         catch(Exception e) {
             System.out.println(e);
