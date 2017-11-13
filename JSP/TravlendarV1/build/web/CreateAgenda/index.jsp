@@ -10,11 +10,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmLiRLe7nQvc6KDoomu7a-YFSATYVlKSU"></script>
+    
     <link rel="stylesheet" href="../Assets/css/Style.css"/>
-    <link rel="stylesheet" href="../Assets/datetimepick/dist/jquery-ui.css"/> <!--http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css-->
-    <link rel="stylesheet" href="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.css"/>
-    <script type="text/javascript" src="../Assets/datetimepick/jquery/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"/> <!--http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css *** ../Assets/datetimepick/dist/jquery-ui.css-->
+    <link rel="stylesheet" href="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.css"/> <!-- link untuk memanggil timepicker -->
+    
+    
+    
+    
+    
     <script>
     $(document).ready(function(){
             $(".notfirst").click(function() {
@@ -142,6 +150,18 @@
     <label for="fname">Keterangan</label>
     <input type="text" id="keterangan" name="description" placeholder="..."/>
 
+    <div class="form-group input-group">
+        <input type="text" id="search_location" class="form-control" placeholder="Search location">
+        <div class="input-group-btn">
+            <button class="btn btn-default get_map" type="submit">
+                Locate
+            </button>
+        </div>
+    </div>
+    <input type="text" class="search_latitude" placeholder="latitude"/>
+    <input type="text" class="search_longitude" placeholder="longitude"/>
+        <!-- display google map -->
+    <div id="geomap"></div>
     <input type="submit" value="Add"/>
   </form>
 
@@ -154,10 +174,9 @@ Travlender 2017
 
 
 
-<script type="text/javascript" src="../Assets/datetimepick/jquery/ui/1.11.0/jquery-ui.min.js"></script>
-<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.js"></script>
-<script type="text/javascript" src="../Assets/datetimepick/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
-<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-sliderAccess.js"></script>
+<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.js"></script> <!-- link untuk memanggil timepicker -->
+<script type="text/javascript" src="../Assets/datetimepick/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script> <!-- link untuk memanggil timepicker -->
+<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-sliderAccess.js"></script> <!-- link untuk memanggil timepicker -->
 
 
 <script>
@@ -212,41 +231,158 @@ function showBandara(value){
 </script>
 
 
-		<script>
-		function getUnsSuggest(){
-                        var v1 = document.myform.eventLocationId.value;
-                        var v2 = document.myform.arrivalTime.value;
-                        var d3 = document.myform.startLocationId;
-                        if(d3.disabled) {
-                            v3 = "";
-                        }
-                        else {
-                            v3 = d3.value;
-                        }
-                        //alert(d3.disabled);
-                        var url="unsSuggest.jsp";
+<script>
+function getUnsSuggest(){
+        var v1 = document.myform.eventLocationId.value;
+        var v2 = document.myform.arrivalTime.value;
+        var d3 = document.myform.startLocationId;
+        if(d3.disabled) {
+            v3 = "";
+        }
+        else {
+            v3 = d3.value;
+        }
+        //alert(d3.disabled);
+        var url="unsSuggest.jsp";
 //			var value=$(from).val();
 //			if (v1 == "" || v2 == "") {
 //				document.getElementById("uns").innerHTML = "";
 //				return;
 //			} else {
-			if (window.XMLHttpRequest) {
-				// code for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp = new XMLHttpRequest();
-			} else {
-				// code for IE6, IE5
-				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			xmlhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					document.getElementById("uns").innerHTML = this.responseText;
-                                        //alert("RES: " + this.responseText + " " + v1);
-				}
-			};
-			xmlhttp.open("GET",url+"?loc="+v1+"&arrTime="+v2+"&firstId="+v3,true);
-			xmlhttp.send();
-		}
+        if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+        } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("uns").innerHTML = this.responseText;
+                        //alert("RES: " + this.responseText + " " + v1);
+                }
+        };
+        xmlhttp.open("GET",url+"?loc="+v1+"&arrTime="+v2+"&firstId="+v3,true);
+        xmlhttp.send();
+}
 
-		</script>
+</script>
+<script>
+var geocoder;
+var map;
+var marker;
+
+/*
+ * Google Map with marker
+ */
+function initialize() {
+    var initialLat = $('.search_latitude').val();
+    var initialLong = $('.search_longitude').val();
+    initialLat = initialLat?initialLat:-6.871901;
+    initialLong = initialLong?initialLong:107.573737;
+
+    var latlng = new google.maps.LatLng(initialLat, initialLong);
+    var options = {
+        zoom: 16,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map(document.getElementById("geomap"), options);
+
+    geocoder = new google.maps.Geocoder();
+
+    marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        position: latlng
+    });
+
+    google.maps.event.addListener(marker, "dragend", function () {
+        var point = marker.getPosition();
+        map.panTo(point);
+        geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                marker.setPosition(results[0].geometry.location);
+                $('.search_addr').val(results[0].formatted_address);
+                $('.search_latitude').val(marker.getPosition().lat());
+                $('.search_longitude').val(marker.getPosition().lng());
+            }
+        });
+    });
+
+}
+
+$(document).ready(function () {
+    //load google map
+    initialize();
+    
+    /*
+     * autocomplete location search
+     */
+    var PostCodeid = '#search_location';
+    $(function () {
+        $(PostCodeid).autocomplete({
+            source: function (request, response) {
+                geocoder.geocode({
+                    'address': request.term
+                }, function (results, status) {
+                    response($.map(results, function (item) {
+                        return {
+                            label: item.formatted_address,
+                            value: item.formatted_address,
+                            lat: item.geometry.location.lat(),
+                            lon: item.geometry.location.lng()
+                        };
+                    }));
+                });
+            },
+            select: function (event, ui) {
+                $('.search_addr').val(ui.item.value);
+                $('.search_latitude').val(ui.item.lat);
+                $('.search_longitude').val(ui.item.lon);
+                var latlng = new google.maps.LatLng(ui.item.lat, ui.item.lon);
+                marker.setPosition(latlng);
+                initialize();
+            }
+        });
+    });
+    
+    /*
+     * Point location on google map
+     */
+    $('.get_map').click(function (e) {
+        var address = $(PostCodeid).val();
+        geocoder.geocode({'address': address}, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                marker.setPosition(results[0].geometry.location);
+                $('.search_addr').val(results[0].formatted_address);
+                $('.search_latitude').val(marker.getPosition().lat());
+                $('.search_longitude').val(marker.getPosition().lng());
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+        e.preventDefault();
+    });
+
+    //Add listener to marker for reverse geocoding
+    google.maps.event.addListener(marker, 'drag', function () {
+        geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                    $('.search_addr').val(results[0].formatted_address);
+                    $('.search_latitude').val(marker.getPosition().lat());
+                    $('.search_longitude').val(marker.getPosition().lng());
+                }
+            }
+        });
+    });
+});
+</script>
+
+
 </body>
 </html>
