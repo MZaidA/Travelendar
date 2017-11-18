@@ -23,6 +23,9 @@ h1 {
     width:30%;
     height:617px;
     background-color: #07709F;/*Biru*/ 
+	background-image: url(../icon/Building_1.png);
+	background-position: 50% 83%;
+	background-repeat: no-repeat;
 }
 
 .navbar, ul li{

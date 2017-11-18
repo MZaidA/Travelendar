@@ -97,7 +97,6 @@
 	 </select> -->
         <input type="text" id="loc" name="Location" placeholder="..."/>
     </div>
-    <!--LOCATION GMAPS -->
     <label for="fname">Start Location</label>
     <div class="form-group input-group">
         <input type="text" id="search_location" class="form-control" placeholder="Search location">
@@ -108,7 +107,6 @@
         </div>
     </div>
     </br>
-    
     <label for="fname">End Location</label>
     <div class="form-group input-group">
         <input type="text" id="search_location" class="form-control" placeholder="Search location">
@@ -119,6 +117,7 @@
         </div>
     </div>
     </br>
+    
 <script>
 var geocoder;
 var map;
@@ -248,7 +247,20 @@ $(document).ready(function () {
     <label for="fname">End Date & Time</label>
     <input type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
     <br />
-
+    
+    <!-- Search Long Lat Location 
+    <div class="form-group input-group">
+        <input type="text" id="search_location" class="form-control" placeholder="Search location">
+        <div class="input-group-btn">
+            <button class="btn btn-default get_map" type="submit">
+                Locate
+            </button>
+        </div>
+    </div>
+    <input type="text" class="search_latitude" placeholder="latitude"/>
+    <input type="text" class="search_longitude" placeholder="longitude"/>
+    -->
+    
     <input type="submit" value="Submit"/>
   </form>
 
@@ -259,9 +271,12 @@ $(document).ready(function () {
 Travlender 2017
 </div>
 
+
+
 <script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.js"></script> <!-- link untuk memanggil timepicker -->
 <script type="text/javascript" src="../Assets/datetimepick/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script> <!-- link untuk memanggil timepicker -->
 <script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-sliderAccess.js"></script> <!-- link untuk memanggil timepicker -->
+
 
 <script>
 var myControl=  {
