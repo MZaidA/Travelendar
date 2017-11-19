@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     19/11/2017 07:13:17                          */
+/* Created on:     19/11/2017 13:34:03                          */
 /*==============================================================*/
 
 
@@ -16,12 +16,12 @@ create table EVENT
    EVENT_ID             int not null auto_increment,
    EMAIL                varchar(40) not null,
    EVENT_NAME           varchar(40) not null,
-   NAME_ORIGIN          varchar(30) not null,
-   LAT_ORIGIN           varchar(30) not null,
-   LNG_ORIGIN           varchar(30) not null,
-   NAME_DESTINATION     varchar(30) not null,
-   LAT_DESTINATION      varchar(30) not null,
-   LNG_DESTINATION      varchar(30) not null,
+   NAME_ORIGIN          varchar(40) not null,
+   LAT_ORIGIN           double not null,
+   LNG_ORIGIN           double not null,
+   NAME_DESTINATION     varchar(40) not null,
+   LAT_DESTINATION      double not null,
+   LNG_DESTINATION      double not null,
    ARRIVAL_TIME         datetime not null,
    EVENT_END            datetime not null,
    DEPARTURE_TIME       datetime not null,
@@ -35,8 +35,8 @@ auto_increment = 1;
 create table USER
 (
    EMAIL                varchar(40) not null,
-   USER_NAME            varchar(30) not null,
-   PASSWORD             varchar(30) not null,
+   USER_NAME            varchar(40) not null,
+   PASSWORD             varchar(20) not null,
    primary key (EMAIL)
 );
 
