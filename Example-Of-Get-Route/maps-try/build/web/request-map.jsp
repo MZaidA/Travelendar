@@ -56,10 +56,11 @@
     <div id="floating-panel">
     <input type="hidden" id="start" value="${eventChoosen.getLatStart()},${eventChoosen.getLngStart()}">
     <input type="hidden" id="end" value="${eventChoosen.getLatEnd()},${eventChoosen.getLngEnd()}">
+    <input type="hidden" id="avoidTolls" value="${eventChoosen.isAvoidTolls()}">
+    
     <h6 class="name">Start Place: ${eventChoosen.getStartName()}</h6>
     <h6 class="name">End Place: ${eventChoosen.getEndName()}</h6>
     <button id="done">View Route</button>
-    <button id="With-Tolls">View Route Via Tolls</button>
     </div>
   
     <div id="map"></div>
@@ -69,11 +70,8 @@
       var markerEnd;
       var messagewindow;
       function initMap() {
-        var inputStart = document.getElementById('start');
-        var inputEnd = document.getElementById('end');
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
-        var avoidToll = true;
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 7,
           center: {lat: -6.914744, lng: 107.609810}
@@ -87,24 +85,19 @@
         var geocoder = new google.maps.Geocoder();;
           
         var onChangeHandler = function() {
-          avoidToll = true;
-          calculateAndDisplayRoute(directionsService, directionsDisplay, avoidToll);
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
         };
-        
-        var onChangeHandlerTolls = function() {
-          avoidToll = false;
-          calculateAndDisplayRoute(directionsService, directionsDisplay, avoidToll);
-        };
+       
         document.getElementById('done').addEventListener('click', onChangeHandler);
-        document.getElementById('With-Tolls').addEventListener('click', onChangeHandlerTolls);
       }
 
-      function calculateAndDisplayRoute(directionsService, directionsDisplay, toll) {
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var avoidTolls = document.getElementById('avoidTolls').value;
         directionsService.route({
           origin: document.getElementById('start').value,
           destination: document.getElementById('end').value,
           travelMode: 'DRIVING',
-          avoidTolls: toll
+          avoidTolls: false
         }, function(response, status) {
           if (status === 'OK') {
             directionsDisplay.setDirections(response);

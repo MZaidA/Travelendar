@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2017 at 01:09 AM
--- Server version: 10.1.28-MariaDB
+-- Generation Time: 19 Nov 2017 pada 05.21
+-- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event`
+-- Struktur dari tabel `event`
 --
 
 CREATE TABLE `event` (
@@ -41,34 +41,46 @@ CREATE TABLE `event` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `events`
+-- Struktur dari tabel `events`
 --
 
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
-  `start_name` varchar(60) NOT NULL,
+  `start_name` varchar(255) NOT NULL,
   `lat_start` float(10,6) NOT NULL,
   `lng_start` float(10,6) NOT NULL,
-  `end_name` varchar(60) NOT NULL,
+  `end_name` varchar(255) NOT NULL,
   `lat_end` float(10,6) NOT NULL,
-  `lng_end` float(10,6) NOT NULL
+  `lng_end` float(10,6) NOT NULL,
+  `distance` float(10,6) NOT NULL,
+  `avoid_tolls` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `events`
+-- Dumping data untuk tabel `events`
 --
 
-INSERT INTO `events` (`id`, `start_name`, `lat_start`, `lng_start`, `end_name`, `lat_end`, `lng_end`) VALUES
-(1, 'bandung', -6.917464, 107.619125, 'jakarta', -6.175110, 106.865036),
-(4, 'Sanggar Kencana X ', -6.934877, 107.665085, 'Politeknik Negeri Bandung', -6.872034, 107.574791),
-(3, 'Politeknik Negeri Bandung', -6.872034, 107.574791, 'Intitut Teknologi Bandung', -6.891480, 107.610657),
-(5, 'Kantor Walikota Bandung', -6.910759, 107.609825, 'Kantor DPRD kota Bandung', -6.916817, 107.634880),
-(6, 'Bandung', -6.917464, 107.619125, 'Surabaya', -7.257472, 112.752090);
+INSERT INTO `events` (`id`, `start_name`, `lat_start`, `lng_start`, `end_name`, `lat_end`, `lng_end`, `distance`, `avoid_tolls`) VALUES
+(1, 'bandung', -6.917464, 107.619125, 'jakarta', -6.175110, 106.865036, 0.000000, 0),
+(4, 'Sanggar Kencana X ', -6.934877, 107.665085, 'Politeknik Negeri Bandung', -6.872034, 107.574791, 0.000000, 0),
+(3, 'Politeknik Negeri Bandung', -6.872034, 107.574791, 'Intitut Teknologi Bandung', -6.891480, 107.610657, 0.000000, 0),
+(5, 'Kantor Walikota Bandung', -6.910759, 107.609825, 'Kantor DPRD kota Bandung', -6.916817, 107.634880, 0.000000, 0),
+(6, 'Bandung', -6.917464, 107.619125, 'Surabaya', -7.257472, 112.752090, 0.000000, 0),
+(7, 'Jalan Sanggar Kencana V, Jatisari, Kota Bandung, Jawa Barat, Indonesia', -6.934578, 107.666557, 'Pondok Indah Mall 1, Jalan Metro Pondok Indah, Pondok Pinang, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta, Indonesia', -6.265703, 106.784470, 0.000000, 0),
+(8, 'Badan Perpustakaan dan Kearsipan Daerah (Bapusipda) Provinsi Jawa Barat, Jalan Kawaluyaan Indah III, Jatisari, Kota Bandung, Jawa Barat, Indonesia', -6.934585, 107.663200, 'Politeknik Negeri Bandung, Ciwaruga, Kabupaten Bandung Barat, Jawa Barat, Indonesia', -6.872034, 107.574791, 0.000000, 0),
+(10, 'Jalan Sanggar Kencana X, Jatisari, Kota Bandung, Jawa Barat, Indonesia', -6.934877, 107.665085, 'Cikatomas, Tasikmalaya, Jawa Barat, Indonesia', -7.614535, 108.273338, 0.000000, 0),
+(11, 'Renan Store Bandung, Jalan K.H. Ahmad Dahlan, Turangga, Kota Bandung, Jawa Barat, Indonesia', -6.934414, 107.624001, 'Kawasan Punclut, Jalan Rereongan Sarupi, Ciumbuleuit, Kota Bandung, Jawa Barat, Indonesia', -6.855628, 107.611450, 0.000000, 0),
+(12, 'Surabaya, Jawa Timur, Indonesia', -7.257472, 112.752090, 'Semarang, Kota Semarang, Jawa Tengah, Indonesia', -7.005145, 110.438126, 317.273987, 0),
+(13, 'Jakarta Raya, Indonesia', -6.175110, 106.865036, 'Tasikmalaya, Jawa Barat, Indonesia', -7.350581, 108.217163, 257.454010, 0),
+(14, 'Jakarta, Daerah Khusus Ibukota Jakarta, Indonesia', -6.208764, 106.845596, 'Bogor, Kota Bogor, Jawa Barat, Indonesia', -6.597147, 106.806038, 55.477001, 0),
+(15, 'Jakarta, Daerah Khusus Ibukota Jakarta, Indonesia', -6.208764, 106.845596, 'Cirebon, Kota Cirebon, Jawa Barat, Indonesia', -6.732023, 108.552315, 239.651993, 0),
+(16, 'Jakarta Raya, Indonesia', -6.175110, 106.865036, 'Bandung, Kota Bandung, Jawa Barat, Indonesia', -6.917464, 107.619125, 162.468002, 0),
+(17, 'Jakarta Raya, Indonesia', -6.175110, 106.865036, 'Bekasi, Jawa Barat, Indonesia', -6.238270, 106.975571, 19.792999, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `markers`
+-- Struktur dari tabel `markers`
 --
 
 CREATE TABLE `markers` (
@@ -81,7 +93,7 @@ CREATE TABLE `markers` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `markers`
+-- Dumping data untuk tabel `markers`
 --
 
 INSERT INTO `markers` (`id`, `name`, `address`, `lat`, `lng`, `type`) VALUES
@@ -127,7 +139,7 @@ ALTER TABLE `event`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `markers`

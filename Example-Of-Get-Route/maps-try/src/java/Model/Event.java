@@ -17,6 +17,24 @@ public class Event {
     private float lngStart;
     private float latEnd;
     private float lngEnd;
+    private float distance;
+    private boolean avoidTolls;
+
+    public boolean isAvoidTolls() {
+        return avoidTolls;
+    }
+
+    public void setAvoidTolls(boolean avoidTolls) {
+        this.avoidTolls = avoidTolls;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+
+    public void setDistance(float distance) {
+        this.distance = distance;
+    }
 
     public int getId() {
         return id;

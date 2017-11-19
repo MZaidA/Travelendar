@@ -12,6 +12,7 @@
     int status = EventDAO.save(event);
     if(status != 0) 
     {
+        System.out.println(event.isAvoidTolls());
         response.sendRedirect("direction.html");
     }
         else 

@@ -62,13 +62,15 @@ public class EventDAO {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO events(start_name, lat_start, lng_start, end_name, lat_end, lng_end) VALUES(?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO events(start_name, lat_start, lng_start, end_name, lat_end, lng_end, distance, avoid_tolls) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, _event.getStartName());
             ps.setFloat(2, _event.getLatStart());
             ps.setFloat(3, _event.getLngStart());
             ps.setString(4, _event.getEndName());
             ps.setFloat(5, _event.getLatEnd());
             ps.setFloat(6, _event.getLngEnd()); 
+            ps.setFloat(7, _event.getDistance()); 
+            ps.setBoolean(8, _event.isAvoidTolls()); 
             status = ps.executeUpdate();
         }
         catch(Exception e) {
@@ -132,6 +134,8 @@ public class EventDAO {
                 loc.setLngStart(rs.getFloat("lng_start"));
                 loc.setLatEnd(rs.getFloat("lat_end"));
                 loc.setLngEnd(rs.getFloat("lng_end"));
+                loc.setDistance(rs.getFloat("distance"));
+                loc.setAvoidTolls(rs.getBoolean("avoid_tolls"));
             }
         }
         catch(Exception e) {

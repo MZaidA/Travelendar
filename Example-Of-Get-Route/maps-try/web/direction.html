@@ -46,6 +46,7 @@ and open the template in the editor.
     <b>End: </b>
     <input size = "60" type="text" id="end" placeholder="End Location">
     <button id="done">View Route</button>
+    <button id="With-Tolls">View Route Via Tolls</button>
     <form action="save-direction.jsp">
             <input type="hidden" id="startName" name="startName"/>
             <input type="hidden" id="latStart" name="latStart"/>
@@ -53,6 +54,8 @@ and open the template in the editor.
             <input type="hidden" id="endName" name="endName"/>
             <input type="hidden" id="latEnd" name="latEnd"/>
             <input type="hidden" id="lngEnd" name="lngEnd"/>
+            <input type="hidden" id="distance" name="distance"/>
+            <input type="hidden" id="avoidTolls" name="avoidTolls"/>
             <input type='submit' value='Save'/>
     </form>
     </div>
@@ -65,6 +68,7 @@ and open the template in the editor.
       function initMap() {
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
+        var avoidToll = true;
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
           center: {lat: -6.914744, lng: 107.609810}
@@ -93,11 +97,22 @@ and open the template in the editor.
         var geocoder = new google.maps.Geocoder();
           
         var onChangeHandler = function() {
-          calculateAndDisplayRoute(directionsService, directionsDisplay);
+          avoidToll = true;
+          document.getElementById("avoidTolls").value=avoidToll;
+          calculateAndDisplayRoute(directionsService, directionsDisplay, avoidToll);
+          geocodeAddressStart(geocoder, map);
+          geocodeAddressEnd(geocoder, map);
+        };
+        
+        var onChangeHandlerTolls = function() {
+          avoidToll = false;
+          document.getElementById("avoidTolls").value=avoidToll;
+          calculateAndDisplayRoute(directionsService, directionsDisplay, avoidToll);
           geocodeAddressStart(geocoder, map);
           geocodeAddressEnd(geocoder, map);
         };
         document.getElementById('done').addEventListener('click', onChangeHandler);
+        document.getElementById('With-Tolls').addEventListener('click', onChangeHandlerTolls);
       }
 
       function geocodeAddressStart(geocoder, resultsMap) {
@@ -132,15 +147,18 @@ and open the template in the editor.
         });
       }
 
-      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+      function calculateAndDisplayRoute(directionsService, directionsDisplay, toll) {
         directionsService.route({
           origin: document.getElementById('start').value,
           destination: document.getElementById('end').value,
           travelMode: 'DRIVING',
-          avoidTolls: true
+          avoidTolls: toll
         }, function(response, status) {
           if (status === 'OK') {
             directionsDisplay.setDirections(response);
+            //get distance
+            var distanceKM = response.routes[0].legs[0].distance.value/1000;
+            document.getElementById("distance").value=distanceKM;
           } else {
             window.alert('Directions request failed due to ' + status);
           }
