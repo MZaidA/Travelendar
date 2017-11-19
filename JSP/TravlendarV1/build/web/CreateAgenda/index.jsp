@@ -90,6 +90,7 @@
             </div>  
             </br>
 
+<<<<<<< HEAD
             <label for="fname">End Location</label>
             <div class="form-group input-group">
                 <input type="text" id="end" class="form-control" placeholder="Search location">
@@ -103,6 +104,52 @@
                 </div>
             </div>
             </br>
+=======
+<div class="form">
+    <form name="myform" action="addagenda.jsp">
+    <label for="fname">Event Name</label>
+    <input type="text" id="eventName" name="eventName" placeholder="..."/>
+    <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
+    <input type="radio" class="first" name="firstornot">First Event</input>
+    <br/><br/>
+    <div id="demo" style="display:none">
+    
+    
+    <label for="stLoc">Start Location</label>
+	<!-- DROPDOWN <select id="sli" class="classic" name="startLocationId" onclick='getUnsSuggest()' disabled>
+            <option value='0'>Pilih Lokasi Event</option>
+            <c:forEach items="${locations}" var="item">
+            <option value="${item.locationId}">${item.locationName}</option>
+            </c:forEach>
+	 </select> -->
+        <input type="text" id="loc" name="Location" placeholder="..."/>
+    </div>
+    <label for="fname">Start Location</label>
+    <div class="form-group input-group">
+        <input type="text" id="search_location" class="form-control" placeholder="Search location">
+        <div class="input-group-btn">
+            <button class="btn btn-default get_map" type="submit">
+                Locate
+            </button>
+        </div>
+    </div>
+    </br>
+    <label for="fname">End Location</label>
+    <div class="form-group input-group">
+        <input type="text" id="search_location" class="form-control" placeholder="Search location">
+        <div class="input-group-btn">
+            <button class="btn btn-default get_map" type="submit">
+                Locate
+            </button>
+        </div>
+    </div>
+    </br>
+    
+<script>
+var geocoder;
+var map;
+var marker;
+>>>>>>> 7c05f0d45ff65d0fa072288c860d03d77d36b846
 
             <form action="save-direction.jsp">
                 <input type="hidden" id="startName" name="startName"/>
@@ -169,6 +216,7 @@
                     document.getElementById('done').addEventListener('click', onChangeHandler);
                     document.getElementById('With-Tolls').addEventListener('click', onChangeHandlerTolls);
                 }
+<<<<<<< HEAD
 
                 function geocodeAddressStart(geocoder, resultsMap) {
                     var address = document.getElementById('start').value;
@@ -235,6 +283,43 @@
 
             <label for="fname">Arrival Date & Time</label>
             <input type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
+=======
+            }
+        });
+    });
+});
+</script>
+        <!-- display google map -->
+    <div id="geomap"></div>
+    </br>
+    <label for="stLoc">Transportation</label>
+    <input type="text" id="tra" name="Transportation" placeholder="..."/>
+    <br/>
+    
+    <label for="fname">Arrival Date & Time</label>
+    <input type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
+ 
+    <br/>
+    <label for="fname">End Date & Time</label>
+    <input type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
+    <br />
+    
+    <!-- Search Long Lat Location 
+    <div class="form-group input-group">
+        <input type="text" id="search_location" class="form-control" placeholder="Search location">
+        <div class="input-group-btn">
+            <button class="btn btn-default get_map" type="submit">
+                Locate
+            </button>
+        </div>
+    </div>
+    <input type="text" class="search_latitude" placeholder="latitude"/>
+    <input type="text" class="search_longitude" placeholder="longitude"/>
+    -->
+    
+    <input type="submit" value="Submit"/>
+  </form>
+>>>>>>> 7c05f0d45ff65d0fa072288c860d03d77d36b846
 
             <br/>
             <label for="fname">End Date & Time</label>
@@ -250,9 +335,12 @@
 Travlender 2017
 </div>
 
+
+
 <script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.js"></script> <!-- link untuk memanggil timepicker -->
 <script type="text/javascript" src="../Assets/datetimepick/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script> <!-- link untuk memanggil timepicker -->
 <script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-sliderAccess.js"></script> <!-- link untuk memanggil timepicker -->
+
 
 <script>
     var myControl=  {

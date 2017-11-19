@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 body {
-	margin:0;
+    margin:0;
 }
 
 h1 {
@@ -12,21 +12,24 @@ h1 {
 }
 
 .header {
-    background-color: #0080C0;
+    background-color: #06648f;
     padding: 20px 0px;
-	width:100%;
+    width:100%;
 }
 
 .navbar{
     overflow:hidden;
     float:left;
-    width:30%;
+    width:21%;
     height:617px;
     background-color: #07709F;/*Biru*/ 
+    background-image: url(../icon/Building_1.png);
+    background-position: 50% 84%;
+    background-repeat: no-repeat;
 }
 
 .navbar, ul li{
-	list-style-type:none;
+    list-style-type:none;
 }
 
 .navbar a{transition-duration: 0.4s;}
@@ -183,8 +186,8 @@ h1 {
 {	
 	overflow:auto;
 	background-color: #B1CFF3;
-	width: 70%;
-	height:617px;
+	width: 79%;
+	height: 618px;
 }
 .column {
     float: left;
