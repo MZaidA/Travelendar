@@ -45,16 +45,14 @@
             });
     });
     </script>
-    
     <title>Travelendar</title>
-
 </head>
 
 <body>
     
     <%
-        String userName = request.getParameter("userName");
-        %>
+      String userName = request.getParameter("userName");
+    %>
 <% 
     List<Location> locations = LocationDAO.getAll();
     request.setAttribute("locations", locations);
@@ -74,185 +72,178 @@
         </ul>
     </div><!--Class Navbar-->
 
-<div class="column content">
-<h1>Create a New Event</h1>
+    <div class="column content">
+    <h1>Create a New Event</h1>
 
+        <div class="form">
+            <label for="fname">Event Name</label>
+            <input type="text" id="eventName" name="eventName" placeholder="..."/>
+            <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
+            <input type="radio" class="first" name="firstornot">First Event</input>
+            <br/><br/>
+            <div id="demo" style="display:none">
+            <!--LOCATION GMAPS -->
+                <label for="stLoc">Start Location</label>
+                <div class="form-group input-group">
+                    <input type="text" id="start" class="form-control" placeholder="Search location"/>
+                </div>
+            </div>  
+            </br>
 
-<div class="form">
-    <form name="myform" action="addagenda.jsp">
-    <label for="fname">Event Name</label>
-    <input type="text" id="eventName" name="eventName" placeholder="..."/>
-    <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
-    <input type="radio" class="first" name="firstornot">First Event</input>
-    <br/><br/>
-    <div id="demo" style="display:none">
-    
-    
-    <label for="stLoc">Start Location</label>
-	<!-- DROPDOWN <select id="sli" class="classic" name="startLocationId" onclick='getUnsSuggest()' disabled>
-            <option value='0'>Pilih Lokasi Event</option>
-            <c:forEach items="${locations}" var="item">
-            <option value="${item.locationId}">${item.locationName}</option>
-            </c:forEach>
-	 </select> -->
-        <input type="text" id="loc" name="Location" placeholder="..."/>
-    </div>
-    <!--LOCATION GMAPS -->
-    <label for="fname">Start Location</label>
-    <div class="form-group input-group">
-        <input type="text" id="search_location" class="form-control" placeholder="Search location">
-        <div class="input-group-btn">
-            <button class="btn btn-default get_map" type="submit">
-                Locate
-            </button>
-        </div>
-    </div>
-    </br>
-    
-    <label for="fname">End Location</label>
-    <div class="form-group input-group">
-        <input type="text" id="search_location" class="form-control" placeholder="Search location">
-        <div class="input-group-btn">
-            <button class="btn btn-default get_map" type="submit">
-                Locate
-            </button>
-        </div>
-    </div>
-    </br>
-<script>
-var geocoder;
-var map;
-var marker;
+            <label for="fname">End Location</label>
+            <div class="form-group input-group">
+                <input type="text" id="end" class="form-control" placeholder="Search location">
+                <div class="input-group-btn">
+                    <button id="done">
+                        View Route
+                    </button>
+                    <button id="With-Tolls">
+                        View Route Via Tolls
+                    </button>
+                </div>
+            </div>
+            </br>
 
-/*
- * Google Map with marker
- */
-function initialize() {
-    var initialLat = $('.search_latitude').val();
-    var initialLong = $('.search_longitude').val();
-    initialLat = initialLat?initialLat:-6.871901;
-    initialLong = initialLong?initialLong:107.573737;
+            <form action="save-direction.jsp">
+                <input type="hidden" id="startName" name="startName"/>
+                <input type="hidden" id="latStart" name="latStart"/>
+                <input type="hidden" id="lngStart" name="lngStart"/>
+                <input type="hidden" id="endName" name="endName"/>
+                <input type="hidden" id="latEnd" name="latEnd"/>
+                <input type="hidden" id="lngEnd" name="lngEnd"/>
+                <input type="hidden" id="distance" name="distance"/>
+                <input type="hidden" id="avoidTolls" name="avoidTolls"/>
+            </form>
 
-    var latlng = new google.maps.LatLng(initialLat, initialLong);
-    var options = {
-        zoom: 16,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+            <div id="map"></div>
+            <script>
+                var markerStart;
+                var markerEnd;
+                var messagewindow;
+                function initMap() {
+                    var directionsService = new google.maps.DirectionsService;
+                    var directionsDisplay = new google.maps.DirectionsRenderer;
+                    var avoidToll = true;
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 13,
+                        center: {lat: -6.914744, lng: 107.609810}
+                    });
+                    //AutoComplete
+                    var inputStart = document.getElementById('start');
+                    var inputEnd = document.getElementById('end');
+                    var searchBoxStart = new google.maps.places.SearchBox(inputStart);
+                    var searchBoxEnd = new google.maps.places.SearchBox(inputEnd);
 
-    map = new google.maps.Map(document.getElementById("geomap"), options);
+                    map.addListener('bounds_changed', function() {
+                        searchBoxStart.setBounds(map.getBounds());
+                    });
 
-    geocoder = new google.maps.Geocoder();
+                    map.addListener('bounds_changed', function() {
+                        searchBoxEnd.setBounds(map.getBounds());
+                    });
 
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        position: latlng
-    });
+                    //--- end of auto complete --
+                    directionsDisplay.setMap(map);
 
-    google.maps.event.addListener(marker, "dragend", function () {
-        var point = marker.getPosition();
-        map.panTo(point);
-        geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                map.setCenter(results[0].geometry.location);
-                marker.setPosition(results[0].geometry.location);
-                $('.search_addr').val(results[0].formatted_address);
-                $('.search_latitude').val(marker.getPosition().lat());
-                $('.search_longitude').val(marker.getPosition().lng());
-            }
-        });
-    });
+                    messagewindow = new google.maps.InfoWindow({
+                        content: document.getElementById('message')
+                    });
 
-}
+                    var geocoder = new google.maps.Geocoder();
 
-$(document).ready(function () {
-    //load google map
-    initialize();
-    
-    /*
-     * autocomplete location search
-     */
-    var PostCodeid = '#search_location';
-    $(function () {
-        $(PostCodeid).autocomplete({
-            source: function (request, response) {
-                geocoder.geocode({
-                    'address': request.term
-                }, function (results, status) {
-                    response($.map(results, function (item) {
-                        return {
-                            label: item.formatted_address,
-                            value: item.formatted_address,
-                            lat: item.geometry.location.lat(),
-                            lon: item.geometry.location.lng()
-                        };
-                    }));
-                });
-            },
-            select: function (event, ui) {
-                $('.search_addr').val(ui.item.value);
-                $('.search_latitude').val(ui.item.lat);
-                $('.search_longitude').val(ui.item.lon);
-                var latlng = new google.maps.LatLng(ui.item.lat, ui.item.lon);
-                marker.setPosition(latlng);
-                initialize();
-            }
-        });
-    });
-    
-    /*
-     * Point location on google map
-     */
-    $('.get_map').click(function (e) {
-        var address = $(PostCodeid).val();
-        geocoder.geocode({'address': address}, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                map.setCenter(results[0].geometry.location);
-                marker.setPosition(results[0].geometry.location);
-                $('.search_addr').val(results[0].formatted_address);
-                $('.search_latitude').val(marker.getPosition().lat());
-                $('.search_longitude').val(marker.getPosition().lng());
-            } else {
-                alert("Geocode was not successful for the following reason: " + status);
-            }
-        });
-        e.preventDefault();
-    });
+                    var onChangeHandler = function() {
+                        avoidToll = true;
+                        document.getElementById("avoidTolls").value=avoidToll;
+                        calculateAndDisplayRoute(directionsService, directionsDisplay, avoidToll);
+                        geocodeAddressStart(geocoder, map);
+                        geocodeAddressEnd(geocoder, map);
+                    };
 
-    //Add listener to marker for reverse geocoding
-    google.maps.event.addListener(marker, 'drag', function () {
-        geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (results[0]) {
-                    $('.search_addr').val(results[0].formatted_address);
-                    $('.search_latitude').val(marker.getPosition().lat());
-                    $('.search_longitude').val(marker.getPosition().lng());
+                    var onChangeHandlerTolls = function() {
+                        avoidToll = false;
+                        document.getElementById("avoidTolls").value=avoidToll;
+                        calculateAndDisplayRoute(directionsService, directionsDisplay, avoidToll);
+                        geocodeAddressStart(geocoder, map);
+                        geocodeAddressEnd(geocoder, map);
+                    };
+                    document.getElementById('done').addEventListener('click', onChangeHandler);
+                    document.getElementById('With-Tolls').addEventListener('click', onChangeHandlerTolls);
                 }
-            }
-        });
-    });
-});
-</script>
-        <!-- display google map -->
-    <div id="geomap"></div>
-    </br>
-    <label for="stLoc">Transportation</label>
-    <input type="text" id="tra" name="Transportation" placeholder="..."/>
-    <br/>
-    
-    <label for="fname">Arrival Date & Time</label>
-    <input type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
- 
-    <br/>
-    <label for="fname">End Date & Time</label>
-    <input type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
-    <br />
 
-    <input type="submit" value="Submit"/>
-  </form>
+                function geocodeAddressStart(geocoder, resultsMap) {
+                    var address = document.getElementById('start').value;
+                    geocoder.geocode({'address': address}, function(results, status) {
+                        if (status === 'OK') {
+                            resultsMap.setCenter(results[0].geometry.location);
+                            markerStart = new google.maps.Marker({
+                              position: results[0].geometry.location
+                            });
+                            document.getElementById("latStart").value=markerStart.getPosition().lat();
+                            document.getElementById("lngStart").value=markerStart.getPosition().lng();
+                        } else {
+                            alert('Geocode was not successful for the following reason: ' + status);
+                          }
+                    });
+                }
 
-	</div>
+                function geocodeAddressEnd(geocoder, resultsMap) {
+                    var address = document.getElementById('end').value;
+                    geocoder.geocode({'address': address}, function(results, status) {
+                        if (status === 'OK') {
+                            resultsMap.setCenter(results[0].geometry.location);
+                            markerEnd = new google.maps.Marker({
+                              position: results[0].geometry.location
+                            });
+                            document.getElementById("latEnd").value=markerEnd.getPosition().lat();
+                            document.getElementById("lngEnd").value=markerEnd.getPosition().lng();
+                        } else {
+                            alert('Geocode was not successful for the following reason: ' + status);
+                        }
+                    });
+                }
+
+                function calculateAndDisplayRoute(directionsService, directionsDisplay, toll) {
+                    directionsService.route({
+                        origin: document.getElementById('start').value,
+                        destination: document.getElementById('end').value,
+                        travelMode: 'DRIVING',
+                        avoidTolls: toll
+                    }, function(response, status) {
+                        if (status === 'OK') {
+                            directionsDisplay.setDirections(response);
+                            //get distance
+                            var distanceKM = response.routes[0].legs[0].distance.value/1000;
+                            document.getElementById("distance").value=distanceKM;
+                        } else {
+                            window.alert('Directions request failed due to ' + status);
+                        }
+                    });
+                    var start = document.getElementById('start').value;
+                    var end = document.getElementById('end').value;
+                    document.getElementById("startName").value=start;
+                    document.getElementById("endName").value=end;
+                }
+            </script>
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDteT4he2sgw-Bkf9mR-kVHg7hl6VGdv4E&libraries=places&callback=initMap">
+            </script>
+
+            </br>
+            <label for="stLoc">Transportation</label>
+            <input type="text" id="tra" name="Transportation" placeholder="..."/>
+            <br/>
+
+            <label for="fname">Arrival Date & Time</label>
+            <input type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
+
+            <br/>
+            <label for="fname">End Date & Time</label>
+            <input type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
+            <br />
+
+            <input type="submit" value="Submit"/>
+
+        </div>
     </div>
 </div>
 <div class="footer">
@@ -264,38 +255,38 @@ Travlender 2017
 <script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-sliderAccess.js"></script> <!-- link untuk memanggil timepicker -->
 
 <script>
-var myControl=  {
-	create: function(tp_inst, obj, unit, val, min, max, step){
-		$('<input class="ui-timepicker-input" value="'+val+'" style="width:50%">')
-			.appendTo(obj)
-			.spinner({
-				min: min,
-				max: max,
-				step: step,
-				change: function(e,ui){ // key events
-						// don't call if api was used and not key press
-						if(e.originalEvent !== undefined)
-							tp_inst._onTimeChange();
-						tp_inst._onSelectHandler();
-					},
-				spin: function(e,ui){ // spin events
-						tp_inst.control.value(tp_inst, obj, unit, ui.value);
-						tp_inst._onTimeChange();
-						tp_inst._onSelectHandler();
-					}
-			});
-		return obj;
-	},
-	options: function(tp_inst, obj, unit, opts, val){
-		if(typeof(opts) == 'string' && val !== undefined)
-			return obj.find('.ui-timepicker-input').spinner(opts, val);
-		return obj.find('.ui-timepicker-input').spinner(opts);
-	},
-	value: function(tp_inst, obj, unit, val){
-		if(val !== undefined)
-			return obj.find('.ui-timepicker-input').spinner('value', val);
-		return obj.find('.ui-timepicker-input').spinner('value');
-	}
+    var myControl=  {
+            create: function(tp_inst, obj, unit, val, min, max, step){
+                    $('<input class="ui-timepicker-input" value="'+val+'" style="width:50%">')
+                        .appendTo(obj)
+                        .spinner({
+                                min: min,
+                                max: max,
+                                step: step,
+                                change: function(e,ui){ // key events
+                                                // don't call if api was used and not key press
+                                                if(e.originalEvent !== undefined)
+                                                        tp_inst._onTimeChange();
+                                                tp_inst._onSelectHandler();
+                                        },
+                                spin: function(e,ui){ // spin events
+                                                tp_inst.control.value(tp_inst, obj, unit, ui.value);
+                                                tp_inst._onTimeChange();
+                                                tp_inst._onSelectHandler();
+                                        }
+                        });
+                    return obj;
+            },
+            options: function(tp_inst, obj, unit, opts, val){
+                    if(typeof(opts) == 'string' && val !== undefined)
+                            return obj.find('.ui-timepicker-input').spinner(opts, val);
+                    return obj.find('.ui-timepicker-input').spinner(opts);
+            },
+            value: function(tp_inst, obj, unit, val){
+                    if(val !== undefined)
+                            return obj.find('.ui-timepicker-input').spinner('value', val);
+                    return obj.find('.ui-timepicker-input').spinner('value');
+            }
 };
 
 $('#dateTime1').datetimepicker({
@@ -304,14 +295,14 @@ $('#dateTime1').datetimepicker({
 $('#dateTime2').datetimepicker();
 </script>
 <script>
-function showBandara(value){
-    if(value == "Pesawat"){
-        document.getElementById("bandara").style.display ='block';
+    function showBandara(value){
+        if(value == "Pesawat"){
+            document.getElementById("bandara").style.display ='block';
+        }
+        else{
+            document.getElementById("bandara").style.display ='none';
+        }
     }
-    else{
-        document.getElementById("bandara").style.display ='none';
-    }
-}
 </script>
 
 
@@ -349,7 +340,6 @@ function getUnsSuggest(){
         xmlhttp.open("GET",url+"?loc="+v1+"&arrTime="+v2+"&firstId="+v3,true);
         xmlhttp.send();
 }
-
 </script>
 </body>
 </html>

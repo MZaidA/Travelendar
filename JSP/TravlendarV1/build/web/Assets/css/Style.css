@@ -474,7 +474,7 @@ select:-moz-focusring {
 }
 /*------------------------------------*/
 
-#geomap{
+#map{
     width: 100%;
     height: 400px;
 }
