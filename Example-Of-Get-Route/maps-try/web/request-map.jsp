@@ -45,18 +45,23 @@
         line-height: 30px;
         padding-left: 10px;
       }
+      .name{
+          margin-top:0px;
+          margin-bottom:10px;
+          font-size:14px;
+      }
     </style>
   </head>
   <body>
     <div id="floating-panel">
     <input type="hidden" id="start" value="${eventChoosen.getLatStart()},${eventChoosen.getLngStart()}">
     <input type="hidden" id="end" value="${eventChoosen.getLatEnd()},${eventChoosen.getLngEnd()}">
-    <h3>Start Place: ${eventChoosen.getStartName()}</h3>
-    <h3>End Place: ${eventChoosen.getEndName()}</h3>
+    <h6 class="name">Start Place: ${eventChoosen.getStartName()}</h6>
+    <h6 class="name">End Place: ${eventChoosen.getEndName()}</h6>
     <button id="done">View Route</button>
     <button id="With-Tolls">View Route Via Tolls</button>
     </div>
-   
+  
     <div id="map"></div>
     <div id="message">Location saved</div>
     <script>
@@ -79,7 +84,7 @@
           content: document.getElementById('message')
         });
         
-        var geocoder = new google.maps.Geocoder();
+        var geocoder = new google.maps.Geocoder();;
           
         var onChangeHandler = function() {
           avoidToll = true;
