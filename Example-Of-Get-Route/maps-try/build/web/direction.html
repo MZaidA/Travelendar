@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Directions service</title>
+    
+    <script src="gmaps.js"></script>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="floating-panel">
+    <b>Start: </b>
+    <input type="text" id="start">
+    <b>End: </b>
+    <input type="text" id="end">
+    <button id="done">View Route</button>
+    <form action="save-direction.jsp">
+            <input type="hidden" id="startName" name="startName"/>
+            <input type="hidden" id="latStart" name="latStart"/>
+            <input type="hidden" id="lngStart" name="lngStart"/>
+            <input type="hidden" id="endName" name="endName"/>
+            <input type="hidden" id="latEnd" name="latEnd"/>
+            <input type="hidden" id="lngEnd" name="lngEnd"/>
+            <input type='submit' value='Save'/>
+    </form>
+    </div>
+   
+    <div id="map"></div>
+    <script>
+      var markerStart;
+      var markerEnd;
+      var messagewindow;
+      function initMap() {
+        var inputStart = document.getElementById('start');
+        var inputEnd = document.getElementById('end');
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: {lat: -6.914744, lng: 107.609810}
+        });
+        directionsDisplay.setMap(map);
+
+        messagewindow = new google.maps.InfoWindow({
+          content: document.getElementById('message')
+        });
+        
+        var geocoder = new google.maps.Geocoder();
+          
+        var onChangeHandler = function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+          geocodeAddressStart(geocoder, map);
+          geocodeAddressEnd(geocoder, map);
+        };
+        document.getElementById('done').addEventListener('click', onChangeHandler);
+      }
+
+      function geocodeAddressStart(geocoder, resultsMap) {
+        var address = document.getElementById('start').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            markerStart = new google.maps.Marker({
+              position: results[0].geometry.location
+            });
+            document.getElementById("latStart").value=markerStart.getPosition().lat();
+            document.getElementById("lngStart").value=markerStart.getPosition().lng();
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+      
+      function geocodeAddressEnd(geocoder, resultsMap) {
+        var address = document.getElementById('end').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            markerEnd = new google.maps.Marker({
+              position: results[0].geometry.location
+            });
+            document.getElementById("latEnd").value=markerEnd.getPosition().lat();
+            document.getElementById("lngEnd").value=markerEnd.getPosition().lng();
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: document.getElementById('start').value,
+          destination: document.getElementById('end').value,
+          travelMode: 'DRIVING',
+          avoidTolls: true
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+        var start = document.getElementById('start').value;
+        var end = document.getElementById('end').value;
+        document.getElementById("startName").value=start;
+        document.getElementById("endName").value=end;
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDteT4he2sgw-Bkf9mR-kVHg7hl6VGdv4E&callback=initMap">
+    </script>
+  </body>
+</html>
