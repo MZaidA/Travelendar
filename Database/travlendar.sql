@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     19/11/2017 13:34:03                          */
+/* Created on:     20/11/2017 09:14:54                          */
 /*==============================================================*/
 
 
@@ -17,11 +17,11 @@ create table EVENT
    EMAIL                varchar(40) not null,
    EVENT_NAME           varchar(40) not null,
    NAME_ORIGIN          varchar(40) not null,
-   LAT_ORIGIN           double not null,
-   LNG_ORIGIN           double not null,
+   LAT_ORIGIN           float not null,
+   LNG_ORIGIN           float not null,
    NAME_DESTINATION     varchar(40) not null,
-   LAT_DESTINATION      double not null,
-   LNG_DESTINATION      double not null,
+   LAT_DESTINATION      float not null,
+   LNG_DESTINATION      float not null,
    ARRIVAL_TIME         datetime not null,
    EVENT_END            datetime not null,
    DEPARTURE_TIME       datetime not null,
