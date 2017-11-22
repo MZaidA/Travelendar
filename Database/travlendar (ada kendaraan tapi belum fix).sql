@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     20/11/2017 22:13:31                          */
+/* Created on:     22/11/2017 08:36:25                          */
 /*==============================================================*/
 
 
@@ -25,9 +25,11 @@ create table EVENT
    ARRIVAL_TIME         datetime not null,
    EVENT_END            datetime not null,
    DEPARTURE_TIME       datetime not null,
-   TRANSPORT_MODE       varchar(10) not null,
+   TRAVEL_MODE          varchar(10) not null,
+   PRIVATE_TRANSPORT_TYPE varchar(20),
    AVOID_TOLLS          bool,
-   PUBLIC_TRANSPORT_TYPE varchar(10),
+   TRANSIT_MODE         varchar(10),
+   PUBLIC_TRANSPORT_TYPE varchar(20),
    PUBLIC_TRANSPORT_NAME varchar(40),
    primary key (EVENT_ID)
 )
