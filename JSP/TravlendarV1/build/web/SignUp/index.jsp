@@ -9,27 +9,100 @@
 <html>
 <head>
 <title>travelandar</title>
-<link rel="stylesheet" type="text/css" href="">
-<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<style>
+body {
+	margin: 0px;
+	border: 0px;
+        background-image: url("muka.png");	
+}
+form {
+	margin-left: 310px;
+	height: 60px;
+	margin-top: 120px;
+	margin-bottom: 10px;
+}
+#navbar {
+	width: 100%;
+	height: 70px;
+	opacity: 0.6;
+	position: fixed;
+}
+#wrap {
+        width : 100%;
+        height : 500px
+}
+#text {
+	text-align: center;
+	font-family: sans-serif;
+	font-style: bold;
+	color: white;
+}
+.name {
+	width: 30%;
+	height: 75%;
+	padding: 12px 20px;
+	margin: 2px;
+	background-color: white;
+	border: none;
+	font-size: 25px;
+}
+.button {
+    background-color: white;
+    border: none;
+    color: lightblue;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    margin-left: 285px;
+    cursor: pointer;
+}
+.password {
+	width: 64.2%;
+	height: 75%;
+	padding: 12px 20px;
+	margin: 2px;
+	font-size: 29px;
+}
+.active {
+	float: right;
+	text-align: right;
+	padding-right: 40px;
+	padding-top: 20px;
+	font-family: sans-serif;
+	font-size: 20px;
+	color: white;
+	text-decoration: none;
+}
+
+.lorem {
+	font-size: 20px;
+}
+.text-wrapper {
+	position: relative;
+}
+.text-wrapper h1{
+	font-family: 'roboto condensed';
+} 
+</style>
 </head>
 <body>
 <div id="navbar">
    <a href="\Travlendar\Login" class="active" >SIGN IN</a>
 </div>
 
-<div class="content-wrapper">
-	<img class="image" src="bigPic.jpg">
-	<div class="text-wraper">
-		<h1>simple text</h1>
-	</div>
+<div id="text">
+        <h2>  creat your own scadule </h2>
+        <hr size="3px" width="100px" align="center" color="white">
+        <h1> we Help you to manage your travel and scadule </h1> 
+        <img src="Building_1.png" width="300" height="400px">
 </div>
 
-
 <div id="text">
-	<p style="margin-bottom: 0px;"> LETS SIGN UP </p>
-	<p style="margin-top: 0px;">_________</p>
-	<p class="lorem"> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+	<h2> try to sign up </h2>
+        <hr size="3px" width="100px" align="center" color="white">
 </div>
 
 <div id="signUpPage">
@@ -39,7 +112,7 @@
   <input type="email" class="password" name="email" placeholder="email address" required /><br>
   <input type="password" class="password" name="password" placeholder="password" required /><br>
   <input type="password" class="password" name="password_again" placeholder="repeat password" required /><br><br>
-  <input type="submit" class="button" name="submit" value="Input Button">
+  <input type="submit" class="button" name="submit" value="lets go">
 </form>
     </div>
 

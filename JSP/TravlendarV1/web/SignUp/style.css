@@ -11,7 +11,7 @@ and open the template in the editor.
 body {
 	margin: 0px;
 	border: 0px;
-	background-color: url("bigPic.jpg");
+        background-img: url("muka.png");
 	background-color: #1bbee3;
 	background-repeat: no-repeat; 	
 }
@@ -23,7 +23,7 @@ form {
 }
 #navbar {
 	width: 100%;
-	background-color: #000009;
+	background-color:url("muka.png");
 	height: 70px;
 	opacity: 0.6;
 	position: fixed;
