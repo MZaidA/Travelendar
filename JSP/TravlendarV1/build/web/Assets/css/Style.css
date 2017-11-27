@@ -257,9 +257,12 @@ td, th {
 .column.content
 {	
 	overflow:auto;
-	background-color: #B1CFF3;
+	background-color: #b1cff3;
 	width: 79%;
 	height: 618px;
+        background-image: url(../icon/world_map.png);
+        background-repeat: no-repeat;
+        background-size: 98%;
 }
 .column {
     float: left;
