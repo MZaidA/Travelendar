@@ -44,10 +44,19 @@
             <div>
                 <div class="content-body">
                     <div class="kolom-kiri marginLeft">
-                        AB
+                        <img src="baru.png" width="600" height="600px">
                     </div>
                     <div class="kolom-kanan">
-                        CD
+                      <h3> belum punya akun ? </h3><br>
+                      <h3> daftar sekarang </h3>
+                      <form autocomplete="on" action="display.jsp" method="POST">
+                     <input type="text" class="name" name="first" placeholder="nama depan" required /> 
+                     <input type="text" class="name" name="last" placeholder="nama belakang" required /><br>
+                     <input type="text" class="password" name="email" placeholder="alamat email" required /><br>
+                     <input type="text" class="password" name="password" placeholder="kata sandi" required /><br>
+                     <input type="text" class="password" name="password_again" placeholder="ulang kata sandi" required /><br><br>
+                     <input type="submit" class="button" name="submit" value="lets go">
+                     </form>
                     </div>
                 </div>
             </div>
