@@ -265,6 +265,7 @@ hr.fc-divider {
 	border-width: 1px;
 	padding: 0;
 	vertical-align: top;
+        background-color: rgba(227,227,227,0.5);
 }
 
 .fc td.fc-today {
@@ -707,7 +708,8 @@ TODO: more distinction between this file and common.css
 .fc-unthemed .fc-popover,
 .fc-unthemed .fc-list-view,
 .fc-unthemed .fc-list-heading td {
-	border-color: #ddd;
+	border-color: #000000;
+        
 }
 
 .fc-unthemed .fc-popover {
@@ -717,7 +719,7 @@ TODO: more distinction between this file and common.css
 .fc-unthemed .fc-divider,
 .fc-unthemed .fc-popover .fc-header,
 .fc-unthemed .fc-list-heading td {
-	background: #eee;
+	background: #000000;
 }
 
 .fc-unthemed .fc-popover .fc-header .fc-close {
@@ -1049,6 +1051,7 @@ NOTE: use percentage font sizes or else old IE chokes
 .fc-basic-view .fc-week-number,
 .fc-basic-view .fc-day-number {
 	padding: 2px;
+        color: black;
 }
 
 .fc-basic-view th.fc-week-number,
