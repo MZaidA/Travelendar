@@ -85,13 +85,13 @@
             <!--LOCATION GMAPS -->
                 <label for="stLoc">Start Location</label>
                 <div class="form-group input-group">
-                    <input onchange='getSuggest()' type="text" id="start" class="form-control" placeholder="Search location"/>
+                    <input type="text" id="start" class="form-control" placeholder="Search location"/>
                 </div>
             </div>  
             </br>
             <label for="fname">End Location</label>
             <div class="form-group input-group">
-                <input onchange='getSuggest()' type="text" id="end" class="form-control" placeholder="Search location">
+                <input type="text" id="end" class="form-control" placeholder="Search location">
                 <div class="input-group-btn">
                     <button id="done">
                         View Route
@@ -229,17 +229,15 @@
 
             </br>
             <label for="stLoc">Transportation</label>
-            <select id="transport">
-                <option value="0">Isi Lokasi dan Waktu Event terlebih Dahulu</option>
-            </select>
+            <input type="text" id="tra" name="Transportation" placeholder="..."/>
             <br/>
 
             <label for="fname">Arrival Date & Time</label>
-            <input onchange='getSuggest()' type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
+            <input type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
 
             <br/>
             <label for="fname">End Date & Time</label>
-            <input onchange='getSuggest()' type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
+            <input type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
             <br />
 
             <input type="submit" value="Submit"/>
@@ -344,106 +342,6 @@ function getUnsSuggest(){
         xmlhttp.open("GET",url+"?loc="+v1+"&arrTime="+v2+"&firstId="+v3,true);
         xmlhttp.send();
 }
-        function getSuggest() {
-                    var v1 = document.getElementById("start").value;
-                    var v2 = document.getElementById("end").value;
-                    var v3 = document.getElementById("dateTime1").value;
-                    var v4 = document.getElementById("dateTime2").value;
-                    if(v1!="" && v2!="" && v3!="" && v4!="") {
-                        var directionsService = new google.maps.DirectionsService;
-                        var directionsDisplay = new google.maps.DirectionsRenderer;
-                        var arrM = parseInt(v3.substr(0,2));
-                        var arrD = parseInt(v3.substr(3,2));
-                        var arrY = parseInt(v3.substr(6,4));
-                        var arrHH = parseInt(v3.substr(11,2));
-                        var arrMM = parseInt(v3.substr(14,2));
-                        
-                        var depM = parseInt(v4.substr(0,2));
-                        var depD = parseInt(v4.substr(3,2));
-                        var depY = parseInt(v4.substr(6,4));
-                        var depHH = parseInt(v4.substr(11,2));
-                        var depMM = parseInt(v4.substr(14,2));
-                        
-                        var arrDate = new Date(arrY, arrM, arrD, arrHH, arrMM);
-                        var depDate = new Date(depY, depM, depD, depHH, depMM);
-                        suggest(directionsService, directionsDisplay, arrDate);
-                    }
-                }
-                function suggest(directionsService, directionsDisplay, arrDate) {
-                    var transSuggest = document.getElementById("transport");
-                    var length = transSuggest.options.length;
-                    for (i = 0; i < length; i++) {
-                      transSuggest.options[i] = null;
-                    }
-                    directionsService.route({
-                        origin: document.getElementById('start').value,
-                        destination: document.getElementById('end').value,
-                        travelMode: 'DRIVING',
-                        avoidTolls: false
-                    }, function(response, status) {
-                        if (status === 'OK') {
-                            directionsDisplay.setDirections(response);
-                            //get distance
-                            var dur = response.routes[0].legs[0].duration.value;
-                            var depart = new Date(arrDate-dur*1000);
-//                            alert(depart.getMinutes());
-                            transSuggest.append(new Option("Mobil, Berangkat: "+depart, 1));
-//                            transSuggest.append(new Option("Mobil, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 1));
-                            
-                        }
-                    });
-                    directionsService.route({
-                        origin: document.getElementById('start').value,
-                        destination: document.getElementById('end').value,
-                        travelMode: 'DRIVING',
-                        avoidTolls: true
-                    }, function(response, status) {
-                        if (status === 'OK') {
-                            directionsDisplay.setDirections(response);
-                            //get distance
-                            var dur = response.routes[0].legs[0].duration.value;
-                            var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Motor, Berangkat: "+depart, 2));
-//                            transSuggest.append(new Option("Motor, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 2));
-                            
-                        }
-                    });
-                    directionsService.route({
-                        origin: document.getElementById('start').value,
-                        destination: document.getElementById('end').value,
-                        travelMode: 'WALKING',
-                    }, function(response, status) {
-                        if (status === 'OK') {
-                            directionsDisplay.setDirections(response);
-                            //get distance
-                            var dur = response.routes[0].legs[0].duration.value;
-                            var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, 3));
-//                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 3));
-                        }
-                    });
-                    directionsService.route({
-                        origin: document.getElementById('start').value,
-                        destination: document.getElementById('end').value,
-                        travelMode: 'BICYCLING',
-                    }, function(response, status) {
-                        if (status === 'OK') {
-                            directionsDisplay.setDirections(response);
-                            //get distance
-                            var dur = response.routes[0].legs[0].duration.value;
-                            var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart, 4));
-//                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
-                        }
-                    });
-                    if(transSuggest.options.length==0) {
-                        transSuggest.append(new Option("Suggestion Kendaraan tidak Ditemukan", 0));
-                    }
-                    var start = document.getElementById('start').value;
-                    var end = document.getElementById('end').value;
-                    document.getElementById("startName").value=start;
-                    document.getElementById("endName").value=end;
-                }
 </script>
 </body>
 </html>

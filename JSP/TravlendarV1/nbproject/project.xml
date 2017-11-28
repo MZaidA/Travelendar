@@ -7,12 +7,32 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
+<<<<<<< HEAD
                     <file>${file.reference.jstl-1.2.jar-2}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${file.reference.mysql-connector-java-5.1.44-bin.jar-2}</file>
+=======
+                    <file>${file.reference.mysql-connector-java-5.1.44-bin.jar-2}</file>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.gson-2.3.1.jar}</file>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.Documents-Travelendar}</file>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.jstl-1.2.jar-3}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.mysql-connector-java-5.1.44-bin.jar-3}</file>
+>>>>>>> 343befab70b44f70f55030b1ae60a83883e9482c
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.jstl-1.2.jar-2}</file>
                 </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
