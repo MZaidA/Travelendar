@@ -27,8 +27,8 @@
                                     <td><label for="pass">Kata Sandi</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="email" name="email" id="email"></td>
-                                    <td><input type="pass" name="pass" id="pass"></td>
+                                    <td><input type="email" name="email" id="email" placeholder="email"></td>
+                                    <td><input type="password" name="pass" id="pass" placeholder="password"></td>
                                     <td><div class="buttonConfirm" id="login">Masuk</div></td>
                                 </tr>
                                 <tr>
@@ -44,7 +44,7 @@
             <div>
                 <div class="content-body">
                     <div class="kolom-kiri marginLeft">
-                        <img src="baru.png" width="600" height="600px">
+                        <img src="baru.png" width="700" height="650px">
                     </div>
                     <div class="kolom-kanan">
                       <h3> belum punya akun ? </h3><br>
@@ -52,10 +52,10 @@
                       <form autocomplete="on" action="display.jsp" method="POST">
                      <input type="text" class="name" name="first" placeholder="nama depan" required /> 
                      <input type="text" class="name" name="last" placeholder="nama belakang" required /><br>
-                     <input type="text" class="password" name="email" placeholder="alamat email" required /><br>
-                     <input type="text" class="password" name="password" placeholder="kata sandi" required /><br>
-                     <input type="text" class="password" name="password_again" placeholder="ulang kata sandi" required /><br><br>
-                     <input type="submit" class="button" name="submit" value="lets go">
+                     <input type="emaill" class="emaill" name="emaill" placeholder="alamat email" required /><br>
+                     <input type="password" class="password" name="password" placeholder="kata sandi" required /><br>
+                     <input type="password" class="password" name="password_again" placeholder="ulang kata sandi" required /><br><br>
+                     <input type="submit" class="button" name="submit" value="buat akun">
                      </form>
                     </div>
                 </div>

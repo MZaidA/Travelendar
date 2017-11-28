@@ -7,13 +7,17 @@ body {
 h1 {
     font-size:70px;
     text-align:center;
+    color: navy;
 }
 h2 {
     font-size:40px;
+    color: navy;
+}
+h3 {
+    color: black;
 }
 h1, h2, h3{
     font-family: 'Boogaloo', cursive;
-    color: navy;
     margin: 0;
     padding: 0;
 }
@@ -31,7 +35,7 @@ a {
     float:right;
 }
 .marginLeft{
-    margin-left: 100px;}
+    margin-left: 50px;}
 .all-content{
     overflow: initial;
 }
@@ -47,11 +51,11 @@ a {
 
 .kolom-kiri{
     overflow: visible;
-    width: 40%;
-    padding-right: 48px;
+    width: 41.5%;
+    padding-right: 265px;
 }
 .kolom-kanan{
-    width: 400px;
+    width: 370px;
     float: none;
     word-wrap: break-word;
 }
@@ -64,6 +68,7 @@ table{
     border-collapse: separate;
     border-spacing: 2px;
     border-color: grey;
+    color: white;
 }
 
 td, td.label {
@@ -85,7 +90,7 @@ td, th {
 .header {
     background-color: #06648f;
     padding: 20px 0px;
-    min-height: 42px;
+    min-height: 52px;
     min-width: max-content;
 }
 
@@ -178,7 +183,6 @@ td, th {
 }
 .t4{font-size:16px;color:white;font-family: 'Glegoo', serif;}
 .text-navbar{color:white;margin-top:6px;margin-left:40px;font-family: 'Acme', sans-serif;}
-
 
 /*Style buat Box*/
 .boxstyle1 {
@@ -343,8 +347,8 @@ td, th {
 .button1:active {text-decoration: none;color:black;}/* selected link */
 
 .buttonConfirm{
-    background-color: #B1CFF3;
-    border-color: #29487d;
+    background-color: #09F;
+    color: white;
     border-radius: 2px;
     cursor: pointer;
     display: inline-block;
@@ -370,6 +374,26 @@ td, th {
 
 /*FORM*/
 input[type=text], select {
+    width: 183px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=emaill], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.password
+{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
