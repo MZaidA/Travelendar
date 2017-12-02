@@ -15,6 +15,7 @@ Author     : afadh
 <title>Travlendar</title>
 <link rel="stylesheet" href="../Assets/css/Style.css"/>
 <link href="../Assets/font?family=Anton|Acme|Boogaloo|Chewy|Glegoo" rel="stylesheet"/>
+
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
@@ -41,6 +42,7 @@ Author     : afadh
 
 <div class="column content">
 <h1> Upcoming Event </h1>
+<!--
     <c:forEach items="${events}" var="item">
     <div class="boxstyle1">
         <div class="row">
@@ -63,113 +65,97 @@ Author     : afadh
             </div>
         </div>
     </div>
-    </c:forEach>
-    
-<!--        <div class="boxstyle11">
-        <div class="row">
-            <div class="column">
-                <div class="t3">Ke bandara</div>
-                <div class="t4">Time: 20/09/2017 10:00 - 11:00</div>
+                    
+    </c:forEach>-->
+    <c:forEach items="${events}" var="item">
+    <div class="boxstyle1">
+        <table class="column-seratus">
+            <tbody>
+                <tr>
+                    <td class="t3">${item.eventName}</td>
+                    <td class="t3">${item.departureDateStr} - ${item.endDateStr}</td>
+                    <td class="text-align-center"><button class="button1" onclick="showDetail(${loop.index+1})">Detail Event</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="">
+            <table class="table-seratus" id="detail1">
+                <tbody>
+                    <tr>
+                        <td>Politeknik Negeri Bandung</td>
+                        <td>arrival time : ${item.arrivalTimeStr}</td>
+                    </tr>
+                    <tr>
+                        <td>${item.departureDateStr} - ${item.endDateStr}</td>
+                        <td>departure time: ${item.departureTimeStr}</td>
+                    </tr>
+                    <tr>
+                        <td>Motor</td>
+                        <td>end time event: ${item.endTimeStr}</td>
+                    </tr>
+                </tbody>
+                </table>
             </div>
-            <div class="column2">
-                SUGGESTION
-            </div>
-            <div class="column3">
-                <div class="dropdown">
-                    <button class="dropbtn">Event Details</button>
-                    <div class="dropdown-content">
-                      Keterangan
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-
-  <div class="boxstyle11">
-      <div class="row">
-        <div class="column">
-                <div class="t3">Ke Bandara Halim Perdanakusuma<br></div>
-                <div class="t4">Time: 20/09/2017 13:00 - 17:00</div>
+    </c:forEach>
+    <div class="boxstyle1">
+        <table class="column-seratus">
+            <tbody>
+                <tr>
+                    <td class="t3">Nama Event</td>
+                    <td class="t4" id="datehide2">Tanggal</td>
+                    <td class="text-align-center"><button class="button1" onclick="showDetail(2)">Detail Event</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="">
+            <table class="table-seratus" id="detail2" style="display: none;">
+                <tbody>
+                    <tr name="detail">
+                        <td>Politeknik Negeri Bandung</td>
+                        <td>arrival time : 16:00 WIB</td>
+                    </tr>
+                    <tr name="detail1">
+                        <td>Tanggal 02 Oktober 2017</td>
+                        <td>departure time: 17:00 WIB</td>
+                    </tr>
+                    <tr name="detail2">
+                        <td>Motor</td>
+                        <td>end time event: 18:00 WIB</td>
+                    </tr>
+                </tbody>
+                </table>
             </div>
-            <div class="column2" style="margin-top:2%;text-align:center;color:white;">
-                SUGGESTION
-            </div>
-            <div class="column3">
-                <div class="dropdown">
-                    <button class="dropbtn">Event Details</button>
-                    <div class="dropdown-content">
-                      Keterangan
-                    </div>
-                </div>
-            </div>
-        </div>
-  </div>-->
-
-<!--      <div class="boxstyle11">
-  <div class="row">
-            <div class="column">
-                <div class="t3">Ke Tangerang<br></div>
-                <div class="t4">Time: 20/09/2017 18:00 - 20:00</div>
-            </div>
-            <div class="column2" style="margin-top:2%;text-align:center;color:white;">
-                SUGGESTION
-            </div>
-            <div class="column3">
-                <div class="dropdown">
-                    <button class="dropbtn">Event Details</button>
-                    <div class="dropdown-content">
-                      Keterangan
-                    </div>
-                </div>
-            </div>
-        </div>
-  </div>-->
-  
-<!--        <div class="boxstyle11">
-        <div class="row">
-            <div class="column">
-                <div class="t3">Ke Bandara Halim Perdanakusuma <br></div>
-                <div class="t4">Time: 20/09/2017 21:00 - 22:00</div>
-            </div>
-            <div class="column2" style="margin-top:2%;text-align:center;color:white;">
-                SUGGESTION
-            </div>
-            <div class="column3">
-                <div class="dropdown">
-                    <button class="dropbtn">Event Details</button>
-                    <div class="dropdown-content">
-                      Keterangan
-                    </div>
-                </div>
-            </div>
-        </div>-->
+    </div>
   </div>
-  
-<!--          <div class="boxstyle11">
-        <div class="row">
-            <div class="column">
-                <div class="t3">Ke Rumah<br></div>
-                <div class="t4">Time: 20/09/2017 21:00 - 22:00</div>
-            </div>
-            <div class="column2" style="margin-top:2%;text-align:center;color:white;">
-                SUGGESTION
-            </div>
-            <div class="column3">
-                     <div class="dropdown">
-                    <button class="dropbtn">Event Details</button>
-                    <div class="dropdown-content">
-                      Keterangan
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    </div>-->
 </div>
 
 <div class="footer">
 Travlender 2017
 </div>
-
+<script>
+function show(){
+    document.getElementById("detail").style.display = "table";
+}
+</script>
+<script>
+function showDetail(id) {
+    var menu = document.getElementById("detail" + id);
+    for(var i = 0; i < 25; i++){
+        if(id == i)
+        {
+            if(menu.style.display == 'none'){
+                document.getElementById("detail" + id).style.display = "table";
+                document.getElementById("datehide" + id).style.display = "none";
+            }
+            else
+            {
+                document.getElementById("detail" + id).style.display = "none";
+                document.getElementById("datehide" + id).style.display = "table-cell";
+            }
+        }
+    }
+}
+</script>
 </body>
 </html>
