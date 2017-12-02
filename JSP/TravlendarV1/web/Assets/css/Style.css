@@ -67,7 +67,7 @@ div{
     width: 100%;
 }
 .table-seratus{
-    display: none;
+    display: table;
     width: 100%;
 }
 .text-align-right{
@@ -212,12 +212,12 @@ td, th {
 }
 
 .boxstyle11 {
-	margin-bottom:10px;
-	position:relative;
-	left: 25%;
-	width: 50%;
+    margin-bottom:10px;
+    position:relative;
+    left: 25%;
+    width: 50%;
     background-color: #ff9166;
-	border-radius:10px;
+    border-radius:10px;
     border-left: 7px solid #ffde66;
     padding: 10px;
 	z-index:0;
@@ -227,11 +227,11 @@ td, th {
     border-radius: 10px;
     background-color: #f2f2f2;
     padding: 20px;
-	margin-top: 10px;
-	width:50%;
-	text-align:center;
-	top:80px;
-	z-index:0;
+    margin-top: 10px;
+    width:100%;
+    text-align:center;
+    top:80px;
+    z-index:0;
 }
 
 .boxstyle3 {	
@@ -391,6 +391,15 @@ td, th {
 
 /*FORM*/
 input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=name], select {
     width: 183px;
     padding: 12px 20px;
     margin: 8px 0;
