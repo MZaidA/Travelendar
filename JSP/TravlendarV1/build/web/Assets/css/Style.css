@@ -89,7 +89,7 @@ td, th {
 
 .header {
     background-color: #06648f;
-    padding: 20px 0px;
+    padding: 10px 0px 25px 0px;
     min-height: 52px;
     min-width: max-content;
 }

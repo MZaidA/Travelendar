@@ -23,12 +23,12 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td><label for="email">email atau username</label></td>
+                                    <td><label for="email">Email</label></td>
                                     <td><label for="pass">Kata Sandi</label></td>
                                 </tr>
                                 <tr>
                                     <td><input type="email" name="email" id="email" placeholder="email"></td>
-                                    <td><input type="password" name="pass" id="pass" placeholder="password"></td>
+                                    <td><input type="password" name="pass" id="pass" placeholder="kata sandi"></td>
                                     <td><div class="buttonConfirm" id="login">Masuk</div></td>
                                 </tr>
                                 <tr>
@@ -44,7 +44,7 @@
             <div>
                 <div class="content-body">
                     <div class="kolom-kiri marginLeft">
-                        <img src="baru.png" width="700" height="650px">
+                        <img src="peta.png" width="700" height="600px">
                     </div>
                     <div class="kolom-kanan">
                       <h3> belum punya akun ? </h3><br>
