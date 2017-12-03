@@ -101,7 +101,7 @@ td, th {
 }
 
 .header {
-    background-color: #06648f;
+    background-color: #ffbd32;
     padding: 10px 0px 25px 0px;
     min-height: 52px;
     min-width: max-content;
@@ -112,10 +112,7 @@ td, th {
     float:left;
     width:21%;
     height:617px;
-    background-color: #07709F;/*Biru*/ 
-    background-image: url(../icon/Building_1.png);
-    background-position: 50% 84%;
-    background-repeat: no-repeat;
+    background-color: #00bde9;/*Biru*/ 
 }
 
 .navbar, ul li{
@@ -138,6 +135,11 @@ td, th {
 	text-decoration:none;
 }
 
+/* Verification Form */
+verifform {
+    max-width: 450px;
+    margin: 0 auto; 
+}
 /* Dropdown Button */
 .dropbtn {
 	border:none;
@@ -240,6 +242,20 @@ td, th {
 .boxstyle3 a{transition-duration: 0.4s;}
 .boxstyle3 a:hover{background-color:pink;}
 
+.boxstyle4 {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 350px;
+    position:relative;
+    left: 15%;
+    width: 70%;
+    background-color: #ff9166;
+    border-radius:10px;
+    border-left: 7px;
+    padding: 10px;
+    z-index:0;
+}
+
 .hoverbutton:hover{
 	transition-duration: 0.4s;
 }
@@ -257,12 +273,12 @@ td, th {
 
 /* Style the footer */
 .footer {
-	bottom:0;
-	width:100%;
+    bottom:0;
+    width:100%;
     background-color: #0080C0;
     padding: 10px 0px;
-	color:white;
-	font-size:24px;
+    color:white;
+    font-size:24px;
     text-align: center;
 }
 
@@ -384,6 +400,33 @@ td, th {
     background-color: #4267b2;
     color: white;
 }
+
+.formbutton2 {
+    background-color: #ffffff;
+    border: none;
+    color: black;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.formbutton1 {
+    background-color: #00bde9;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 .selected
 {
 	background-color:#FC6;
