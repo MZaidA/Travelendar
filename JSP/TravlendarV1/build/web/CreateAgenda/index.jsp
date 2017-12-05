@@ -383,7 +383,7 @@ function getUnsSuggest(){
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
 //                            alert(depart.getMinutes());
-                            transSuggest.append(new Option("Mobil, Berangkat: "+depart, 1));
+                            transSuggest.append(new Option("Mobil, Berangkat: "+depart, "DRIVING"));
 //                            transSuggest.append(new Option("Mobil, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 1));
                             
                         }
@@ -399,7 +399,7 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Motor, Berangkat: "+depart, 2));
+                            transSuggest.append(new Option("Motor, Berangkat: "+depart, "MOTOR"));
 //                            transSuggest.append(new Option("Motor, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 2));
                             
                         }
@@ -414,7 +414,7 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, 3));
+                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, "WALKING"));
 //                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 3));
                         }
                     });
@@ -428,7 +428,7 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart, 4));
+                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING"));
 //                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
                         }
                     });

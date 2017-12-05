@@ -38,100 +38,100 @@ public class EventDAO{
 
     public static List<Event> getAll() {
         List<Event> events = new ArrayList<Event>();
-        try{
-            String arrival;
-            String end;
-            String departure;
-            Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM event");
-            ResultSet rs = ps.executeQuery();
-            
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            DateFormat tf = new SimpleDateFormat("HH:mm:ss");
-            while(rs.next()) {
-                Event event = new Event();
-                event.setEventId(rs.getInt("EVENT_ID"));
-                event.setLocationId(rs.getInt("START_LOCATION_ID"));
-                event.setLoc2Id(rs.getInt("EVENT_LOCATION_ID"));
-                event.setEventName(rs.getString("EVENT_NAME"));
-                
-                arrival = rs.getString("ARRIVAL_AT_LOCATION");
-                event.setArrivalTime(format.parse(arrival)); //menyamakan format sesuai yang ada pada database
-                event.setArrivalDateStr(df.format(event.getArrivalTime())); //membuat date bertipe string agar dapat dibaca JSON
-                event.setArrivalTimeStr(tf.format(event.getArrivalTime())); //membuat time bertipe string agar dapat dibaca JSON
-                
-                end = rs.getString("EVENT_FINISHED");
-                event.setEndTime(format.parse(end));
-                event.setEndDateStr(df.format(event.getEndTime()));
-                event.setEndTimeStr(tf.format(event.getEndTime()));
-                
-               departure = rs.getString("DEPARTURE_TO_LOCATION");
-               event.setDepartureToLocation(format.parse(departure));
-               event.setDepartureDateStr(df.format(event.getDepartureToLocation()));
-               event.setDepartureTimeStr(tf.format(event.getDepartureToLocation()));
-               
-                events.add(event);
-            }
-        }
-        catch(Exception e) {
-            System.out.println(e);
-        }
+//        try{
+//            String arrival;
+//            String end;
+//            String departure;
+//            Connection con = getConnection();
+//            PreparedStatement ps = con.prepareStatement("SELECT * FROM event");
+//            ResultSet rs = ps.executeQuery();
+//            
+//            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+//            DateFormat tf = new SimpleDateFormat("HH:mm:ss");
+//            while(rs.next()) {
+//                Event event = new Event();
+//                event.setEventId(rs.getInt("EVENT_ID"));
+//                event.setStartLocation(rs.getString("NAME_ORIGIN"));
+//                event.setEndLocation(rs.getString("NAME_DESTINATION"));
+//                event.setEventName(rs.getString("EVENT_NAME"));
+//                
+//                arrival = rs.getString("ARRIVAL_AT_LOCATION");
+//                event.setArrivalTime(format.parse(arrival)); //menyamakan format sesuai yang ada pada database
+//                event.setArrivalDateStr(df.format(event.getArrivalTime())); //membuat date bertipe string agar dapat dibaca JSON
+//                event.setArrivalTimeStr(tf.format(event.getArrivalTime())); //membuat time bertipe string agar dapat dibaca JSON
+//                
+//                end = rs.getString("EVENT_FINISHED");
+//                event.setEndTime(format.parse(end));
+//                event.setEndDateStr(df.format(event.getEndTime()));
+//                event.setEndTimeStr(tf.format(event.getEndTime()));
+//                
+//               departure = rs.getString("DEPARTURE_TO_LOCATION");
+//               event.setDepartureToLocation(format.parse(departure));
+//               event.setDepartureDateStr(df.format(event.getDepartureToLocation()));
+//               event.setDepartureTimeStr(tf.format(event.getDepartureToLocation()));
+//               
+//               events.add(event);
+//            }
+//        }
+//        catch(Exception e) {
+//            System.out.println(e);
+//        }
         return events;
     }
 
-    public static Event get(int id) {
-        Event event = null;
-        try{
-            String arrival;
-            String end;
-            Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM event WHERE EVENT_ID=?");
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            DateFormat tf = new SimpleDateFormat("HH:mm:ss");
-            while(rs.next()) {
-                event = new Event();
-                event.setEventId(rs.getInt("EVENT_ID"));
-		event.setLocationId(rs.getInt("LOCATION_ID"));
-		event.setLoc2Id(rs.getInt("LOC_LOCATION_ID"));
-                event.setEventName(rs.getString("EVENT_NAME"));
-                
-                arrival = rs.getString("ARRIVAL_AT_LOCATION");
-                event.setArrivalTime(format.parse(arrival));
-                event.setArrivalDateStr(df.format(event.getArrivalTime()));
-                event.setArrivalTimeStr(tf.format(event.getArrivalTime()));
-                
-                end = rs.getString("EVENT_FINISHED");
-                event.setEndTime(format.parse(end));
-                event.setEndDateStr(df.format(event.getEndTime()));
-                event.setEndTimeStr(tf.format(event.getEndTime()));
-                
-                event.setDescription(rs.getString("DESCRIPTION"));
-            }
-        }
-        catch(Exception e) {
-            System.out.println(e);
-        }
-        return event;
-    }
+//    public static Event get(int id) {
+//        Event event = null;
+//        try{
+//            String arrival;
+//            String end;
+//            Connection con = getConnection();
+//            PreparedStatement ps = con.prepareStatement("SELECT * FROM event WHERE EVENT_ID=?");
+//            ps.setInt(1, id);
+//            ResultSet rs = ps.executeQuery();
+//            
+//            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+//            DateFormat tf = new SimpleDateFormat("HH:mm:ss");
+//            while(rs.next()) {
+//                event = new Event();
+//                event.setEventId(rs.getInt("EVENT_ID"));
+//		event.setLocationId(rs.getInt("LOCATION_ID"));
+//		event.setLoc2Id(rs.getInt("LOC_LOCATION_ID"));
+//                event.setEventName(rs.getString("EVENT_NAME"));
+//                
+//                arrival = rs.getString("ARRIVAL_AT_LOCATION");
+//                event.setArrivalTime(format.parse(arrival));
+//                event.setArrivalDateStr(df.format(event.getArrivalTime()));
+//                event.setArrivalTimeStr(tf.format(event.getArrivalTime()));
+//                
+//                end = rs.getString("EVENT_FINISHED");
+//                event.setEndTime(format.parse(end));
+//                event.setEndDateStr(df.format(event.getEndTime()));
+//                event.setEndTimeStr(tf.format(event.getEndTime()));
+//                
+//                event.setDescription(rs.getString("DESCRIPTION"));
+//            }
+//        }
+//        catch(Exception e) {
+//            System.out.println(e);
+//        }
+//        return event;
+//    }
 
     public static int save(Event event) {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO event(EVENT_NAME, EVENT_LOCATION_ID, START_LOCATION_ID, ARRIVAL_AT_LOCATION, EVENT_FINISHED, UNSCHEDULED_TRANSPORTATION_ID, DEPARTURE_TO_LOCATION) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO event(EVENT_NAME, NAME_DESTINATION, NAME_ORIGIN, ARRIVAL_TIME, EVENT_END, TRAVEL_MODE) VALUES (?, ?, ?, ?, ?, ?)");
             ps.setString(1, event.getEventName());
-            ps.setInt(2, event.getEndLocation());
-            ps.setInt(3, event.getLoc2Id());
+            ps.setString(2, event.getEndLocation());
+            ps.setString(3, event.getStartLocation());
             ps.setDate(4, new Date(event.getArrivalTime().getTime()));
             ps.setDate(5, new Date(event.getEndTime().getTime()));
             //ps.setString(6, event.getDescription());
-            ps.setInt(6, event.getUnscheduled_id());
-            ps.setDate(7, new Date(event.getDepartureToLocation().getTime()));
+            ps.setString(6, event.getTravelingMode());
+//            ps.setDate(7, new Date(event.getDepartureToLocation().getTime()));
             status = ps.executeUpdate();
             System.out.println(ps);
         }
@@ -141,40 +141,40 @@ public class EventDAO{
         return status;
     }
 
-    public static int update(Event event) {
-                int status = 0;
-        try {
-            Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE event set EVENT_NAME=?, EVENT_LOCATION_ID=?, START_LOCATION_ID=?, ARRIVAL_AT_LOCATION=?, EVENT_FINISHED=?, DESCRIPTION=? UNSCHEDULED_TRANSPORTATION_ID=? WHERE EVENT_ID=?");
-            ps.setString(1, event.getEventName());
-            ps.setInt(2, event.getEndLocation());
-            ps.setInt(3, event.getLoc2Id());
-            ps.setDate(4, (Date) event.getArrivalTime());
-            ps.setDate(5, (Date) event.getEndTime());
-            ps.setString(6, event.getDescription());
-            ps.setInt(7, event.getUnscheduled_id());
-            ps.setInt(8, event.getEventId());
-            System.out.print(ps);
-            status = ps.executeUpdate();
-        }
-        catch(Exception e) {
-            System.out.println(e);
-        }
-        return status;
-    }
-    
-    public static int delete(Event event) {
-        int status = 0;
-        try {
-            Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("DELETE FROM event WHERE EVENT_ID=?");
-            ps.setInt(1, event.getEventId());
-            status = ps.executeUpdate();
-        }
-        catch(Exception e) {
-            System.out.println(e);
-        }
-        return status;
-    }
+//    public static int update(Event event) {
+//                int status = 0;
+//        try {
+//            Connection con = getConnection();
+//            PreparedStatement ps = con.prepareStatement("UPDATE event set EVENT_NAME=?, EVENT_LOCATION_ID=?, START_LOCATION_ID=?, ARRIVAL_AT_LOCATION=?, EVENT_FINISHED=?, DESCRIPTION=? UNSCHEDULED_TRANSPORTATION_ID=? WHERE EVENT_ID=?");
+//            ps.setString(1, event.getEventName());
+//            ps.setInt(2, event.getEndLocation());
+//            ps.setInt(3, event.getLoc2Id());
+//            ps.setDate(4, (Date) event.getArrivalTime());
+//            ps.setDate(5, (Date) event.getEndTime());
+//            ps.setString(6, event.getDescription());
+//            ps.setInt(7, event.getUnscheduled_id());
+//            ps.setInt(8, event.getEventId());
+//            System.out.print(ps);
+//            status = ps.executeUpdate();
+//        }
+//        catch(Exception e) {
+//            System.out.println(e);
+//        }
+//        return status;
+//    }
+//    
+//    public static int delete(Event event) {
+//        int status = 0;
+//        try {
+//            Connection con = getConnection();
+//            PreparedStatement ps = con.prepareStatement("DELETE FROM event WHERE EVENT_ID=?");
+//            ps.setInt(1, event.getEventId());
+//            status = ps.executeUpdate();
+//        }
+//        catch(Exception e) {
+//            System.out.println(e);
+//        }
+//        return status;
+//    }
     
 }

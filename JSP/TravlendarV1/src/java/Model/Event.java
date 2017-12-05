@@ -16,6 +16,20 @@ import javafx.util.Pair;
  * @author syamcode
  */
 public class Event {
+
+    /**
+     * @return the travelingMode
+     */
+    public String getTravelingMode() {
+        return travelingMode;
+    }
+
+    /**
+     * @param travelingMode the travelingMode to set
+     */
+    public void setTravelingMode(String travelingMode) {
+        this.travelingMode = travelingMode;
+    }
     private Integer eventId;
     private String endLocation;
     private String startLocation;
@@ -38,7 +52,7 @@ public class Event {
 
    private Integer unscheduled_id;
     private List<Suggestion> suggestions = new ArrayList<Suggestion>();
-
+    private String travelingMode;
     /**
      * @return the eventId
      */

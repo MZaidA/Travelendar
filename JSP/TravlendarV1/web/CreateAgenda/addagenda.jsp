@@ -25,10 +25,9 @@
     String location = request.getParameter("endLoc");
     String arrivalTime = request.getParameter("arrivalTime");
     String endDate = request.getParameter("endDate");
-    Integer unscheduled_id = Integer.parseInt(request.getParameter("UNSCHEDULED_TRANSPORTATION_ID"));
     Date start = dateFormat.parse(arrivalTime);
     Date end = dateFormat.parse(endDate);
-    
+    String mode = request.getParameter("transport");
     if(request.getParameter("startLocationId")!="") {
         startloc = request.getParameter("startLoc");
     }
@@ -39,16 +38,15 @@
 //            }
     }
     
-    UnscheduledTravelingTable uns = UnscheduledTravelingTableDAO.getUnscheduledTravelingTableById(request.getParameter("UNSCHEDULED_TRANSPORTATION_ID"));
+//    UnscheduledTravelingTable uns = UnscheduledTravelingTableDAO.getUnscheduledTravelingTableById(request.getParameter("UNSCHEDULED_TRANSPORTATION_ID"));
     Event event = new Event();
     event.setEventName(eventName);
-    event.setLoc2Id(startloc);
-    event.setLocationId(locationId);
+    event.setStartLocation(startloc);
+    event.setEndLocation(location);
     event.setArrivalTime(start);
     event.setEndTime(end);
-    event.setDescription(description);
-    event.setUnscheduled_id(unscheduled_id);
-    event.setDepartureToLocation(new Date(start.getTime() - uns.getTravelingTime()*60000));
+    event.setTravelingMode(mode);
+//    event.setDepartureToLocation(new Date(start.getTime() - uns.getTravelingTime()*60000));
     
     int status = EventDAO.save(event);
     if(status!=0) {

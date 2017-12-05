@@ -74,27 +74,27 @@ public class SuggestionDAO {
         return unscheduledTravelingSuggestions;
     }
     
-        public static Event getLastEvent(String dt) {
-        Event ev = null;
-        try{
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm");
-            java.util.Date date = dateFormat.parse(dt);
-            Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT EVENT_LOCATION_ID, EVENT_FINISHED FROM `event` WHERE TIMEDIFF(?, `EVENT_FINISHED`)>=0 "
-                    + "ORDER BY TIMEDIFF(`EVENT_FINISHED`, ?) DESC LIMIT 1");
-            ps.setTimestamp(1, new Timestamp(date.getTime()));
-            ps.setTimestamp(2, new Timestamp(date.getTime()));
-            System.out.println(ps);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()) {
-                ev = new Event();
-                ev.setLocationId(rs.getInt("EVENT_LOCATION_ID"));
-                ev.setEndTime(rs.getDate("EVENT_FINISHED"));
-            }
-        }
-        catch(Exception e) {
-            System.out.println("ERROR: "+e);
-        }
-        return ev;
-    }
+//        public static Event getLastEvent(String dt) {
+//        Event ev = null;
+//        try{
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+//            java.util.Date date = dateFormat.parse(dt);
+//            Connection con = getConnection();
+//            PreparedStatement ps = con.prepareStatement("SELECT EVENT_LOCATION_ID, EVENT_FINISHED FROM `event` WHERE TIMEDIFF(?, `EVENT_FINISHED`)>=0 "
+//                    + "ORDER BY TIMEDIFF(`EVENT_FINISHED`, ?) DESC LIMIT 1");
+//            ps.setTimestamp(1, new Timestamp(date.getTime()));
+//            ps.setTimestamp(2, new Timestamp(date.getTime()));
+//            System.out.println(ps);
+//            ResultSet rs = ps.executeQuery();
+//            while(rs.next()) {
+//                ev = new Event();
+//                ev.setLocationId(rs.getInt("EVENT_LOCATION_ID"));
+//                ev.setEndTime(rs.getDate("EVENT_FINISHED"));
+//            }
+//        }
+//        catch(Exception e) {
+//            System.out.println("ERROR: "+e);
+//        }
+//        return ev;
+//    }
 }
