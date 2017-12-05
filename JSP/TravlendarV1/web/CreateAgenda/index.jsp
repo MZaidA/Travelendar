@@ -76,6 +76,7 @@
     <h1>Create a New Event</h1>
 
         <div class="form">
+        <form action="addagenda.jsp">
             <label for="fname">Event Name</label>
             <input type="text" id="eventName" name="eventName" placeholder="..."/>
             <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
@@ -85,13 +86,28 @@
             <!--LOCATION GMAPS -->
                 <label for="stLoc">Start Location</label>
                 <div class="form-group input-group">
-                    <input onchange='getSuggest()' type="text" id="start" class="form-control" placeholder="Search location"/>
+                    <input name="start" onchange='getSuggest()' type="text" id="start" class="form-control" placeholder="Search location"/>
                 </div>
             </div>  
             </br>
             <label for="fname">End Location</label>
+            <input name="end" onchange='getSuggest()' type="text" id="end" class="form-control" placeholder="Search location">
+            <br/>
+            <label for="fname">Arrival Date & Time</label>
+            <input onchange='getSuggest()' type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
+            <br/>
+            <label for="fname">End Date & Time</label>
+            <input onchange='getSuggest()' type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
+            </br>
+            <label for="stLoc">Transportation</label>
+            <select id="transport" name="transport">
+                <option value="0">Isi Lokasi dan Waktu Event terlebih Dahulu</option>
+            </select>
+            <br />
+            <input type="submit" value="Submit"/>
+        </form>
+        
             <div class="form-group input-group">
-                <input onchange='getSuggest()' type="text" id="end" class="form-control" placeholder="Search location">
                 <div class="input-group-btn">
                     <button id="done">
                         View Route
@@ -101,6 +117,7 @@
                     </button>
                 </div>
             </div>
+
             </br>
 
             <form action="save-direction.jsp">
@@ -113,9 +130,74 @@
                 <input type="hidden" id="distance" name="distance"/>
                 <input type="hidden" id="avoidTolls" name="avoidTolls"/>
             </form>
-
             <div id="map"></div>
-            <script>
+        </div>
+    </div>
+</div>
+<div class="footer">
+Travlender 2017
+</div>
+
+
+
+<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.js"></script> <!-- link untuk memanggil timepicker -->
+<script type="text/javascript" src="../Assets/datetimepick/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script> <!-- link untuk memanggil timepicker -->
+<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-sliderAccess.js"></script> <!-- link untuk memanggil timepicker -->
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDteT4he2sgw-Bkf9mR-kVHg7hl6VGdv4E&libraries=places&callback=initMap">
+</script>
+
+<script>
+    var myControl=  {
+            create: function(tp_inst, obj, unit, val, min, max, step){
+                    $('<input class="ui-timepicker-input" value="'+val+'" style="width:50%">')
+                        .appendTo(obj)
+                        .spinner({
+                                min: min,
+                                max: max,
+                                step: step,
+                                change: function(e,ui){ // key events
+                                                // don't call if api was used and not key press
+                                                if(e.originalEvent !== undefined)
+                                                        tp_inst._onTimeChange();
+                                                tp_inst._onSelectHandler();
+                                        },
+                                spin: function(e,ui){ // spin events
+                                                tp_inst.control.value(tp_inst, obj, unit, ui.value);
+                                                tp_inst._onTimeChange();
+                                                tp_inst._onSelectHandler();
+                                        }
+                        });
+                    return obj;
+            },
+            options: function(tp_inst, obj, unit, opts, val){
+                    if(typeof(opts) == 'string' && val !== undefined)
+                            return obj.find('.ui-timepicker-input').spinner(opts, val);
+                    return obj.find('.ui-timepicker-input').spinner(opts);
+            },
+            value: function(tp_inst, obj, unit, val){
+                    if(val !== undefined)
+                            return obj.find('.ui-timepicker-input').spinner('value', val);
+                    return obj.find('.ui-timepicker-input').spinner('value');
+            }
+};
+
+$('#dateTime1').datetimepicker({
+	controlType: myControl
+});
+$('#dateTime2').datetimepicker();
+</script>
+<script>
+    function showBandara(value){
+        if(value == "Pesawat"){
+            document.getElementById("bandara").style.display ='block';
+        }
+        else{
+            document.getElementById("bandara").style.display ='none';
+        }
+    }
+</script>
+<script>
                 var markerStart;
                 var markerEnd;
                 var messagewindow;
@@ -223,92 +305,6 @@
                     document.getElementById("endName").value=end;
                 }
             </script>
-            <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDteT4he2sgw-Bkf9mR-kVHg7hl6VGdv4E&libraries=places&callback=initMap">
-            </script>
-
-            </br>
-            <label for="stLoc">Transportation</label>
-            <select id="transport">
-                <option value="0">Isi Lokasi dan Waktu Event terlebih Dahulu</option>
-            </select>
-            <br/>
-
-            <label for="fname">Arrival Date & Time</label>
-            <input onchange='getSuggest()' type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
-
-            <br/>
-            <label for="fname">End Date & Time</label>
-            <input onchange='getSuggest()' type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
-            <br />
-
-            <input type="submit" value="Submit"/>
-
-        </div>
-    </div>
-</div>
-<div class="footer">
-Travlender 2017
-</div>
-
-
-
-<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.js"></script> <!-- link untuk memanggil timepicker -->
-<script type="text/javascript" src="../Assets/datetimepick/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script> <!-- link untuk memanggil timepicker -->
-<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-sliderAccess.js"></script> <!-- link untuk memanggil timepicker -->
-
-
-<script>
-    var myControl=  {
-            create: function(tp_inst, obj, unit, val, min, max, step){
-                    $('<input class="ui-timepicker-input" value="'+val+'" style="width:50%">')
-                        .appendTo(obj)
-                        .spinner({
-                                min: min,
-                                max: max,
-                                step: step,
-                                change: function(e,ui){ // key events
-                                                // don't call if api was used and not key press
-                                                if(e.originalEvent !== undefined)
-                                                        tp_inst._onTimeChange();
-                                                tp_inst._onSelectHandler();
-                                        },
-                                spin: function(e,ui){ // spin events
-                                                tp_inst.control.value(tp_inst, obj, unit, ui.value);
-                                                tp_inst._onTimeChange();
-                                                tp_inst._onSelectHandler();
-                                        }
-                        });
-                    return obj;
-            },
-            options: function(tp_inst, obj, unit, opts, val){
-                    if(typeof(opts) == 'string' && val !== undefined)
-                            return obj.find('.ui-timepicker-input').spinner(opts, val);
-                    return obj.find('.ui-timepicker-input').spinner(opts);
-            },
-            value: function(tp_inst, obj, unit, val){
-                    if(val !== undefined)
-                            return obj.find('.ui-timepicker-input').spinner('value', val);
-                    return obj.find('.ui-timepicker-input').spinner('value');
-            }
-};
-
-$('#dateTime1').datetimepicker({
-	controlType: myControl
-});
-$('#dateTime2').datetimepicker();
-</script>
-<script>
-    function showBandara(value){
-        if(value == "Pesawat"){
-            document.getElementById("bandara").style.display ='block';
-        }
-        else{
-            document.getElementById("bandara").style.display ='none';
-        }
-    }
-</script>
-
 
 <script>
 function getUnsSuggest(){
