@@ -46,7 +46,6 @@ a {
     margin: auto;
     width: 100%;
     display: flex;
-    
 }
 
 .kolom-kiri{
@@ -58,6 +57,15 @@ a {
     width: 370px;
     float: none;
     word-wrap: break-word;
+}
+.kolom-tengah{
+    position: relative;
+    left : 10%;
+    background-color: lightgrey;
+    width: 300px;
+    border: 25px solid green;
+    padding: 25px;
+    margin: 25px;
 }
 div{
     display: block;
@@ -81,7 +89,6 @@ table{
     border-collapse: separate;
     border-spacing: 2px;
     border-color: grey;
-    color: white;
 }
 
 td, td.label {

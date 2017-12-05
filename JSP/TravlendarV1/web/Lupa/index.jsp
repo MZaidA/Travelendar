@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
-    Created on : Nov 25, 2017, 7:18:51 PM
-    Author     : GL 553 VD380 i7
+    Created on : Dec 5, 2017, 11:40:22 AM
+    Author     : Cecep Sutisna
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,11 +23,11 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td><label for="email">username</label></td>
+                                    <td><label for="email">email</label></td>
                                     <td><label for="pass">kata Sandi</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="email" name="email" id="email" placeholder="username"></td>
+                                    <td><input type="email" name="email" id="email" placeholder="email"></td>
                                     <td><input type="password" name="pass" id="pass" placeholder="kata sandi"></td>
                                     <td><a href="../Home"><div class="buttonConfirm" id="login">masuk</div></a></td>
                                 </tr>
@@ -37,6 +37,7 @@
                                 </tr>
                             </tbody>
                         </table>
+
                     </form>
                 </div>
             </div>
@@ -45,18 +46,15 @@
                     <div class="kolom-kiri marginLeft">
                         <img src="peta.png" width="700" height="600px">
                     </div>
-                    <div class="kolom-kanan">
-                        
-                        <h3> belum punya akun ? </h3><br>
-                        <h3> daftar sekarang </h3>
-                            <form autocomplete="on" action="display.jsp" method="POST">
-                            <input type="emaill" class="emaill" name="emaill" placeholder="username" required /><br>
-                            <input type="password" class="password" name="password" placeholder="kata sandi" required /><br>
-                            <input type="password" class="password" name="password_again" placeholder="ulang kata sandi" required /><br><br>
-                            <input type="submit" class="button" name="submit" value="buat akun">
-                            </form>
+                    <div class="kolom-kanann">
+                     
                     </div>
+                    <div class="kolom-tengah">
+                    <h5>masukan email yang sudah anda verifikasi, jika lupa akan email anda <br>
+                    maka sistem kami tidak dapat membantu untuk memulihkan akun </h5>
+                    </div> 
                 </div>
+                
             </div>
         </div>
     </body>
