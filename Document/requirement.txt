@@ -1,0 +1,18 @@
+REQUIREMENT
+
+Aplikasi bisa menambahkan event lebih dari 1
+Aplikasi bisa menginputkan nama event, tanggal event, arrival, lokasi event, waktu selesai event
+Aplikasi bisa menginputkan lokasi awal event hanya pada saat pengisian form pertama per harinya (dengan geocoding dan geolocation)
+Aplikasi bisa menandakan event di kalendar berdasarkan tanggal event
+Aplikasi bisa menandakan event pada map (dengan marker) 
+Aplikasi bisa menampilkan kalender
+Aplikasi bisa menambahkan event dari main menu screen dan dari kalender screen
+Aplikasi bisa mengatur kepemilikan kendaraan pada manage transport (dengan matrix distance)
+Aplikasi bisa menampilkan berbagai event dalam daftar event di home screen
+Aplikasi bisa menampilkan detail event pada daftar event
+Aplikasi bisa menyeleksi kendaraan apa saja yang kita punya
+Aplikasi bisa mensuggest kendaraan yang tercepat sampai ke tempat tujuan
+Aplikasi bisa mensuggest waktu keberangkatan untuk sampai ke tujuan
+Aplikasi bisa mendapatkan berbagai data waktu estimasi untuk dipilah dan ditampilkan suggestionnya
+Aplikasi bisa membedakan antara kendaraan dengan punya jadwal keberangkatan tertentu dengan kendaraan yang bebas dari jadwal (dengan ???)
+Aplikasi bisa mensuggest terminal kendaraan berdasarkan lokasi tertentu agar sesuai dengan keadaan nyatanya
