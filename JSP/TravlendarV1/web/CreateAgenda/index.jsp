@@ -86,12 +86,12 @@
             <!--LOCATION GMAPS -->
                 <label for="stLoc">Start Location</label>
                 <div class="form-group input-group">
-                    <input name="start" onchange='getSuggest()' type="text" id="start" class="form-control" placeholder="Search location"/>
+                    <input name="startLoc" onchange='getSuggest()' type="text" id="start" class="form-control" placeholder="Search location"/>
                 </div>
             </div>  
             </br>
             <label for="fname">End Location</label>
-            <input name="end" onchange='getSuggest()' type="text" id="end" class="form-control" placeholder="Search location">
+            <input name="endLoc" onchange='getSuggest()' type="text" id="end" class="form-control" placeholder="Search location">
             <br/>
             <label for="fname">Arrival Date & Time</label>
             <input onchange='getSuggest()' type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>

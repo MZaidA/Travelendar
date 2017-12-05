@@ -21,23 +21,22 @@
 <% 
     SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm");
     String eventName = request.getParameter("eventName");
-    Integer startloc=0;
-    Integer locationId = Integer.parseInt(request.getParameter("eventLocationId"));
+    String startloc = "";
+    String location = request.getParameter("endLoc");
     String arrivalTime = request.getParameter("arrivalTime");
     String endDate = request.getParameter("endDate");
-    String description = request.getParameter("description");
     Integer unscheduled_id = Integer.parseInt(request.getParameter("UNSCHEDULED_TRANSPORTATION_ID"));
     Date start = dateFormat.parse(arrivalTime);
     Date end = dateFormat.parse(endDate);
     
-    if(request.getParameter("startLocationId")!=null) {
-        startloc = Integer.parseInt(request.getParameter("startLocationId"));
+    if(request.getParameter("startLocationId")!="") {
+        startloc = request.getParameter("startLoc");
     }
     else {
-        Event lastEvent= SuggestionDAO.getLastEvent(arrivalTime);
-            if(lastEvent!=null) {
-                startloc = lastEvent.getLocationId();
-            }
+//        Event lastEvent= SuggestionDAO.getLastEvent(arrivalTime);
+//            if(lastEvent!=null) {
+//                startloc = lastEvent.getLocationId();
+//            }
     }
     
     UnscheduledTravelingTable uns = UnscheduledTravelingTableDAO.getUnscheduledTravelingTableById(request.getParameter("UNSCHEDULED_TRANSPORTATION_ID"));

@@ -125,7 +125,7 @@ public class EventDAO{
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO event(EVENT_NAME, EVENT_LOCATION_ID, START_LOCATION_ID, ARRIVAL_AT_LOCATION, EVENT_FINISHED, UNSCHEDULED_TRANSPORTATION_ID, DEPARTURE_TO_LOCATION) VALUES (?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, event.getEventName());
-            ps.setInt(2, event.getLocationId());
+            ps.setInt(2, event.getEndLocation());
             ps.setInt(3, event.getLoc2Id());
             ps.setDate(4, new Date(event.getArrivalTime().getTime()));
             ps.setDate(5, new Date(event.getEndTime().getTime()));
@@ -147,7 +147,7 @@ public class EventDAO{
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("UPDATE event set EVENT_NAME=?, EVENT_LOCATION_ID=?, START_LOCATION_ID=?, ARRIVAL_AT_LOCATION=?, EVENT_FINISHED=?, DESCRIPTION=? UNSCHEDULED_TRANSPORTATION_ID=? WHERE EVENT_ID=?");
             ps.setString(1, event.getEventName());
-            ps.setInt(2, event.getLocationId());
+            ps.setInt(2, event.getEndLocation());
             ps.setInt(3, event.getLoc2Id());
             ps.setDate(4, (Date) event.getArrivalTime());
             ps.setDate(5, (Date) event.getEndTime());

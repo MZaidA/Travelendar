@@ -16,23 +16,9 @@ import javafx.util.Pair;
  * @author syamcode
  */
 public class Event {
-
-    /**
-     * @return the unscheduled_id
-     */
-    public Integer getUnscheduled_id() {
-        return unscheduled_id;
-    }
-
-    /**
-     * @param unscheduled_id the unscheduled_id to set
-     */
-    public void setUnscheduled_id(Integer unscheduled_id) {
-        this.unscheduled_id = unscheduled_id;
-    }
     private Integer eventId;
-    private Integer locationId;
-    private Integer loc2Id;
+    private String endLocation;
+    private String startLocation;
     private String eventName;
     
     private Date endTime = new Date();
@@ -53,139 +39,242 @@ public class Event {
    private Integer unscheduled_id;
     private List<Suggestion> suggestions = new ArrayList<Suggestion>();
 
-    public Integer getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(Integer locationId) {
-        this.locationId = locationId;
-    }
-
-    public Integer getLoc2Id() {
-        return loc2Id;
-    }
-
-    public void setLoc2Id(Integer loc2Id) {
-        this.loc2Id = loc2Id;
-    }
-
-    
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
-    public String getEndDateStr() {
-        return endDateStr;
-    }
-
-    public void setEndDateStr(String endDateStr) {
-        this.endDateStr = endDateStr;
-    }
-
-    public String getArrivalDateStr() {
-        return arrivalDateStr;
-    }
-
-    public Date getDepartureToLocation() {
-        return departureToLocation;
-    }
-
-    public void setDepartureToLocation(Date departureToLocation) {
-        this.departureToLocation = departureToLocation;
-    }
-
-    public String getDepartureDateStr() {
-        return departureDateStr;
-    }
-
-    public void setDepartureDateStr(String departureDateStr) {
-        this.departureDateStr = departureDateStr;
-    }
-
-    public String getDepartureTimeStr() {
-        return departureTimeStr;
-    }
-
-    public void setDepartureTimeStr(String departureTimeStr) {
-        this.departureTimeStr = departureTimeStr;
-    }
-
-    public void setArrivalDateStr(String arrivalDateStr) {
-        this.arrivalDateStr = arrivalDateStr;
-    }
-
-    public Event() {
-    }
-
-    public String getEndTimeStr() {
-        return endTimeStr;
-    }
-
-    public void setEndTimeStr(String endTimeStr) {
-        this.endTimeStr = endTimeStr;
-    }
-
-    public String getArrivalTimeStr() {
-        return arrivalTimeStr;
-    }
-
-    public void setArrivalTimeStr(String arrivalTimeStr) {
-        this.arrivalTimeStr = arrivalTimeStr;
-    }
-    
-    
+    /**
+     * @return the eventId
+     */
     public Integer getEventId() {
         return eventId;
     }
 
+    /**
+     * @param eventId the eventId to set
+     */
     public void setEventId(Integer eventId) {
         this.eventId = eventId;
     }
-    
-    public Event(String _eventName) {
-        eventName = _eventName;
-    } 
+
+    /**
+     * @return the endLocation
+     */
+    public String getEndLocation() {
+        return endLocation;
+    }
+
+    /**
+     * @param endLocation the endLocation to set
+     */
+    public void setEndLocation(String endLocation) {
+        this.endLocation = endLocation;
+    }
+
+    /**
+     * @return the startLocation
+     */
+    public String getStartLocation() {
+        return startLocation;
+    }
+
+    /**
+     * @param startLocation the startLocation to set
+     */
+    public void setStartLocation(String startLocation) {
+        this.startLocation = startLocation;
+    }
+
+    /**
+     * @return the eventName
+     */
     public String getEventName() {
         return eventName;
     }
-    
-    public void setEventName(String _eventName) {
-        eventName = _eventName;
+
+    /**
+     * @param eventName the eventName to set
+     */
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
-    
+
+    /**
+     * @return the endTime
+     */
     public Date getEndTime() {
         return endTime;
     }
-    
-    public void setEndTime(Date _endTime) {
-        endTime = _endTime;
+
+    /**
+     * @param endTime the endTime to set
+     */
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
-    
+
+    /**
+     * @return the endTimeStr
+     */
+    public String getEndTimeStr() {
+        return endTimeStr;
+    }
+
+    /**
+     * @param endTimeStr the endTimeStr to set
+     */
+    public void setEndTimeStr(String endTimeStr) {
+        this.endTimeStr = endTimeStr;
+    }
+
+    /**
+     * @return the endDateStr
+     */
+    public String getEndDateStr() {
+        return endDateStr;
+    }
+
+    /**
+     * @param endDateStr the endDateStr to set
+     */
+    public void setEndDateStr(String endDateStr) {
+        this.endDateStr = endDateStr;
+    }
+
+    /**
+     * @return the arrivalTime
+     */
     public Date getArrivalTime() {
         return arrivalTime;
     }
-    
-    public void setArrivalTime(Date _arrivalTime) {
-        arrivalTime = _arrivalTime;
+
+    /**
+     * @param arrivalTime the arrivalTime to set
+     */
+    public void setArrivalTime(Date arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
-    
+
+    /**
+     * @return the arrivalDateStr
+     */
+    public String getArrivalDateStr() {
+        return arrivalDateStr;
+    }
+
+    /**
+     * @param arrivalDateStr the arrivalDateStr to set
+     */
+    public void setArrivalDateStr(String arrivalDateStr) {
+        this.arrivalDateStr = arrivalDateStr;
+    }
+
+    /**
+     * @return the arrivalTimeStr
+     */
+    public String getArrivalTimeStr() {
+        return arrivalTimeStr;
+    }
+
+    /**
+     * @param arrivalTimeStr the arrivalTimeStr to set
+     */
+    public void setArrivalTimeStr(String arrivalTimeStr) {
+        this.arrivalTimeStr = arrivalTimeStr;
+    }
+
+    /**
+     * @return the departureToLocation
+     */
+    public Date getDepartureToLocation() {
+        return departureToLocation;
+    }
+
+    /**
+     * @param departureToLocation the departureToLocation to set
+     */
+    public void setDepartureToLocation(Date departureToLocation) {
+        this.departureToLocation = departureToLocation;
+    }
+
+    /**
+     * @return the departureDateStr
+     */
+    public String getDepartureDateStr() {
+        return departureDateStr;
+    }
+
+    /**
+     * @param departureDateStr the departureDateStr to set
+     */
+    public void setDepartureDateStr(String departureDateStr) {
+        this.departureDateStr = departureDateStr;
+    }
+
+    /**
+     * @return the departureTimeStr
+     */
+    public String getDepartureTimeStr() {
+        return departureTimeStr;
+    }
+
+    /**
+     * @param departureTimeStr the departureTimeStr to set
+     */
+    public void setDepartureTimeStr(String departureTimeStr) {
+        this.departureTimeStr = departureTimeStr;
+    }
+
+    /**
+     * @return the location
+     */
     public Location getLocation() {
         return location;
     }
-    
-    public void setLocation(Location _location) {
-        location = _location;
+
+    /**
+     * @param location the location to set
+     */
+    public void setLocation(Location location) {
+        this.location = location;
     }
-    
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * @return the unscheduled_id
+     */
+    public Integer getUnscheduled_id() {
+        return unscheduled_id;
+    }
+
+    /**
+     * @param unscheduled_id the unscheduled_id to set
+     */
+    public void setUnscheduled_id(Integer unscheduled_id) {
+        this.unscheduled_id = unscheduled_id;
+    }
+
+    /**
+     * @return the suggestions
+     */
     public List<Suggestion> getSuggestions() {
         return suggestions;
     }
-    
-    public void setSuggestions(List<Suggestion> _suggestions) {
-        suggestions = _suggestions;
+
+    /**
+     * @param suggestions the suggestions to set
+     */
+    public void setSuggestions(List<Suggestion> suggestions) {
+        this.suggestions = suggestions;
     }
+    
 }
