@@ -110,18 +110,22 @@ td, th {
 .navbar{
     overflow:hidden;
     float:left;
-    width:21%;
-    height:617px;
+    width:15%;
+    height: 710px;
     background-color: #00bde9;/*Biru*/ 
 }
 
 .navbar, ul li{
     list-style-type:none;
+    text-decoration: none;
+}
+ul{
+        -webkit-padding-start: 0px;
 }
 
 .navbar a{transition-duration: 0.4s;}
 .navbar a:hover{
-	background-color:#CCC;
+	background-color:#ccc;
 	padding-left:60px;
 	color:black;
 	}
@@ -133,6 +137,7 @@ td, th {
 	padding: 14px 16px; /*top & bottom paddings are 14px right and left paddings are 16px*/
 	border-right:none;
 	text-decoration:none;
+        
 }
 
 /* Verification Form */
@@ -273,7 +278,9 @@ verifform {
 
 /* Style the footer */
 .footer {
-    bottom:0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
     width:100%;
     background-color: #0080C0;
     padding: 10px 0px;
@@ -292,8 +299,8 @@ verifform {
 {	
 	overflow:auto;
 	background-color: #b1cff3;
-	width: 79%;
-	height: 618px;
+	width: 85%;
+	min-height: 625px;
         background-image: url(../icon/world_map.png);
         background-repeat: no-repeat;
         background-size: 98%;
@@ -331,8 +338,8 @@ verifform {
 	.column.content
 	{
 	width: 100%;
-	height:0%;
-	overflow:hidden;
+	height: 530px;
+	overflow:auto;
 
 	}
     .column {
@@ -344,19 +351,22 @@ verifform {
 	.column3 {
         width: 100%;
     }
-	.navbar{
-		width: 100%;
-		height:0%;
-	}
-	.navbar a{
-		transition-duration: 0.4s;
-		float:left;
-		display:block;
-	}
-	.navbar a:hover{
-		padding-top:20px;
-		padding-left:17px;
-	}
+    .navbar{
+            width: 100%;
+            height:0%;
+    }
+    .navbar a{
+            transition-duration: 0.4s;
+            float:left;
+            display:block;
+    }
+    .navbar a:hover{
+            padding-top:15px;
+            padding-left:15px;
+    }
+    .form{
+        width:70%;
+    }
 }
 
 .button1{
@@ -429,7 +439,7 @@ verifform {
 
 .selected
 {
-	background-color:#FC6;
+	background-color:#ffbd32;
 }
 
 /*FORM*/
