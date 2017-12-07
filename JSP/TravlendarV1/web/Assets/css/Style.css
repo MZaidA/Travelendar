@@ -2,10 +2,21 @@
 /* CSS Document */
 body {
     margin:0;
+    background: url(../icon/world_map.png);
+    background-color: #b1cff3;
+    background-size:cover;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    
+}
+
+
+pre{
+    margin: 0;
 }
 
 h1 {
-    font-size:70px;
+    font-size:60px;
     text-align:center;
     color: navy;
 }
@@ -23,8 +34,13 @@ h1, h2, h3{
 }
 
 a {
-    color: white;
+    color: #007fff;
     text-decoration:none;
+    cursor: pointer;
+}
+a:hover {
+    padding: 13px 0px 0px 0px;
+    background-color: rgba(255,255,255,0.5);
 }
 
 .lfloat{
@@ -106,24 +122,45 @@ td, th {
 .menu_login_container {
     margin-right: 100px;
 }
-
+.wrapper{
+    position: fixed;
+    top: 0;
+    background-color: #ffbd32;
+    height: 85px;
+    width:18%;
+    z-index: -1;
+    border-bottom-style:solid;
+}
 .header {
+    z-index: 10;
     background-color: #ffbd32;
     padding: 10px 0px 25px 0px;
-    min-height: 52px;
+    height: 52px;
     min-width: max-content;
+}
+.username{
+    position: relative;
+    float: right;
+    font-family: 'Rubik', sans-serif;
+    margin-top: 23px;
+    margin-right: 10px;
 }
 
 .navbar{
-    overflow:hidden;
+    position: fixed;
     float:left;
-    width:21%;
-    height:617px;
-    background-color: #00bde9;/*Biru*/ 
+    width:18%;
+    height:670px; 
+    background-color: #00bde9;
 }
 
 .navbar, ul li{
     list-style-type:none;
+    
+}
+
+ul{
+    -webkit-padding-start: 0px;
 }
 
 .navbar a{transition-duration: 0.4s;}
@@ -209,13 +246,13 @@ verifform {
 /*Style buat Box*/
 .boxstyle1 {
     text-align: center;
-    margin-bottom:10px;
+    margin-top:10px;
     position:relative;
     left: 15%;
     width: 70%;
     background-color: #ff9166;
     border-radius:10px;
-    border-left: 7px solid #66FF91;
+    border-style: solid;
     padding: 10px;
     z-index:0;
 }
@@ -297,13 +334,11 @@ verifform {
 /* 3 COLUMNS that floats next to each other */
 .column.content
 {	
+        margin-top: 30px;
+        position: relative;
+        float: right;
 	overflow:auto;
-	background-color: #b1cff3;
-	width: 79%;
-	height: 618px;
-        background-image: url(../icon/world_map.png);
-        background-repeat: no-repeat;
-        background-size: 98%;
+	width: 82%;
 }
 .column {
     float: left;
@@ -313,15 +348,15 @@ verifform {
 
 
 .column2{
-	margin-top:2%;
-	text-align:center;
-	color:white;
+    margin-top:2%;
+    text-align:center;
+    color:white;
     float: left;
     width: 30%;
 }
 .column3 {
-	margin-top:2%;
-	text-align:center;
+    margin-top:2%;
+    text-align:center;
     float: left;
     width: 33%;
 }
@@ -352,24 +387,24 @@ verifform {
         width: 100%;
     }
 	.navbar{
-		width: 100%;
-		height:0%;
+            position: relative;
+            width: 100%;
+            height:0%;
 	}
 	.navbar a{
-		transition-duration: 0.4s;
-		float:left;
-		display:block;
+            transition-duration: 0.4s;
+            float:left;
+            display:block;
 	}
 	.navbar a:hover{
-		padding-top:20px;
-		padding-left:17px;
+            padding-top:20px;
+            padding-left:17px;
 	}
 }
 
-.button1{
-    display: inline-block;
-    border:none;
-    text-decoration:none;	
+.buttonLogOut{
+    position: relative;
+    float: right;
     font-family:'Acme', sans-serif;
     background-color:#008CBA;
     color:#000;
@@ -377,14 +412,11 @@ verifform {
     padding:10px 10px;
     border-radius:5px;
     transition-duration: 0.4s;
-    width: 50%;
-    margin-bottom: 10px;
+    margin: 10px 10px 0px 0px;
     cursor: pointer;
 }
 
-.button1:link{text-decoration:none;color:black;}
-.button1:visited{text-decoration:none;color:black;}
-.button1:hover{background-color: #6CF; text-decoration:none;color:black;box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);}
+.buttonLogOut:hover{background-color: #6CF; text-decoration:none;color:black;box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);}
 
 .buttonConfirm{
     background-color: #09F;
@@ -501,7 +533,7 @@ form{
 
 .form {
     position:relative;
-    left:25%;
+    left:23%;
     width:50%;
     border-radius: 10px;
     background-color: #f2f2f2;

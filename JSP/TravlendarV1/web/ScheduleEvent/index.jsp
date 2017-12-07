@@ -10,12 +10,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <jsp:include page="../head.jsp" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmLiRLe7nQvc6KDoomu7a-YFSATYVlKSU"></script>
-    
-    <link rel="stylesheet" href="../Assets/css/Style.css"/>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"/> <!--http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css *** ../Assets/datetimepick/dist/jquery-ui.css-->
     <link rel="stylesheet" href="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.css"/> <!-- link untuk memanggil timepicker -->
     
@@ -59,24 +58,23 @@
    
     //request.setAttribute("uSuggestions", uSuggestions);
 %>
-<div class="header">
-<img src="../Assets/icon/Logo KelompokB1v2.png" width="145" height="50" style="margin-left:30px;">
-</div>
+<jsp:include page="../header.jsp"/>
 
 <div class="row">
     <div class="navbar">
         <ul>
           <li><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
           <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
-          <li class="selected"><a href="../ScheduleEvent"><img src="../Assets/icon/add.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
+          <li class="selected"><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
         </ul>
     </div><!--Class Navbar-->
 
     <div class="column content">
-    <h1>Schedule Event Form</h1>
+    <h1>Create a New Event</h1>
 
         <div class="form">
         <form action="addagenda.jsp">
+            <input type="hidden" id="eventId" name="eventId"/> <!--Untuk Editing-->
             <label for="fname">Event Name</label>
             <input type="text" id="eventName" name="eventName" placeholder="..."/>
             <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
@@ -134,9 +132,6 @@
         </div>
     </div>
 </div>
-<div class="footer">
-Travlender 2017
-</div>
 
 
 
@@ -185,7 +180,9 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDteT4he2sgw-Bkf9mR-kVHg7h
 $('#dateTime1').datetimepicker({
 	controlType: myControl
 });
-$('#dateTime2').datetimepicker();
+$('#dateTime2').datetimepicker({
+	controlType: myControl
+});
 </script>
 <script>
     function showBandara(value){

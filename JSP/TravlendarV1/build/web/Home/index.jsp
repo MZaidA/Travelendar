@@ -13,8 +13,7 @@ Author     : afadh
 <html>
 <head>
 <title>Travlendar</title>
-<link rel="stylesheet" href="../Assets/css/Style.css"/>
-<link href="../Assets/font?family=Anton|Acme|Boogaloo|Chewy|Glegoo|Rubik" rel="stylesheet"/>
+<jsp:include page="../head.jsp" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
@@ -26,23 +25,20 @@ Author     : afadh
     
 %>
 
-<div class="header">
-<img src="../Assets/icon/Logo KelompokB1v2.png" width="145" height="50" style="margin-left:30px;">
-
-</div>
+<jsp:include page="../header.jsp" />
 
 <div class="row">
 <div class="navbar">
     <ul>
       <li class="selected"><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
       <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
-      <li><a href="../ScheduleEvent"><img src="../Assets/icon/add.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
+      <li><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
     </ul>
 </div><!--Class Navbar-->
 
 <div class="column content">
 <h1> Upcoming Event </h1>
-<!--
+<!-- <br>
     <c:forEach items="${events}" var="item">
     <div class="boxstyle1">
         <div class="row">
@@ -82,16 +78,16 @@ Author     : afadh
             <table class="table-seratus" id="detail1">
                 <tbody>
                     <tr>
-                        <td>Politeknik Negeri Bandung</td>
-                        <td>arrival time : ${item.arrivalTimeStr}</td>
+                        <td class="t3">Politeknik Negeri Bandung</td>
+                        <td class="t3">arrival time : ${item.arrivalTimeStr}</td>
                     </tr>
                     <tr>
-                        <td>${item.departureDateStr} - ${item.endDateStr}</td>
-                        <td>departure time: ${item.departureTimeStr}</td>
+                        <td class="t3">${item.departureDateStr} - ${item.endDateStr}</td>
+                        <td class="t3">departure time: ${item.departureTimeStr}</td>
                     </tr>
                     <tr>
-                        <td>Motor</td>
-                        <td>end time event: ${item.endTimeStr}</td>
+                        <td class="t3">Motor</td>
+                        <td class="t3">end time event: ${item.endTimeStr}</td>
                     </tr>
                 </tbody>
                 </table>
@@ -104,7 +100,10 @@ Author     : afadh
                 <tr>
                     <td class="t3">Nama Event</td>
                     <td class="t4" id="datehide2">Tanggal</td>
-                    <td class="text-align-center"><button class="button1" onclick="showDetail(2)">Detail Event</button></td>
+                    <td class="text-align-center"><a onclick="showDetail(2)"><i class="material-icons">details</i></a>
+                        <a><i class="material-icons">mode_edit</i></a>
+                        <a><i class="material-icons">delete</i></a>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -112,16 +111,16 @@ Author     : afadh
             <table class="table-seratus" id="detail2" style="display: none;">
                 <tbody>
                     <tr name="detail">
-                        <td>Politeknik Negeri Bandung</td>
-                        <td>arrival time : 16:00 WIB</td>
+                        <td class="t4">Politeknik Negeri Bandung</td>
+                        <td class="t4"><pre>arrival time    : 16:00 WIB</pre></td>
                     </tr>
                     <tr name="detail1">
-                        <td>Tanggal 02 Oktober 2017</td>
-                        <td>departure time: 17:00 WIB</td>
+                        <td class="t4">Tanggal 02 Oktober 2017</td>
+                        <td class="t4"><pre>departure time  : 17:00 WIB</pre></td>
                     </tr>
                     <tr name="detail2">
-                        <td>Motor</td>
-                        <td>end time event: 18:00 WIB</td>
+                        <td class="t4">Motor</td>
+                        <td class="t4"><pre>end time event  : 18:00 WIB</pre></td>
                     </tr>
                 </tbody>
                 </table>
@@ -130,9 +129,7 @@ Author     : afadh
   </div>
 </div>
 
-<div class="footer">
-Travlender 2017
-</div>
+
 <script>
 function show(){
     document.getElementById("detail").style.display = "table";

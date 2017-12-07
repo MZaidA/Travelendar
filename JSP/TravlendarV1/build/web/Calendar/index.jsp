@@ -12,9 +12,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
+    <jsp:include page="../head.jsp" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel='stylesheet' href='../Assets/lib/fullcalendar.css'/>
-    <link rel='stylesheet' href='../Assets/css/Style.css'/>
     <script src='../Assets/lib/jquery.min.js'></script>
     <script src='../Assets/lib/moment.min.js'></script>
     <script src='../Assets/lib/fullcalendar.min.js'></script>
@@ -54,17 +54,15 @@
 </head>
 <body>
     
-<div class="header">
-<img src="../Assets/icon/Logo KelompokB1v2.png" width="145" height="50" style="margin-left:30px;">
-
-</div>
+<jsp:include page="../header.jsp" />
 
 <div class="row">
+    
     <div class="navbar">
         <ul>
           <li><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
           <li class="selected"><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
-          <li><a href="../CreateAgenda"><img src="../Assets/icon/add.png" width="28" height="28" style="float:left;"/><div class="text-navbar">Add Agenda</div></a></li>
+          <li><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
         </ul>
     </div><!--Class Navbar-->
 
@@ -72,9 +70,6 @@
     <br />
 	<div id='calendar'></div>
     </div>
-</div>
-<div class="footer">
-Travlender 2017
 </div>
 </body>
 
