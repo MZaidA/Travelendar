@@ -14,7 +14,7 @@ Author     : afadh
 <head>
 <title>Travlendar</title>
 <link rel="stylesheet" href="../Assets/css/Style.css"/>
-<link href="../Assets/font?family=Anton|Acme|Boogaloo|Chewy|Glegoo" rel="stylesheet"/>
+<link href="../Assets/font?family=Anton|Acme|Boogaloo|Chewy|Glegoo|Rubik" rel="stylesheet"/>
 
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
@@ -36,7 +36,7 @@ Author     : afadh
     <ul>
       <li class="selected"><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
       <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
-      <li><a href="../CreateAgenda"><img src="../Assets/icon/add.png" width="28" height="28" style="float:left;"><div class="text-navbar">Add Event</div></a></li>
+      <li><a href="../ScheduleEvent"><img src="../Assets/icon/add.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
     </ul>
 </div><!--Class Navbar-->
 
