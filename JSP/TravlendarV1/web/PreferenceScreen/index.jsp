@@ -6,7 +6,7 @@ Author     : myLIFE
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="DAO.AccountDAO, Model1.Account, java.util.*"%>
+<%@page import="DAO.UserDAO, Model1.User, java.util.*"%>
 
 
 <!DOCTYPE html>
@@ -52,7 +52,10 @@ Author     : myLIFE
                 <label for="fname">Maximum walking distance (in Kilometer)</label>
                 <br/>
                 <select id="walking" name="walking">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 77b6e01b587602168f1c7871049f84c9937e7fd5
                 <option value="0">0 Km</option>
                 <option value="1">1 Km</option>
                 <option value="2">2 Km</option>
@@ -64,7 +67,10 @@ Author     : myLIFE
                 <option value="8">8 Km</option>
                 <option value="9">9 Km</option>
                 <option value="10">10 Km</option>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 77b6e01b587602168f1c7871049f84c9937e7fd5
                 </select>
                 <br/><br/>
                 <input type="submit" value="Submit"/>

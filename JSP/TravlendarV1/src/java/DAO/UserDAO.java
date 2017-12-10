@@ -6,7 +6,7 @@
 package DAO;
 
 import static DAO.EventDAO.getConnection;
-import Model1.Account;
+import Model1.User;
 import com.mysql.jdbc.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  *
  * @author ZARS
  */
-public class AccountDAO {
+public class UserDAO {
     
     public static Connection getConnection() {
         Connection con = null;
@@ -36,14 +36,14 @@ public class AccountDAO {
         return con;
     }
     
-    public static int update(Account account) {
+    public static int update(User user) {
         int status = 0;
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO akun(HOME, WORKPLACE, MAX_WALKING) VALUES (?, ?, ?)");
-            ps.setString(1, account.getHome());
-            ps.setString(2, account.getWorkplace());
-            ps.setInt(3, account.getMaxWalking());
+            ps.setString(1, user.getHome());
+            ps.setString(2, user.getWorkplace());
+            ps.setInt(3, user.getMaxWalking());
 
             status = ps.executeUpdate();
             System.out.println(ps);
@@ -54,4 +54,20 @@ public class AccountDAO {
         return status;
     }
     
+    public static int createUser(User user) {
+        int status = 0;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO akun(USERNAME, PASSWORD) VALUES (?, ?)");
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPassword());
+
+            status = ps.executeUpdate();
+            System.out.println(ps);
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
 }

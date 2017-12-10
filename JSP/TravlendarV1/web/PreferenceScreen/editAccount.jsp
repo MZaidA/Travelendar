@@ -4,12 +4,12 @@
     Author     : ZARS
 --%>
 
-<%@page import="DAO.AccountDAO"%>
-<jsp:useBean id="acc" class="Model1.Account"></jsp:useBean>
+<%@page import="DAO.UserDAO"%>
+<jsp:useBean id="acc" class="Model1.User"></jsp:useBean>
 <jsp:setProperty property="*" name="acc"/>
 <!DOCTYPE html>
 <% 
-    int status =AccountDAO.update(acc);
+    int status =UserDAO.update(acc);
     if(status != 0)
     {
         response.sendRedirect("index.jsp");
