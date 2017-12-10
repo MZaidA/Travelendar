@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/styleMenu.css">
+<title>ManageEstimatedTime</title>
+</head>
+
+<body>
+
+<h1>Manage Estimated Time</h1>
+<p>Menu yang dapat melakukan update,add, dan list Estimasi Waktu</p>
+
+<div class="wrapper">
+<div class="batas">
+  <table>
+    <tr>
+      <th>No</th>
+      <th>Loc A - Loc B</th>
+      <th>Distance</th>
+      <th>Mode Transportation</th>
+      <th>Time(Minutes)</th>
+      <th>Update</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Rumah-Kantor DPRD</td>
+      <td>65,7 KM</td>
+      <td>Walk</td>
+      <td>788</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Rumah-Kantor DPRD</td>
+      <td>65,7 KM</td>
+      <td>Bicycle</td>
+      <td>263</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Rumah-Kantor DPRD</td>
+      <td>65,7 KM</td>
+      <td>Motorcycle</td>
+      <td>66</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Rumah-Kantor DPRD</td>
+      <td>65,7 KM</td>
+      <td>Car</td>
+      <td>79</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+     <tr>
+      <td>5</td>
+      <td>Kantor DPRD - Bandara Banka</td>
+      <td>60,9 KM</td>
+      <td>Motorcycle</td>
+      <td>61</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+     <tr>
+      <td>6</td>
+      <td>Kantor DPRD - Bandara Banka</td>
+      <td>60,9 KM</td>
+      <td>Car</td>
+      <td>73</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+     <tr>
+      <td>7</td>
+      <td>Bandara Banka - Bandara Halim Perdanakusuma</td>
+      <td>736 KM</td>
+      <td>Car</td>
+      <td>883</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+     <td>8</td>
+      <td>Bandara Banka - Bandara Halim Perdanakusuma</td>
+      <td>736 KM</td>
+      <td>Plane</td>
+      <td>49</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+  </table>
+  </div>
+<br><br>
+<div class="form">
+	<form action="/action_page.php">
+
+    <label for="country">Location</label>	
+    <select id="Locarion" name="location"> 
+      <option value="blank"></option>
+      <option value="">Rumah-Kantor DPRD</option>
+      <option value="">Kantor DPRD-Bandara Banka</option>
+      <option value="">Bandara Banka-Bandara Halim Perdanakusuma</option>
+      <option value="">Jakarta-Tangerang</option>
+      <option value="">Tangerang-Bandara Halim Perdanakusuma</option>
+      <option value="">Bandara Halim Perdanakusuma-Bandara Banka</option>
+      <option value="">Bandara Banka-Rumah</option>
+    </select>
+        <label for="country">Mode Transportation</label>	
+    <select id="mTransportation" name="mTransportation">
+      <option value="blank"></option>
+      <option value="walk">Walk</option>
+      <option value="">Bicycle</option>
+      <option value="">Motorcycle</option>
+      <option value="">Car</option>
+      <option value="">Becak</option>
+      <option value="">Angkot</option>
+      <option value="">Ojek</option>
+      <option value="">Taksi</option>
+      <option value="">Bus</option>
+      <option value="">Train</option>
+      <option value="">Ship</option>
+      <option value="">Plane</option>
+    </select>
+    
+    <label for="fname">Distance</label>
+    <input type="text" id="distance" name="Distance" placeholder="...">
+    
+    <label for="fname">Time</label>
+    <input type="text" id="time" name="Time" placeholder="...">
+    
+    
+
+    <input type="submit" value="Add">
+  </form>
+</div>
+<br>
+<a href="Menu.html" class="button1">Home</a>
+</div>
+<br><br><br><br>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE>
+<head>
+<link href="style/TransportationPage.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div class="wrapper">
+        <li><strong>Admin</strong>TRAVELENDAR</li> 	
+    </div>
+	<div id="sidebar">
+        <li class="select">Manage Location</li>
+        <li><a href="DistancePage.html">Manage Distance</a></li>
+        <li><a href="TransportationaPage.html">Manage Transport</a></li>
+        <li><a href="EstimatedTimePage.html">Manage Estimated Time</a></li>
+    </div>
+    <div id="mainPanel" style="overflow-x:auto;">
+        <h1>MANAGE LOCATION</h1>
+        <table>
+    <tr>
+      <th>No</th>
+      <th>Nama Lokasi</th>
+      <th>Action</th>
+
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Polban</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Ciwaruga</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Pasteur</td>
+      <td><a href="#Update">Update</a></td>
+    </tr>
+  </table>
+    </div>
+    <div class="form">
+            <form action="/action_page.php">
+            <label for="fname">Location</label>
+            <input type="text" id="mLocation" name="Location" placeholder="Location...">
+            
+            <input type="submit" value="Add">
+            </form>
+        </div> 
+</body>
+</html>
