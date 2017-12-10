@@ -100,9 +100,9 @@ Author     : afadh
                 <tr>
                     <td class="t3">Nama Event</td>
                     <td class="t4" id="datehide2">Tanggal</td>
-                    <td class="text-align-center"><a onclick="showDetail(2)"><i class="material-icons">details</i></a>
-                        <a><i class="material-icons">mode_edit</i></a>
-                        <a><i class="material-icons">delete</i></a>
+                    <td class="text-align-center"><a class="action" href="#" onclick="showDetail(2)"><i class="material-icons">details</i></a>
+                        <a href="#" class="action"><i class="material-icons">mode_edit</i></a>
+                        <a href="#" class="action"><i class="material-icons">delete</i></a>
                     </td>
                 </tr>
             </tbody>

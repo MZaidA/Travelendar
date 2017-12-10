@@ -7,9 +7,7 @@ body {
     background-size:cover;
     background-position: right bottom;
     background-repeat: no-repeat;
-    
 }
-
 
 pre{
     margin: 0;
@@ -20,6 +18,7 @@ h1 {
     text-align:center;
     color: navy;
 }
+
 h2 {
     font-size:40px;
     color: navy;
@@ -36,11 +35,12 @@ h1, h2, h3{
 a {
     color: #007fff;
     text-decoration:none;
-    cursor: pointer;
 }
-a:hover {
-    padding: 13px 0px 0px 0px;
+a:hover{
     background-color: rgba(255,255,255,0.5);
+}
+.action{
+    padding: 13px 0px 0px 0px;
 }
 
 .lfloat{
