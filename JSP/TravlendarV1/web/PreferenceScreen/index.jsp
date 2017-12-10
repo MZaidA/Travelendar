@@ -52,11 +52,11 @@ Author     : myLIFE
                 <label for="fname">Maximum walking distance (in Kilometer)</label>
                 <br/>
                 <select id="walking" name="walking">
-                <option value="satu">1 Km</option>
-                <option value="dua">2 Km</option>
-                <option value="tiga">3 Km</option>
-                <option value="empat">4 Km</option>
-                <option value="lima">5 Km</option>
+                    <option value="1">1 Km</option>
+                    <option value="2">2 Km</option>
+                    <option value="3">3 Km</option>
+                    <option value="4">4 Km</option>
+                    <option value="5">5 Km</option>
                 </select>
                 <br/><br/>
                 <input type="submit" value="Submit"/>

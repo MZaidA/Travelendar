@@ -7,39 +7,27 @@ package Model1;
 
 /**
  *
- * @author USER
+ * @author Salam שלום
  */
 public class User {
-    private String email;
-    private String user_name;
+    private String username;
     private String password;
+    private String home;
+    private String workplace;
+    private Integer max_walking;
 
     /**
-     * @return the email
+     * @return the username
      */
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
     /**
-     * @param email the email to set
+     * @param username the username to set
      */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * @return the user_name
-     */
-    public String getUser_name() {
-        return user_name;
-    }
-
-    /**
-     * @param user_name the user_name to set
-     */
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -54,5 +42,47 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the home
+     */
+    public String getHome() {
+        return home;
+    }
+
+    /**
+     * @param home the home to set
+     */
+    public void setHome(String home) {
+        this.home = home;
+    }
+
+    /**
+     * @return the workplace
+     */
+    public String getWorkplace() {
+        return workplace;
+    }
+
+    /**
+     * @param workplace the workplace to set
+     */
+    public void setWorkplace(String workplace) {
+        this.workplace = workplace;
+    }
+
+    /**
+     * @return the max_walking
+     */
+    public Integer getMax_walking() {
+        return max_walking;
+    }
+
+    /**
+     * @param max_walking the max_walking to set
+     */
+    public void setMax_walking(Integer max_walking) {
+        this.max_walking = max_walking;
     }
 }
