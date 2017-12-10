@@ -6,7 +6,7 @@ Author     : myLIFE
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="DAO.EventDAO, Model.Event, java.util.*"%>
+<%@page import="DAO.AccountDAO, Model1.Account, java.util.*"%>
 
 
 <!DOCTYPE html>
@@ -18,12 +18,6 @@ Author     : myLIFE
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
-
-<%
-    List<Event> events = EventDAO.getAll();
-    request.setAttribute("events", events);
-    
-%>
 
 <jsp:include page="../header.jsp" />
 
@@ -41,7 +35,7 @@ Author     : myLIFE
 <h1> Preference </h1>
 <br/>
     <div class="form">
-        <form action="">
+        <form action="editAccount.jsp">
                 <input type="hidden" id="homeId" name="homeId"/> <!--Untuk Editing-->
                 <label for="fname">Home Address</label>
                 <input type="text" id="HomeAddress" name="HomeAddress" placeholder="..."/>
@@ -52,11 +46,17 @@ Author     : myLIFE
                 <label for="fname">Maximum walking distance (in Kilometer)</label>
                 <br/>
                 <select id="walking" name="walking">
-                <option value="satu">1 Km</option>
-                <option value="dua">2 Km</option>
-                <option value="tiga">3 Km</option>
-                <option value="empat">4 Km</option>
-                <option value="lima">5 Km</option>
+                <option value="0">0 Km</option>
+                <option value="1">1 Km</option>
+                <option value="2">2 Km</option>
+                <option value="3">3 Km</option>
+                <option value="4">4 Km</option>
+                <option value="5">5 Km</option>
+                <option value="6">6 Km</option>
+                <option value="7">7 Km</option>
+                <option value="8">8 Km</option>
+                <option value="9">9 Km</option>
+                <option value="10">10 Km</option>
                 </select>
                 <br/><br/>
                 <input type="submit" value="Submit"/>
