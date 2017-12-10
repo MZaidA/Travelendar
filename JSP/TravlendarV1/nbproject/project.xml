@@ -7,12 +7,26 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
+<<<<<<< HEAD
                     <file>${file.reference.jstl-1.2.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${file.reference.mysql-connector-java-5.1.44-bin.jar}</file>
+=======
+                    <file>${file.reference.mysql-connector-java-5.1.44-bin.jar}</file>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.jstl-1.2.jar-2}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.mysql-connector-java-5.1.44-bin.jar-2}</file>
+>>>>>>> 5f3cb2959b8cd9642594aad0c4ef59247f92be26
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.jstl-1.2.jar}</file>
                 </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
