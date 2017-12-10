@@ -63,6 +63,11 @@ a:hover{
     display: flex;
 }
 
+.error{
+    border:2px solid red;
+    
+}
+
 .kolom-kiri{
     overflow: visible;
     width: 41.5%;

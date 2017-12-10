@@ -71,7 +71,7 @@
     </div><!--Class Navbar-->
 
     <div class="column content">
-    <h1>Create a New Event</h1>
+    <h1>Schedule Form</h1>
 
         <div class="form">
         <form action="addagenda.jsp">
