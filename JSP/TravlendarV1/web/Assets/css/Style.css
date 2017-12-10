@@ -2,7 +2,6 @@
 /* CSS Document */
 body {
     margin:0;
-    background: url(../icon/world_map.png);
     background-color: #b1cff3;
     background-size:cover;
     background-position: right bottom;
@@ -152,6 +151,9 @@ td, th {
     width:18%;
     height:670px; 
     background-color: #00bde9;
+    background-image: url(../icon/FlatBuilding_3.png);
+    background-position-y: 1300px;
+    background-position-x: 10px;
 }
 
 .navbar, ul li{
@@ -177,6 +179,14 @@ ul{
 	padding: 14px 16px; /*top & bottom paddings are 14px right and left paddings are 16px*/
 	border-right:none;
 	text-decoration:none;
+}
+
+select {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
 }
 
 /* Verification Form */
