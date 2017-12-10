@@ -70,12 +70,15 @@ Author     : afadh
                 <tr>
                     <td class="t3">${item.eventName}</td>
                     <td class="t3">${item.departureDateStr} - ${item.endDateStr}</td>
-                    <td class="text-align-center"><button class="button1" onclick="showDetail(${loop.index+1})">Detail Event</button></td>
+                    <td class="text-align-center"><a class="action" href="#" onclick="showDetail(${loop.index+1})"><i class="material-icons">details</i></a>
+                        <a href="#" class="action"><i class="material-icons">mode_edit</i></a>
+                        <a href="#" class="action"><i class="material-icons">delete</i></a>
+                    </td>
                 </tr>
             </tbody>
         </table>
         <div class="">
-            <table class="table-seratus" id="detail1">
+            <table class="table-seratus" id="detail${loop.index+1}">
                 <tbody>
                     <tr>
                         <td class="t3">Politeknik Negeri Bandung</td>
