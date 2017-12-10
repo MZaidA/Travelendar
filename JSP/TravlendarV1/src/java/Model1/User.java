@@ -14,21 +14,7 @@ public class User {
     private String password;
     private String home;
     private String workplace;
-    private Integer max_walking;
-
-    /**
-     * @return the username
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username the username to set
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    private int maxWalking;
 
     /**
      * @return the password
@@ -42,6 +28,20 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -73,16 +73,16 @@ public class User {
     }
 
     /**
-     * @return the max_walking
+     * @return the maxWalking
      */
-    public Integer getMax_walking() {
-        return max_walking;
+    public int getMaxWalking() {
+        return maxWalking;
     }
 
     /**
-     * @param max_walking the max_walking to set
+     * @param maxWalking the maxWalking to set
      */
-    public void setMax_walking(Integer max_walking) {
-        this.max_walking = max_walking;
+    public void setMaxWalking(int maxWalking) {
+        this.maxWalking = maxWalking;
     }
 }
