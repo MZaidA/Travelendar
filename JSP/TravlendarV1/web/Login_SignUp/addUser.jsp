@@ -12,10 +12,14 @@
     int status =UserDAO.createUser(ps);
     if(status != 0)
     {
+        String username=request.getParameter("username"); 
+        session.setAttribute("username",username);
         response.sendRedirect("../Home");
     }
     else 
-    {
-        response.sendRedirect("index.jsp");
+    {%>
+        <script> alert("REGISTRASI GAGAL")</script>
+        <jsp:include page="index.jsp" />
+        <%
     }
 %>
