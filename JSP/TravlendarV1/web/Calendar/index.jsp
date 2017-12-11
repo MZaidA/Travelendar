@@ -20,7 +20,8 @@
     <script src='../Assets/lib/fullcalendar.min.js'></script>
         <title>JSP Page</title>
          <%
-            List<Event> events = EventDAO.getAll();
+            String username=(String)session.getAttribute("username"); 
+            List<Event> events = EventDAO.getAll(username);
             request.setAttribute("events", events);
         %>
     <script>

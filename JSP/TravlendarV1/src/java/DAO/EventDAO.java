@@ -35,7 +35,7 @@ public class EventDAO{
         return con;
     }
 
-    public static List<Event> getAll() {
+    public static List<Event> getAll(String uname) {
         List<Event> events = new ArrayList<Event>();
         try {
             String arrival;
@@ -43,9 +43,10 @@ public class EventDAO{
             String departure;
             
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM event ORDER BY departure_time ASC");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM event WHERE username = ? ORDER BY departure_time ASC");
             //Event epen = new Event();
-            //ps.setString(1, epen.getUsername().getUsername());
+            System.out.println(uname);
+            ps.setString(1, uname);
             ResultSet rs = ps.executeQuery();
             
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

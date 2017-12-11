@@ -16,8 +16,10 @@ Author     : afadh
     </head>
     <body>
         <%
-            List<Event> events = EventDAO.getAll();
+            String username=(String)session.getAttribute("username"); 
+            List<Event> events = EventDAO.getAll(username);
             request.setAttribute("events", events);
+           
         %>
         <jsp:include page="../header.jsp" />
         <div class="row">
