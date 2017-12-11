@@ -70,4 +70,19 @@ public class UserDAO {
         }
         return status;
     }
+    public static boolean validasi(User user){
+        boolean status = false;
+        try{
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("select USERNAME, PASSWORD from user where USERNAME = ? AND PASSWORD = ?");
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPassword());
+            
+            ResultSet rs = ps.executeQuery();
+            status=rs.next();
+        }catch(Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
 }

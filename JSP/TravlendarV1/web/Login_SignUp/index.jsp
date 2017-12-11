@@ -19,7 +19,17 @@
                     <h2><a href="#" title="Buka Travlendar Home">Travlendar</a></h2>
                 </div>
                 <div class="menu_login_container rfloat">
-                    <form action="#">
+                <% 
+                    String profile_msg=(String)request.getAttribute("profile_msg");  
+                    if(profile_msg!=null){  
+                    out.print(profile_msg);  
+                    }  
+                    String login_msg=(String)request.getAttribute("login_msg");  
+                    if(login_msg!=null){  
+                    out.print(login_msg);  
+                    }  
+                 %>
+                    <form action="loginprosess.jsp">
                         <table>
                             <tbody>
                                 <tr>
@@ -27,9 +37,9 @@
                                     <td><label for="pass">kata Sandi</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="email" name="email" id="email" placeholder="username"></td>
-                                    <td><input type="password" name="pass" id="pass" placeholder="kata sandi"></td>
-                                    <td><a href="../Home"><div class="buttonConfirm" id="login">masuk</div></a></td>
+                                    <td><input type="user" name="username"  placeholder="username"></td>
+                                    <td><input type="password" name="password"  placeholder="kata sandi"></td>
+                                    <td><input type="submit" value="Login" style="padding: 5px 5px 5px 5px;"/></td>
                                 </tr>
                                 <tr>
                                     <td></td>

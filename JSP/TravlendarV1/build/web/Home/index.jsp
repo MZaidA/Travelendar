@@ -79,6 +79,7 @@ Author     : afadh
             </tbody>
         </table>
         <div class="">
+            ${loop.index+1}
             <table class="table-seratus" id="detail${loop.index+1}">
                 <tbody>
                     <tr>
