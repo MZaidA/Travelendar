@@ -6,7 +6,7 @@ Author     : myLIFE
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="DAO.UserDAO, Model1.User, java.util.*"%>
+<%@page import="DAO.UserDAO, Model.User, java.util.*"%>
 
 
 <!DOCTYPE html>

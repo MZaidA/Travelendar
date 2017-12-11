@@ -124,13 +124,13 @@ public class EventDAO{
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO event(EVENT_NAME, NAME_DESTINATION, NAME_ORIGIN, ARRIVAL_TIME, EVENT_END, TRAVEL_MODE) VALUES (?, ?, ?, ?, ?, ?)");
-            ps.setString(1, event.getEventName());
-            ps.setString(2, event.getEndLocation());
-            ps.setString(3, event.getStartLocation());
-            ps.setDate(4, new Date(event.getArrivalTime().getTime()));
-            ps.setDate(5, new Date(event.getEndTime().getTime()));
+            ps.setString(1, event.getEvent_name());
+            ps.setString(2, event.getDestination());
+            ps.setString(3, event.getOrigin());
+            //ps.setDate(4, new Date(event.getArrivalTime().getTime()));
+            //ps.setDate(5, new Date(event.getDestination()));
             //ps.setString(6, event.getDescription());
-            ps.setString(6, event.getTravelingMode());
+            ps.setString(6, event.getTravel_mode());
 //            ps.setDate(7, new Date(event.getDepartureToLocation().getTime()));
             status = ps.executeUpdate();
             System.out.println(ps);

@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="DAO.UserDAO"%>
-<jsp:useBean id="ps" class="Model1.User"></jsp:useBean>
+<jsp:useBean id="ps" class="Model.User"></jsp:useBean>
 <jsp:setProperty property="*" name="ps"/>
 <!DOCTYPE html>
 <% 
