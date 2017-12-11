@@ -49,11 +49,13 @@
                         
                         <h3> belum punya akun ? </h3><br>
                         <h3> daftar sekarang </h3>
-                            <form autocomplete="on" action="display.jsp" method="POST" action="addUser.jsp">                            
-                            <input type="emaill" class="emaill" name="emaill" placeholder="username" required /><br>
+                            <form autocomplete="on" action="addUser.jsp" method="POST" >
+                           
+                            <input type="username" class="username" name="username" placeholder="username" required /><br>
                             <input type="password" class="password" name="password" placeholder="kata sandi" required /><br>
                             <input type="password" class="password" name="password_again" placeholder="ulang kata sandi" required /><br><br>
                             <input type="submit" class="button" name="submit" value="buat akun">
+                               
                             </form>
                     </div>
                 </div>

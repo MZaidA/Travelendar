@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Kuliah/2B/Travlendar/JSP/TravlendarV1/src/java/Model1/Account.java</file>
-            <file>file:/E:/Kuliah/2B/Travlendar/JSP/TravlendarV1/web/EstimatedTimePage/index.jsp</file>
-            <file>file:/E:/Kuliah/2B/Travlendar/JSP/TravlendarV1/src/java/DAO/AccountDAO.java</file>
-            <file>file:/E:/Kuliah/2B/Travlendar/JSP/TravlendarV1/src/java/DAO/EventDAO.java</file>
-            <file>file:/E:/Kuliah/2B/Travlendar/JSP/TravlendarV1/web/PreferenceScreen/index.jsp</file>
-            <file>file:/E:/Kuliah/2B/Travlendar/JSP/TravlendarV1/web/PreferenceScreen/editAccount.jsp</file>
+            <file>file:/F:/KULIAH/semester%203/proyek/travlendar2/JSP/TravlendarV1/src/java/DAO/UserDAO.java</file>
+            <file>file:/F:/KULIAH/semester%203/proyek/travlendar2/JSP/TravlendarV1/src/java/DAO/EventDAO.java</file>
+            <file>file:/F:/KULIAH/semester%203/proyek/travlendar2/JSP/TravlendarV1/src/java/Model1/User.java</file>
+            <file>file:/F:/KULIAH/semester%203/proyek/travlendar2/JSP/TravlendarV1/web/PreferenceScreen/editAccount.jsp</file>
+            <file>file:/F:/KULIAH/semester%203/proyek/travlendar2/JSP/TravlendarV1/web/Login_SignUp/index.jsp</file>
         </group>
     </open-files>
 </project-private>

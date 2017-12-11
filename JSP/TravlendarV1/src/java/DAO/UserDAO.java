@@ -29,7 +29,7 @@ public class UserDAO {
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/travlendar", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/travelender", "root", "");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -58,7 +58,7 @@ public class UserDAO {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO akun(USERNAME, PASSWORD) VALUES (?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO user(USERNAME, PASSWORD) VALUES (?, ?)");
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
 
