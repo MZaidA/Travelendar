@@ -40,7 +40,7 @@
 			events: [
 				 <c:forEach items="${events}" var="item">
                                 {
-                                        title: '${item.event_name}',
+                                        title: '${item.eventName}',
                                         start: '${item.arrivalDateStr}T${item.arrivalTimeStr}',
                                         end: '${item.endDateStr}T${item.endTimeStr}',
                                 },

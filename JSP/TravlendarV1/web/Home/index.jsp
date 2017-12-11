@@ -36,7 +36,7 @@ Author     : afadh
                         <table class="column-seratus">
                             <tbody>
                                 <tr>
-                                    <td class="t4">${item.event_name}</td>
+                                    <td class="t4">${item.eventName}</td>
                                     <td class="t4">${item.arrivalDateStr}</td>
                                     <td class="text-align-center"><a class="action" href="#" onclick="showDetail(${loop.index+1})"><i class="material-icons">details</i></a>
                                         <a href="#" class="action"><i class="material-icons">mode_edit</i></a>
