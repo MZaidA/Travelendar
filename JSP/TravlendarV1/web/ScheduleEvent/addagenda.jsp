@@ -4,10 +4,6 @@
     Author     : syamcode
 --%>
 
-<%@page import="Model.UnscheduledTravelingTable"%>
-<%@page import="Model.UnscheduledTravelingTable"%>
-<%@page import="DAO.UnscheduledTravelingTableDAO"%>
-<%@page import="DAO.SuggestionDAO"%>
 <%@page import="Model.Event"%>
 <%@page import="java.util.Locale"%>
 <%@page import="java.util.Date"%>

@@ -13,14 +13,22 @@ import java.util.Date;
  */
 public class Event {
    private Integer event_id;
-   private String event_name;
-   private Date arrival_time = new Date();
-   private Date event_end = new Date();
-   private Date departure_time = new Date();
+   private User username;
+   private String eventName;
+   private Date arrivalTime = new Date();
+   private String arrivalDateStr;
+   private String arrivalTimeStr;
+   private Date eventEnd = new Date();
+   private String endDateStr;
+   private String endTimeStr;
+   private Date departureTime = new Date();
+   private String departureTimeStr;
+   private String departureDateStr;
    private String origin;
    private String destination;
-   private String travel_mode;
-   private Boolean avoid_tools;
+   private String travelMode;
+   private Boolean avoidTolls;
+   private String travelName;
 
     /**
      * @return the event_id
@@ -37,59 +45,59 @@ public class Event {
     }
 
     /**
-     * @return the event_name
+     * @return the eventName
      */
     public String getEvent_name() {
-        return event_name;
+        return eventName;
     }
 
     /**
-     * @param event_name the event_name to set
+     * @param event_name the eventName to set
      */
     public void setEvent_name(String event_name) {
-        this.event_name = event_name;
+        this.eventName = event_name;
     }
 
     /**
-     * @return the arrival_time
+     * @return the arrivalTime
      */
     public Date getArrival_time() {
-        return arrival_time;
+        return arrivalTime;
     }
 
     /**
-     * @param arrival_time the arrival_time to set
+     * @param arrival_time the arrivalTime to set
      */
     public void setArrival_time(Date arrival_time) {
-        this.arrival_time = arrival_time;
+        this.arrivalTime = arrival_time;
     }
 
     /**
-     * @return the event_end
+     * @return the eventEnd
      */
     public Date getEvent_end() {
-        return event_end;
+        return eventEnd;
     }
 
     /**
-     * @param event_end the event_end to set
+     * @param event_end the eventEnd to set
      */
     public void setEvent_end(Date event_end) {
-        this.event_end = event_end;
+        this.eventEnd = event_end;
     }
 
     /**
-     * @return the departure_time
+     * @return the departureTime
      */
     public Date getDeparture_time() {
-        return departure_time;
+        return departureTime;
     }
 
     /**
-     * @param departure_time the departure_time to set
+     * @param departure_time the departureTime to set
      */
     public void setDeparture_time(Date departure_time) {
-        this.departure_time = departure_time;
+        this.departureTime = departure_time;
     }
 
     /**
@@ -121,30 +129,108 @@ public class Event {
     }
 
     /**
-     * @return the travel_mode
+     * @return the travelMode
      */
     public String getTravel_mode() {
-        return travel_mode;
+        return travelMode;
     }
 
     /**
-     * @param travel_mode the travel_mode to set
+     * @param travel_mode the travelMode to set
      */
     public void setTravel_mode(String travel_mode) {
-        this.travel_mode = travel_mode;
+        this.travelMode = travel_mode;
+    }
+
+    public String getArrivalDateStr() {
+        return arrivalDateStr;
+    }
+
+    public void setArrivalDateStr(String arrivalDateStr) {
+        this.arrivalDateStr = arrivalDateStr;
+    }
+
+    public String getArrivalTimeStr() {
+        return arrivalTimeStr;
+    }
+
+    public void setArrivalTimeStr(String arrivalTimeStr) {
+        this.arrivalTimeStr = arrivalTimeStr;
+    }
+
+    public String getEndDateStr() {
+        return endDateStr;
+    }
+
+    public void setEndDateStr(String endDateStr) {
+        this.endDateStr = endDateStr;
+    }
+
+    public String getEndTimeStr() {
+        return endTimeStr;
+    }
+
+    public void setEndTimeStr(String endTimeStr) {
+        this.endTimeStr = endTimeStr;
+    }
+
+    public String getDepartureTimeStr() {
+        return departureTimeStr;
+    }
+
+    public void setDepartureTimeStr(String departureTimeStr) {
+        this.departureTimeStr = departureTimeStr;
+    }
+
+    public String getDepartureDateStr() {
+        return departureDateStr;
+    }
+
+    public void setDepartureDateStr(String departureDateStr) {
+        this.departureDateStr = departureDateStr;
     }
 
     /**
-     * @return the avoid_tools
+     * @return the username
      */
-    public Boolean getAvoid_tools() {
-        return avoid_tools;
+    public User getUsername() {
+        return username;
     }
 
     /**
-     * @param avoid_tools the avoid_tools to set
+     * @param username the username to set
      */
-    public void setAvoid_tools(Boolean avoid_tools) {
-        this.avoid_tools = avoid_tools;
+    public void setUsername(User username) {
+        this.username = username;
     }
+
+    /**
+     * @return the avoidTolls
+     */
+    public Boolean getAvoid_tolls() {
+        return avoidTolls;
+    }
+
+    /**
+     * @param avoid_tolls the avoidTolls to set
+     */
+    public void setAvoid_tolls(Boolean avoid_tolls) {
+        this.avoidTolls = avoid_tolls;
+    }
+
+    /**
+     * @return the travelName
+     */
+    public String getTravelName() {
+        return travelName;
+    }
+
+    /**
+     * @param travelName the travelName to set
+     */
+    public void setTravelName(String travelName) {
+        this.travelName = travelName;
+    }
+    
+    
 }
