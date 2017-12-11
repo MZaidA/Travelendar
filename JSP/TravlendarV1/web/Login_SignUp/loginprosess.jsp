@@ -10,7 +10,9 @@
 
 <%
  boolean status = UserDAO.validasi(ps);
-if(status){  
+if(status){
+    String username=request.getParameter("username"); 
+    session.setAttribute("username",username); 
     response.sendRedirect("../Home");
     }  
 else  
