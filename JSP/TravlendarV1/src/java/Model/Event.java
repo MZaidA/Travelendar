@@ -15,8 +15,14 @@ public class Event {
    private Integer event_id;
    private String event_name;
    private Date arrival_time = new Date();
+   private String arrivalDateStr;
+   private String arrivalTimeStr;
    private Date event_end = new Date();
+   private String endDateStr;
+   private String endTimeStr;
    private Date departure_time = new Date();
+   private String departureTimeStr;
+   private String departureDateStr;
    private String origin;
    private String destination;
    private String travel_mode;
@@ -147,4 +153,54 @@ public class Event {
     public void setAvoid_tools(Boolean avoid_tools) {
         this.avoid_tools = avoid_tools;
     }
+
+    public String getArrivalDateStr() {
+        return arrivalDateStr;
+    }
+
+    public void setArrivalDateStr(String arrivalDateStr) {
+        this.arrivalDateStr = arrivalDateStr;
+    }
+
+    public String getArrivalTimeStr() {
+        return arrivalTimeStr;
+    }
+
+    public void setArrivalTimeStr(String arrivalTimeStr) {
+        this.arrivalTimeStr = arrivalTimeStr;
+    }
+
+    public String getEndDateStr() {
+        return endDateStr;
+    }
+
+    public void setEndDateStr(String endDateStr) {
+        this.endDateStr = endDateStr;
+    }
+
+    public String getEndTimeStr() {
+        return endTimeStr;
+    }
+
+    public void setEndTimeStr(String endTimeStr) {
+        this.endTimeStr = endTimeStr;
+    }
+
+    public String getDepartureTimeStr() {
+        return departureTimeStr;
+    }
+
+    public void setDepartureTimeStr(String departureTimeStr) {
+        this.departureTimeStr = departureTimeStr;
+    }
+
+    public String getDepartureDateStr() {
+        return departureDateStr;
+    }
+
+    public void setDepartureDateStr(String departureDateStr) {
+        this.departureDateStr = departureDateStr;
+    }
+    
+    
 }

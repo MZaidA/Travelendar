@@ -44,7 +44,7 @@ Author     : afadh
     <div class="boxstyle1">
         <div class="row">
             <div class="column">
-                <div class="t3">${item.eventName}</div>
+                <div class="t3">${item.event_name}</div>
                 <div class="t4">Departure Date To Location: <br>${item.departureDateStr} Time: ${item.departureTimeStr}</div>
                 <div class="t4">Arrival Date At Location: <br>${item.arrivalDateStr} Time: ${item.arrivalTimeStr}</div>
                 <div class="t4">Event End To Location: <br>${item.endDateStr} Time: ${item.endTimeStr}</div>
@@ -56,7 +56,7 @@ Author     : afadh
                 <div class="dropdown">
                     <button class="dropbtn">Event Details</button>
                     <div class="dropdown-content">
-                      ${item.description}
+                      
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@ Author     : afadh
         <table class="column-seratus">
             <tbody>
                 <tr>
-                    <td class="t3">${item.eventName}</td>
+                    <td class="t3">${item.event_name}</td>
                     <td class="t3">${item.departureDateStr} - ${item.endDateStr}</td>
                     <td class="text-align-center"><a class="action" href="#" onclick="showDetail(${loop.index+1})"><i class="material-icons">details</i></a>
                         <a href="#" class="action"><i class="material-icons">mode_edit</i></a>

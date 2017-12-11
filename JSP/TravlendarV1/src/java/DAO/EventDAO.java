@@ -38,45 +38,45 @@ public class EventDAO{
 
     public static List<Event> getAll() {
         List<Event> events = new ArrayList<Event>();
-//        try{
-//            String arrival;
-//            String end;
-//            String departure;
-//            Connection con = getConnection();
-//            PreparedStatement ps = con.prepareStatement("SELECT * FROM event");
-//            ResultSet rs = ps.executeQuery();
-//            
-//            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//            DateFormat tf = new SimpleDateFormat("HH:mm:ss");
-//            while(rs.next()) {
-//                Event event = new Event();
-//                event.setEventId(rs.getInt("EVENT_ID"));
-//                event.setStartLocation(rs.getString("NAME_ORIGIN"));
-//                event.setEndLocation(rs.getString("NAME_DESTINATION"));
-//                event.setEventName(rs.getString("EVENT_NAME"));
-//                
-//                arrival = rs.getString("ARRIVAL_AT_LOCATION");
-//                event.setArrivalTime(format.parse(arrival)); //menyamakan format sesuai yang ada pada database
-//                event.setArrivalDateStr(df.format(event.getArrivalTime())); //membuat date bertipe string agar dapat dibaca JSON
-//                event.setArrivalTimeStr(tf.format(event.getArrivalTime())); //membuat time bertipe string agar dapat dibaca JSON
-//                
-//                end = rs.getString("EVENT_FINISHED");
-//                event.setEndTime(format.parse(end));
-//                event.setEndDateStr(df.format(event.getEndTime()));
-//                event.setEndTimeStr(tf.format(event.getEndTime()));
-//                
-//               departure = rs.getString("DEPARTURE_TO_LOCATION");
-//               event.setDepartureToLocation(format.parse(departure));
-//               event.setDepartureDateStr(df.format(event.getDepartureToLocation()));
-//               event.setDepartureTimeStr(tf.format(event.getDepartureToLocation()));
-//               
-//               events.add(event);
-//            }
-//        }
-//        catch(Exception e) {
-//            System.out.println(e);
-//        }
+        try{
+            String arrival;
+            String end;
+            String departure;
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM event");
+            ResultSet rs = ps.executeQuery();
+            
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat tf = new SimpleDateFormat("HH:mm:ss");
+            while(rs.next()) {
+                Event event = new Event();
+                event.setEvent_id(rs.getInt("EVENT_ID"));
+                event.setOrigin(rs.getString("ORIGIN"));
+                event.setDestination(rs.getString("DESTINATION"));
+                event.setEvent_name(rs.getString("EVENT_NAME"));
+                
+                arrival = rs.getString("ARRIVAL_TIME");
+                event.setArrival_time(format.parse(arrival)); //menyamakan format sesuai yang ada pada database
+                event.setArrivalDateStr(df.format(event.getArrival_time())); //membuat date bertipe string agar dapat dibaca JSON
+                event.setArrivalTimeStr(tf.format(event.getArrival_time())); //membuat time bertipe string agar dapat dibaca JSON
+                
+                end = rs.getString("EVENT_END");
+                event.setEvent_end(format.parse(end));
+                event.setEndDateStr(df.format(event.getEvent_end()));
+                event.setEndTimeStr(tf.format(event.getEvent_end()));
+                
+               departure = rs.getString("DEPARTURE_TIME");
+               event.setDeparture_time(format.parse(departure));
+               event.setDepartureDateStr(df.format(event.getDeparture_time()));
+               event.setDepartureTimeStr(tf.format(event.getDeparture_time()));
+               
+               events.add(event);
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
         return events;
     }
 
