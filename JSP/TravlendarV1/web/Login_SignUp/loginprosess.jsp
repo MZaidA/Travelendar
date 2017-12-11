@@ -17,9 +17,9 @@ if(status){
     }  
 else  
     {  
-    out.print("Sorry, email or password error");
-      
-    
-      
+    %>
+    <script> alert("USERNAME ATAU PASSWORD SALAH")</script>
+    <jsp:include page="index.jsp" />
+    <%
     }    
 %>

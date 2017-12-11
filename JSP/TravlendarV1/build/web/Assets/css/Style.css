@@ -410,7 +410,9 @@ verifform {
             padding-top:20px;
             padding-left:17px;
 	}
-    
+        .wrapper{
+            display: none;
+        }
 }
 
 .buttonLogOut{
