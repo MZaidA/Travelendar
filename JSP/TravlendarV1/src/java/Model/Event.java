@@ -5,290 +5,146 @@
  */
 package Model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import javafx.util.Pair;
 
 /**
  *
- * @author syamcode
+ * @author Salam שלום
  */
 public class Event {
+   private Integer event_id;
+   private String event_name;
+   private Date arrival_time = new Date();
+   private Date event_end = new Date();
+   private Date departure_time = new Date();
+   private String origin;
+   private String destination;
+   private String travel_mode;
+   private Boolean avoid_tools;
 
     /**
-     * @return the travelingMode
+     * @return the event_id
      */
-    public String getTravelingMode() {
-        return travelingMode;
+    public Integer getEvent_id() {
+        return event_id;
     }
 
     /**
-     * @param travelingMode the travelingMode to set
+     * @param event_id the event_id to set
      */
-    public void setTravelingMode(String travelingMode) {
-        this.travelingMode = travelingMode;
-    }
-    private Integer eventId;
-    private String endLocation;
-    private String startLocation;
-    private String eventName;
-    
-    private Date endTime = new Date();
-    private String endTimeStr;
-    private String endDateStr;
-    
-    private Date arrivalTime = new Date();
-    private String arrivalDateStr;
-    private String arrivalTimeStr;
-    
-    private Date departureToLocation = new Date();
-    private String departureDateStr;
-    private String departureTimeStr;
-
-    private Location location;
-    private String description;
-
-   private Integer unscheduled_id;
-    private List<Suggestion> suggestions = new ArrayList<Suggestion>();
-    private String travelingMode;
-    /**
-     * @return the eventId
-     */
-    public Integer getEventId() {
-        return eventId;
+    public void setEvent_id(Integer event_id) {
+        this.event_id = event_id;
     }
 
     /**
-     * @param eventId the eventId to set
+     * @return the event_name
      */
-    public void setEventId(Integer eventId) {
-        this.eventId = eventId;
+    public String getEvent_name() {
+        return event_name;
     }
 
     /**
-     * @return the endLocation
+     * @param event_name the event_name to set
      */
-    public String getEndLocation() {
-        return endLocation;
+    public void setEvent_name(String event_name) {
+        this.event_name = event_name;
     }
 
     /**
-     * @param endLocation the endLocation to set
+     * @return the arrival_time
      */
-    public void setEndLocation(String endLocation) {
-        this.endLocation = endLocation;
+    public Date getArrival_time() {
+        return arrival_time;
     }
 
     /**
-     * @return the startLocation
+     * @param arrival_time the arrival_time to set
      */
-    public String getStartLocation() {
-        return startLocation;
+    public void setArrival_time(Date arrival_time) {
+        this.arrival_time = arrival_time;
     }
 
     /**
-     * @param startLocation the startLocation to set
+     * @return the event_end
      */
-    public void setStartLocation(String startLocation) {
-        this.startLocation = startLocation;
+    public Date getEvent_end() {
+        return event_end;
     }
 
     /**
-     * @return the eventName
+     * @param event_end the event_end to set
      */
-    public String getEventName() {
-        return eventName;
+    public void setEvent_end(Date event_end) {
+        this.event_end = event_end;
     }
 
     /**
-     * @param eventName the eventName to set
+     * @return the departure_time
      */
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
+    public Date getDeparture_time() {
+        return departure_time;
     }
 
     /**
-     * @return the endTime
+     * @param departure_time the departure_time to set
      */
-    public Date getEndTime() {
-        return endTime;
+    public void setDeparture_time(Date departure_time) {
+        this.departure_time = departure_time;
     }
 
     /**
-     * @param endTime the endTime to set
+     * @return the origin
      */
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public String getOrigin() {
+        return origin;
     }
 
     /**
-     * @return the endTimeStr
+     * @param origin the origin to set
      */
-    public String getEndTimeStr() {
-        return endTimeStr;
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
     /**
-     * @param endTimeStr the endTimeStr to set
+     * @return the destination
      */
-    public void setEndTimeStr(String endTimeStr) {
-        this.endTimeStr = endTimeStr;
+    public String getDestination() {
+        return destination;
     }
 
     /**
-     * @return the endDateStr
+     * @param destination the destination to set
      */
-    public String getEndDateStr() {
-        return endDateStr;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     /**
-     * @param endDateStr the endDateStr to set
+     * @return the travel_mode
      */
-    public void setEndDateStr(String endDateStr) {
-        this.endDateStr = endDateStr;
+    public String getTravel_mode() {
+        return travel_mode;
     }
 
     /**
-     * @return the arrivalTime
+     * @param travel_mode the travel_mode to set
      */
-    public Date getArrivalTime() {
-        return arrivalTime;
+    public void setTravel_mode(String travel_mode) {
+        this.travel_mode = travel_mode;
     }
 
     /**
-     * @param arrivalTime the arrivalTime to set
+     * @return the avoid_tools
      */
-    public void setArrivalTime(Date arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public Boolean getAvoid_tools() {
+        return avoid_tools;
     }
 
     /**
-     * @return the arrivalDateStr
+     * @param avoid_tools the avoid_tools to set
      */
-    public String getArrivalDateStr() {
-        return arrivalDateStr;
+    public void setAvoid_tools(Boolean avoid_tools) {
+        this.avoid_tools = avoid_tools;
     }
-
-    /**
-     * @param arrivalDateStr the arrivalDateStr to set
-     */
-    public void setArrivalDateStr(String arrivalDateStr) {
-        this.arrivalDateStr = arrivalDateStr;
-    }
-
-    /**
-     * @return the arrivalTimeStr
-     */
-    public String getArrivalTimeStr() {
-        return arrivalTimeStr;
-    }
-
-    /**
-     * @param arrivalTimeStr the arrivalTimeStr to set
-     */
-    public void setArrivalTimeStr(String arrivalTimeStr) {
-        this.arrivalTimeStr = arrivalTimeStr;
-    }
-
-    /**
-     * @return the departureToLocation
-     */
-    public Date getDepartureToLocation() {
-        return departureToLocation;
-    }
-
-    /**
-     * @param departureToLocation the departureToLocation to set
-     */
-    public void setDepartureToLocation(Date departureToLocation) {
-        this.departureToLocation = departureToLocation;
-    }
-
-    /**
-     * @return the departureDateStr
-     */
-    public String getDepartureDateStr() {
-        return departureDateStr;
-    }
-
-    /**
-     * @param departureDateStr the departureDateStr to set
-     */
-    public void setDepartureDateStr(String departureDateStr) {
-        this.departureDateStr = departureDateStr;
-    }
-
-    /**
-     * @return the departureTimeStr
-     */
-    public String getDepartureTimeStr() {
-        return departureTimeStr;
-    }
-
-    /**
-     * @param departureTimeStr the departureTimeStr to set
-     */
-    public void setDepartureTimeStr(String departureTimeStr) {
-        this.departureTimeStr = departureTimeStr;
-    }
-
-    /**
-     * @return the location
-     */
-    public Location getLocation() {
-        return location;
-    }
-
-    /**
-     * @param location the location to set
-     */
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    /**
-     * @return the description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * @param description the description to set
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
-     * @return the unscheduled_id
-     */
-    public Integer getUnscheduled_id() {
-        return unscheduled_id;
-    }
-
-    /**
-     * @param unscheduled_id the unscheduled_id to set
-     */
-    public void setUnscheduled_id(Integer unscheduled_id) {
-        this.unscheduled_id = unscheduled_id;
-    }
-
-    /**
-     * @return the suggestions
-     */
-    public List<Suggestion> getSuggestions() {
-        return suggestions;
-    }
-
-    /**
-     * @param suggestions the suggestions to set
-     */
-    public void setSuggestions(List<Suggestion> suggestions) {
-        this.suggestions = suggestions;
-    }
-    
 }

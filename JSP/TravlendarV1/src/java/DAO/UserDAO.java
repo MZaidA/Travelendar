@@ -6,7 +6,7 @@
 package DAO;
 
 import static DAO.EventDAO.getConnection;
-import Model1.User;
+import Model.User;
 import com.mysql.jdbc.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
