@@ -62,8 +62,8 @@
                             <form autocomplete="on" action="addUser.jsp" method="POST" >
                            
                             <input type="name" style="width: 100%;" class="username" name="username" placeholder="username" required /><br>
-                            <input type="password" class="password" name="password" placeholder="kata sandi" required /><br>
-                            <input type="password" class="password" name="password" placeholder="ulang kata sandi" required /><br><br>
+                            <input type="password" class="password" name="password" id="password" placeholder="kata sandi" required /><br>
+                            <input type="password" class="password" name="password" id="confirm_password" placeholder="ulang kata sandi" required /><br><br>
                             <input type="submit" class="button" name="submit" value="buat akun">
                                
                             </form>
@@ -71,5 +71,21 @@
                 </div>
             </div>
         </div>
+<script>
+var password = document.getElementById("password"),
+confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+                        
     </body>
 </html>
