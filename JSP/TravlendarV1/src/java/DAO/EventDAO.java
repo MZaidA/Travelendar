@@ -24,13 +24,12 @@ import java.util.logging.Logger;
  */
 public class EventDAO{
 
-    
     public static Connection getConnection() {
         Connection con = null;
-        try{
+        try {
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/travlendar", "root", "");
-        } catch (Exception e) {
+            con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/travlendar", "root", "");
+        } catch(Exception e) {
             System.out.println(e);
         }
         return con;
@@ -38,12 +37,15 @@ public class EventDAO{
 
     public static List<Event> getAll() {
         List<Event> events = new ArrayList<Event>();
-        try{
+        try {
             String arrival;
             String end;
             String departure;
+            
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM event");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM event WHERE USERNAME='usermane' ORDER BY departure_time ASC");
+            //Event epen = new Event();
+            //ps.setString(1, epen.getUsername().getUsername());
             ResultSet rs = ps.executeQuery();
             
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -52,9 +54,14 @@ public class EventDAO{
             while(rs.next()) {
                 Event event = new Event();
                 event.setEvent_id(rs.getInt("EVENT_ID"));
-                event.setOrigin(rs.getString("ORIGIN"));
                 event.setDestination(rs.getString("DESTINATION"));
                 event.setEvent_name(rs.getString("EVENT_NAME"));
+                
+                if(rs.getBoolean("AVOID_TOLLS") == true) {
+                    event.setTravelName("Motor");
+                } else {
+                    event.setTravelName("Motor");
+                }
                 
                 arrival = rs.getString("ARRIVAL_TIME");
                 event.setArrival_time(format.parse(arrival)); //menyamakan format sesuai yang ada pada database
@@ -161,19 +168,19 @@ public class EventDAO{
 //        }
 //        return status;
 //    }
-//    
-//    public static int delete(Event event) {
-//        int status = 0;
-//        try {
-//            Connection con = getConnection();
-//            PreparedStatement ps = con.prepareStatement("DELETE FROM event WHERE EVENT_ID=?");
-//            ps.setInt(1, event.getEventId());
-//            status = ps.executeUpdate();
-//        }
-//        catch(Exception e) {
-//            System.out.println(e);
-//        }
-//        return status;
-//    }
+
+    public static int delete(Event event) {
+        int status = 0;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("DELETE FROM event WHERE EVENT_ID=?");
+            ps.setInt(1, event.getEvent_id());
+            status = ps.executeUpdate();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
     
 }

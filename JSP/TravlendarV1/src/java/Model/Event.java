@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class Event {
    private Integer event_id;
+   private User username;
    private String event_name;
    private Date arrival_time = new Date();
    private String arrivalDateStr;
@@ -26,7 +27,8 @@ public class Event {
    private String origin;
    private String destination;
    private String travel_mode;
-   private Boolean avoid_tools;
+   private Boolean avoid_tolls;
+   private String travelName;
 
     /**
      * @return the event_id
@@ -140,20 +142,6 @@ public class Event {
         this.travel_mode = travel_mode;
     }
 
-    /**
-     * @return the avoid_tools
-     */
-    public Boolean getAvoid_tools() {
-        return avoid_tools;
-    }
-
-    /**
-     * @param avoid_tools the avoid_tools to set
-     */
-    public void setAvoid_tools(Boolean avoid_tools) {
-        this.avoid_tools = avoid_tools;
-    }
-
     public String getArrivalDateStr() {
         return arrivalDateStr;
     }
@@ -200,6 +188,48 @@ public class Event {
 
     public void setDepartureDateStr(String departureDateStr) {
         this.departureDateStr = departureDateStr;
+    }
+
+    /**
+     * @return the username
+     */
+    public User getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(User username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the avoid_tolls
+     */
+    public Boolean getAvoid_tolls() {
+        return avoid_tolls;
+    }
+
+    /**
+     * @param avoid_tolls the avoid_tolls to set
+     */
+    public void setAvoid_tolls(Boolean avoid_tolls) {
+        this.avoid_tolls = avoid_tolls;
+    }
+
+    /**
+     * @return the travelName
+     */
+    public String getTravelName() {
+        return travelName;
+    }
+
+    /**
+     * @param travelName the travelName to set
+     */
+    public void setTravelName(String travelName) {
+        this.travelName = travelName;
     }
     
     
