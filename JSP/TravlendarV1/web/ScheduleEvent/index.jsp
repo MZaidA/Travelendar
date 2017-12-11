@@ -17,7 +17,9 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmLiRLe7nQvc6KDoomu7a-YFSATYVlKSU"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"/> <!--http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css *** ../Assets/datetimepick/dist/jquery-ui.css-->
     <link rel="stylesheet" href="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.css"/> <!-- link untuk memanggil timepicker -->
-    
+    <%   
+        String username=(String)session.getAttribute("username");  
+    %> 
     <script>
     $(document).ready(function(){
             $(".notfirst").click(function() {
@@ -70,6 +72,7 @@
         <div class="form">
         <form action="addagenda.jsp">
             <input type="hidden" id="eventId" name="eventId"/> <!--Untuk Editing-->
+            <input type="text" id="username" name="username" value=<%out.print(username);%>
             <label for="fname">Event Name</label>
             <input type="text" id="eventName" name="eventName" placeholder="..."/>
             <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>

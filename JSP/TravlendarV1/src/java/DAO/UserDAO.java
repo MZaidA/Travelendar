@@ -29,18 +29,37 @@ public class UserDAO {
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/travlender", "root", "");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/travlendar", "root", "");
         } catch (Exception e) {
             System.out.println(e);
         }
         return con;
     }
     
+    public static User get(String user) {
+        User us=new User();
+        try{
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM user WHERE USERNAME=?");
+            ps.setString(1, user);
+            ResultSet rs = ps.executeQuery();
+            
+                us.setHome(rs.getString("HOME"));
+                us.setWorkplace(rs.getString("WORKPLACE"));
+                us.setMaxWalking(rs.getInt("MAX_WALKING"));
+      
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return us;
+    }
+    
     public static int update(User user) {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE event set HOME=?, WORKPLACE=?, MAX_WALKING=? WHERE USERNAME=?");
+            PreparedStatement ps = con.prepareStatement("UPDATE user SET HOME=?, WORKPLACE=?, MAX_WALKING=? WHERE USERNAME=?");
             ps.setString(1, user.getHome());
             ps.setString(2, user.getWorkplace());
             ps.setInt(3, user.getMaxWalking());
