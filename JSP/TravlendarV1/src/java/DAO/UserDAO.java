@@ -40,10 +40,11 @@ public class UserDAO {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO akun(HOME, WORKPLACE, MAX_WALKING) VALUES (?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("UPDATE event set HOME=?, WORKPLACE=?, MAX_WALKING=? WHERE USERNAME=?");
             ps.setString(1, user.getHome());
             ps.setString(2, user.getWorkplace());
             ps.setInt(3, user.getMaxWalking());
+            ps.setString(4, user.getUsername());
 
             status = ps.executeUpdate();
             System.out.println(ps);
