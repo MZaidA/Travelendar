@@ -1,45 +1,28 @@
-/*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     05/12/2017 15:12:31                          */
-/*==============================================================*/
+-- phpMyAdmin SQL Dump
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Dec 12, 2017 at 01:33 PM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.8
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-drop table if exists EVENT;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-drop table if exists USER;
+--
+-- Database: `travlendar`
+--
+COMMIT;
 
-/*==============================================================*/
-/* Table: EVENT                                                 */
-/*==============================================================*/
-create table EVENT
-(
-   EVENT_ID             int not null auto_increment,
-   USERNAME             varchar(30) not null,
-   EVENT_NAME           varchar(30) not null,
-   ARRIVAL_TIME         datetime not null,
-   EVENT_END            datetime not null,
-   DEPARTURE_TIME       datetime not null,
-   ORIGIN               varchar(150) not null,
-   DESTINATION          varchar(150) not null,
-   TRAVEL_MODE          varchar(10) not null,
-   AVOID_TOLLS          bool,
-   primary key (EVENT_ID)
-)
-auto_increment = 1;
-
-/*==============================================================*/
-/* Table: USER                                                  */
-/*==============================================================*/
-create table USER
-(
-   USERNAME             varchar(30) not null,
-   PASSWORD             varchar(20) not null,
-   HOME                 varchar(150),
-   WORKPLACE            varchar(150),
-   MAX_WALKING          int,
-   primary key (USERNAME)
-);
-
-alter table EVENT add constraint FK_HAS foreign key (USERNAME)
-      references USER (USERNAME) on delete restrict on update restrict;
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
