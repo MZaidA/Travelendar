@@ -51,11 +51,11 @@ Author     : afadh
                             <table class="table-seratus" id="detail${loop.index+1}" style="display: none;">
                                 <tbody>
                                     <tr>
-                                        <td class="t4">${item.destination}</td>
+                                        <td class="t4" style="width: 50%;">${item.destination}</td>
                                         <td class="t4">Arrival Time : ${item.arrivalTimeStr}</td>
                                     </tr>
                                     <tr>
-                                        <td class="t4"></td>
+                                        <td class="t4" ></td>
                                         <td class="t4">Departure Time : ${item.departureTimeStr}</td>
                                     </tr>
                                     <tr>

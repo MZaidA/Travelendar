@@ -103,7 +103,7 @@
             <br/>
                         <input type="submit" value="Submit"/>
         </form>
-<!--            <div class="form-group input-group">
+            <div class="form-group input-group">
                 <div class="input-group-btn">
                     <button id="done">
                         View Route
@@ -112,8 +112,8 @@
                         View Route Via Tolls
                     </button>
                 </div>
-            </div>-->
-<!--            <form action="save-direction.jsp">
+            </div>
+            <form action="save-direction.jsp">
                 <input type="hidden" id="startName" name="startName"/>
                 <input type="hidden" id="latStart" name="latStart"/>
                 <input type="hidden" id="lngStart" name="lngStart"/>
@@ -122,8 +122,8 @@
                 <input type="hidden" id="lngEnd" name="lngEnd"/>
                 <input type="hidden" id="distance" name="distance"/>
                 <input type="hidden" id="avoidTolls" name="avoidTolls"/>
-            </form>-->
-           <div id="map" style="display: none;"></div>
+            </form>
+           <div id="map"></div>
 
             
         </div>
