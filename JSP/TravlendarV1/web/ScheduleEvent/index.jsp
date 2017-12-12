@@ -100,9 +100,6 @@
                 <option value="0">Isi Lokasi dan Waktu Event terlebih Dahulu</option>
             </select>
             <br />
-            <input type="submit" value="Submit"/>
-        </form>
-        
             <div class="form-group input-group">
                 <div class="input-group-btn">
                     <button id="done">
@@ -113,9 +110,6 @@
                     </button>
                 </div>
             </div>
-
-            </br>
-
             <form action="save-direction.jsp">
                 <input type="hidden" id="startName" name="startName"/>
                 <input type="hidden" id="latStart" name="latStart"/>
@@ -127,6 +121,14 @@
                 <input type="hidden" id="avoidTolls" name="avoidTolls"/>
             </form>
             <div id="map"></div>
+            <input type="submit" value="Submit"/>
+        </form>
+        
+            
+            <br>
+            </br>
+
+            
         </div>
     </div>
 </div>
