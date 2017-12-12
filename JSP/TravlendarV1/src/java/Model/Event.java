@@ -47,56 +47,56 @@ public class Event {
     /**
      * @return the eventName
      */
-    public String getEvent_name() {
+    public String getEventName() {
         return eventName;
     }
 
     /**
      * @param event_name the eventName to set
      */
-    public void setEvent_name(String event_name) {
+    public void setEventName(String event_name) {
         this.eventName = event_name;
     }
 
     /**
      * @return the arrivalTime
      */
-    public Date getArrival_time() {
+    public Date getArrivalTime() {
         return arrivalTime;
     }
 
     /**
      * @param arrival_time the arrivalTime to set
      */
-    public void setArrival_time(Date arrival_time) {
+    public void setArrivalTime(Date arrival_time) {
         this.arrivalTime = arrival_time;
     }
 
     /**
      * @return the eventEnd
      */
-    public Date getEvent_end() {
+    public Date getEventEnd() {
         return eventEnd;
     }
 
     /**
      * @param event_end the eventEnd to set
      */
-    public void setEvent_end(Date event_end) {
+    public void setEventEnd(Date event_end) {
         this.eventEnd = event_end;
     }
 
     /**
      * @return the departureTime
      */
-    public Date getDeparture_time() {
+    public Date getDepartureTime() {
         return departureTime;
     }
 
     /**
      * @param departure_time the departureTime to set
      */
-    public void setDeparture_time(Date departure_time) {
+    public void setDepartureTime(Date departure_time) {
         this.departureTime = departure_time;
     }
 
@@ -131,14 +131,14 @@ public class Event {
     /**
      * @return the travelMode
      */
-    public String getTravel_mode() {
+    public String getTravelMode() {
         return travelMode;
     }
 
     /**
      * @param travel_mode the travelMode to set
      */
-    public void setTravel_mode(String travel_mode) {
+    public void setTravelMode(String travel_mode) {
         this.travelMode = travel_mode;
     }
 
@@ -207,14 +207,14 @@ public class Event {
     /**
      * @return the avoidTolls
      */
-    public Boolean getAvoid_tolls() {
+    public Boolean getAvoidTolls() {
         return avoidTolls;
     }
 
     /**
      * @param avoid_tolls the avoidTolls to set
      */
-    public void setAvoid_tolls(Boolean avoid_tolls) {
+    public void setAvoidTolls(Boolean avoid_tolls) {
         this.avoidTolls = avoid_tolls;
     }
 
