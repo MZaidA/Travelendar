@@ -72,7 +72,7 @@
         <div class="form">
         <form action="addagenda.jsp">
             <input type="hidden" id="eventId" name="eventId"/> <!--Untuk Editing-->
-            <input type="hidden" id="username" name="username" value=<%out.print(username);%>
+            <input type="hidden" id="username" name="username" value=<%out.print(username);%>>
             <label for="fname">Event Name</label>
             <input type="text" id="eventName" name="eventName" placeholder="..." required/>
             <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
@@ -123,7 +123,7 @@
                 <input type="hidden" id="distance" name="distance"/>
                 <input type="hidden" id="avoidTolls" name="avoidTolls"/>
             </form>-->
-<!--            <div id="map"></div>-->
+           <div id="map" style="display: none;"></div>
 
             
         </div>

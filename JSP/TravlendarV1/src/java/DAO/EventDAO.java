@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -134,19 +135,19 @@ public class EventDAO{
             PreparedStatement ps = con.prepareStatement("INSERT INTO event(USERNAME, EVENT_NAME, ARRIVAL_TIME, EVENT_END, ORIGIN, DESTINATION, TRAVEL_MODE, DEPARTURE_TIME) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, event.getUsername().getUsername());
             ps.setString(2, event.getEventName());
-            ps.setDate(3, new Date(event.getArrivalTime().getTime()));
-            ps.setDate(4, new Date(event.getEventEnd().getTime()));
+            ps.setTimestamp(3, new Timestamp(event.getArrivalTime().getTime()));
+            ps.setTimestamp(4, new Timestamp(event.getEventEnd().getTime()));
             
             ps.setString(5, event.getOrigin());
             ps.setString(6, event.getDestination());
             ps.setString(7, event.getTravelMode());
-            ps.setDate(8, new Date(event.getDepartureTime().getTime()));
+            ps.setTimestamp(8, new Timestamp(event.getDepartureTime().getTime()));
             //ps.setBoolean(9, event.getAvoidTolls());
             status = ps.executeUpdate();
             System.out.println(ps);
         }
         catch(Exception e) {
-            System.out.println(e);
+            System.out.println("jhhjjii"+e);
         }
         return status;
     }
