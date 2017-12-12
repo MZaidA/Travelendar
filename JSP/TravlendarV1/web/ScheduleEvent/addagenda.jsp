@@ -36,12 +36,15 @@
     
 //    UnscheduledTravelingTable uns = UnscheduledTravelingTableDAO.getUnscheduledTravelingTableById(request.getParameter("UNSCHEDULED_TRANSPORTATION_ID"));
     Event event = new Event();
+    event.setUsername(username);
     event.setEventName(eventName);
-    event.setStartLocation(startloc);
-    event.setEndLocation(location);
+    event.setOrigin(startloc);
+    event.setDestination(location);
     event.setArrivalTime(start);
-    event.setEndTime(end);
-    event.setTravelingMode(mode);
+    event.setEventEnd(end);
+    event.setDepartureTime();
+    event.setTravelMode(transport);
+    event.setAvoidTolls(avoidTolls);
 //    event.setDepartureToLocation(new Date(start.getTime() - uns.getTravelingTime()*60000));
     
     int status = EventDAO.save(event);

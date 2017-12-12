@@ -37,13 +37,14 @@ public class UserDAO {
     }
     
     public static User get(String user) {
-        User us=new User();
+        User us=null;
         try{
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM user WHERE USERNAME=zaid");
-            //ps.setString(1, user);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM user WHERE USERNAME=?");
+            ps.setString(1, user);
             ResultSet rs = ps.executeQuery();
             
+            us=new User();
             us.setUsername(rs.getString("USERNAME"));
             us.setPassword(rs.getString("PASSWORD"));
             us.setHome(rs.getString("HOME"));

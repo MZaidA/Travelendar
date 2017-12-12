@@ -39,7 +39,7 @@ User us = UserDAO.get(username);
 <br/>
     <div class="form">
         <form action="editAccount.jsp">
-                <input type="text" id="username" name="username" value=<%out.print(username);%> /> <!--Untuk Editing-->
+                <input type="hidden" id="username" name="username" value=<%out.print(username);%> /> <!--Untuk Editing-->
                 <label for="fname">Home Address</label>
                 <input type="text" id="home" name="home" placeholder="..." value="<%=us.getHome()%>"/>
                 <br/>
