@@ -72,38 +72,38 @@
         <div class="form">
         <form action="addagenda.jsp">
             <input type="hidden" id="eventId" name="eventId"/> <!--Untuk Editing-->
-            <input type="text" id="username" name="username" value=<%out.print(username);%>
+            <input type="hidden" id="username" name="username" value=<%out.print(username);%>
             <label for="fname">Event Name</label>
-            <input type="text" id="eventName" name="eventName" placeholder="..."/>
+            <input type="text" id="eventName" name="eventName" placeholder="..." required/>
             <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
-            <input type="radio" class="first" name="firstornot">First Event</input>
+            <input type="radio" class="first" name="firstornot" required>First Event</input>
             <br/><br/>
             <div id="demo" style="display:none">
             <!--LOCATION GMAPS -->
                 <label for="stLoc">Start Location</label>
                 <div class="form-group input-group">
-                    <input name="startLoc" onchange='getSuggest()' type="text" id="start" class="form-control" placeholder="Search location"/>
+                    <input required name="startLoc" onchange='getSuggest()' type="text" id="start" class="form-control" placeholder="Search location"/>
                 </div>
             </div>  
             </br>
             <label for="fname">End Location</label>
-            <input name="endLoc" onchange='getSuggest()' type="text" id="end" class="form-control" placeholder="Search location">
+            <input required name="endLoc" onchange='getSuggest()' type="text" id="end" class="form-control" placeholder="Search location">
             <br/>
             <label for="fname">Arrival Date & Time</label>
-            <input onchange='getSuggest()' type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
+            <input required onchange='getSuggest()' type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
             <br/>
             <label for="fname">End Date & Time</label>
-            <input onchange='getSuggest()' type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
+            <input required onchange='getSuggest()' type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
             </br>
             <label for="stLoc">Transportation</label>
-            <select id="transport" name="transport">
+            <select required id="transport" name="transport">
                 <option value="0">Isi Lokasi dan Waktu Event terlebih Dahulu</option>
             </select>
             <br></br>
             <br/>
                         <input type="submit" value="Submit"/>
         </form>
-            <div class="form-group input-group">
+<!--            <div class="form-group input-group">
                 <div class="input-group-btn">
                     <button id="done">
                         View Route
@@ -112,8 +112,8 @@
                         View Route Via Tolls
                     </button>
                 </div>
-            </div>
-            <form action="save-direction.jsp">
+            </div>-->
+<!--            <form action="save-direction.jsp">
                 <input type="hidden" id="startName" name="startName"/>
                 <input type="hidden" id="latStart" name="latStart"/>
                 <input type="hidden" id="lngStart" name="lngStart"/>
@@ -122,8 +122,8 @@
                 <input type="hidden" id="lngEnd" name="lngEnd"/>
                 <input type="hidden" id="distance" name="distance"/>
                 <input type="hidden" id="avoidTolls" name="avoidTolls"/>
-            </form>
-            <div id="map"></div>
+            </form>-->
+<!--            <div id="map"></div>-->
 
             
         </div>
@@ -354,8 +354,8 @@ function getUnsSuggest(){
                         var depHH = parseInt(v4.substr(11,2));
                         var depMM = parseInt(v4.substr(14,2));
                         
-                        var arrDate = new Date(arrY, arrM, arrD, arrHH, arrMM);
-                        var depDate = new Date(depY, depM, depD, depHH, depMM);
+                        var arrDate = new Date(arrY, arrM-1, arrD, arrHH, arrMM);
+                        var depDate = new Date(depY, depM-1, depD, depHH, depMM);
                         suggest(directionsService, directionsDisplay, arrDate);
                     }
                 }
