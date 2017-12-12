@@ -10,7 +10,7 @@ Author     : myLIFE
 
 <%   
 String username=(String)session.getAttribute("username");
-User user = UserDAO.get(username);
+User us = UserDAO.get(username);
 %> 
 <!DOCTYPE html>
 <html>
@@ -41,14 +41,14 @@ User user = UserDAO.get(username);
         <form action="editAccount.jsp">
                 <input type="text" id="username" name="username" value=<%out.print(username);%> /> <!--Untuk Editing-->
                 <label for="fname">Home Address</label>
-                <input type="text" id="home" name="home" placeholder="..." value="<%=user.getHome()%>"/>
+                <input type="text" id="home" name="home" placeholder="..." value="<%=us.getHome()%>"/>
                 <br/>
                 <label for="fname">Work Address</label>
-                <input type="text" id="workplace" name="workplace" placeholder="..." value="<%=user.getWorkplace()%>"/>
+                <input type="text" id="workplace" name="workplace" placeholder="..." value="<%=us.getWorkplace()%>"/>
                 <br/>
                 <label for="fname">Maximum walking distance (in Kilometer)</label>
                 <br/>
-                <select id="walking" name="maxWalking" class="select minimal" value="<%=user.getMaxWalking()%>">
+                <select id="walking" name="maxWalking" class="select minimal" value="<%=us.getMaxWalking()%>">
                 <option value="0">0 Km</option>
                 <option value="1">1 Km</option>
                 <option value="2">2 Km</option>
