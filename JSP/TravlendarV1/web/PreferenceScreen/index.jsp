@@ -41,10 +41,10 @@ User us = UserDAO.get(username);
         <form action="editAccount.jsp">
                 <input type="hidden" id="username" name="username" value=<%out.print(username);%> /> <!--Untuk Editing-->
                 <label for="fname">Home Address</label>
-                <input type="text" id="home" name="home" placeholder="..." value="<%=us.getHome()%>"/>
+                <input type="text" id="HomeAddress" name="home" placeholder="..." value="<%=us.getHome()%>"/>
                 <br/>
                 <label for="fname">Work Address</label>
-                <input type="text" id="workplace" name="workplace" placeholder="..." value="<%=us.getWorkplace()%>"/>
+                <input type="text" id="WorkAddress" name="workplace" placeholder="..." value="<%=us.getWorkplace()%>"/>
                 <br/>
                 <label for="fname">Maximum walking distance (in Kilometer)</label>
                 <br/>
@@ -65,7 +65,7 @@ User us = UserDAO.get(username);
                 <input type="submit" value="Submit"/>
         </form>
     </div>
-<div id="map" style="display: none;"></div>
+<div id="map" style="display: none"></div>
 </div>
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDteT4he2sgw-Bkf9mR-kVHg7hl6VGdv4E&libraries=places&callback=initMap">

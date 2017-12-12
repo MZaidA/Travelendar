@@ -43,13 +43,14 @@ public class UserDAO {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM user WHERE USERNAME=?");
             ps.setString(1, user);
             ResultSet rs = ps.executeQuery();
-            
+            while(rs.next()) {
             us=new User();
             us.setUsername(rs.getString("USERNAME"));
             us.setPassword(rs.getString("PASSWORD"));
             us.setHome(rs.getString("HOME"));
             us.setWorkplace(rs.getString("WORKPLACE"));
             us.setMaxWalking(rs.getInt("MAX_WALKING"));
+            }
       
         }
         catch(Exception e) {

@@ -4,6 +4,7 @@
     Author     : syamcode
 --%>
 
+<%@page import="Model.User"%>
 <%@page import="Model.Event"%>
 <%@page import="java.util.Locale"%>
 <%@page import="java.util.Date"%>
@@ -16,6 +17,7 @@
 <jsp:getProperty property="eventName" name="event"></jsp:getProperty>--%>
 <% 
     SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+    String username = request.getParameter("username");
     String eventName = request.getParameter("eventName");
     String startloc = "";
     String location = request.getParameter("endLoc");
@@ -36,15 +38,17 @@
     
 //    UnscheduledTravelingTable uns = UnscheduledTravelingTableDAO.getUnscheduledTravelingTableById(request.getParameter("UNSCHEDULED_TRANSPORTATION_ID"));
     Event event = new Event();
-    event.setUsername(username);
+    User x = new User();
+    x.setUsername(username);
+    event.setUsername(x);
     event.setEventName(eventName);
     event.setOrigin(startloc);
     event.setDestination(location);
     event.setArrivalTime(start);
     event.setEventEnd(end);
-    event.setDepartureTime();
-    event.setTravelMode(transport);
-    event.setAvoidTolls(avoidTolls);
+    //event.setDepartureTime();
+    event.setTravelMode(mode);
+    //event.setAvoidTolls(avoidTolls);
 //    event.setDepartureToLocation(new Date(start.getTime() - uns.getTravelingTime()*60000));
     
     int status = EventDAO.save(event);

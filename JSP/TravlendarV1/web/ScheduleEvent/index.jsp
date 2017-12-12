@@ -99,7 +99,10 @@
             <select id="transport" name="transport">
                 <option value="0">Isi Lokasi dan Waktu Event terlebih Dahulu</option>
             </select>
-            <br />
+            <br></br>
+            <br/>
+                        <input type="submit" value="Submit"/>
+        </form>
             <div class="form-group input-group">
                 <div class="input-group-btn">
                     <button id="done">
@@ -121,12 +124,6 @@
                 <input type="hidden" id="avoidTolls" name="avoidTolls"/>
             </form>
             <div id="map"></div>
-            <input type="submit" value="Submit"/>
-        </form>
-        
-            
-            <br>
-            </br>
 
             
         </div>
@@ -380,7 +377,7 @@ function getUnsSuggest(){
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
 //                            alert(depart.getMinutes());
-                            transSuggest.append(new Option("Mobil, Berangkat: "+depart, "DRIVING"));
+                            transSuggest.append(new Option("Mobil, Berangkat: "+depart, "DRIVING,"+dur));
 //                            transSuggest.append(new Option("Mobil, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 1));
                             
                         }
@@ -396,7 +393,7 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Motor, Berangkat: "+depart, "MOTOR"));
+                            transSuggest.append(new Option("Motor, Berangkat: "+depart, "MOTOR,"+dur));
 //                            transSuggest.append(new Option("Motor, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 2));
                             
                         }
@@ -411,7 +408,7 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, "WALKING"));
+                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, "WALKING,"+dur));
 //                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 3));
                         }
                     });
@@ -425,7 +422,7 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING"));
+                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING,"+dur));
 //                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
                         }
                     });
