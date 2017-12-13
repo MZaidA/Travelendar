@@ -6,4 +6,4 @@
 
 <link rel="stylesheet" href="../Assets/css/Style.css"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<link href="../Assets/font?family=Anton|Acme|Boogaloo|Chewy|Glegoo|Rubik" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Anton|Acme|Boogaloo|Chewy|Glegoo|Rubik" rel="stylesheet"/>

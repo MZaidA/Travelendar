@@ -72,28 +72,6 @@ Author     : afadh
 
 
 <script>
-function show(){
-    document.getElementById("detail").style.display = "table";
-}
-</script>
-<script>
-function showDetail(id) {
-    var menu = document.getElementById("detail" + id);
-    for(var i = 0; i < 25; i++){
-        if(id == i)
-        {
-            if(menu.style.display == 'none'){
-                document.getElementById("detail" + id).style.display = "table";
-                document.getElementById("datehide" + id).style.display = "none";
-=======
-            
-        <script>
-            function show(){
-                document.getElementById("detail").style.display = "table";
->>>>>>> 566e96bc8cda8416dfa154c1c37d097cc2317476
-            }
-        </script>
-        <script>
             function showDetail(id) {
                 var menu = document.getElementById("detail" + id);
                 for(var i = 0; i < 25; i++){
@@ -111,6 +89,6 @@ function showDetail(id) {
                     }
                 }
             }
-        </script>
+</script>
     </body>
 </html>

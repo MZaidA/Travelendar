@@ -43,7 +43,7 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><div><a href="#">lupa kata sandi?</a></div></td>
+                                    <td><div class="forget"><a href="#">lupa kata sandi?</a></div></td>
                                 </tr>
                             </tbody>
                         </table>

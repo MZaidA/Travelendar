@@ -1057,6 +1057,7 @@ NOTE: use percentage font sizes or else old IE chokes
 .fc-basic-view th.fc-week-number,
 .fc-basic-view th.fc-day-number {
 	padding: 0 2px; /* column headers can't have as much v space */
+        color: black;
 }
 
 .fc-ltr .fc-basic-view .fc-day-top .fc-day-number { float: right; }

@@ -15,6 +15,7 @@
     <jsp:include page="../head.jsp" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel='stylesheet' href='../Assets/lib/fullcalendar.css'/>
+    <link href='../Assets/lib/fullcalendar.print.min.css' rel='stylesheet' media='print' />
     <script src='../Assets/lib/jquery.min.js'></script>
     <script src='../Assets/lib/moment.min.js'></script>
     <script src='../Assets/lib/fullcalendar.min.js'></script>
@@ -24,11 +25,24 @@
             List<Event> events = EventDAO.getAll(username);
             request.setAttribute("events", events);
         %>
+        <style>
+        #calendar {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+        .holiday {
+        background: red;
+        }
+        </style>
     <script>
 
 	$(document).ready(function() {
 		
 		$('#calendar').fullCalendar({
+                        dayRender: function (date, cell) {
+                            cell.css("background-color", "rgba(255, 189, 50, 0.9)");
+                        },
+                        eventColor: '#016ba0',
 			header: {
 				left: 'prev,next today',
 				center: 'title',
@@ -37,7 +51,10 @@
 			defaultDate: '2017/12/10',
 			navLinks: true, // can click day/week names to navigate views
 			editable: false,
+                        businessHours: true, // display business hours
 			eventLimit: true, // allow "more" link when too many events
+                        timeFormat: 'H(:mm)',
+                         
 			events: [
 				 <c:forEach items="${events}" var="item">
                                 {
@@ -46,7 +63,14 @@
                                         end: '${item.endDateStr}T${item.endTimeStr}',
                                 },
                                 </c:forEach>
+                                {
+                                        title: 'Ultah Delvin',
+                                        start: '2017-12-01T14:30:00',
+                                        end: '2017-12-01T16:30:00',
+                                        
+                                },
 			]
+                        
 		});
 		
 	});
