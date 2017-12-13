@@ -11,9 +11,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <jsp:include page="../head.jsp" />
-    <link rel="stylesheet" href="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/css/material.min.css" />
-    <link rel="stylesheet" href="../Assets/css/bootstrap-material-design.min.css"/>
-    <link rel="stylesheet" href="../Assets/css/bootstrap-material-datetimepicker.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
@@ -21,6 +18,21 @@
     <script type="text/javascript" src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script>
     <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
     <script type="text/javascript" src="../Assets/datetimepick/jquery/bootstrap-material-datetimepicker.js"></script>
+    <link rel="stylesheet" href="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/css/material.min.css" />
+    <link rel="stylesheet" href="../Assets/css/bootstrap-material-design.min.css"/>
+    <link rel="stylesheet" href="../Assets/css/bootstrap-material-datetimepicker.css" />
+    <style>
+        #start,
+      #end {
+        width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+      }
+    </style>
     
     <%   
         String username=(String)session.getAttribute("username");  
@@ -107,7 +119,7 @@
             <br/>
             <input type="submit" value="Submit"/>
         </form>
-            <div class="form-group input-group">
+<!--            <div class="form-group input-group">
                 <div class="input-group-btn">
                     <button id="done">
                         View Route
@@ -116,7 +128,7 @@
                         View Route Via Tolls
                     </button>
                 </div>
-            </div>
+            </div>-->
             <form action="save-direction.jsp">
                 <input type="hidden" id="startName" name="startName"/>
                 <input type="hidden" id="latStart" name="latStart"/>
@@ -149,112 +161,246 @@
 </script>
 
 <script>
-                var markerStart;
-                var markerEnd;
-                var messagewindow;
-                function initMap() {
-                    var directionsService = new google.maps.DirectionsService;
-                    var directionsDisplay = new google.maps.DirectionsRenderer;
-                    var avoidToll = true;
-                    var map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 13,
-                        center: {lat: -6.914744, lng: 107.609810}
-                    });
-                    //AutoComplete
-                    var inputStart = document.getElementById('start');
-                    var inputEnd = document.getElementById('end');
-                    var searchBoxStart = new google.maps.places.SearchBox(inputStart);
-                    var searchBoxEnd = new google.maps.places.SearchBox(inputEnd);
+    // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-                    map.addListener('bounds_changed', function() {
-                        searchBoxStart.setBounds(map.getBounds());
-                    });
+        function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            mapTypeControl: false,
+            center: {lat: -6.934876699999999, lng: 107.66508670000007},
+            zoom: 13
+          });
 
-                    map.addListener('bounds_changed', function() {
-                        searchBoxEnd.setBounds(map.getBounds());
-                    });
+          new AutocompleteDirectionsHandler(map);
+        }
 
-                    //--- end of auto complete --
-                    directionsDisplay.setMap(map);
+         /**
+          * @constructor
+         */
+        function AutocompleteDirectionsHandler(map) {
+          this.map = map;
+          this.originPlaceId = null;
+          this.destinationPlaceId = null;
+          this.travelMode = 'DRIVING';
+          var originInput = document.getElementById('start');
+          var destinationInput = document.getElementById('end');
+//          var modeSelector = document.getElementById('mode-selector');
+          this.directionsService = new google.maps.DirectionsService;
+          this.directionsDisplay = new google.maps.DirectionsRenderer({
+          draggable: true,
+          map: map
+            });
+            var direct1 = this.directionsDisplay;
+            this.directionsDisplay.addListener('directions_changed', function(){
+          showToBox(direct1.getDirections());
+      });
+//          this.directionsDisplay.addListener('directions_changed', function(){
+//          computeTotalDistance(this.directionsDisplay.getDirections());
+//        });
+          this.directionsDisplay.setMap(map);
 
-                    messagewindow = new google.maps.InfoWindow({
-                        content: document.getElementById('message')
-                    });
+          var originAutocomplete = new google.maps.places.Autocomplete(
+              originInput, {placeIdOnly: true});
+          var destinationAutocomplete = new google.maps.places.Autocomplete(
+              destinationInput, {placeIdOnly: true});
 
-                    var geocoder = new google.maps.Geocoder();
+//          this.setupClickListener('changemode-walking', 'WALKING');
+//          this.setupClickListener('changemode-transit', 'TRANSIT');
+//          this.setupClickListener('changemode-driving', 'DRIVING');
 
-                    var onChangeHandler = function() {
-                        avoidToll = true;
-                        document.getElementById("avoidTolls").value=avoidToll;
-                        calculateAndDisplayRoute(directionsService, directionsDisplay, avoidToll);
-                        geocodeAddressStart(geocoder, map);
-                        geocodeAddressEnd(geocoder, map);
-                    };
+          this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+          this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
 
-                    var onChangeHandlerTolls = function() {
-                        avoidToll = false;
-                        document.getElementById("avoidTolls").value=avoidToll;
-                        calculateAndDisplayRoute(directionsService, directionsDisplay, avoidToll);
-                        geocodeAddressStart(geocoder, map);
-                        geocodeAddressEnd(geocoder, map);
-                    };
-                    document.getElementById('done').addEventListener('click', onChangeHandler);
-                    document.getElementById('With-Tolls').addEventListener('click', onChangeHandlerTolls);
-                }
+//          this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+//          this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+//          this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+        }
 
-                function geocodeAddressStart(geocoder, resultsMap) {
-                    var address = document.getElementById('start').value;
-                    geocoder.geocode({'address': address}, function(results, status) {
-                        if (status === 'OK') {
-                            resultsMap.setCenter(results[0].geometry.location);
-                            markerStart = new google.maps.Marker({
-                              position: results[0].geometry.location
-                            });
-                            document.getElementById("latStart").value=markerStart.getPosition().lat();
-                            document.getElementById("lngStart").value=markerStart.getPosition().lng();
-                        } else {
-                            alert('Geocode was not successful for the following reason: ' + status);
-                          }
-                    });
-                }
+        // Sets a listener on a radio button to change the filter type on Places
+        // Autocomplete.
+//        AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+//          var radioButton = document.getElementById(id);
+//          var me = this;
+//          radioButton.addEventListener('click', function() {
+//            me.travelMode = mode;
+//            me.route();
+//          });
+//        };
 
-                function geocodeAddressEnd(geocoder, resultsMap) {
-                    var address = document.getElementById('end').value;
-                    geocoder.geocode({'address': address}, function(results, status) {
-                        if (status === 'OK') {
-                            resultsMap.setCenter(results[0].geometry.location);
-                            markerEnd = new google.maps.Marker({
-                              position: results[0].geometry.location
-                            });
-                            document.getElementById("latEnd").value=markerEnd.getPosition().lat();
-                            document.getElementById("lngEnd").value=markerEnd.getPosition().lng();
-                        } else {
-                            alert('Geocode was not successful for the following reason: ' + status);
-                        }
-                    });
-                }
+        AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+          var me = this;
+          autocomplete.bindTo('bounds', this.map);
+          autocomplete.addListener('place_changed', function() {
+            var place = autocomplete.getPlace();
+            if (!place.place_id) {
+              window.alert("Please select an option from the dropdown list.");
+              return;
+            }
+            if (mode === 'ORIG') {
+              me.originPlaceId = place.place_id;
+            } else {
+              me.destinationPlaceId = place.place_id;
+            }
+            me.route();
+          });
 
-                function calculateAndDisplayRoute(directionsService, directionsDisplay, toll) {
-                    directionsService.route({
-                        origin: document.getElementById('start').value,
-                        destination: document.getElementById('end').value,
-                        travelMode: 'DRIVING',
-                        avoidTolls: toll
-                    }, function(response, status) {
-                        if (status === 'OK') {
-                            directionsDisplay.setDirections(response);
-                            //get distance
-                            var distanceKM = response.routes[0].legs[0].distance.value/1000;
-                            document.getElementById("distance").value=distanceKM;
-                        } else {
-                            window.alert('Directions request failed due to ' + status);
-                        }
-                    });
-                    var start = document.getElementById('start').value;
-                    var end = document.getElementById('end').value;
-                    document.getElementById("startName").value=start;
-                    document.getElementById("endName").value=end;
-                }
+        };
+
+        AutocompleteDirectionsHandler.prototype.route = function() {
+          if (!this.originPlaceId || !this.destinationPlaceId) {
+            return;
+          }
+          var me = this;
+
+          this.directionsService.route({
+            origin: {'placeId': this.originPlaceId},
+            destination: {'placeId': this.destinationPlaceId},
+            travelMode: this.travelMode
+          }, function(response, status) {
+            if (status === 'OK') {
+              me.directionsDisplay.setDirections(response);
+            } else {
+              window.alert('Directions request failed due to ' + status);
+            }
+          });
+        };
+        
+        function showToBox(result){
+            var total = 0;
+            var myroute = result.routes[0];
+            for (var i = 0; i < myroute.legs.length; i++) {
+              total += myroute.legs[i].distance.value;
+            }
+            total = total / 1000;
+            console.log(total);
+            console.log(myroute.legs[0].start_address);
+            console.log(myroute.legs[0].start_location.lat());
+            console.log(myroute.legs[0].start_location.lng());
+
+            console.log(myroute.legs[myroute.legs.length-1].end_address);
+            console.log(myroute.legs[myroute.legs.length-1].end_location.lat());
+            console.log(myroute.legs[myroute.legs.length-1].end_location.lng());
+
+            document.getElementById("startName").value=myroute.legs[0].start_address;
+            document.getElementById("start").value=myroute.legs[0].start_address;
+            document.getElementById("latStart").value=myroute.legs[0].start_location.lat();
+            document.getElementById("lngStart").value=myroute.legs[0].start_location.lng();
+
+            document.getElementById("endName").value=myroute.legs[myroute.legs.length-1].end_address;
+            document.getElementById("end").value=myroute.legs[myroute.legs.length-1].end_address;
+            document.getElementById("latEnd").value=myroute.legs[myroute.legs.length-1].end_location.lat();
+            document.getElementById("lngEnd").value=myroute.legs[myroute.legs.length-1].end_location.lng();
+
+            document.getElementById("distance").value = total;
+        }
+    
+//                var markerStart;
+//                var markerEnd;
+//                var messagewindow;
+//                function initMap() {
+//                    var directionsService = new google.maps.DirectionsService;
+//                    var directionsDisplay = new google.maps.DirectionsRenderer;
+//                    var avoidToll = true;
+//                    var map = new google.maps.Map(document.getElementById('map'), {
+//                        zoom: 13,
+//                        center: {lat: -6.914744, lng: 107.609810}
+//                    });
+//                    //AutoComplete
+//                    var inputStart = document.getElementById('start');
+//                    var inputEnd = document.getElementById('end');
+//                    var searchBoxStart = new google.maps.places.SearchBox(inputStart);
+//                    var searchBoxEnd = new google.maps.places.SearchBox(inputEnd);
+//
+//                    map.addListener('bounds_changed', function() {
+//                        searchBoxStart.setBounds(map.getBounds());
+//                    });
+//
+//                    map.addListener('bounds_changed', function() {
+//                        searchBoxEnd.setBounds(map.getBounds());
+//                    });
+//
+//                    //--- end of auto complete --
+//                    directionsDisplay.setMap(map);
+//
+//                    messagewindow = new google.maps.InfoWindow({
+//                        content: document.getElementById('message')
+//                    });
+//
+//                    var geocoder = new google.maps.Geocoder();
+//
+//                    var onChangeHandler = function() {
+//                        avoidToll = true;
+//                        document.getElementById("avoidTolls").value=avoidToll;
+//                        calculateAndDisplayRoute(directionsService, directionsDisplay, avoidToll);
+//                        geocodeAddressStart(geocoder, map);
+//                        geocodeAddressEnd(geocoder, map);
+//                    };
+//
+//                    var onChangeHandlerTolls = function() {
+//                        avoidToll = false;
+//                        document.getElementById("avoidTolls").value=avoidToll;
+//                        calculateAndDisplayRoute(directionsService, directionsDisplay, avoidToll);
+//                        geocodeAddressStart(geocoder, map);
+//                        geocodeAddressEnd(geocoder, map);
+//                    };
+//                    document.getElementById('done').addEventListener('click', onChangeHandler);
+//                    document.getElementById('With-Tolls').addEventListener('click', onChangeHandlerTolls);
+//                }
+//
+//                function geocodeAddressStart(geocoder, resultsMap) {
+//                    var address = document.getElementById('start').value;
+//                    geocoder.geocode({'address': address}, function(results, status) {
+//                        if (status === 'OK') {
+//                            resultsMap.setCenter(results[0].geometry.location);
+//                            markerStart = new google.maps.Marker({
+//                              position: results[0].geometry.location
+//                            });
+//                            document.getElementById("latStart").value=markerStart.getPosition().lat();
+//                            document.getElementById("lngStart").value=markerStart.getPosition().lng();
+//                        } else {
+//                            alert('Geocode was not successful for the following reason: ' + status);
+//                          }
+//                    });
+//                }
+//
+//                function geocodeAddressEnd(geocoder, resultsMap) {
+//                    var address = document.getElementById('end').value;
+//                    geocoder.geocode({'address': address}, function(results, status) {
+//                        if (status === 'OK') {
+//                            resultsMap.setCenter(results[0].geometry.location);
+//                            markerEnd = new google.maps.Marker({
+//                              position: results[0].geometry.location
+//                            });
+//                            document.getElementById("latEnd").value=markerEnd.getPosition().lat();
+//                            document.getElementById("lngEnd").value=markerEnd.getPosition().lng();
+//                        } else {
+//                            alert('Geocode was not successful for the following reason: ' + status);
+//                        }
+//                    });
+//                }
+//
+//                function calculateAndDisplayRoute(directionsService, directionsDisplay, toll) {
+//                    directionsService.route({
+//                        origin: document.getElementById('start').value,
+//                        destination: document.getElementById('end').value,
+//                        travelMode: 'DRIVING',
+//                        avoidTolls: toll
+//                    }, function(response, status) {
+//                        if (status === 'OK') {
+//                            directionsDisplay.setDirections(response);
+//                            //get distance
+//                            var distanceKM = response.routes[0].legs[0].distance.value/1000;
+//                            document.getElementById("distance").value=distanceKM;
+//                        } else {
+//                            window.alert('Directions request failed due to ' + status);
+//                        }
+//                    });
+//                    var start = document.getElementById('start').value;
+//                    var end = document.getElementById('end').value;
+//                    document.getElementById("startName").value=start;
+//                    document.getElementById("endName").value=end;
+//                }
             </script>
 
 <script>
