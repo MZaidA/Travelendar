@@ -11,6 +11,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <jsp:include page="../head.jsp" />
+<<<<<<< HEAD
     
     <link rel="stylesheet" href="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/css/material.min.css" />
     <link rel="stylesheet" href="../Assets/css/bootstrap-material-design.min.css"/>
@@ -24,6 +25,17 @@
     <script type="text/javascript" src="../Assets/datetimepick/jquery/bootstrap-material-datetimepicker.js"></script>
     
     
+=======
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmLiRLe7nQvc6KDoomu7a-YFSATYVlKSU"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"/> <!--http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css *** ../Assets/datetimepick/dist/jquery-ui.css-->
+    <link rel="stylesheet" href="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.css"/> <!-- link untuk memanggil timepicker -->
+    <%   
+        String username=(String)session.getAttribute("username");  
+    %> 
+>>>>>>> b875254cbc2d15e52a443b9f3cf4199faba83487
     <script>
     $(document).ready(function(){
             $(".notfirst").click(function() {
@@ -74,20 +86,26 @@
         <div class="form">
         <form action="addagenda.jsp">
             <input type="hidden" id="eventId" name="eventId"/> <!--Untuk Editing-->
+            <input type="hidden" id="username" name="username" value=<%out.print(username);%>>
             <label for="fname">Event Name</label>
-            <input type="text" id="eventName" name="eventName" placeholder="..."/>
+            <input type="text" id="eventName" name="eventName" placeholder="..." required/>
             <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
-            <input type="radio" class="first" name="firstornot">First Event</input>
+            <input type="radio" class="first" name="firstornot" required>First Event</input>
             <br/><br/>
             <div id="demo" style="display:none">
             <!--LOCATION GMAPS -->
                 <label for="stLoc">Start Location</label>
                 <div class="form-group input-group">
+<<<<<<< HEAD
                     <input name="startLoc" onchange='getSuggest()' type="text" id="start"  placeholder="Search location"/>
+=======
+                    <input required name="startLoc" onchange='getSuggest()' type="text" id="start" class="form-control" placeholder="Search location"/>
+>>>>>>> b875254cbc2d15e52a443b9f3cf4199faba83487
                 </div>
             </div>  
             </br>
             <label for="fname">End Location</label>
+<<<<<<< HEAD
             <input name="endLoc" onchange='getSuggest()' type="text" id="end" placeholder="Search location">
             <br/>
             <label for="fname">Arrival Date & Time</label>
@@ -95,15 +113,24 @@
             <br/>
             <label for="fname">End Date & Time</label>
             <input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" />
+=======
+            <input required name="endLoc" onchange='getSuggest()' type="text" id="end" class="form-control" placeholder="Search location">
+            <br/>
+            <label for="fname">Arrival Date & Time</label>
+            <input required onchange='getSuggest()' type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
+            <br/>
+            <label for="fname">End Date & Time</label>
+            <input required onchange='getSuggest()' type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
+>>>>>>> b875254cbc2d15e52a443b9f3cf4199faba83487
             </br>
             <label for="stLoc">Transportation</label>
-            <select id="transport" name="transport">
+            <select required id="transport" name="transport">
                 <option value="0">Isi Lokasi dan Waktu Event terlebih Dahulu</option>
             </select>
-            <br />
-            <input type="submit" value="Submit"/>
+            <br></br>
+            <br/>
+                        <input type="submit" value="Submit"/>
         </form>
-        
             <div class="form-group input-group">
                 <div class="input-group-btn">
                     <button id="done">
@@ -114,9 +141,6 @@
                     </button>
                 </div>
             </div>
-
-            </br>
-
             <form action="save-direction.jsp">
                 <input type="hidden" id="startName" name="startName"/>
                 <input type="hidden" id="latStart" name="latStart"/>
@@ -127,7 +151,9 @@
                 <input type="hidden" id="distance" name="distance"/>
                 <input type="hidden" id="avoidTolls" name="avoidTolls"/>
             </form>
-            <div id="map"></div>
+           <div id="map"></div>
+
+            
         </div>
     </div>
 </div>
@@ -316,8 +342,8 @@ function getUnsSuggest(){
                         var depHH = parseInt(v4.substr(11,2));
                         var depMM = parseInt(v4.substr(14,2));
                         
-                        var arrDate = new Date(arrY, arrM, arrD, arrHH, arrMM);
-                        var depDate = new Date(depY, depM, depD, depHH, depMM);
+                        var arrDate = new Date(arrY, arrM-1, arrD, arrHH, arrMM);
+                        var depDate = new Date(depY, depM-1, depD, depHH, depMM);
                         suggest(directionsService, directionsDisplay, arrDate);
                     }
                 }
@@ -339,7 +365,7 @@ function getUnsSuggest(){
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
 //                            alert(depart.getMinutes());
-                            transSuggest.append(new Option("Mobil, Berangkat: "+depart, "DRIVING"));
+                            transSuggest.append(new Option("Mobil, Berangkat: "+depart, "DRIVING,"+dur));
 //                            transSuggest.append(new Option("Mobil, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 1));
                             
                         }
@@ -355,7 +381,7 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Motor, Berangkat: "+depart, "MOTOR"));
+                            transSuggest.append(new Option("Motor, Berangkat: "+depart, "MOTOR,"+dur));
 //                            transSuggest.append(new Option("Motor, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 2));
                             
                         }
@@ -370,7 +396,7 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, "WALKING"));
+                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, "WALKING,"+dur));
 //                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 3));
                         }
                     });
@@ -384,7 +410,7 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING"));
+                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING,"+dur));
 //                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
                         }
                     });

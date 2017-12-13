@@ -8,7 +8,10 @@ Author     : myLIFE
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="DAO.UserDAO, Model.User, java.util.*"%>
 
-
+<%   
+String username=(String)session.getAttribute("username");
+User us = UserDAO.get(username);
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,16 +39,16 @@ Author     : myLIFE
 <br/>
     <div class="form">
         <form action="editAccount.jsp">
-                <input type="hidden" id="homeId" name="homeId"/> <!--Untuk Editing-->
+                <input type="hidden" id="username" name="username" value=<%out.print(username);%> /> <!--Untuk Editing-->
                 <label for="fname">Home Address</label>
-                <input type="text" id="HomeAddress" name="HomeAddress" placeholder="..."/>
+                <input type="text" id="HomeAddress" name="home" placeholder="..." value="<%=us.getHome()%>"/>
                 <br/>
                 <label for="fname">Work Address</label>
-                <input type="text" id="WorkAddress" name="WorkAddress" placeholder="..."/>
+                <input type="text" id="WorkAddress" name="workplace" placeholder="..." value="<%=us.getWorkplace()%>"/>
                 <br/>
                 <label for="fname">Maximum walking distance (in Kilometer)</label>
                 <br/>
-                <select id="walking" name="walking" class="select minimal">
+                <select id="walking" name="maxWalking" class="select minimal" value="<%=us.getMaxWalking()%>">
                 <option value="0">0 Km</option>
                 <option value="1">1 Km</option>
                 <option value="2">2 Km</option>
@@ -57,12 +60,12 @@ Author     : myLIFE
                 <option value="8">8 Km</option>
                 <option value="9">9 Km</option>
                 <option value="10">10 Km</option>
-                </select>
+                </select >
                 <br/><br/>
                 <input type="submit" value="Submit"/>
         </form>
     </div>
-<div id="map" style="display: none;"></div>
+<div id="map" style="display: none"></div>
 </div>
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDteT4he2sgw-Bkf9mR-kVHg7hl6VGdv4E&libraries=places&callback=initMap">

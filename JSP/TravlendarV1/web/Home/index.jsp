@@ -16,8 +16,10 @@ Author     : afadh
     </head>
     <body>
         <%
-            List<Event> events = EventDAO.getAll();
+            String username=(String)session.getAttribute("username"); 
+            List<Event> events = EventDAO.getAll(username);
             request.setAttribute("events", events);
+           
         %>
         <jsp:include page="../header.jsp" />
         <div class="row">
@@ -36,7 +38,7 @@ Author     : afadh
                         <table class="column-seratus">
                             <tbody>
                                 <tr>
-                                    <td class="t4">${item.event_name}</td>
+                                    <td class="t4">${item.eventName}</td>
                                     <td class="t4">${item.arrivalDateStr}</td>
                                     <td class="text-align-center"><a class="action" href="#" onclick="showDetail(${loop.index+1})"><i class="material-icons">details</i></a>
                                         <a href="#" class="action"><i class="material-icons">mode_edit</i></a>
@@ -49,11 +51,11 @@ Author     : afadh
                             <table class="table-seratus" id="detail${loop.index+1}" style="display: none;">
                                 <tbody>
                                     <tr>
-                                        <td class="t4">${item.destination}</td>
+                                        <td class="t4" style="width: 50%;">${item.destination}</td>
                                         <td class="t4">Arrival Time : ${item.arrivalTimeStr}</td>
                                     </tr>
                                     <tr>
-                                        <td class="t4"></td>
+                                        <td class="t4" ></td>
                                         <td class="t4">Departure Time : ${item.departureTimeStr}</td>
                                     </tr>
                                     <tr>

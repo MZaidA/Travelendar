@@ -4,6 +4,7 @@
     Author     : syamcode
 --%>
 
+<%@page import="Model.User"%>
 <%@page import="Model.Event"%>
 <%@page import="java.util.Locale"%>
 <%@page import="java.util.Date"%>
@@ -16,6 +17,7 @@
 <jsp:getProperty property="eventName" name="event"></jsp:getProperty>--%>
 <% 
     SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+    String username = request.getParameter("username");
     String eventName = request.getParameter("eventName");
     String startloc = "";
     String location = request.getParameter("endLoc");
@@ -24,6 +26,11 @@
     Date start = dateFormat.parse(arrivalTime);
     Date end = dateFormat.parse(endDate);
     String mode = request.getParameter("transport");
+    String[] modeArr = mode.split(",");
+    String modeTransportasi = modeArr[0];
+    Integer durasi = Integer.parseInt(modeArr[1]);
+    System.out.println(modeTransportasi + " heheh " +durasi);
+    Date depart = new Date(start.getTime()-durasi*1000);
     if(request.getParameter("startLocationId")!="") {
         startloc = request.getParameter("startLoc");
     }
@@ -36,12 +43,17 @@
     
 //    UnscheduledTravelingTable uns = UnscheduledTravelingTableDAO.getUnscheduledTravelingTableById(request.getParameter("UNSCHEDULED_TRANSPORTATION_ID"));
     Event event = new Event();
+    User x = new User();
+    x.setUsername(username);
+    event.setUsername(x);
     event.setEventName(eventName);
-    event.setStartLocation(startloc);
-    event.setEndLocation(location);
+    event.setOrigin(startloc);
+    event.setDestination(location);
     event.setArrivalTime(start);
-    event.setEndTime(end);
-    event.setTravelingMode(mode);
+    event.setEventEnd(end);
+    event.setDepartureTime(depart);
+    event.setTravelMode(modeTransportasi);
+    //event.setAvoidTolls(avoidTolls);
 //    event.setDepartureToLocation(new Date(start.getTime() - uns.getTravelingTime()*60000));
     
     int status = EventDAO.save(event);

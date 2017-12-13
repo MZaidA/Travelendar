@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.DateFormat, java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="DAO.EventDAO, Model.Event, java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -18,9 +18,10 @@
     <script src='../Assets/lib/jquery.min.js'></script>
     <script src='../Assets/lib/moment.min.js'></script>
     <script src='../Assets/lib/fullcalendar.min.js'></script>
-        <title>JSP Page</title>
+        <title>Calendar</title>
          <%
-            List<Event> events = EventDAO.getAll();
+            String username=(String)session.getAttribute("username"); 
+            List<Event> events = EventDAO.getAll(username);
             request.setAttribute("events", events);
         %>
     <script>
@@ -33,14 +34,14 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay,listWeek'
 			},
-			defaultDate: '2017-10-12',
+			defaultDate: '2017/12/10',
 			navLinks: true, // can click day/week names to navigate views
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			events: [
 				 <c:forEach items="${events}" var="item">
                                 {
-                                        title: '${item.event_name}',
+                                        title: '${item.eventName}',
                                         start: '${item.arrivalDateStr}T${item.arrivalTimeStr}',
                                         end: '${item.endDateStr}T${item.endTimeStr}',
                                 },
