@@ -168,8 +168,9 @@
         function initMap() {
           var map = new google.maps.Map(document.getElementById('map'), {
             mapTypeControl: false,
-            center: {lat: -6.934876699999999, lng: 107.66508670000007},
-            zoom: 13
+            center: {lat: -6.9168957, lng: 107.61926130000006},
+            zoom: 13,
+            gestureHandling: 'greedy'
           });
 
           new AutocompleteDirectionsHandler(map);
