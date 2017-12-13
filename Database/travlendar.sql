@@ -1,28 +1,50 @@
--- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Dec 12, 2017 at 01:33 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     13/12/2017 17:10:51                          */
+/*==============================================================*/
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+drop table if exists EVENT;
 
---
--- Database: `travlendar`
---
-COMMIT;
+drop table if exists USER;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*==============================================================*/
+/* Table: EVENT                                                 */
+/*==============================================================*/
+create table EVENT
+(
+   EVENT_ID             int not null auto_increment,
+   USERNAME             varchar(30) not null,
+   EVENT_NAME           varchar(30) not null,
+   ARRIVAL_AT_LOCATION  timestamp not null,
+   END_TIME             timestamp,
+   DEPARTURE_TIME       timestamp not null,
+   DEPARTURE_LOCATION   varchar(150),
+   DEPARTURE_LAT        float not null,
+   DEPARTURE_LNG        float not null,
+   EVENT_LOCATION       varchar(150),
+   EVENT_LAT            float not null,
+   EVENT_LNG            float not null,
+   TRAVEL_MODE          varchar(10) not null,
+   AVOID_TOLLS          bool,
+   SUMMARY              varchar(150) not null,
+   primary key (EVENT_ID)
+)
+auto_increment = 1;
+
+/*==============================================================*/
+/* Table: USER                                                  */
+/*==============================================================*/
+create table USER
+(
+   USERNAME             varchar(30) not null,
+   PASSWORD             varchar(20) not null,
+   HOME                 varchar(150),
+   WORKPLACE            varchar(150),
+   MAX_WALKING          int,
+   primary key (USERNAME)
+);
+
+alter table EVENT add constraint FK_HAS foreign key (USERNAME)
+      references USER (USERNAME) on delete restrict on update restrict;
+
