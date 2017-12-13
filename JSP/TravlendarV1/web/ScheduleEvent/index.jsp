@@ -11,12 +11,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <jsp:include page="../head.jsp" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmLiRLe7nQvc6KDoomu7a-YFSATYVlKSU"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"/> <!--http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css *** ../Assets/datetimepick/dist/jquery-ui.css-->
-    <link rel="stylesheet" href="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.css"/> <!-- link untuk memanggil timepicker -->
+    
+    <link rel="stylesheet" href="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/css/material.min.css" />
+    <link rel="stylesheet" href="../Assets/css/bootstrap-material-design.min.css"/>
+    <link rel="stylesheet" href="../Assets/css/bootstrap-material-datetimepicker.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script>
+    <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="../Assets/datetimepick/jquery/bootstrap-material-datetimepicker.js"></script>
+    
     
     <script>
     $(document).ready(function(){
@@ -49,9 +55,7 @@
 
 <body>
     
-    <%
-      String userName = request.getParameter("userName");
-    %>
+    
 <jsp:include page="../header.jsp"/>
 
 <div class="row">
@@ -79,18 +83,18 @@
             <!--LOCATION GMAPS -->
                 <label for="stLoc">Start Location</label>
                 <div class="form-group input-group">
-                    <input name="startLoc" onchange='getSuggest()' type="text" id="start" class="form-control" placeholder="Search location"/>
+                    <input name="startLoc" onchange='getSuggest()' type="text" id="start"  placeholder="Search location"/>
                 </div>
             </div>  
             </br>
             <label for="fname">End Location</label>
-            <input name="endLoc" onchange='getSuggest()' type="text" id="end" class="form-control" placeholder="Search location">
+            <input name="endLoc" onchange='getSuggest()' type="text" id="end" placeholder="Search location">
             <br/>
             <label for="fname">Arrival Date & Time</label>
-            <input onchange='getSuggest()' type="text" name="arrivalTime" id="dateTime1" placeholder="Click Here" onchange='getUnsSuggest()'/>
+            <input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" onchange='getUnsSuggest()'/>
             <br/>
             <label for="fname">End Date & Time</label>
-            <input onchange='getSuggest()' type="text" name="endDate" id="dateTime2" placeholder="Click Here" />
+            <input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" />
             </br>
             <label for="stLoc">Transportation</label>
             <select id="transport" name="transport">
@@ -128,67 +132,27 @@
     </div>
 </div>
 
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDteT4he2sgw-Bkf9mR-kVHg7hl6VGdv4E&libraries=places&callback=initMap"></script>
 
 
-<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-timepicker-addon.js"></script> <!-- link untuk memanggil timepicker -->
-<script type="text/javascript" src="../Assets/datetimepick/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script> <!-- link untuk memanggil timepicker -->
-<script type="text/javascript" src="../Assets/datetimepick/dist/jquery-ui-sliderAccess.js"></script> <!-- link untuk memanggil timepicker -->
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDteT4he2sgw-Bkf9mR-kVHg7hl6VGdv4E&libraries=places&callback=initMap">
+
+<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$('#date-start').bootstrapMaterialDatePicker
+			({
+				weekStart: 0, format: 'DD/MM/YYYY HH:mm', shortTime : true
+			}).on('change', function(e, date)
+			{
+				$('#date-end').bootstrapMaterialDatePicker('setMinDate', date);
+			});
+
+			$('#min-date').bootstrapMaterialDatePicker({ format : 'DD/MM/YYYY HH:mm', minDate : new Date() });
+
+			$.material.init()
+		});
 </script>
 
-<script>
-    var myControl=  {
-            create: function(tp_inst, obj, unit, val, min, max, step){
-                    $('<input class="ui-timepicker-input" value="'+val+'" style="width:50%">')
-                        .appendTo(obj)
-                        .spinner({
-                                min: min,
-                                max: max,
-                                step: step,
-                                change: function(e,ui){ // key events
-                                                // don't call if api was used and not key press
-                                                if(e.originalEvent !== undefined)
-                                                        tp_inst._onTimeChange();
-                                                tp_inst._onSelectHandler();
-                                        },
-                                spin: function(e,ui){ // spin events
-                                                tp_inst.control.value(tp_inst, obj, unit, ui.value);
-                                                tp_inst._onTimeChange();
-                                                tp_inst._onSelectHandler();
-                                        }
-                        });
-                    return obj;
-            },
-            options: function(tp_inst, obj, unit, opts, val){
-                    if(typeof(opts) == 'string' && val !== undefined)
-                            return obj.find('.ui-timepicker-input').spinner(opts, val);
-                    return obj.find('.ui-timepicker-input').spinner(opts);
-            },
-            value: function(tp_inst, obj, unit, val){
-                    if(val !== undefined)
-                            return obj.find('.ui-timepicker-input').spinner('value', val);
-                    return obj.find('.ui-timepicker-input').spinner('value');
-            }
-};
-
-$('#dateTime1').datetimepicker({
-	controlType: myControl
-});
-$('#dateTime2').datetimepicker({
-	controlType: myControl
-});
-</script>
-<script>
-    function showBandara(value){
-        if(value == "Pesawat"){
-            document.getElementById("bandara").style.display ='block';
-        }
-        else{
-            document.getElementById("bandara").style.display ='none';
-        }
-    }
-</script>
 <script>
                 var markerStart;
                 var markerEnd;
