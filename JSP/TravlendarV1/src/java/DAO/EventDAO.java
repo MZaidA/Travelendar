@@ -39,14 +39,14 @@ public class EventDAO{
     public static List<Event> getAll(String uname) {
         List<Event> events = new ArrayList<Event>();
         try {
-            String arrival;
+            String start;
             String end;
             String departure;
             
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM event WHERE username = ? ORDER BY departure_time ASC");
             //Event epen = new Event();
-            System.out.println(uname);
+            //System.out.println(uname);
             ps.setString(1, uname);
             ResultSet rs = ps.executeQuery();
             
@@ -56,24 +56,25 @@ public class EventDAO{
             while(rs.next()) {
                 Event event = new Event();
                 event.setEvent_id(rs.getInt("EVENT_ID"));
-                event.setDestination(rs.getString("EVENT_LOCATION"));
+                event.setEventLocation(rs.getString("EVENT_LOCATION"));
                 event.setEventName(rs.getString("EVENT_NAME"));
                 
-                if(rs.getBoolean("AVOID_TOLLS") == true) {
-                    event.setTravelName("Motor");
-                } else {
-                    event.setTravelName("Motor");
-                }
+                //if(rs.getBoolean("AVOID_TOLLS") == true) {
+                //    event.setTravelName("Motor");
+                //} else {
+                //    event.setTravelName("Motor");
+                //}
+                event.setTravelMode(rs.getString("TRAVEL_LOCATION"));
                 
-                arrival = rs.getString("ARRIVAL_AT_LOCATION");
-                event.setArrivalTime(format.parse(arrival)); //menyamakan format sesuai yang ada pada database
-                event.setArrivalDateStr(df.format(event.getArrivalTime())); //membuat date bertipe string agar dapat dibaca JSON
-                event.setArrivalTimeStr(tf.format(event.getArrivalTime())); //membuat time bertipe string agar dapat dibaca JSON
+                start = rs.getString("START_TIME");
+                event.setStartTime(format.parse(start)); //menyamakan format sesuai yang ada pada database
+                event.setStartDateStr(df.format(event.getStartTime())); //membuat date bertipe string agar dapat dibaca JSON
+                event.setStartTimeStr(tf.format(event.getStartTime())); //membuat time bertipe string agar dapat dibaca JSON
                 
                 end = rs.getString("END_TIME");
-                event.setEventEnd(format.parse(end));
-                event.setEndDateStr(df.format(event.getEventEnd()));
-                event.setEndTimeStr(tf.format(event.getEventEnd()));
+                event.setEndTime(format.parse(end));
+                event.setEndDateStr(df.format(event.getEndTime()));
+                event.setEndTimeStr(tf.format(event.getEndTime()));
                 
                departure = rs.getString("DEPARTURE_TIME");
                event.setDepartureTime(format.parse(departure));
@@ -92,7 +93,7 @@ public class EventDAO{
 public static Event get(int id) {
         Event event = null;
         try {
-            String arrival;
+            String start;
             String end;
             String departure;
             
@@ -107,24 +108,25 @@ public static Event get(int id) {
             while(rs.next()) {
                 event = new Event();
                 event.setEvent_id(rs.getInt("EVENT_ID"));
-                event.setDestination(rs.getString("DESTINATION"));
+                event.setEventLocation(rs.getString("EVENT_LOCATION"));
                 event.setEventName(rs.getString("EVENT_NAME"));
                 
-                if(rs.getBoolean("AVOID_TOLLS") == true) {
-                    event.setTravelName("Motor");
-                } else {
-                    event.setTravelName("Motor");
-                }
+                //if(rs.getBoolean("AVOID_TOLLS") == true) {
+                //    event.setTravelName("Motor");
+                //} else {
+                //    event.setTravelName("Motor");
+                //}
+                event.setTravelMode(rs.getString("TRAVEL_MODE"));
                 
-                arrival = rs.getString("ARRIVAL_TIME");
-                event.setArrivalTime(format.parse(arrival)); //menyamakan format sesuai yang ada pada database
-                event.setArrivalDateStr(df.format(event.getArrivalTime())); //membuat date bertipe string agar dapat dibaca JSON
-                event.setArrivalTimeStr(tf.format(event.getArrivalTime())); //membuat time bertipe string agar dapat dibaca JSON
+                start = rs.getString("START_TIME");
+                event.setStartTime(format.parse(start)); //menyamakan format sesuai yang ada pada database
+                event.setStartDateStr(df.format(event.getStartTime())); //membuat date bertipe string agar dapat dibaca JSON
+                event.setStartTimeStr(tf.format(event.getStartTime())); //membuat time bertipe string agar dapat dibaca JSON
                 
                 end = rs.getString("EVENT_END");
-                event.setEventEnd(format.parse(end));
-                event.setEndDateStr(df.format(event.getEventEnd()));
-                event.setEndTimeStr(tf.format(event.getEventEnd()));
+                event.setEndTime(format.parse(end));
+                event.setEndDateStr(df.format(event.getEndTime()));
+                event.setEndTimeStr(tf.format(event.getEndTime()));
                 
                departure = rs.getString("DEPARTURE_TIME");
                event.setDepartureTime(format.parse(departure));
@@ -143,14 +145,14 @@ public static Event get(int id) {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO event(USERNAME, EVENT_NAME, ARRIVAL_TIME, EVENT_END, ORIGIN, DESTINATION, TRAVEL_MODE, DEPARTURE_TIME) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO event(USERNAME, EVENT_NAME, START_TIME, EVENT_END, DEPARTURE_LOCATION, EVENT_LOCATION, TRAVEL_MODE, DEPARTURE_TIME) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, event.getUsername().getUsername());
             ps.setString(2, event.getEventName());
-            ps.setTimestamp(3, new Timestamp(event.getArrivalTime().getTime()));
-            ps.setTimestamp(4, new Timestamp(event.getEventEnd().getTime()));
+            ps.setTimestamp(3, new Timestamp(event.getStartTime().getTime()));
+            ps.setTimestamp(4, new Timestamp(event.getEndTime().getTime()));
             
-            ps.setString(5, event.getOrigin());
-            ps.setString(6, event.getDestination());
+            ps.setString(5, event.getDepartureLocation());
+            ps.setString(6, event.getEventLocation());
             ps.setString(7, event.getTravelMode());
             ps.setTimestamp(8, new Timestamp(event.getDepartureTime().getTime()));
             //ps.setBoolean(9, event.getAvoidTolls());
@@ -167,14 +169,14 @@ public static Event get(int id) {
                 int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE event set USERNAME=?, EVENT_NAME=?, ARRIVAL_TIME=?, EVENT_END=?, DEPARTURE_TIME=?, ORIGIN=?, DESTINATION=?, TRAVEL_MODE=?, AVOID_TOLLS=? WHERE EVENT_ID=?");
+            PreparedStatement ps = con.prepareStatement("UPDATE event set USERNAME=?, EVENT_NAME=?, ARRIVAL_TIME=?, EVENT_END=?, DEPARTURE_TIME=?, DEPARTURE_LOCATION=?, EVENT_LOCATION=?, TRAVEL_MODE=?, AVOID_TOLLS=? WHERE EVENT_ID=?");
             ps.setString(1, event.getUsername().getUsername());
             ps.setString(2, event.getEventName());
-            ps.setTimestamp(3, new Timestamp(event.getArrivalTime().getTime()));
-            ps.setTimestamp(4, new Timestamp(event.getEventEnd().getTime()));
+            ps.setTimestamp(3, new Timestamp(event.getStartTime().getTime()));
+            ps.setTimestamp(4, new Timestamp(event.getEndTime().getTime()));
             ps.setTimestamp(5, new Timestamp(event.getDepartureTime().getTime()));
-            ps.setString(6, event.getOrigin());
-            ps.setString(7, event.getDestination());
+            ps.setString(6, event.getDepartureLocation());
+            ps.setString(7, event.getEventLocation());
             ps.setString(8, event.getTravelMode());
             ps.setBoolean(9, event.getAvoidTolls());
             System.out.print(ps);
@@ -198,6 +200,22 @@ public static Event get(int id) {
             System.out.println(e);
         }
         return status;
+    }
+    
+    public static Event getLastEvent(String uname) {
+        Event last = new Event();
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM event WHERE username = ? ORDER BY departure_time ASC LIMIT 1");
+            ps.setString(1, uname);
+            ResultSet rs = ps.executeQuery();
+            
+            last.setDepartureLocation(rs.getString("DEPARTURE_LOCATION"));
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return last;
     }
     
 }

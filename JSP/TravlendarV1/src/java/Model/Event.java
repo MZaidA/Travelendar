@@ -15,20 +15,20 @@ public class Event {
    private Integer event_id;
    private User username;
    private String eventName;
-   private Date arrivalTime = new Date();
-   private String arrivalDateStr;
-   private String arrivalTimeStr;
-   private Date eventEnd = new Date();
-   private String endDateStr;
-   private String endTimeStr;
    private Date departureTime = new Date();
    private String departureTimeStr;
    private String departureDateStr;
-   private String origin;
-   private String destination;
+   private Date endTime = new Date();
+   private String endDateStr;
+   private String endTimeStr;
+   private Date startTime = new Date();
+   private String startDateStr;
+   private String startTimeStr;
+   private String departureLocation;
+   private String eventLocation;
    private String travelMode;
    private Boolean avoidTolls;
-   private String travelName;
+   private String summary;
 
     /**
      * @return the event_id
@@ -59,34 +59,6 @@ public class Event {
     }
 
     /**
-     * @return the arrivalTime
-     */
-    public Date getArrivalTime() {
-        return arrivalTime;
-    }
-
-    /**
-     * @param arrival_time the arrivalTime to set
-     */
-    public void setArrivalTime(Date arrival_time) {
-        this.arrivalTime = arrival_time;
-    }
-
-    /**
-     * @return the eventEnd
-     */
-    public Date getEventEnd() {
-        return eventEnd;
-    }
-
-    /**
-     * @param event_end the eventEnd to set
-     */
-    public void setEventEnd(Date event_end) {
-        this.eventEnd = event_end;
-    }
-
-    /**
      * @return the departureTime
      */
     public Date getDepartureTime() {
@@ -94,38 +66,66 @@ public class Event {
     }
 
     /**
-     * @param departure_time the departureTime to set
+     * @param Departure_time the departureTime to set
      */
     public void setDepartureTime(Date departure_time) {
         this.departureTime = departure_time;
     }
 
     /**
+     * @return the endTime
+     */
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    /**
+     * @param end_time the eventEnd to set
+     */
+    public void setEndTime(Date end_time) {
+        this.endTime = end_time;
+    }
+
+    /**
+     * @return the startTime
+     */
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    /**
+     * @param start_time the departureTime to set
+     */
+    public void setStartTime(Date start_time) {
+        this.startTime = start_time;
+    }
+
+    /**
      * @return the origin
      */
-    public String getOrigin() {
-        return origin;
+    public String getDepartureLocation() {
+        return departureLocation;
     }
 
     /**
-     * @param origin the origin to set
+     * @param departure_location
      */
-    public void setOrigin(String origin) {
-        this.origin = origin;
+    public void setDepartureLocation(String departure_location) {
+        this.departureLocation = departure_location;
     }
 
     /**
-     * @return the destination
+     * @return the eventLocation
      */
-    public String getDestination() {
-        return destination;
+    public String getEventLocation() {
+        return eventLocation;
     }
 
     /**
-     * @param destination the destination to set
+     * @param event_location
      */
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setEventLocation(String event_location) {
+        this.eventLocation = event_location;
     }
 
     /**
@@ -142,20 +142,20 @@ public class Event {
         this.travelMode = travel_mode;
     }
 
-    public String getArrivalDateStr() {
-        return arrivalDateStr;
+    public String getStartDateStr() {
+        return startDateStr;
     }
 
-    public void setArrivalDateStr(String arrivalDateStr) {
-        this.arrivalDateStr = arrivalDateStr;
+    public void setStartDateStr(String startDateStr) {
+        this.startDateStr = startDateStr;
     }
 
-    public String getArrivalTimeStr() {
-        return arrivalTimeStr;
+    public String getStartTimeStr() {
+        return startTimeStr;
     }
 
-    public void setArrivalTimeStr(String arrivalTimeStr) {
-        this.arrivalTimeStr = arrivalTimeStr;
+    public void setStartTimeStr(String startTimeStr) {
+        this.startTimeStr = startTimeStr;
     }
 
     public String getEndDateStr() {
@@ -221,15 +221,15 @@ public class Event {
     /**
      * @return the travelName
      */
-    public String getTravelName() {
-        return travelName;
+    public String getSummary() {
+        return summary;
     }
 
     /**
-     * @param travelName the travelName to set
+     * @param summary
      */
-    public void setTravelName(String travelName) {
-        this.travelName = travelName;
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
     
     
