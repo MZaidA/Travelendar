@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     13/12/2017 17:10:51                          */
+/* Created on:     17/12/2017 22:13:19                          */
 /*==============================================================*/
 
 
@@ -16,15 +16,15 @@ create table EVENT
    EVENT_ID             int not null auto_increment,
    USERNAME             varchar(30) not null,
    EVENT_NAME           varchar(30) not null,
-   ARRIVAL_AT_LOCATION  timestamp not null,
-   END_TIME             timestamp,
-   DEPARTURE_TIME       timestamp not null,
-   DEPARTURE_LOCATION   varchar(150),
-   DEPARTURE_LAT        float not null,
-   DEPARTURE_LNG        float not null,
-   EVENT_LOCATION       varchar(150),
-   EVENT_LAT            float not null,
-   EVENT_LNG            float not null,
+   START_TIME           datetime not null,
+   END_TIME             datetime,
+   DEPARTURE_TIME       datetime not null,
+   DEPARTURE_LOCATION   varchar(150) not null,
+   DEPARTURE_LAT        float,
+   DEPARTURE_LNG        float,
+   EVENT_LOCATION       varchar(150) not null,
+   EVENT_LNG            float,
+   EVENT_LAT            float,
    TRAVEL_MODE          varchar(10) not null,
    AVOID_TOLLS          bool,
    SUMMARY              varchar(150) not null,
@@ -39,9 +39,6 @@ create table USER
 (
    USERNAME             varchar(30) not null,
    PASSWORD             varchar(20) not null,
-   HOME                 varchar(150),
-   WORKPLACE            varchar(150),
-   MAX_WALKING          int,
    primary key (USERNAME)
 );
 
