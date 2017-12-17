@@ -89,44 +89,55 @@ public class EventDAO{
         return events;
     }
 
-//    public static Event get(int id) {
-//        Event event = null;
-//        try{
-//            String arrival;
-//            String end;
-//            Connection con = getConnection();
-//            PreparedStatement ps = con.prepareStatement("SELECT * FROM event WHERE EVENT_ID=?");
-//            ps.setInt(1, id);
-//            ResultSet rs = ps.executeQuery();
-//            
-//            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//            DateFormat tf = new SimpleDateFormat("HH:mm:ss");
-//            while(rs.next()) {
-//                event = new Event();
-//                event.setEventId(rs.getInt("EVENT_ID"));
-//		event.setLocationId(rs.getInt("LOCATION_ID"));
-//		event.setLoc2Id(rs.getInt("LOC_LOCATION_ID"));
-//                event.setEventName(rs.getString("EVENT_NAME"));
-//                
-//                arrival = rs.getString("ARRIVAL_AT_LOCATION");
-//                event.setArrivalTime(format.parse(arrival));
-//                event.setArrivalDateStr(df.format(event.getArrivalTime()));
-//                event.setArrivalTimeStr(tf.format(event.getArrivalTime()));
-//                
-//                end = rs.getString("EVENT_FINISHED");
-//                event.setEndTime(format.parse(end));
-//                event.setEndDateStr(df.format(event.getEndTime()));
-//                event.setEndTimeStr(tf.format(event.getEndTime()));
-//                
-//                event.setDescription(rs.getString("DESCRIPTION"));
-//            }
-//        }
-//        catch(Exception e) {
-//            System.out.println(e);
-//        }
-//        return event;
-//    }
+public static Event get(int id) {
+        Event event = null;
+        try {
+            String arrival;
+            String end;
+            String departure;
+            
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM event WHERE EVENT_ID=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat tf = new SimpleDateFormat("HH:mm:ss");
+            while(rs.next()) {
+                event = new Event();
+                event.setEvent_id(rs.getInt("EVENT_ID"));
+                event.setDestination(rs.getString("DESTINATION"));
+                event.setEventName(rs.getString("EVENT_NAME"));
+                
+                if(rs.getBoolean("AVOID_TOLLS") == true) {
+                    event.setTravelName("Motor");
+                } else {
+                    event.setTravelName("Motor");
+                }
+                
+                arrival = rs.getString("ARRIVAL_TIME");
+                event.setArrivalTime(format.parse(arrival)); //menyamakan format sesuai yang ada pada database
+                event.setArrivalDateStr(df.format(event.getArrivalTime())); //membuat date bertipe string agar dapat dibaca JSON
+                event.setArrivalTimeStr(tf.format(event.getArrivalTime())); //membuat time bertipe string agar dapat dibaca JSON
+                
+                end = rs.getString("EVENT_END");
+                event.setEventEnd(format.parse(end));
+                event.setEndDateStr(df.format(event.getEventEnd()));
+                event.setEndTimeStr(tf.format(event.getEventEnd()));
+                
+               departure = rs.getString("DEPARTURE_TIME");
+               event.setDepartureTime(format.parse(departure));
+               event.setDepartureDateStr(df.format(event.getDepartureTime()));
+               event.setDepartureTimeStr(tf.format(event.getDepartureTime()));
+               
+            }
+          }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return event;
+    }
 
     public static int save(Event event) {
         int status = 0;
@@ -152,27 +163,28 @@ public class EventDAO{
         return status;
     }
 
-//    public static int update(Event event) {
-//                int status = 0;
-//        try {
-//            Connection con = getConnection();
-//            PreparedStatement ps = con.prepareStatement("UPDATE event set EVENT_NAME=?, EVENT_LOCATION_ID=?, START_LOCATION_ID=?, ARRIVAL_AT_LOCATION=?, EVENT_FINISHED=?, DESCRIPTION=? UNSCHEDULED_TRANSPORTATION_ID=? WHERE EVENT_ID=?");
-//            ps.setString(1, event.getEventName());
-//            ps.setInt(2, event.getEndLocation());
-//            ps.setInt(3, event.getLoc2Id());
-//            ps.setDate(4, (Date) event.getArrivalTime());
-//            ps.setDate(5, (Date) event.getEndTime());
-//            ps.setString(6, event.getDescription());
-//            ps.setInt(7, event.getUnscheduled_id());
-//            ps.setInt(8, event.getEventId());
-//            System.out.print(ps);
-//            status = ps.executeUpdate();
-//        }
-//        catch(Exception e) {
-//            System.out.println(e);
-//        }
-//        return status;
-//    }
+    public static int update(Event event) {
+                int status = 0;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("UPDATE event set USERNAME=?, EVENT_NAME=?, ARRIVAL_TIME=?, EVENT_END=?, DEPARTURE_TIME=?, ORIGIN=?, DESTINATION=?, TRAVEL_MODE=?, AVOID_TOLLS=? WHERE EVENT_ID=?");
+            ps.setString(1, event.getUsername().getUsername());
+            ps.setString(2, event.getEventName());
+            ps.setTimestamp(3, new Timestamp(event.getArrivalTime().getTime()));
+            ps.setTimestamp(4, new Timestamp(event.getEventEnd().getTime()));
+            ps.setTimestamp(5, new Timestamp(event.getDepartureTime().getTime()));
+            ps.setString(6, event.getOrigin());
+            ps.setString(7, event.getDestination());
+            ps.setString(8, event.getTravelMode());
+            ps.setBoolean(9, event.getAvoidTolls());
+            System.out.print(ps);
+            status = ps.executeUpdate();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
 
     public static int delete(Event event) {
         int status = 0;
