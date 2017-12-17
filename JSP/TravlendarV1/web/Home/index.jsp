@@ -32,7 +32,7 @@ Author     : afadh
                 </ul>
             </div><!--Class Navbar-->
             <div class="column content" id="content">
-                <h1> Upcoming Event </h1>
+                <h4> welcome to travlendar </h4>
                 <c:forEach items="${events}" var="item" varStatus="loop">
                     <div class="boxstyle1">
                         <table class="column-seratus">
@@ -67,7 +67,7 @@ Author     : afadh
                         </div>
                     </div>
             </c:forEach>
-        <div id="pagination" style="float: right ;margin: 10px 130px 0px 0px;"></div>        
+             <!--    <div id="pagination" style="float: right ;margin: 10px 130px 0px 0px;"></div>   -->   
     </div>
 </div>
 

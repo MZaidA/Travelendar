@@ -25,7 +25,12 @@ h2 {
 h3 {
     color: black;
 }
-h1, h2, h3{
+h4 {
+    font-size:45px;
+    text-align:center;
+    color: navy;
+}
+h1, h2, h3, h4{
     font-family: 'Rubik', sans-serif;
     margin: 0;
     padding: 0;
@@ -488,7 +493,7 @@ verifform {
 
 /*FORM*/
 input[type=text], select {
-    width: 100%;
+    width: 40%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -548,8 +553,9 @@ form{
 
 .form {
     position:relative;
-    left:23%;
-    width:50%;
+    left:3%;
+    width:91%;
+    height: 530px;
     border-radius: 10px;
     background-color: #f2f2f2;
     padding: 20px;
@@ -726,8 +732,10 @@ select:-moz-focusring {
 /*------------------------------------*/
 
 #map{
-    width: 100%;
-    height: 400px;
+    width: 58%;
+height: 370px;
+bottom: 500px;
+left: 420px;
 }
 
 .detail{

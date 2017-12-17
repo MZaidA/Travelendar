@@ -24,13 +24,45 @@
     <style>
         #start,
       #end {
-        width: 100%;
+    width: 40%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+      }
+      #end1 {
+    width: 191px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+      }
+       #date-start,
+       #date-end{
+    width: 197px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+      }
+      #masuk {
+          width: 200px;
+    background-color: red;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+      }
+      #sub {
+          width: 40%;
       }
     </style>
     
@@ -82,41 +114,44 @@
     </div><!--Class Navbar-->
 
     <div class="column content">
-    <h1>Create a New Event</h1>
+    <h1>schedule event</h1>
 
         <div class="form">
         <form action="addagenda.jsp">
             <input type="hidden" id="eventId" name="eventId"/> <!--Untuk Editing-->
             <input type="hidden" id="username" name="username" value=<%out.print(username);%>>
-            <label for="fname">Event Name</label>
-            <input type="text" id="eventName" name="eventName" placeholder="..." required/>
-            <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
-            <input type="radio" class="first" name="firstornot" required>First Event</input>
-            <br/><br/>
+                <label for="fname">event name :</label><br>
+                    <input type="text" id="eventName" name="eventName" placeholder="..." required/><br>
+            <input type="radio" class="notfirst" name="firstornot" checked>not first event</input>
+            <input type="radio" class="first" name="firstornot" required>first event</input>
+            <br/><h5>your departure location will taken from your previous event location</h5>
             <div id="demo" style="display:none">
-            <!--LOCATION GMAPS -->
+            <!--LOCATION GMAPS 
                 <label for="stLoc">Start Location</label>
                 <div class="form-group input-group">
-                    <input name="startLoc" onchange='getSuggest()' type="text" id="start"  placeholder="Search location"/>
-                </div>
-            </div>  
-            </br>
-            <label for="fname">End Location</label>
-            <input name="endLoc" onchange='getSuggest()' type="text" id="end" placeholder="Search location">
+                    <input name="startLoc" onchange='getSuggest()' type="text" id="start"  placeholder="Search"/>
+                </div> -->
+            </div>
+            <label for="fname">departure location :</label><br>
+            <input name="endLoc" onchange='getSuggest()' type="text" id="end1" width="20px" placeholder="Search">
+            <td><input type="submit" value="you current location" id="masuk"/></td>
+                <br/>
+            <label for="fname">event location :</label><br>
+            <input name="endLoc" width="40px" onchange='getSuggest()' type="text" id="end" placeholder="Search">
+            
             <br/>
-            <label for="fname">Arrival Date & Time</label>
+            <label for="fname">event start :</label>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            <label for="fname">event end :</label><br>
             <input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" onchange='getUnsSuggest()'/>
-            <br/>
-            <label for="fname">End Date & Time</label>
             <input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" />
             </br>
-            <label for="stLoc">Transportation</label>
-            <select required id="transport" name="transport">
-                <option value="0">Isi Lokasi dan Waktu Event terlebih Dahulu</option>
-            </select>
+            <label for="stLoc">travel mode :</label>
+           <!-- <select required id="transport" name="transport">
+                <option value="0">Isi Lokasi dan Waktu Event terlebih Dahulu</option> 
+            </select> -->
             <br></br>
             <br/>
-            <input type="submit" value="Submit"/>
+            <input type="submit" id="sub" value="Submit"/>
         </form>
 <!--            <div class="form-group input-group">
                 <div class="input-group-btn">
