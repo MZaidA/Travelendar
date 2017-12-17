@@ -34,16 +34,16 @@
                             <tbody>
                                 <tr>
                                     <td><label for="email">username</label></td>
-                                    <td><label for="pass">kata Sandi</label></td>
+                                    <td><label for="pass">password</label></td>
                                 </tr>
                                 <tr>
                                     <td><input type="user" name="username"  placeholder="username"></td>
-                                    <td><input type="password" name="password"  placeholder="kata sandi"></td>
+                                    <td><input type="password" name="password"  placeholder="password"></td>
                                     <td><input type="submit" value="Login" style="padding: 5px 5px 5px 5px;"/></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><div class="forget"><a href="#">lupa kata sandi?</a></div></td>
+                                    
                                 </tr>
                             </tbody>
                         </table>
@@ -57,14 +57,14 @@
                     </div>
                     <div class="kolom-kanan">
                         
-                        <h3> belum punya akun ? </h3><br>
-                        <h3> daftar sekarang </h3>
+                        <h3> you don't have an account ? ? </h3><br>
+                        <h3> register now </h3>
                             <form autocomplete="on" action="addUser.jsp" method="POST" >
                            
                             <input type="name" style="width: 100%;" class="username" name="username" placeholder="username" required /><br>
-                            <input type="password" class="password" name="password" id="password" placeholder="kata sandi" required /><br>
-                            <input type="password" class="password" name="password" id="confirm_password" placeholder="ulang kata sandi" required /><br><br>
-                            <input type="submit" class="button" name="submit" value="buat akun">
+                            <input type="password" class="password" name="password" id="password" placeholder="password" required /><br>
+                            <input type="password" class="password" name="password" id="confirm_password" placeholder="repeat password" required /><br><br>
+                            <input type="submit" class="button" name="submit" value="submit">
                                
                             </form>
                     </div>
