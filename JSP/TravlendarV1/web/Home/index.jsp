@@ -29,7 +29,6 @@ Author     : afadh
                     <li class="selected"><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
                     <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
                     <li><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
-                    <li><a href="../PreferenceScreen"><img src="../Assets/icon/settings.png" width="28" height="28" style="float:left;"><div class="text-navbar">Preference</div></a></li>
                 </ul>
             </div><!--Class Navbar-->
             <div class="column content" id="content">
@@ -40,7 +39,7 @@ Author     : afadh
                             <tbody>
                                 <tr>
                                     <td class="t3" style="width: 200px;">${item.eventName}</td>
-                                    <td class="t4">${item.arrivalDateStr}</td>
+                                    <td class="t4">${item.startDateStr}</td>
                                     <td class="text-align-center"><a class="action" href="#" onclick="showDetail(${loop.index+1})"><i class="material-icons">details</i></a>
                                         <a href="editForm.jsp?event_id=${item.event_id}" class="action"><i class="material-icons">mode_edit</i></a>
                                         <a href="delEvent.jsp?event_id=${item.event_id}" class="action"><i class="material-icons">delete</i></a>
@@ -52,8 +51,8 @@ Author     : afadh
                             <table class="table-seratus" id="detail${loop.index+1}" style="display: none;">
                                 <tbody>
                                     <tr>
-                                        <td class="t4" style="width: 50%;">${item.destination}</td>
-                                        <td class="t4">Arrival Time : ${item.arrivalTimeStr}</td>
+                                        <td class="t4" style="width: 50%;">${item.eventLocation}</td>
+                                        <td class="t4">START Time : ${item.startTimeStr}</td>
                                     </tr>
                                     <tr>
                                         <td class="t4" ></td>
@@ -68,7 +67,7 @@ Author     : afadh
                         </div>
                     </div>
             </c:forEach>
-        <div id="pagination" style=" margin: 10px 0px 0px 100px;"></div>        
+        <div id="pagination" style="float: right ;margin: 10px 130px 0px 0px;"></div>        
     </div>
 </div>
 
@@ -80,7 +79,7 @@ Author     : afadh
                 var items = $("#content .boxstyle1");
 
                 var numItems = items.length;
-                var perPage = 7;
+                var perPage = 6;
 
                 // Only show the first 2 (or first `per_page`) items initially.
                 items.slice(perPage).hide();

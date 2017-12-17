@@ -46,7 +46,7 @@
 			header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay,listWeek'
+				right: 'month,agendaWeek,agendaDay'
 			},
 			defaultDate: '2017/12/10',
 			navLinks: true, // can click day/week names to navigate views
@@ -59,16 +59,10 @@
 				 <c:forEach items="${events}" var="item">
                                 {
                                         title: '${item.eventName}',
-                                        start: '${item.arrivalDateStr}T${item.arrivalTimeStr}',
+                                        start: '${item.startDateStr}T${item.startTimeStr}',
                                         end: '${item.endDateStr}T${item.endTimeStr}',
                                 },
                                 </c:forEach>
-                                {
-                                        title: 'Ultah Delvin',
-                                        start: '2017-12-01T14:30:00',
-                                        end: '2017-12-01T16:30:00',
-                                        
-                                },
 			]
                         
 		});
@@ -88,7 +82,6 @@
           <li><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
           <li class="selected"><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
           <li><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
-          <li><a href="../PreferenceScreen"><img src="../Assets/icon/settings.png" width="28" height="28" style="float:left;"><div class="text-navbar">Preference</div></a></li>
         </ul>
     </div><!--Class Navbar-->
 

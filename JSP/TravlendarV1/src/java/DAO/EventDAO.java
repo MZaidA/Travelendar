@@ -64,7 +64,7 @@ public class EventDAO{
                 //} else {
                 //    event.setTravelName("Motor");
                 //}
-                event.setTravelMode(rs.getString("TRAVEL_LOCATION"));
+                event.setTravelMode(rs.getString("TRAVEL_MODE"));
                 
                 start = rs.getString("START_TIME");
                 event.setStartTime(format.parse(start)); //menyamakan format sesuai yang ada pada database
@@ -169,7 +169,7 @@ public static Event get(int id) {
                 int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE event set USERNAME=?, EVENT_NAME=?, ARRIVAL_TIME=?, EVENT_END=?, DEPARTURE_TIME=?, DEPARTURE_LOCATION=?, EVENT_LOCATION=?, TRAVEL_MODE=?, AVOID_TOLLS=? WHERE EVENT_ID=?");
+            PreparedStatement ps = con.prepareStatement("UPDATE event set USERNAME=?, EVENT_NAME=?, START_TIME=?, END_TIME=?, DEPARTURE_TIME=?, DEPARTURE_LOCATION=?, EVENT_LOCATION=?, TRAVEL_MODE=?, AVOID_TOLLS=? WHERE EVENT_ID=?");
             ps.setString(1, event.getUsername().getUsername());
             ps.setString(2, event.getEventName());
             ps.setTimestamp(3, new Timestamp(event.getStartTime().getTime()));
