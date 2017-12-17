@@ -56,7 +56,7 @@ public class EventDAO{
             while(rs.next()) {
                 Event event = new Event();
                 event.setEvent_id(rs.getInt("EVENT_ID"));
-                event.setDestination(rs.getString("DESTINATION"));
+                event.setDestination(rs.getString("EVENT_LOCATION"));
                 event.setEventName(rs.getString("EVENT_NAME"));
                 
                 if(rs.getBoolean("AVOID_TOLLS") == true) {
@@ -65,12 +65,12 @@ public class EventDAO{
                     event.setTravelName("Motor");
                 }
                 
-                arrival = rs.getString("ARRIVAL_TIME");
+                arrival = rs.getString("ARRIVAL_AT_LOCATION");
                 event.setArrivalTime(format.parse(arrival)); //menyamakan format sesuai yang ada pada database
                 event.setArrivalDateStr(df.format(event.getArrivalTime())); //membuat date bertipe string agar dapat dibaca JSON
                 event.setArrivalTimeStr(tf.format(event.getArrivalTime())); //membuat time bertipe string agar dapat dibaca JSON
                 
-                end = rs.getString("EVENT_END");
+                end = rs.getString("END_TIME");
                 event.setEventEnd(format.parse(end));
                 event.setEndDateStr(df.format(event.getEventEnd()));
                 event.setEndTimeStr(tf.format(event.getEventEnd()));
