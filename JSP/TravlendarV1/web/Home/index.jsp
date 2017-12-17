@@ -12,6 +12,7 @@ Author     : afadh
     <head>
         <title>Travlendar</title>
         <jsp:include page="../head.jsp" />
+        <link href="../Assets/css/simplePagination.css" type="text/css" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </head>
     <body>
@@ -31,14 +32,14 @@ Author     : afadh
                     <li><a href="../PreferenceScreen"><img src="../Assets/icon/settings.png" width="28" height="28" style="float:left;"><div class="text-navbar">Preference</div></a></li>
                 </ul>
             </div><!--Class Navbar-->
-            <div class="column content">
+            <div class="column content" id="content">
                 <h1> Upcoming Event </h1>
                 <c:forEach items="${events}" var="item" varStatus="loop">
                     <div class="boxstyle1">
                         <table class="column-seratus">
                             <tbody>
                                 <tr>
-                                    <td class="t4">${item.eventName}</td>
+                                    <td class="t3" style="width: 200px;">${item.eventName}</td>
                                     <td class="t4">${item.arrivalDateStr}</td>
                                     <td class="text-align-center"><a class="action" href="#" onclick="showDetail(${loop.index+1})"><i class="material-icons">details</i></a>
                                         <a href="editForm.jsp?event_id=${item.event_id}" class="action"><i class="material-icons">mode_edit</i></a>
@@ -59,18 +60,51 @@ Author     : afadh
                                         <td class="t4">Departure Time : ${item.departureTimeStr}</td>
                                     </tr>
                                     <tr>
-                                        <td class="t4">${item.travelName}</td>
+                                        <td class="t4">${item.travelMode}</td>
                                         <td class="t4">Event End: ${item.endTimeStr}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-        </c:forEach>
-  </div>
+            </c:forEach>
+        <div id="pagination" style=" margin: 10px 0px 0px 100px;"></div>        
+    </div>
 </div>
 
+<script src="../Assets/js/jquery-1.10.2.min.js"></script>
+<script src="../Assets/js/jquery.simplePagination.js"></script>
 
+<script>
+            jQuery(function($) {
+                var items = $("#content .boxstyle1");
+
+                var numItems = items.length;
+                var perPage = 7;
+
+                // Only show the first 2 (or first `per_page`) items initially.
+                items.slice(perPage).hide();
+
+                // Now setup the pagination using the `#pagination` div.
+                $("#pagination").pagination({
+                    items: numItems,
+                    itemsOnPage: perPage,
+                    cssStyle: "light-theme",
+
+                    // This is the actual page changing functionality.
+                    onPageClick: function(pageNumber) {
+                        // We need to show and hide `tr`s appropriately.
+                        var showFrom = perPage * (pageNumber - 1);
+                        var showTo = showFrom + perPage;
+
+                        // We'll first hide everything...
+                        items.hide()
+                             // ... and then only show the appropriate rows.
+                             .slice(showFrom, showTo).show();
+                    }
+                });
+            });
+        </script>
 <script>
             function showDetail(id) {
                 var menu = document.getElementById("detail" + id);

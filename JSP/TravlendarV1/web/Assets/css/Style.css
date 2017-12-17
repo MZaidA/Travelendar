@@ -38,9 +38,12 @@ a {
     background-color: rgba(255,255,255,0.5);
 }
 .action{
+    color: black;
     padding: 13px 0px 0px 0px;
 }
-
+.action:hover{
+    background-color: rgba(255,255,255,0.5);
+}
 .lfloat{
     float:left;
 }
