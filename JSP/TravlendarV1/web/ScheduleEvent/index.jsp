@@ -87,7 +87,9 @@
           <li class="selected"><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
         </ul>
     </div><!--Class Navbar-->
-    <div class="column content"><h1>schedule event</h1></div>
+    <div class="column content">
+        <h4 style="font-family: 'Rubik', sans-serif;font-size:45px; text-align:center; color: navy; font-weight: bold;">schedule event</h4>
+    </div>
     <div class="column content" style="background-color: #f2f2f2;">
     <div class="column">
         <div class="form">
