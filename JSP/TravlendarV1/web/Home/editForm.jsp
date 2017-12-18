@@ -89,7 +89,7 @@
     </div><!--Class Navbar-->
     <%  
         int id=Integer.valueOf(request.getParameter("event_id"));
-        Event event=EventDAO.get(id);  
+        Event event=EventDAO.get(id);
     %>
     <div class="column content">
         <h1>Edit Form</h1>

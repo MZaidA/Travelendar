@@ -214,8 +214,10 @@ public static Event get(int id) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM event WHERE username = ? ORDER BY departure_time ASC LIMIT 1");
             ps.setString(1, uname);
             ResultSet rs = ps.executeQuery();
-            
-            last.setDepartureLocation(rs.getString("DEPARTURE_LOCATION"));
+            while(rs.next()){
+                last.setEventLocation(rs.getString("EVENT_LOCATION"));
+            }
+           
         }
         catch(Exception e) {
             System.out.println(e);

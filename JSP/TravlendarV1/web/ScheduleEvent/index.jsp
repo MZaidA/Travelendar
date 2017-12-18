@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.*, DAO.EventDAO" %>
+<%@page import="java.util.*, DAO.EventDAO, Model.Event" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -40,6 +40,7 @@
     
     <%   
         String username=(String)session.getAttribute("username");  
+        Event item=EventDAO.getLastEvent(username); 
     %> 
 
     <script>
@@ -100,10 +101,12 @@
             <label for="fname">event name :</label><br>
             <input type="text" id="eventName" name="eventName" placeholder="..." required/><br>
                 
-            <input type="radio" class="notfirst" name="firstornot" checked>not first event</input>
-            <input type="radio" class="first" name="firstornot" required>first event</input>
+            <input type="radio" class="notfirst" name="firstornot" checked>insert after last event</input>
+            <input type="radio" class="first" name="firstornot" required>insert not after last event</input>
             <br/>
-            <div style="display: inline-block" id="keterangan"><h5>your departure location will taken from your previous event location</h5></div>
+            <div style="display: inline-block" id="keterangan"><h5>your departure location will taken from your previous event location</h5>
+            <input id="departure" name="departureLoc" type="hidden" value="<%=item.getEventLocation()%>"> <!--form hidden lokasi ngambil dari event sebelumnya -->
+            </div>
             <br>
             <div id="demo" style="display:none;">
                 <label for="fname">departure location :</label><br>
