@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     17/12/2017 22:13:19                          */
+/* Created on:     18/12/2017 10:55:30                          */
 /*==============================================================*/
 
 
@@ -16,9 +16,9 @@ create table EVENT
    EVENT_ID             int not null auto_increment,
    USERNAME             varchar(30) not null,
    EVENT_NAME           varchar(30) not null,
-   START_TIME           datetime not null,
-   END_TIME             datetime,
-   DEPARTURE_TIME       datetime not null,
+   START_TIME           timestamp not null,
+   END_TIME             timestamp,
+   DEPARTURE_TIME       timestamp not null,
    DEPARTURE_LOCATION   varchar(150) not null,
    DEPARTURE_LAT        float,
    DEPARTURE_LNG        float,
