@@ -32,7 +32,7 @@ Author     : afadh
                 </ul>
             </div><!--Class Navbar-->
             <div class="column content" id="content">
-                <h4> Upcoming Event </h4>
+                <h4> Your Event List </h4>
                 <c:forEach items="${events}" var="item" varStatus="loop">
                     <div class="boxstyle1">
                         <table class="column-seratus">
