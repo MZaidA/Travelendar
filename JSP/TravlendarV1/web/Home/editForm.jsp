@@ -83,7 +83,7 @@
 <h1>Edit Form</h1>  
 <div class="form">
     <form action="editEvent.jsp" method="post">  
-    <input type="text" name="id" value="<%=event.getEvent_id()%>"/>  <!-- Untuk Editing -->
+    <input type="hidden" name="id" value="<%=event.getEvent_id()%>"/>  <!-- Untuk Editing -->
         <input type="hidden" id="username" name="username" value=<%out.print(username);%>>
         <label for="fname">Event Name</label>
         <input type="text" id="eventName" name="eventName" placeholder="..." value="<%=event.getEventName()%>" required/>
@@ -99,13 +99,13 @@
         </div>  
         </br>
         <label for="fname">End Location</label>
-        <input name="endLoc" onchange='getSuggest()' type="text" id="end" placeholder="Search location" value="<%=event.getDestination()%>">
+        <input name="endLoc" onchange='getSuggest()' type="text" id="end" placeholder="Search location" value="<%=event.getEventLocation()%>">
         <br/>
         <label for="fname">Arrival Date & Time</label>
-        <input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" value="<%=event.getArrivalTime().getTime()%>" onchange='getUnsSuggest()'/>
+        <input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" value="<%=event.getStartTime().getTime()%>" onchange='getUnsSuggest()'/>
         <br/>
         <label for="fname">End Date & Time</label>
-        <input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" value="<%=event.getEventEnd().getTime()%>" />
+        <input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" value="<%=event.getEndTime().getTime()%>" />
         </br>
         <label for="stLoc">Transportation</label>
         <select required id="transport" name="transport" value="<%=event.getTravelMode()%>">
