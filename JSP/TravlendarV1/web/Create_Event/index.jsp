@@ -85,11 +85,11 @@
         <ul>
           <li><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
           <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
-          <li class="selected"><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
+          <li class="selected"><a href="../Add_Event"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Create Event</div></a></li>
         </ul>
     </div><!--Class Navbar-->
     <div class="column content">
-        <h4 style="font-family: 'Rubik', sans-serif;font-size:45px; text-align:center; color: navy; font-weight: bold;">schedule event</h4>
+        <h4 style="font-family: 'Rubik', sans-serif;font-size:45px; text-align:center; color: navy; font-weight: bold;">Create Event</h4>
     </div>
     <div class="column content" style="background-color: #f2f2f2;">
     <div class="column">
@@ -98,27 +98,27 @@
             <input type="hidden" id="eventId" name="eventId"/> <!--Untuk Editing-->
             <input type="hidden" id="username" name="username" value=<%out.print(username);%>>
                 
-            <label for="fname">event name :</label><br>
+            <label for="fname">Event Name :</label><br>
             <input type="text" id="eventName" name="eventName" placeholder="..." required/><br>
                 
-            <input type="radio" class="notfirst" name="firstornot" checked>insert after last event</input>
-            <input type="radio" class="first" name="firstornot" required>insert not after last event</input>
+            <input type="radio" class="notfirst" name="firstornot" checked>Insert after last event</input>
+            <input type="radio" class="first" name="firstornot" required>Insert not after last event</input>
             <br/>
-            <div style="display: inline-block" id="keterangan"><h5>your departure location will taken from your previous event location</h5>
+            <div style="display: inline-block" id="keterangan"><h5>Your departure location will taken from your previous event location</h5>
             <input id="departure" name="departureLoc" type="hidden" value="<%=item.getEventLocation()%>"> <!--form hidden lokasi ngambil dari event sebelumnya -->
             </div>
             <br>
             <div id="demo" style="display:none;">
-                <label for="fname">departure location :</label><br>
+                <label for="fname">Departure Location :</label> <i class="material-icons" style="color:#8BC34A">room</i> <br>
                 <input id="start"name="startLoc" onchange='getSuggest()' type="text" id="start" placeholder="Search">
             </div>
-            <label for="fname">event location :</label><br>
+            <label for="fname">Event Location :</label> <i class="material-icons" style="color:red;">room</i><br>
             <input id="end" name="endLoc" width="40px" onchange='getSuggest()' type="text" id="end" placeholder="Search">
                 <table style=" width: 100%;">
                     <tbody style="text-align: left;">
                         <tr>
-                            <th><label for="fname">event start :</label></th>
-                            <th><label for="fname">event end :</label></th>
+                            <th><label for="fname">Event Start :</label></th>
+                            <th><label for="fname">Event End :</label></th>
                         </tr>
                         <tr>
                             <td><input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" onchange='getUnsSuggest()'/></td>
@@ -127,33 +127,43 @@
                     </tbody>
                 </table>
             <div style="display: none" id="travelMode">
-            <label for="stLoc">Suggestion: </label><br>    
+            <label for="stLoc">Travel Mode & Departure Time Suggestion: </label><br>    
                 <table>
                     <tbody>
                         <tr>
-                            <td><input id="svCar1" type="radio"  name="travelmode" checked></input></td>
+                            <td><input id="svCar1" type="radio"  name="travelmode" disabled></input></td>
                             <th><i class="material-icons">directions_car</i></th>
+                            <td> Driving Via Tolls</td>
+                            <td></td>
                             <td id="stCar1"></td>
                         </tr>
                         <tr>
-                            <td><input id="svCar2" type="radio" name="travelmode" ></input></td>
+                            <td><input id="svCar2" type="radio" name="travelmode" disabled></input></td>
                             <th><i class="material-icons">directions_car</i></th>
+                            <td> Driving Avoid Tolls</td>
+                            <td></td>
                             <td id="stCar2"></td>
                         </tr>
                         <tr>
-                            <td><input id="svTransit" type="radio" name="travelmode"></input></td>
+                            <td><input id="svTransit" type="radio" name="travelmode" disabled></input></td>
                             <th><i class="material-icons">directions_transit</i></th>
+                            <td>Transit</td>
+                            <td></td>
                             <td id="stTransit"></td>
                         </tr>
                         <tr>
-                            <td><input id="svWalk" type="radio" name="travelmode"></input></td>
+                            <td><input id="svWalk" type="radio" name="travelmode" disabled></input></td>
                             <th><i class="material-icons">directions_walk</i></th>
+                            <td> Walking</td>
+                            <td></td>
                             <td id="stWalk"></td>
                         </tr>
                         <tr>
-                            <td><input id="svBike"type="radio" name="travelmode"></input></td>
+                            <td><input id="svBike"type="radio" name="travelmode" disabled></input></td>
                             <th><i class="material-icons">directions_bike</i></th>
-                            <td id=""stBike></td>
+                            <td> Bicycle</td>
+                            <td></td>
+                            <td id="stBike"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -507,6 +517,7 @@ function getUnsSuggest(){
                 }
                 function suggest(directionsService, directionsDisplay, orig, dest, arrDate) {
                     var transSuggest = document.getElementById("transport");
+                    document.getElementById("travelMode").style.display = "table";
 //                    var length = transSuggest.options.length;
 //                    for (i = 0; i < length; i++) {
 //                      transSuggest.options[i] = null;
@@ -526,14 +537,13 @@ function getUnsSuggest(){
                             //transSuggest.append(new Option("Mobil, Berangkat: "+depart, "DRIVING,"+dur));
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             
-                            document.getElementById("stCar1").innerHTML= "With Tolls Estimate Departure Time:" +departure;
-                            document.getElementById("svCar1").value = "DRIVING with Tolls,"+dur;
+                            document.getElementById("stCar1").innerHTML=departure;
+                            document.getElementById("svCar1").value =dur;
                             document.getElementById("svCar1").disabled=false;
 //                            transSuggest.append(new Option("Mobil, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 1));
                          
                         }
                         else {
-                            document.getElementById("stCar1").innerHTML="Estimate Departure Time:";
                             document.getElementById("svCar1").value = "";
                             document.getElementById("svCar1").disabled=true;
                         }
@@ -551,16 +561,14 @@ function getUnsSuggest(){
                             var depart = new Date(arrDate-dur*1000);
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             
-                            document.getElementById("travelMode").style.display= "table";
-                            document.getElementById("stCar2").innerHTML="Estimate Departure Time: "+departure;
-                            document.getElementById("svCar2").value = "DRIVING without Tolls,"+dur;
+                            document.getElementById("stCar2").innerHTML=departure;
+                            document.getElementById("svCar2").value = dur;
                             document.getElementById("svCar2").disabled=false;
                             //transSuggest.append(new Option("Motor, Berangkat: "+depart, "MOTOR,"+dur));
 //                            transSuggest.append(new Option("Motor, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 2));
                             
                         }
                         else {
-                            document.getElementById("stCar2").innerHTML="Estimate Departure Time: ";
                             document.getElementById("svCar2").value = "";
                             document.getElementById("svCar2").disabled=true;
                         }
@@ -576,12 +584,16 @@ function getUnsSuggest(){
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
-                            document.getElementById("stWalk").innerHTML="Estimate Departure Time: "+departure;
-                            document.getElementById("svWalk").value = "WALKING,"+dur;
+                            document.getElementById("stWalk").innerHTML= departure;
+                            document.getElementById("svWalk").value = dur;
+                            document.getElementById("svWalk").disabled=false;
                             //transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, "WALKING,"+dur));
 //                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 3));
                         }
-                        
+                        else {
+                            document.getElementById("svWalk").value = "";
+                            document.getElementById("svWalk").disabled=true;
+                        }
                     });
                     directionsService.route({
                         origin: orig,
@@ -594,14 +606,13 @@ function getUnsSuggest(){
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
-                            document.getElementById("stBike").innerHTML="Estimate Departure Time: "+departure;
-                            document.getElementById("svBike").value = "BICYCLING,"+dur;
+                            document.getElementById("stBike").innerHTML=departure;
+                            document.getElementById("svBike").value = dur;
                             document.getElementById("svBike").disabled=false;
                             //transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING,"+dur));
 //                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
                         }
                         else {
-                            document.getElementById("stBike").innerHTML="Estimate Departure Time:";
                             document.getElementById("svBike").value = "";
                             document.getElementById("svBike").disabled=true;
                         }
@@ -617,14 +628,13 @@ function getUnsSuggest(){
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
-                            document.getElementById("stTransit").innerHTML="Estimate Departure Time: "+departure;
-                            document.getElementById("svTransit").value = "TRANSIT,"+dur;
+                            document.getElementById("stTransit").innerHTML=departure;
+                            document.getElementById("svTransit").value = dur;
                             document.getElementById("svTransit").disabled=false;
                             //transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING,"+dur));
 //                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
                         }
                         else {
-                            document.getElementById("stTransit").innerHTML="Estimate Departure Time: ";
                             document.getElementById("svTransit").value = "";
                             document.getElementById("svTransit").disabled=true;
                         }
