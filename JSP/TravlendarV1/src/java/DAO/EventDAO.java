@@ -145,7 +145,7 @@ public static Event get(int id) {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO event(USERNAME, EVENT_NAME, START_TIME, EVENT_END, DEPARTURE_LOCATION, EVENT_LOCATION, TRAVEL_MODE, DEPARTURE_TIME) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO event(USERNAME, EVENT_NAME, ARRIVAL_AT_LOCATION, END_TIME, DEPARTURE_LOCATION, EVENT_LOCATION, TRAVEL_MODE, DEPARTURE_TIME) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, event.getUsername().getUsername());
             ps.setString(2, event.getEventName());
             ps.setTimestamp(3, new Timestamp(event.getStartTime().getTime()));
