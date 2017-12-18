@@ -355,11 +355,11 @@ verifform {
         position: relative;
         float: right;
 	overflow:auto;
-	width: 82%;
+	width: 81%;
 }
 .column {
     float: left;
-    width: 37%;
+    width: 48%;
     padding: 0px;
 }
 
@@ -493,7 +493,7 @@ verifform {
 
 /*FORM*/
 input[type=text], select {
-    width: 40%;
+    width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -552,10 +552,8 @@ form{
 }
 
 .form {
-    position:relative;
-    left:3%;
-    width:91%;
-    height: 530px;
+    
+    width:80%;  
     border-radius: 10px;
     background-color: #f2f2f2;
     padding: 20px;
@@ -732,10 +730,9 @@ select:-moz-focusring {
 /*------------------------------------*/
 
 #map{
-    width: 58%;
-height: 370px;
-bottom: 500px;
-left: 420px;
+    width: 100%;
+    height: 370px;
+
 }
 
 .detail{

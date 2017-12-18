@@ -22,47 +22,34 @@
     <link rel="stylesheet" href="../Assets/css/bootstrap-material-design.min.css"/>
     <link rel="stylesheet" href="../Assets/css/bootstrap-material-datetimepicker.css" />
     <style>
-        #start,
-      #end {
+#start,#end {
     width: 40%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#end1 {
+    width: 40%;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
       }
-      #end1 {
-    width: 191px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-      }
-       #date-start,
+#date-start,
        #date-end{
-    width: 197px;
-    padding: 12px 20px;
-    margin: 8px 0;
+    width: 100%;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
       }
       #masuk {
-          width: 200px;
     background-color: red;
-    padding: 12px 20px;
-    margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-      }
-      #sub {
-          width: 40%;
       }
     </style>
     
@@ -112,45 +99,66 @@
           <li class="selected"><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
         </ul>
     </div><!--Class Navbar-->
-
     <div class="column content">
     <h1>schedule event</h1>
-
+    <div class="column">
         <div class="form">
         <form action="addagenda.jsp">
             <input type="hidden" id="eventId" name="eventId"/> <!--Untuk Editing-->
             <input type="hidden" id="username" name="username" value=<%out.print(username);%>>
-                <label for="fname">event name :</label><br>
-                    <input type="text" id="eventName" name="eventName" placeholder="..." required/><br>
+                
+            <label for="fname">event name :</label><br>
+            <input type="text" id="eventName" name="eventName" placeholder="..." required/><br>
+                
             <input type="radio" class="notfirst" name="firstornot" checked>not first event</input>
             <input type="radio" class="first" name="firstornot" required>first event</input>
-            <br/><h5>your departure location will taken from your previous event location</h5>
-            <div id="demo" style="display:none">
-            <!--LOCATION GMAPS 
-                <label for="stLoc">Start Location</label>
-                <div class="form-group input-group">
-                    <input name="startLoc" onchange='getSuggest()' type="text" id="start"  placeholder="Search"/>
-                </div> -->
+            <br/>
+            <div id="demo" style="display:none;">
+                <h5>your departure location will taken from your previous event location</h5><br>
+                <label for="fname">departure location :</label><br>
+                <input name="startLoc" onchange='getSuggest()' type="text" id="start" placeholder="Search">
             </div>
-            <label for="fname">departure location :</label><br>
-            <input name="endLoc" onchange='getSuggest()' type="text" id="end1" width="20px" placeholder="Search">
-            <td><input type="submit" value="you current location" id="masuk"/></td>
-                <br/>
             <label for="fname">event location :</label><br>
             <input name="endLoc" width="40px" onchange='getSuggest()' type="text" id="end" placeholder="Search">
-            
-            <br/>
-            <label for="fname">event start :</label>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-            <label for="fname">event end :</label><br>
-            <input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" onchange='getUnsSuggest()'/>
-            <input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" />
-            </br>
-            <label for="stLoc">travel mode :</label>
-           <!-- <select required id="transport" name="transport">
-                <option value="0">Isi Lokasi dan Waktu Event terlebih Dahulu</option> 
-            </select> -->
-            <br></br>
-            <br/>
+                <table>
+                    <tbody style="text-align: left">
+                        <tr>
+                            <th><label for="fname">event start :</label></th>
+                            <th><label for="fname">event end :</label></th>
+                        </tr>
+                        <tr>
+                            <td><input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" onchange='getUnsSuggest()'/></td>
+                            <td><input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <div style="display: " id="travelmode">
+            <label for="stLoc">travel mode :</label><br>    
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><input type="radio" class="notfirst" name="travelmode" checked></input></td>
+                            <th><i class="material-icons">directions_car</i></th>
+                            <td>Waktu Perkiraan</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" class="notfirst" name="travelmode" checked></input></td>
+                            <th><i class="material-icons">directions_transit</i></th>
+                            <td>Waktu Perkiraan</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" class="notfirst" name="travelmode" checked></input></td>
+                            <th><i class="material-icons">directions_walk</i></th>
+                            <td>Waktu Perkiraan</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" class="notfirst" name="travelmode" checked></input></td>
+                            <th><i class="material-icons">directions_bike</i></th>
+                            <td>Waktu Perkiraan</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
             <input type="submit" id="sub" value="Submit"/>
         </form>
 <!--            <div class="form-group input-group">
@@ -163,19 +171,20 @@
                     </button>
                 </div>
             </div>-->
-            <form action="save-direction.jsp">
-                <input type="hidden" id="startName" name="startName"/>
-                <input type="hidden" id="latStart" name="latStart"/>
-                <input type="hidden" id="lngStart" name="lngStart"/>
-                <input type="hidden" id="endName" name="endName"/>
-                <input type="hidden" id="latEnd" name="latEnd"/>
-                <input type="hidden" id="lngEnd" name="lngEnd"/>
-                <input type="hidden" id="distance" name="distance"/>
-                <input type="hidden" id="avoidTolls" name="avoidTolls"/>
-            </form>
-           <div id="map"></div>
-
-            
+        </div>
+    </div>
+        <div class="column" style="margin: 50px 0px 0px 20px">
+            <div id="map"></div>
+                <form action="save-direction.jsp">
+                    <input type="hidden" id="startName" name="startName"/>
+                    <input type="hidden" id="latStart" name="latStart"/>
+                    <input type="hidden" id="lngStart" name="lngStart"/>
+                    <input type="hidden" id="endName" name="endName"/>
+                    <input type="hidden" id="latEnd" name="latEnd"/>
+                    <input type="hidden" id="lngEnd" name="lngEnd"/>
+                    <input type="hidden" id="distance" name="distance"/>
+                    <input type="hidden" id="avoidTolls" name="avoidTolls"/>
+                </form>
         </div>
     </div>
 </div>

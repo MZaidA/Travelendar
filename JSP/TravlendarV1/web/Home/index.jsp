@@ -32,7 +32,7 @@ Author     : afadh
                 </ul>
             </div><!--Class Navbar-->
             <div class="column content" id="content">
-                <h4> welcome to travlendar </h4>
+                <h4> Upcoming Event </h4>
                 <c:forEach items="${events}" var="item" varStatus="loop">
                     <div class="boxstyle1">
                         <table class="column-seratus">
@@ -52,11 +52,11 @@ Author     : afadh
                                 <tbody>
                                     <tr>
                                         <td class="t4" style="width: 50%;">${item.eventLocation}</td>
-                                        <td class="t4">START Time : ${item.startTimeStr}</td>
+                                        <td class="t4">Departure Time : ${item.departureTimeStr}</td>
                                     </tr>
                                     <tr>
                                         <td class="t4" ></td>
-                                        <td class="t4">Departure Time : ${item.departureTimeStr}</td>
+                                        <td class="t4">START Time : ${item.startTimeStr}</td>
                                     </tr>
                                     <tr>
                                         <td class="t4">${item.travelMode}</td>
@@ -67,7 +67,7 @@ Author     : afadh
                         </div>
                     </div>
             </c:forEach>
-             <!--    <div id="pagination" style="float: right ;margin: 10px 130px 0px 0px;"></div>   -->   
+             <div id="pagination" style="float: right ;margin: 10px 130px 0px 0px;"></div>  
     </div>
 </div>
 
