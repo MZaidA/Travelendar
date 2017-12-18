@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     18/12/2017 17:35:12                          */
+/* Created on:     18/12/2017 21:55:01                          */
 /*==============================================================*/
 
 
@@ -21,7 +21,7 @@ create table EVENT
    DEPARTURE_TIME       timestamp not null,
    DEPARTURE_LOCATION   varchar(150) not null,
    EVENT_LOCATION       varchar(150) not null,
-   TRAVEL_MODE          varchar(10) not null,
+   TRAVEL_MODE          varchar(30) not null,
    primary key (EVENT_ID)
 )
 auto_increment = 1;
