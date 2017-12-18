@@ -87,8 +87,8 @@
           <li class="selected"><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
         </ul>
     </div><!--Class Navbar-->
-    <div class="column content">
-    <h1>schedule event</h1>
+    <div class="column content"><h1>schedule event</h1></div>
+    <div class="column content" style="background-color: #f2f2f2;">
     <div class="column">
         <div class="form">
         <form action="addagenda.jsp">
@@ -122,28 +122,28 @@
                     </tbody>
                 </table>
             <div style="display: none" id="travelMode">
-            <label for="stLoc">travel mode :</label><br>    
+            <label for="stLoc">Suggestion: </label><br>    
                 <table>
                     <tbody>
                         <tr>
-                            <td><input id="svCar1" type="radio"  name="travelmode"></input></td>
+                            <td><input id="svCar1" type="radio"  name="travelmode" checked></input></td>
                             <th><i class="material-icons">directions_car</i></th>
-                            <td id="stCar1">Waktu Perkiraan Berangkat:</td>
+                            <td id="stCar1"></td>
                         </tr>
                         <tr>
                             <td><input id="svCar2" type="radio" name="travelmode" ></input></td>
                             <th><i class="material-icons">directions_car</i></th>
-                            <td id="stCar2">Waktu Perkiraan Berangkat:</td>
+                            <td id="stCar2"></td>
                         </tr>
                         <tr>
                             <td><input id="svTransit" type="radio" name="travelmode"></input></td>
                             <th><i class="material-icons">directions_transit</i></th>
-                            <td id="stTransit">Waktu Perkiraan Berangkat:</td>
+                            <td id="stTransit"></td>
                         </tr>
                         <tr>
                             <td><input id="svWalk" type="radio" name="travelmode"></input></td>
                             <th><i class="material-icons">directions_walk</i></th>
-                            <td id="stWalk">Waktu Perkiraan Berangkat:</td>
+                            <td id="stWalk"></td>
                         </tr>
                         <tr>
                             <td><input id="svBike"type="radio" name="travelmode"></input></td>
@@ -167,7 +167,7 @@
             </div>-->
         </div>
     </div>
-        <div class="column" style="margin: 50px 0px 0px 20px">
+        <div class="column" style="margin: 50px 0px 0px 20px;">
             <div id="map"></div>
                 <form action="save-direction.jsp">
                     <input type="hidden" id="startName" name="startName"/>

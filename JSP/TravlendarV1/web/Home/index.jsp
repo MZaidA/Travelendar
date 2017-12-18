@@ -52,15 +52,18 @@ Author     : afadh
                                 <tbody>
                                     <tr>
                                         <td class="t4" style="width: 50%;">${item.eventLocation}</td>
-                                        <td class="t4">Departure Time : ${item.departureTimeStr}</td>
+                                        <td class="t4">Departure Time : ${item.startDateStr} ${item.departureTimeStr}
+                                        <br>Start Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${item.startDateStr} ${item.startTimeStr}
+                                        <br>Event End &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${item.startDateStr} ${item.endTimeStr}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="t4" ></td>
-                                        <td class="t4">START Time : ${item.startTimeStr}</td>
+                                        <td class="t4"></td>
                                     </tr>
                                     <tr>
                                         <td class="t4">${item.travelMode}</td>
-                                        <td class="t4">Event End: ${item.endTimeStr}</td>
+                                        <td class="t4"></td>
                                     </tr>
                                 </tbody>
                             </table>
