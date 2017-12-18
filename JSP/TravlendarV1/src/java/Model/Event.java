@@ -19,23 +19,15 @@ public class Event {
    private String departureTimeStr;
    private String departureDateStr;
    private String departureDateTimeStr;
-<<<<<<< HEAD
-=======
    private String startDateStr;
    private String startTimeStr;
    private String startDateTimeStr;
->>>>>>> aaf5597d53037e56c4e78ea6c99e7e259b7b565a
    private Date endTime = new Date();
    private String endDateStr;
    private String endTimeStr;
    private String endDateTimeStr;
    private Date startTime = new Date();
-<<<<<<< HEAD
-   private String startDateStr;
-   private String startTimeStr;
-   private String startDateTimeStr;
-=======
->>>>>>> aaf5597d53037e56c4e78ea6c99e7e259b7b565a
+
    private String departureLocation;
    private String eventLocation;
    private String travelMode;
@@ -266,49 +258,5 @@ public class Event {
      */
     public void setSummary(String summary) {
         this.summary = summary;
-    }
-
-    /**
-     * @return the departureDateTimeStr
-     */
-    public String getDepartureDateTimeStr() {
-        return departureDateTimeStr;
-    }
-
-    /**
-     * @param departureDateTimeStr the departureDateTimeStr to set
-     */
-    public void setDepartureDateTimeStr(String departureDateTimeStr) {
-        this.departureDateTimeStr = departureDateTimeStr;
-    }
-
-    /**
-     * @return the startDateTimeStr
-     */
-    public String getStartDateTimeStr() {
-        return startDateTimeStr;
-    }
-
-    /**
-     * @param startDateTimeStr the startDateTimeStr to set
-     */
-    public void setStartDateTimeStr(String startDateTimeStr) {
-        this.startDateTimeStr = startDateTimeStr;
-    }
-
-    /**
-     * @return the endDateTimeStr
-     */
-    public String getEndDateTimeStr() {
-        return endDateTimeStr;
-    }
-
-    /**
-     * @param endDateTimeStr the endDateTimeStr to set
-     */
-    public void setEndDateTimeStr(String endDateTimeStr) {
-        this.endDateTimeStr = endDateTimeStr;
-    }
-    
-    
+    } 
 }

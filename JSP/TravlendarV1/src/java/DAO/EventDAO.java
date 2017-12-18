@@ -115,11 +115,8 @@ public static Event get(int id) {
             ResultSet rs = ps.executeQuery();
             
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-<<<<<<< HEAD
-            DateFormat dtf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-=======
             DateFormat dtf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
->>>>>>> aaf5597d53037e56c4e78ea6c99e7e259b7b565a
+
             while(rs.next()) {
                 event = new Event();
                 event.setEvent_id(rs.getInt("EVENT_ID"));
@@ -146,12 +143,9 @@ public static Event get(int id) {
                 event.setEndTime(format.parse(end));
                 event.setEndDateTimeStr(dtf.format(event.getEndTime()));
                 
-<<<<<<< HEAD
                departure = rs.getString("DEPARTURE_TIME");
                event.setDepartureTime(format.parse(departure));
                event.setDepartureDateTimeStr(dtf.format(event.getDepartureTime()));
-=======
->>>>>>> aaf5597d53037e56c4e78ea6c99e7e259b7b565a
                
             }
           }
@@ -189,7 +183,7 @@ public static Event get(int id) {
                 int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE event set USERNAME=?, EVENT_NAME=?, START_TIME=?, END_TIME=?, DEPARTURE_TIME=?, DEPARTURE_LOCATION=?, EVENT_LOCATION=?, TRAVEL_MODE=?, AVOID_TOLLS=? WHERE EVENT_ID=?");
+            PreparedStatement ps = con.prepareStatement("UPDATE event set USERNAME=?, EVENT_NAME=?, START_TIME=?, END_TIME=?, DEPARTURE_TIME=?, DEPARTURE_LOCATION=?, EVENT_LOCATION=?, TRAVEL_MODE=? WHERE EVENT_ID=?");
             ps.setString(1, event.getUsername().getUsername());
             ps.setString(2, event.getEventName());
             ps.setTimestamp(3, new Timestamp(event.getStartTime().getTime()));
@@ -198,7 +192,7 @@ public static Event get(int id) {
             ps.setString(6, event.getDepartureLocation());
             ps.setString(7, event.getEventLocation());
             ps.setString(8, event.getTravelMode());
-            ps.setBoolean(9, event.getAvoidTolls());
+            //ps.setBoolean(9, event.getAvoidTolls());
             System.out.print(ps);
             status = ps.executeUpdate();
         }
