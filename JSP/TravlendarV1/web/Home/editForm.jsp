@@ -106,7 +106,9 @@
                         <div class="form-group input-group">
                             <input name="startLoc" onchange='getSuggest()' type="text" id="start"  placeholder="Search location"/>
                         </div>
-                    </div>  
+                    </div>
+                    <label for="fname">departure location :</label><br>
+                    <input name="startLoc" onchange='getSuggest()' type="text" id="start" placeholder="Search location" value="<%=event.getDepartureLocation()%>">
                     </br>
                     <label for="fname">event location :</label>
                     <input name="endLoc" onchange='getSuggest()' type="text" id="end" placeholder="Search location" value="<%=event.getEventLocation()%>">
@@ -118,8 +120,8 @@
                             <th><label for="fname">event end :</label></th>
                         </tr>
                         <tr>
-                            <td><input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" value="<%=event.getStartTime().getTime()%>" onchange='getUnsSuggest()'/></td>
-                            <td><input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" value="<%=event.getEndTime().getTime()%>" /></td>
+                            <td><input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" value="<%=event.getStartDateTimeStr()%>" onchange='getUnsSuggest()'/></td>
+                            <td><input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" value="<%=event.getEndDateTimeStr()%>" /></td>
                         </tr>
                     </tbody>
                     </table>
