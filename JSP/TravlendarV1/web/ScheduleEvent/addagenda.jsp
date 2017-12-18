@@ -16,7 +16,7 @@
 
 <jsp:getProperty property="eventName" name="event"></jsp:getProperty>--%>
 <% 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
     String username = request.getParameter("username");
     String eventName = request.getParameter("eventName");
     String startloc = "";
