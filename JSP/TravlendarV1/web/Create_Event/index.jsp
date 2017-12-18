@@ -537,8 +537,8 @@ function getUnsSuggest(){
                             //transSuggest.append(new Option("Mobil, Berangkat: "+depart, "DRIVING,"+dur));
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             
-                            document.getElementById("stCar1").innerHTML=departure;
-                            document.getElementById("svCar1").value =dur;
+                            document.getElementById("stCar1").innerHTML = departure;
+                            document.getElementById("svCar1").value = "DRIVING with Tolls," + dur;
                             document.getElementById("svCar1").disabled=false;
 //                            transSuggest.append(new Option("Mobil, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 1));
                          
@@ -562,7 +562,7 @@ function getUnsSuggest(){
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             
                             document.getElementById("stCar2").innerHTML=departure;
-                            document.getElementById("svCar2").value = dur;
+                            document.getElementById("svCar2").value = "DRIVING Avoid Tolls," + dur;
                             document.getElementById("svCar2").disabled=false;
                             //transSuggest.append(new Option("Motor, Berangkat: "+depart, "MOTOR,"+dur));
 //                            transSuggest.append(new Option("Motor, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 2));
@@ -585,7 +585,7 @@ function getUnsSuggest(){
                             var depart = new Date(arrDate-dur*1000);
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             document.getElementById("stWalk").innerHTML= departure;
-                            document.getElementById("svWalk").value = dur;
+                            document.getElementById("svWalk").value = "WALKING,"+dur;
                             document.getElementById("svWalk").disabled=false;
                             //transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, "WALKING,"+dur));
 //                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 3));
@@ -607,7 +607,7 @@ function getUnsSuggest(){
                             var depart = new Date(arrDate-dur*1000);
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             document.getElementById("stBike").innerHTML=departure;
-                            document.getElementById("svBike").value = dur;
+                            document.getElementById("svBike").value = "BICYCLING,"+ dur;
                             document.getElementById("svBike").disabled=false;
                             //transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING,"+dur));
 //                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
@@ -629,7 +629,7 @@ function getUnsSuggest(){
                             var depart = new Date(arrDate-dur*1000);
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             document.getElementById("stTransit").innerHTML=departure;
-                            document.getElementById("svTransit").value = dur;
+                            document.getElementById("svTransit").value = "TRANSIT," + dur;
                             document.getElementById("svTransit").disabled=false;
                             //transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING,"+dur));
 //                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
