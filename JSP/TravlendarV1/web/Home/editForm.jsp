@@ -118,8 +118,8 @@
                             <th><label for="fname">event end :</label></th>
                         </tr>
                         <tr>
-                            <td><input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" value="<%=event.getStartTime().getTime()%>" onchange='getUnsSuggest()'/></td>
-                            <td><input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" value="<%=event.getEndTime().getTime()%>" /></td>
+                            <td><input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" value="<%=event.getStartDateTimeStr()%>" onchange='getUnsSuggest()'/></td>
+                            <td><input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" value="<%=event.getEndDateTimeStr()%>" /></td>
                         </tr>
                     </tbody>
                     </table>

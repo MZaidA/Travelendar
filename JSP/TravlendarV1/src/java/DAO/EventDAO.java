@@ -103,8 +103,7 @@ public static Event get(int id) {
             ResultSet rs = ps.executeQuery();
             
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            DateFormat tf = new SimpleDateFormat("HH:mm:ss");
+            DateFormat dtf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
             while(rs.next()) {
                 event = new Event();
                 event.setEvent_id(rs.getInt("EVENT_ID"));
@@ -120,18 +119,15 @@ public static Event get(int id) {
                 
                 start = rs.getString("START_TIME");
                 event.setStartTime(format.parse(start)); //menyamakan format sesuai yang ada pada database
-                event.setStartDateStr(df.format(event.getStartTime())); //membuat date bertipe string agar dapat dibaca JSON
-                event.setStartTimeStr(tf.format(event.getStartTime())); //membuat time bertipe string agar dapat dibaca JSON
+                event.setStartDateTimeStr(dtf.format(event.getStartTime())); //membuat date bertipe string agar dapat dibaca JSON
                 
-                end = rs.getString("EVENT_END");
+                end = rs.getString("END_TIME");
                 event.setEndTime(format.parse(end));
-                event.setEndDateStr(df.format(event.getEndTime()));
-                event.setEndTimeStr(tf.format(event.getEndTime()));
+                event.setEndDateTimeStr(dtf.format(event.getEndTime()));
                 
                departure = rs.getString("DEPARTURE_TIME");
                event.setDepartureTime(format.parse(departure));
-               event.setDepartureDateStr(df.format(event.getDepartureTime()));
-               event.setDepartureTimeStr(tf.format(event.getDepartureTime()));
+               event.setDepartureDateTimeStr(dtf.format(event.getDepartureTime()));
                
             }
           }

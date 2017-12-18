@@ -18,12 +18,15 @@ public class Event {
    private Date departureTime = new Date();
    private String departureTimeStr;
    private String departureDateStr;
+   private String departureDateTimeStr;
    private Date endTime = new Date();
    private String endDateStr;
    private String endTimeStr;
+   private String endDateTimeStr;
    private Date startTime = new Date();
    private String startDateStr;
    private String startTimeStr;
+   private String startDateTimeStr;
    private String departureLocation;
    private String eventLocation;
    private String travelMode;
@@ -149,7 +152,31 @@ public class Event {
     public void setStartDateStr(String startDateStr) {
         this.startDateStr = startDateStr;
     }
+    
+    public void setDepartureDateTimeStr(String departureDateTimeStr) {
+        this.departureDateTimeStr = departureDateTimeStr;
+    }
+    
+    public void setEndDateTimeStr(String endDateTimeStr) {
+        this.endDateTimeStr = endDateTimeStr;
+    }
 
+    public void setStartDateTimeStr(String startDateTimeStr) {
+        this.startDateTimeStr = startDateTimeStr;
+    }
+    
+    public String getDepartureDateTimeStr() {
+        return departureDateTimeStr;
+    }
+    
+    public String getEndDateTimeStr() {
+        return endDateTimeStr;
+    }
+
+    public String getStartDateTimeStr() {
+        return startDateTimeStr;
+    }
+    
     public String getStartTimeStr() {
         return startTimeStr;
     }
