@@ -66,13 +66,8 @@ public class EventDAO{
                 //} else {
                 //    event.setTravelName("Motor");
                 //}
-                if(rs.getString("TRAVEL_MODE") == "DRIVING1"){
-                    event.setTravelMode("Driving with Tolls");
-                } else {
-                    event.setTravelMode("Driving without Tolls");
-                }
-                   
                 
+                event.setTravelMode(rs.getString("TRAVEL_MODE"));
                 
                 start = rs.getString("START_TIME");
                 event.setStartTime(format.parse(start)); //menyamakan format sesuai yang ada pada database

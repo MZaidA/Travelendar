@@ -524,7 +524,7 @@ function getUnsSuggest(){
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             
                             document.getElementById("stCar1").innerHTML= "With Tolls Estimate Departure Time:" +departure;
-                            document.getElementById("svCar1").value = "DRIVING1,"+dur;
+                            document.getElementById("svCar1").value = "DRIVING with Tolls,"+dur;
                             document.getElementById("svCar1").disabled=false;
 //                            transSuggest.append(new Option("Mobil, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 1));
                          
@@ -550,7 +550,7 @@ function getUnsSuggest(){
                             
                             document.getElementById("travelMode").style.display= "table";
                             document.getElementById("stCar2").innerHTML="Estimate Departure Time: "+departure;
-                            document.getElementById("svCar2").value = "DRIVING2,"+dur;
+                            document.getElementById("svCar2").value = "DRIVING without Tolls,"+dur;
                             document.getElementById("svCar2").disabled=false;
                             //transSuggest.append(new Option("Motor, Berangkat: "+depart, "MOTOR,"+dur));
 //                            transSuggest.append(new Option("Motor, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 2));
