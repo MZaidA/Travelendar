@@ -84,7 +84,7 @@
         <ul>
           <li><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
           <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
-          <li class="selected"><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
+          <li><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
         </ul>
     </div><!--Class Navbar-->
     <%  
@@ -92,68 +92,102 @@
         Event event=EventDAO.get(id);  
     %>
     <div class="column content">
-    <h1>Edit Form</h1>
-    <div class="column">
-        <div class="form">
-            <form action="editEvent.jsp" method="post">  
-            <input type="hidden" name="id" value="<%=event.getEvent_id()%>"/>  <!-- Untuk Editing -->
-                <input type="hidden" id="username" name="username" value=<%out.print(username);%>>
-                <label for="fname">Event Name</label>
-                <input type="text" id="eventName" name="eventName" placeholder="..." value="<%=event.getEventName()%>" required/>
-                <input type="radio" class="notfirst" name="firstornot" checked>Not first Event</input>
-                <input type="radio" class="first" name="firstornot" required>First Event</input>
-                <br/><br/>
-                <div id="demo" style="display:none">
-                <!--LOCATION GMAPS -->
-                    <label for="stLoc">Start Location</label>
-                    <div class="form-group input-group">
-                        <input name="startLoc" onchange='getSuggest()' type="text" id="start"  placeholder="Search location"/>
+        <h1>Edit Form</h1>
+        <div class="column">
+            <div class="form">
+                <form action="editEvent.jsp" method="post">  
+                <input type="hidden" name="id" value="<%=event.getEvent_id()%>"/>  <!-- Untuk Editing -->
+                    <input type="hidden" id="username" name="username" value=<%out.print(username);%>>
+                    <label for="fname">event name :</label>
+                    <input type="text" id="eventName" name="eventName" placeholder="..." value="<%=event.getEventName()%>" required/>
+                    <div id="demo" style="display:none">
+                    <!--LOCATION GMAPS -->
+                        <label for="stLoc">Start Location</label>
+                        <div class="form-group input-group">
+                            <input name="startLoc" onchange='getSuggest()' type="text" id="start"  placeholder="Search location"/>
+                        </div>
+                    </div>  
+                    </br>
+                    <label for="fname">event location :</label>
+                    <input name="endLoc" onchange='getSuggest()' type="text" id="end" placeholder="Search location" value="<%=event.getEventLocation()%>">
+                    <br/>
+                    <table style=" width: 100%;">
+                    <tbody style="text-align: left;">
+                        <tr>
+                            <th><label for="fname">event start :</label></th>
+                            <th><label for="fname">event end :</label></th>
+                        </tr>
+                        <tr>
+                            <td><input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" value="<%=event.getStartTime().getTime()%>" onchange='getUnsSuggest()'/></td>
+                            <td><input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" value="<%=event.getEndTime().getTime()%>" /></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    <div style="display: " id="travelmode">
+                    <label for="stLoc">travel mode :</label><br>    
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><input id="svCar1" type="radio" class="notfirst" name="travelmode" checked></input></td>
+                                    <th><i class="material-icons">directions_car</i></th>
+                                    <td id="stCar1">Waktu Perkiraan Berangkat:</td>
+                                </tr>
+                                <tr>
+                                    <td><input id="svCar2" type="radio" class="notfirst" name="travelmode" checked ></input></td>
+                                    <th><i class="material-icons">directions_car</i></th>
+                                    <td id="stCar2">Waktu Perkiraan Berangkat:</td>
+                                </tr>
+                                <tr>
+                                    <td><input id="svTransit" type="radio" class="notfirst" name="travelmode" checked></input></td>
+                                    <th><i class="material-icons">directions_transit</i></th>
+                                    <td id="stTransit">Waktu Perkiraan Berangkat:</td>
+                                </tr>
+                                <tr>
+                                    <td><input id="svWalk" type="radio" class="notfirst" name="travelmode" checked></input></td>
+                                    <th><i class="material-icons">directions_walk</i></th>
+                                    <td id="stWalk">Waktu Perkiraan Berangkat:</td>
+                                </tr>
+                                <tr>
+                                    <td><input id="svBike"type="radio" class="notfirst" name="travelmode" checked></input></td>
+                                    <th><i class="material-icons">directions_bike</i></th>
+                                    <td id=""stBike>Waktu Perkiraan Berangkat:</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>  
-                </br>
-                <label for="fname">End Location</label>
-                <input name="endLoc" onchange='getSuggest()' type="text" id="end" placeholder="Search location" value="<%=event.getEventLocation()%>">
-                <br/>
-                <label for="fname">Arrival Date & Time</label>
-                <input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" value="<%=event.getStartTime().getTime()%>" onchange='getUnsSuggest()'/>
-                <br/>
-                <label for="fname">End Date & Time</label>
-                <input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" value="<%=event.getEndTime().getTime()%>" />
-                </br>
-                <label for="stLoc">Transportation</label>
-                <select required id="transport" name="transport" value="<%=event.getTravelMode()%>">
-                    <option value="0"></option>
-                </select>
-                <br></br>
-                <br/>
-                <input type="submit" value="Submit"/>
-            </form>
-            <!--    
-            <div class="form-group input-group">
-                    <div class="input-group-btn">
-                        <button id="done">
-                            View Route
-                        </button>
-                        <button id="With-Tolls">
-                            View Route Via Tolls
-                        </button>
-                    </div>
+                    <input type="submit" value="Submit"/>
+                </form>
+                <!--    
+                <div class="form-group input-group">
+                        <div class="input-group-btn">
+                            <button id="done">
+                                View Route
+                            </button>
+                            <button id="With-Tolls">
+                                View Route Via Tolls
+                            </button>
+                        </div>
+                </div>
+                -->
             </div>
-            -->
-            <form action="save-direction.jsp">
-                <input type="hidden" id="startName" name="startName"/>
-                <input type="hidden" id="latStart" name="latStart"/>
-                <input type="hidden" id="lngStart" name="lngStart"/>
-                <input type="hidden" id="endName" name="endName"/>
-                <input type="hidden" id="latEnd" name="latEnd"/>
-                <input type="hidden" id="lngEnd" name="lngEnd"/>
-                <input type="hidden" id="distance" name="distance"/>
-                <input type="hidden" id="avoidTolls" name="avoidTolls"/>
-            </form>
-        <div id="map"></div>
-    </div>    
+        </div>
+                        
+        <div class="column" style="margin: 50px 0px 0px 20px">
+            <div id="map"></div>
+                <form action="save-direction.jsp">
+                    <input type="hidden" id="startName" name="startName"/>
+                    <input type="hidden" id="latStart" name="latStart"/>
+                    <input type="hidden" id="lngStart" name="lngStart"/>
+                    <input type="hidden" id="endName" name="endName"/>
+                    <input type="hidden" id="latEnd" name="latEnd"/>
+                    <input type="hidden" id="lngEnd" name="lngEnd"/>
+                    <input type="hidden" id="distance" name="distance"/>
+                    <input type="hidden" id="avoidTolls" name="avoidTolls"/>
+                </form>
+        </div>
 </div>       
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDteT4he2sgw-Bkf9mR-kVHg7hl6VGdv4E&libraries=places&callback=initMap"></script>
+                        
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDteT4he2sgw-Bkf9mR-kVHg7hl6VGdv4E&libraries=places&callback=initMap"></script>
 
 <script type="text/javascript">
 		$(document).ready(function()
