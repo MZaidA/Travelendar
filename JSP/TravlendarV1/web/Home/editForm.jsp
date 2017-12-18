@@ -106,7 +106,9 @@
                         <div class="form-group input-group">
                             <input name="startLoc" onchange='getSuggest()' type="text" id="start"  placeholder="Search location"/>
                         </div>
-                    </div>  
+                    </div>
+                    <label for="fname">departure location :</label><br>
+                    <input name="startLoc" onchange='getSuggest()' type="text" id="start" placeholder="Search location" value="<%=event.getDepartureLocation()%>">
                     </br>
                     <label for="fname">event location :</label>
                     <input name="endLoc" onchange='getSuggest()' type="text" id="end" placeholder="Search location" value="<%=event.getEventLocation()%>">
