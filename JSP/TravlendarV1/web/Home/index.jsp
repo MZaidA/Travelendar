@@ -28,11 +28,11 @@ Author     : afadh
                 <ul>
                     <li class="selected"><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
                     <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
-                    <li><a href="../ScheduleEvent"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Schedule Event Form</div></a></li>
+                    <li><a href="../Create_Event"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Create Event</div></a></li>
                 </ul>
             </div><!--Class Navbar-->
             <div class="column content" id="content">
-                <h4> Upcoming Event </h4>
+                <h4> Your Event List </h4>
                 <c:forEach items="${events}" var="item" varStatus="loop">
                     <div class="boxstyle1">
                         <table class="column-seratus">
@@ -52,9 +52,9 @@ Author     : afadh
                                 <tbody>
                                     <tr>
                                         <td class="t4" style="width: 50%;">${item.eventLocation}</td>
-                                        <td class="t4"><strong>Departure Time :</strong> ${item.startDateTimeStr}
-                                        <br><strong>Start Time</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${item.startDateTimeStr}
-                                        <br><strong>Event End</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${item.startDateTimeStr}
+                                        <td class="t4"><strong>Departure Time :</strong> ${item.departureDateTimeStr}
+                                        <br><strong>Event Start</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${item.startDateTimeStr}
+                                        <br><strong>Event End</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${item.endDateTimeStr}
                                         </td>
                                     </tr>
                                     <tr>
@@ -110,7 +110,7 @@ Author     : afadh
 <script>
             function showDetail(id) {
                 var menu = document.getElementById("detail" + id);
-                for(var i = 0; i < 25; i++){
+                for(var i = 0; i < 50; i++){
                     if(id == i)
                     {
                         if(menu.style.display == 'none'){

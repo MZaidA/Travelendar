@@ -66,13 +66,8 @@ public class EventDAO{
                 //} else {
                 //    event.setTravelName("Motor");
                 //}
-                if(rs.getString("TRAVEL_MODE") == "DRIVING1"){
-                    event.setTravelMode("Driving with Tolls");
-                } else {
-                    event.setTravelMode("Driving without Tolls");
-                }
-                   
                 
+                event.setTravelMode(rs.getString("TRAVEL_MODE"));
                 
                 start = rs.getString("START_TIME");
                 event.setStartTime(format.parse(start)); //menyamakan format sesuai yang ada pada database
@@ -223,8 +218,10 @@ public static Event get(int id) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM event WHERE username = ? ORDER BY departure_time ASC LIMIT 1");
             ps.setString(1, uname);
             ResultSet rs = ps.executeQuery();
-            
-            last.setDepartureLocation(rs.getString("DEPARTURE_LOCATION"));
+            while(rs.next()){
+                last.setEventLocation(rs.getString("EVENT_LOCATION"));
+            }
+           
         }
         catch(Exception e) {
             System.out.println(e);

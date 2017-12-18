@@ -33,12 +33,12 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td><label for="email">username</label></td>
-                                    <td><label for="pass">password</label></td>
+                                    <td><label for="email">Username</label></td>
+                                    <td><label for="pass">Password</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="user" name="username"  placeholder="username"></td>
-                                    <td><input type="password" name="password"  placeholder="password"></td>
+                                    <td><input type="user" name="username"  placeholder="Username"></td>
+                                    <td><input type="password" name="password"  placeholder="Password"></td>
                                     <td><input type="submit" value="Login" style="padding: 5px 5px 5px 5px;"/></td>
                                 </tr>
                                 <tr>
@@ -57,13 +57,13 @@
                     </div>
                     <div class="kolom-kanan">
                         
-                        <h3> you don't have an account ? ? </h3><br>
-                        <h3> register now </h3>
+                        <h3> You don't have an account?</h3><br>
+                        <h3> Register Now </h3>
                             <form autocomplete="on" action="addUser.jsp" method="POST" >
                            
-                            <input type="name" style="width: 100%;" class="username" name="username" placeholder="username" required /><br>
-                            <input type="password" class="password" name="password" id="password" placeholder="password" required /><br>
-                            <input type="password" class="password" name="password" id="confirm_password" placeholder="repeat password" required /><br><br>
+                            <input type="name" style="width: 100%;" class="username" name="username" placeholder="Username" required /><br>
+                            <input type="password" class="password" name="password" id="password" placeholder="Password" required /><br>
+                            <input type="password" class="password" name="password" id="confirm_password" placeholder="Repeat Password" required /><br><br>
                             <input type="submit" class="button" name="submit" value="submit">
                                
                             </form>

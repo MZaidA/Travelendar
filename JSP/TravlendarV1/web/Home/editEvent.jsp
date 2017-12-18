@@ -6,13 +6,16 @@
 
 <%@page import="Model.User"%>
 <%@page import="Model.Event"%>
+<%@page import="java.util.Locale"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="DAO.EventDAO"%>
-<jsp:include page= "editForm.jsp"></jsp:include>
+<%@page import="DAO.EventDAO" %>
+<jsp:include page="editForm.jsp"></jsp:include>
+
 
 <% 
-SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+    int id=Integer.valueOf(request.getParameter("id"));
     String username = request.getParameter("username");
     String eventName = request.getParameter("eventName");
     String startloc = "";
@@ -28,8 +31,8 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
     System.out.println(modeTransportasi + " heheh " +durasi);
     Date depart = new Date(start.getTime()-durasi*1000);
     startloc = request.getParameter("startLoc");
-
-    Event event = new Event();
+    
+    Event event = EventDAO.get(id);
     User x = new User();
     x.setUsername(username);
     event.setUsername(x);
