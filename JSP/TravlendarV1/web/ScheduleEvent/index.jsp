@@ -22,23 +22,8 @@
     <link rel="stylesheet" href="../Assets/css/bootstrap-material-design.min.css"/>
     <link rel="stylesheet" href="../Assets/css/bootstrap-material-datetimepicker.css" />
     <style>
-#start,#end {
-    width: 40%;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
 #end1 {
     width: 40%;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-      }
-#date-start,
-       #date-end{
-    width: 100%;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -116,12 +101,12 @@
             <div id="demo" style="display:none;">
                 <h5>your departure location will taken from your previous event location</h5><br>
                 <label for="fname">departure location :</label><br>
-                <input name="startLoc" onchange='getSuggest()' type="text" id="start" placeholder="Search">
+                <input id="start"name="startLoc" onchange='getSuggest()' type="text" id="start" placeholder="Search">
             </div>
             <label for="fname">event location :</label><br>
-            <input name="endLoc" width="40px" onchange='getSuggest()' type="text" id="end" placeholder="Search">
-                <table>
-                    <tbody style="text-align: left">
+            <input id="end" name="endLoc" width="40px" onchange='getSuggest()' type="text" id="end" placeholder="Search">
+                <table style=" width: 100%;">
+                    <tbody style="text-align: left;">
                         <tr>
                             <th><label for="fname">event start :</label></th>
                             <th><label for="fname">event end :</label></th>
@@ -137,24 +122,29 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td><input type="radio" class="notfirst" name="travelmode" checked></input></td>
+                            <td><input id="svCar1" type="radio" class="notfirst" name="travelmode" checked></input></td>
                             <th><i class="material-icons">directions_car</i></th>
-                            <td>Waktu Perkiraan</td>
+                            <td id="stCar1">Waktu Perkiraan Berangkat:</td>
                         </tr>
                         <tr>
-                            <td><input type="radio" class="notfirst" name="travelmode" checked></input></td>
+                            <td><input id="svCar2" type="radio" class="notfirst" name="travelmode" checked ></input></td>
+                            <th><i class="material-icons">directions_car</i></th>
+                            <td id="stCar2">Waktu Perkiraan Berangkat:</td>
+                        </tr>
+                        <tr>
+                            <td><input id="svTransit" type="radio" class="notfirst" name="travelmode" checked></input></td>
                             <th><i class="material-icons">directions_transit</i></th>
-                            <td>Waktu Perkiraan</td>
+                            <td id="stTransit">Waktu Perkiraan Berangkat:</td>
                         </tr>
                         <tr>
-                            <td><input type="radio" class="notfirst" name="travelmode" checked></input></td>
+                            <td><input id="svWalk" type="radio" class="notfirst" name="travelmode" checked></input></td>
                             <th><i class="material-icons">directions_walk</i></th>
-                            <td>Waktu Perkiraan</td>
+                            <td id="stWalk">Waktu Perkiraan Berangkat:</td>
                         </tr>
                         <tr>
-                            <td><input type="radio" class="notfirst" name="travelmode" checked></input></td>
+                            <td><input id="svBike"type="radio" class="notfirst" name="travelmode" checked></input></td>
                             <th><i class="material-icons">directions_bike</i></th>
-                            <td>Waktu Perkiraan</td>
+                            <td id=""stBike>Waktu Perkiraan Berangkat:</td>
                         </tr>
                     </tbody>
                 </table>
@@ -484,37 +474,37 @@ function getUnsSuggest(){
         function getSuggest() {
                     var v1 = document.getElementById("start").value;
                     var v2 = document.getElementById("end").value;
-                    var v3 = document.getElementById("dateTime1").value;
-                    var v4 = document.getElementById("dateTime2").value;
+                    var v3 = document.getElementById("date-start").value;
+                    var v4 = document.getElementById("date-end").value;
                     if(v1!="" && v2!="" && v3!="" && v4!="") {
                         var directionsService = new google.maps.DirectionsService;
                         var directionsDisplay = new google.maps.DirectionsRenderer;
-                        var arrM = parseInt(v3.substr(0,2));
-                        var arrD = parseInt(v3.substr(3,2));
+                        var arrD = parseInt(v3.substr(0,2));
+                        var arrM = parseInt(v3.substr(3,2));
                         var arrY = parseInt(v3.substr(6,4));
                         var arrHH = parseInt(v3.substr(11,2));
                         var arrMM = parseInt(v3.substr(14,2));
                         
-                        var depM = parseInt(v4.substr(0,2));
-                        var depD = parseInt(v4.substr(3,2));
+                        var depD = parseInt(v4.substr(0,2));
+                        var depM= parseInt(v4.substr(3,2));
                         var depY = parseInt(v4.substr(6,4));
                         var depHH = parseInt(v4.substr(11,2));
                         var depMM = parseInt(v4.substr(14,2));
                         
                         var arrDate = new Date(arrY, arrM-1, arrD, arrHH, arrMM);
                         var depDate = new Date(depY, depM-1, depD, depHH, depMM);
-                        suggest(directionsService, directionsDisplay, arrDate);
+                        suggest(directionsService, directionsDisplay, v1, v2, arrDate);
                     }
                 }
-                function suggest(directionsService, directionsDisplay, arrDate) {
+                function suggest(directionsService, directionsDisplay, orig, dest, arrDate) {
                     var transSuggest = document.getElementById("transport");
-                    var length = transSuggest.options.length;
-                    for (i = 0; i < length; i++) {
-                      transSuggest.options[i] = null;
-                    }
+//                    var length = transSuggest.options.length;
+//                    for (i = 0; i < length; i++) {
+//                      transSuggest.options[i] = null;
+//                    }
                     directionsService.route({
-                        origin: document.getElementById('start').value,
-                        destination: document.getElementById('end').value,
+                        origin: orig,
+                        destination: dest,
                         travelMode: 'DRIVING',
                         avoidTolls: false
                     }, function(response, status) {
@@ -524,14 +514,23 @@ function getUnsSuggest(){
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
 //                            alert(depart.getMinutes());
-                            transSuggest.append(new Option("Mobil, Berangkat: "+depart, "DRIVING,"+dur));
+                            //transSuggest.append(new Option("Mobil, Berangkat: "+depart, "DRIVING,"+dur));
+                            var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
+                            document.getElementById("stCar1").innerHTML="Waktu Perkiraan Berangkat: "+departure;
+                            document.getElementById("svCar1").value = "DRIVING1,"+dur;
+                            document.getElementById("svCar1").disabled=false;
 //                            transSuggest.append(new Option("Mobil, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 1));
-                            
+                         
+                        }
+                        else {
+                            document.getElementById("stCar1").innerHTML="Waktu Perkiraan Berangkat:";
+                            document.getElementById("svCar1").value = "";
+                            document.getElementById("svCar1").disabled=true;
                         }
                     });
                     directionsService.route({
-                        origin: document.getElementById('start').value,
-                        destination: document.getElementById('end').value,
+                        origin: orig,
+                        destination: dest,
                         travelMode: 'DRIVING',
                         avoidTolls: true
                     }, function(response, status) {
@@ -540,14 +539,23 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Motor, Berangkat: "+depart, "MOTOR,"+dur));
+                            var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
+                            document.getElementById("stCar2").innerHTML="Waktu Perkiraan Berangkat: "+departure;
+                            document.getElementById("svCar2").value = "DRIVING2,"+dur;
+                            document.getElementById("svCar2").disabled=false;
+                            //transSuggest.append(new Option("Motor, Berangkat: "+depart, "MOTOR,"+dur));
 //                            transSuggest.append(new Option("Motor, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 2));
                             
                         }
+                        else {
+                            document.getElementById("stCar2").innerHTML="Waktu Perkiraan Berangkat:";
+                            document.getElementById("svCar2").value = "";
+                            document.getElementById("svCar2").disabled=true;
+                        }
                     });
                     directionsService.route({
-                        origin: document.getElementById('start').value,
-                        destination: document.getElementById('end').value,
+                        origin: orig,
+                        destination: dest,
                         travelMode: 'WALKING',
                     }, function(response, status) {
                         if (status === 'OK') {
@@ -555,13 +563,17 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, "WALKING,"+dur));
+                            var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
+                            document.getElementById("stWalk").innerHTML="Waktu Perkiraan Berangkat: "+departure;
+                            document.getElementById("svWalk").value = "WALKING,"+dur;
+                            //transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, "WALKING,"+dur));
 //                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 3));
                         }
+                        
                     });
                     directionsService.route({
-                        origin: document.getElementById('start').value,
-                        destination: document.getElementById('end').value,
+                        origin: orig,
+                        destination: dest,
                         travelMode: 'BICYCLING',
                     }, function(response, status) {
                         if (status === 'OK') {
@@ -569,17 +581,47 @@ function getUnsSuggest(){
                             //get distance
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
-                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING,"+dur));
+                            var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
+                            document.getElementById("stBike").innerHTML="Waktu Perkiraan Berangkat: "+departure;
+                            document.getElementById("svBike").value = "BICYCLING,"+dur;
+                            document.getElementById("svBike").disabled=false;
+                            //transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING,"+dur));
 //                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
                         }
+                        else {
+                            document.getElementById("stBike").innerHTML="Waktu Perkiraan Berangkat:";
+                            document.getElementById("svBike").value = "";
+                            document.getElementById("svBike").disabled=true;
+                        }
                     });
-                    if(transSuggest.options.length==0) {
-                        transSuggest.append(new Option("Suggestion Kendaraan tidak Ditemukan", 0));
-                    }
-                    var start = document.getElementById('start').value;
-                    var end = document.getElementById('end').value;
-                    document.getElementById("startName").value=start;
-                    document.getElementById("endName").value=end;
+                    directionsService.route({
+                        origin: orig,
+                        destination: dest,
+                        travelMode: 'TRANSIT',
+                    }, function(response, status) {
+                        if (status === 'OK') {
+                            directionsDisplay.setDirections(response);
+                            //get distance
+                            var dur = response.routes[0].legs[0].duration.value;
+                            var depart = new Date(arrDate-dur*1000);
+                            var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
+                            document.getElementById("stTransit").innerHTML="Waktu Perkiraan Berangkat: "+departure;
+                            document.getElementById("svTransit").value = "TRANSIT,"+dur;
+                            document.getElementById("svTransit").disabled=false;
+                            //transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING,"+dur));
+//                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
+                        }
+                        else {
+                            document.getElementById("stTransit").innerHTML="Waktu Perkiraan Berangkat:";
+                            document.getElementById("svTransit").value = "";
+                            document.getElementById("svTransit").disabled=true;
+                        }
+                    });
+//                    if(transSuggest.options.length==0) {
+//                        transSuggest.append(new Option("Suggestion Kendaraan tidak Ditemukan", 0));
+//                    }
+                    document.getElementById("startName").value=orig;
+                    document.getElementById("endName").value=dest;
                 }
 </script>
 </body>

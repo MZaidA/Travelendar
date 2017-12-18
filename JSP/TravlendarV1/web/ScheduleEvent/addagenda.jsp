@@ -25,7 +25,7 @@
     String endDate = request.getParameter("endDate");
     Date start = dateFormat.parse(arrivalTime);
     Date end = dateFormat.parse(endDate);
-    String mode = request.getParameter("transport");
+    String mode = request.getParameter("travelmode");
     String[] modeArr = mode.split(",");
     String modeTransportasi = modeArr[0];
     Integer durasi = Integer.parseInt(modeArr[1]);
@@ -47,10 +47,10 @@
     x.setUsername(username);
     event.setUsername(x);
     event.setEventName(eventName);
-    event.setOrigin(startloc);
-    event.setDestination(location);
-    event.setArrivalTime(start);
-    event.setEventEnd(end);
+    event.setDepartureLocation(startloc);
+    event.setEventLocation(location);
+    event.setStartTime(start);
+    event.setEndTime(end);
     event.setDepartureTime(depart);
     event.setTravelMode(modeTransportasi);
     //event.setAvoidTolls(avoidTolls);
