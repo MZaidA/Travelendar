@@ -187,7 +187,7 @@ public static Event get(int id) {
             ps.setString(6, event.getDepartureLocation());
             ps.setString(7, event.getEventLocation());
             ps.setString(8, event.getTravelMode());
-            //ps.setBoolean(9, event.getAvoidTolls());
+            ps.setInt(9, event.getEvent_id());
             System.out.print(ps);
             status = ps.executeUpdate();
         }

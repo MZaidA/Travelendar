@@ -95,9 +95,9 @@
         <h1>Edit Form</h1>
         <div class="column">
             <div class="form">
-                <form action="editEvent.jsp" method="post">  
-                <input type="hidden" name="id" value="<%=event.getEvent_id()%>"/>  <!-- Untuk Editing -->
-                    <input type="hidden" id="username" name="username" value=<%out.print(username);%>>
+                <form action="editEvent.jsp">  
+                    <input type="text" name="id" value="<%=event.getEvent_id()%>"/>  <!-- Untuk Editing -->
+                    <input type="text" id="username" name="username" value="<%out.print(username);%>"/>
                     <label for="fname">event name :</label>
                     <input type="text" id="eventName" name="eventName" placeholder="..." value="<%=event.getEventName()%>" required/>
                     <div id="demo" style="display:none">
@@ -122,37 +122,47 @@
                     </tbody>
                     </table>
                     <div style="display: none" id="travelMode">
-            <label for="stLoc">Suggestion: </label><br>    
-                <table>
-                    <tbody>
-                        <tr>
-                            <td><input id="svCar1" type="radio"  name="travelmode" checked></input></td>
-                            <th><i class="material-icons">directions_car</i></th>
-                            <td id="stCar1"></td>
-                        </tr>
-                        <tr>
-                            <td><input id="svCar2" type="radio" name="travelmode" ></input></td>
-                            <th><i class="material-icons">directions_car</i></th>
-                            <td id="stCar2"></td>
-                        </tr>
-                        <tr>
-                            <td><input id="svTransit" type="radio" name="travelmode"></input></td>
-                            <th><i class="material-icons">directions_transit</i></th>
-                            <td id="stTransit"></td>
-                        </tr>
-                        <tr>
-                            <td><input id="svWalk" type="radio" name="travelmode"></input></td>
-                            <th><i class="material-icons">directions_walk</i></th>
-                            <td id="stWalk"></td>
-                        </tr>
-                        <tr>
-                            <td><input id="svBike"type="radio" name="travelmode"></input></td>
-                            <th><i class="material-icons">directions_bike</i></th>
-                            <td id=""stBike></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>    
+                    <label for="stLoc">Travel Mode & Departure Time Suggestion: </label><br>    
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><input id="svCar1" type="radio"  name="travelmode" disabled></input></td>
+                                    <th><i class="material-icons">directions_car</i></th>
+                                    <td> Driving Via Tolls</td>
+                                    <td></td>
+                                    <td id="stCar1"></td>
+                                </tr>
+                                <tr>
+                                    <td><input id="svCar2" type="radio" name="travelmode" disabled></input></td>
+                                    <th><i class="material-icons">directions_car</i></th>
+                                    <td> Driving Avoid Tolls</td>
+                                    <td></td>
+                                    <td id="stCar2"></td>
+                                </tr>
+                                <tr>
+                                    <td><input id="svTransit" type="radio" name="travelmode" disabled></input></td>
+                                    <th><i class="material-icons">directions_transit</i></th>
+                                    <td>Transit</td>
+                                    <td></td>
+                                    <td id="stTransit"></td>
+                                </tr>
+                                <tr>
+                                    <td><input id="svWalk" type="radio" name="travelmode" disabled></input></td>
+                                    <th><i class="material-icons">directions_walk</i></th>
+                                    <td> Walking</td>
+                                    <td></td>
+                                    <td id="stWalk"></td>
+                                </tr>
+                                <tr>
+                                    <td><input id="svBike"type="radio" name="travelmode" disabled></input></td>
+                                    <th><i class="material-icons">directions_bike</i></th>
+                                    <td> Bicycle</td>
+                                    <td></td>
+                                    <td id="stBike"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>    
             <input type="submit" id="sub" value="Submit"/>
                 </form>
                 <!--    
@@ -447,13 +457,7 @@
 function getUnsSuggest(){
         var v1 = document.myform.eventLocationId.value;
         var v2 = document.myform.arrivalTime.value;
-        var d3 = document.myform.startLocationId;
-        if(d3.disabled) {
-            v3 = "";
-        }
-        else {
-            v3 = d3.value;
-        }
+        var d3 = document.myform.startLocationId.values;
         //alert(d3.disabled);
         var url="unsSuggest.jsp";
 //			var value=$(from).val();
@@ -504,6 +508,7 @@ function getUnsSuggest(){
                 }
                 function suggest(directionsService, directionsDisplay, orig, dest, arrDate) {
                     var transSuggest = document.getElementById("transport");
+                    document.getElementById("travelMode").style.display = "table";
 //                    var length = transSuggest.options.length;
 //                    for (i = 0; i < length; i++) {
 //                      transSuggest.options[i] = null;
@@ -523,14 +528,13 @@ function getUnsSuggest(){
                             //transSuggest.append(new Option("Mobil, Berangkat: "+depart, "DRIVING,"+dur));
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             
-                            document.getElementById("stCar1").innerHTML= "With Tolls Estimate Departure Time:" +departure;
-                            document.getElementById("svCar1").value = "DRIVING1,"+dur;
+                            document.getElementById("stCar1").innerHTML = departure;
+                            document.getElementById("svCar1").value = "DRIVING with Tolls," + dur;
                             document.getElementById("svCar1").disabled=false;
 //                            transSuggest.append(new Option("Mobil, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 1));
                          
                         }
                         else {
-                            document.getElementById("stCar1").innerHTML="Estimate Departure Time:";
                             document.getElementById("svCar1").value = "";
                             document.getElementById("svCar1").disabled=true;
                         }
@@ -548,16 +552,14 @@ function getUnsSuggest(){
                             var depart = new Date(arrDate-dur*1000);
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             
-                            document.getElementById("travelMode").style.display= "table";
-                            document.getElementById("stCar2").innerHTML="Estimate Departure Time: "+departure;
-                            document.getElementById("svCar2").value = "DRIVING2,"+dur;
+                            document.getElementById("stCar2").innerHTML=departure;
+                            document.getElementById("svCar2").value = "DRIVING Avoid Tolls," + dur;
                             document.getElementById("svCar2").disabled=false;
                             //transSuggest.append(new Option("Motor, Berangkat: "+depart, "MOTOR,"+dur));
 //                            transSuggest.append(new Option("Motor, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 2));
                             
                         }
                         else {
-                            document.getElementById("stCar2").innerHTML="Estimate Departure Time: ";
                             document.getElementById("svCar2").value = "";
                             document.getElementById("svCar2").disabled=true;
                         }
@@ -573,12 +575,16 @@ function getUnsSuggest(){
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
-                            document.getElementById("stWalk").innerHTML="Estimate Departure Time: "+departure;
+                            document.getElementById("stWalk").innerHTML= departure;
                             document.getElementById("svWalk").value = "WALKING,"+dur;
+                            document.getElementById("svWalk").disabled=false;
                             //transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart, "WALKING,"+dur));
 //                            transSuggest.append(new Option("Jalan Kaki, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 3));
                         }
-                        
+                        else {
+                            document.getElementById("svWalk").value = "";
+                            document.getElementById("svWalk").disabled=true;
+                        }
                     });
                     directionsService.route({
                         origin: orig,
@@ -591,14 +597,13 @@ function getUnsSuggest(){
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
-                            document.getElementById("stBike").innerHTML="Estimate Departure Time: "+departure;
-                            document.getElementById("svBike").value = "BICYCLING,"+dur;
+                            document.getElementById("stBike").innerHTML=departure;
+                            document.getElementById("svBike").value = "BICYCLING,"+ dur;
                             document.getElementById("svBike").disabled=false;
                             //transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING,"+dur));
 //                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
                         }
                         else {
-                            document.getElementById("stBike").innerHTML="Estimate Departure Time:";
                             document.getElementById("svBike").value = "";
                             document.getElementById("svBike").disabled=true;
                         }
@@ -614,14 +619,13 @@ function getUnsSuggest(){
                             var dur = response.routes[0].legs[0].duration.value;
                             var depart = new Date(arrDate-dur*1000);
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
-                            document.getElementById("stTransit").innerHTML="Estimate Departure Time: "+departure;
-                            document.getElementById("svTransit").value = "TRANSIT,"+dur;
+                            document.getElementById("stTransit").innerHTML=departure;
+                            document.getElementById("svTransit").value = "TRANSIT," + dur;
                             document.getElementById("svTransit").disabled=false;
                             //transSuggest.append(new Option("Sepeda, Berangkat: "+depart, "BICYCLING,"+dur));
 //                            transSuggest.append(new Option("Sepeda, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 4));
                         }
                         else {
-                            document.getElementById("stTransit").innerHTML="Estimate Departure Time: ";
                             document.getElementById("svTransit").value = "";
                             document.getElementById("svTransit").disabled=true;
                         }

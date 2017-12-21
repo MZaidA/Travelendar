@@ -10,7 +10,6 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="DAO.EventDAO" %>
-<jsp:include page="editForm.jsp"></jsp:include>
 
 
 <% 

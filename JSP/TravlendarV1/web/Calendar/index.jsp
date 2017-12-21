@@ -24,15 +24,17 @@
             String username=(String)session.getAttribute("username"); 
             List<Event> events = EventDAO.getAll(username);
             request.setAttribute("events", events);
+            
+        if(username == null)
+        {
+            response.sendRedirect("../Login_SignUp");
+        }
         %>
         <style>
         #calendar {
 		max-width: 900px;
 		margin: 0 auto;
 	}
-        .holiday {
-        background: red;
-        }
         </style>
     <script>
 
