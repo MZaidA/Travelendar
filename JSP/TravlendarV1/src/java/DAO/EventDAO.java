@@ -90,6 +90,9 @@ public class EventDAO{
                
                events.add(event);
             }
+            
+            ps.close();
+            con.close();
         }
         catch(Exception e) {
             System.out.println(e);
@@ -143,6 +146,8 @@ public static Event get(int id) {
                event.setDepartureDateTimeStr(dtf.format(event.getDepartureTime()));
                
             }
+            ps.close();
+            con.close();
           }
         catch(Exception e) {
             System.out.println(e);
@@ -190,7 +195,11 @@ public static Event get(int id) {
             ps.setInt(9, event.getEvent_id());
             System.out.print(ps);
             status = ps.executeUpdate();
+            
+            ps.close();
+            con.close();
         }
+        
         catch(Exception e) {
             System.out.println(e);
         }
@@ -204,6 +213,9 @@ public static Event get(int id) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM event WHERE EVENT_ID=?");
             ps.setInt(1, event.getEvent_id());
             status = ps.executeUpdate();
+            
+            ps.close();
+            con.close();
         }
         catch(Exception e) {
             System.out.println(e);
@@ -221,7 +233,9 @@ public static Event get(int id) {
             while(rs.next()){
                 last.setEventLocation(rs.getString("EVENT_LOCATION"));
             }
-           
+            
+            ps.close();
+            con.close();
         }
         catch(Exception e) {
             System.out.println(e);

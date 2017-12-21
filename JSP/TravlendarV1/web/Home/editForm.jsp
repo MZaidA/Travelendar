@@ -96,8 +96,8 @@
         <div class="column">
             <div class="form">
                 <form action="editEvent.jsp">  
-                    <input type="text" name="id" value="<%=event.getEvent_id()%>"/>  <!-- Untuk Editing -->
-                    <input type="text" id="username" name="username" value="<%out.print(username);%>"/>
+                    <input type="hidden" name="id" value="<%=event.getEvent_id()%>"/>  <!-- Untuk Editing -->
+                    <input type="hidden" id="username" name="username" value="<%out.print(username);%>"/>
                     <label for="fname">event name :</label>
                     <input type="text" id="eventName" name="eventName" placeholder="..." value="<%=event.getEventName()%>" required/>
                     <div id="demo" style="display:none">
@@ -529,7 +529,7 @@ function getUnsSuggest(){
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             
                             document.getElementById("stCar1").innerHTML = departure;
-                            document.getElementById("svCar1").value = "DRIVING with Tolls," + dur;
+                            document.getElementById("svCar1").value = "DRIVING via Tolls," + dur;
                             document.getElementById("svCar1").disabled=false;
 //                            transSuggest.append(new Option("Mobil, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 1));
                          

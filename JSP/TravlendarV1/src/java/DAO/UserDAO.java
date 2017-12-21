@@ -51,7 +51,9 @@ public class UserDAO {
             us.setWorkplace(rs.getString("WORKPLACE"));
             us.setMaxWalking(rs.getInt("MAX_WALKING"));
             }
-      
+            
+            ps.close();
+            con.close();
         }
         catch(Exception e) {
             System.out.println(e);
@@ -71,6 +73,9 @@ public class UserDAO {
 
             status = ps.executeUpdate();
             System.out.println(ps);
+            
+            ps.close();
+            con.close();
         }
         catch(Exception e) {
             System.out.println(e);
@@ -88,6 +93,9 @@ public class UserDAO {
 
             status = ps.executeUpdate();
             System.out.println(ps);
+            
+            ps.close();
+            con.close();
         }
         catch(Exception e) {
             System.out.println(e);
@@ -104,6 +112,10 @@ public class UserDAO {
             
             ResultSet rs = ps.executeQuery();
             status=rs.next();
+            
+            ps.close();
+            con.close();
+            
         }catch(Exception e) {
             System.out.println(e);
         }

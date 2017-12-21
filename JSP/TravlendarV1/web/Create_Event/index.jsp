@@ -100,7 +100,7 @@
     <div class="column">
         <div class="form">
         <form action="addagenda.jsp">
-            <input type="hidden" id="eventId" name="eventId" value="<%=event.getEvent_id()%>"/> <!--Untuk Editing-->
+            <input type="hidden" id="eventId" name="eventId"/> <!--Untuk Editing-->
             <input type="hidden" id="username" name="username" value="<%out.print(username);%>">
                 
             <label for="fname">Event Name :</label><br>
@@ -109,11 +109,11 @@
             <input type="radio" class="notfirst" name="firstornot" disabled>Insert after last event</input>
             <input type="radio" class="first" name="firstornot" checked>Insert not after last event</input>
             <br/>
-            <div style="display: inline-block" id="keterangan"><h5>Your departure location will taken from your previous event location</h5>
+            <div style="display: none" id="keterangan"><h5>Your departure location will taken from your previous event location</h5>
             <input id="departure" name="departureLoc" type="hidden" value="<%=item.getEventLocation()%>"> <!--form hidden lokasi ngambil dari event sebelumnya -->
             </div>
             <br>
-            <div id="demo" style="display:none;">
+            <div id="demo" style="display:inline;">
                 <label for="fname">Departure Location :</label> <i class="material-icons" style="color:#8BC34A">room</i> <br>
                 <input id="start"name="startLoc" onchange='getSuggest()' type="text" id="start" placeholder="Search">
             </div>
@@ -543,7 +543,7 @@ function getUnsSuggest(){
                             var departure = depart.getDate()+"/"+(depart.getMonth()+1)+"/"+depart.getFullYear()+" "+depart.getHours()+":"+depart.getMinutes();
                             
                             document.getElementById("stCar1").innerHTML = departure;
-                            document.getElementById("svCar1").value = "DRIVING with Tolls," + dur;
+                            document.getElementById("svCar1").value = "DRIVING via Tolls," + dur;
                             document.getElementById("svCar1").disabled=false;
 //                            transSuggest.append(new Option("Mobil, Berangkat: "+depart.getHours()+":"+depart.getMinutes(), 1));
                          

@@ -55,9 +55,9 @@ Author     : afadh
                                 <tbody>
                                     <tr>
                                         <td class="t4" style="width: 50%;">${item.eventLocation}</td>
-                                        <td class="t4"><strong>Departure Time :</strong> ${item.departureDateTimeStr}
+                                        <td class="t4"><strong>Departure Time &nbsp :</strong> ${item.departureDateTimeStr}
                                         <br><strong>Event Start</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${item.startDateTimeStr}
-                                        <br><strong>Event End</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${item.endDateTimeStr}
+                                        <br><strong>Event End</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${item.endDateTimeStr}
                                         </td>
                                     </tr>
                                     <tr>
