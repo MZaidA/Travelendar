@@ -92,7 +92,8 @@
         Event event=EventDAO.get(id);
     %>
     <div class="column content">
-        <h1>Edit Form</h1>
+        <h4 style="font-family: 'Rubik', sans-serif;font-size:45px; text-align:center; color: navy; font-weight: bold;">Edit Form</h4>
+        <br>
         <div class="column">
             <div class="form">
                 <form action="editEvent.jsp">  

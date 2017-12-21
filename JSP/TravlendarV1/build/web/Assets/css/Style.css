@@ -268,8 +268,9 @@ verifform {
     left: 15%;
     width: 70%;
     background-color: #ff9166;
-    border-radius:10px;
-    border-style: solid;
+    border-radius:5px;
+    border-color: #00bde9;
+    box-shadow: 0px 10px 10px -5px rgba(0,0,0,0.5);
     padding: 10px;
     z-index:0;
 }

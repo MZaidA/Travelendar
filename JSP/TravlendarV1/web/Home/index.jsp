@@ -54,19 +54,20 @@ Author     : afadh
                             <table class="table-seratus" id="detail${loop.index+1}" style="display: none;">
                                 <tbody>
                                     <tr>
-                                        <td class="t4" style="width: 50%;">${item.eventLocation}</td>
-                                        <td class="t4"><strong>Departure Time &nbsp :</strong> ${item.departureDateTimeStr}
-                                        <br><strong>Event Start</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${item.startDateTimeStr}
-                                        <br><strong>Event End</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ${item.endDateTimeStr}
+                                        <td class="t4" style="width: 50%;"><strong>Departure Loc: </strong><br>${item.departureLocation}</td>
+                                        <td class="t4"><strong>Departure Time &nbsp; &nbsp; :</strong> ${item.departureDateTimeStr} 
+                                        <br><strong>Travel Mode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</strong>  ${item.travelMode}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="t4" ></td>
-                                        <td class="t4"></td>
+                                        <td class="t4" ><br></td>
+                                        <td class="t4"><br></td>
                                     </tr>
                                     <tr>
-                                        <td class="t4">${item.travelMode}</td>
-                                        <td class="t4"></td>
+                                        <td class="t4"><strong>Event Loc: </strong><br>${item.eventLocation}</td>
+                                        <td class="t4"><strong>Start Event &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</strong> ${item.startDateTimeStr} 
+                                        <br><strong>End Event &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</strong> ${item.endDateTimeStr}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

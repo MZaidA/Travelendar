@@ -60,6 +60,7 @@ public class EventDAO{
                 event.setEvent_id(rs.getInt("EVENT_ID"));
                 event.setEventLocation(rs.getString("EVENT_LOCATION"));
                 event.setEventName(rs.getString("EVENT_NAME"));
+                event.setDepartureLocation(rs.getString("DEPARTURE_LOCATION"));
                 
                 //if(rs.getBoolean("AVOID_TOLLS") == true) {
                 //    event.setTravelName("Motor");
