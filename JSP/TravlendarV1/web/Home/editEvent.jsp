@@ -13,7 +13,7 @@
 
 
 <% 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
     int id=Integer.valueOf(request.getParameter("id"));
     String username = request.getParameter("username");
     String eventName = request.getParameter("eventName");
