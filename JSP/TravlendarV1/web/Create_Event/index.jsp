@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/css/material.min.css" />
     <link rel="stylesheet" href="../Assets/css/bootstrap-material-design.min.css"/>
     <link rel="stylesheet" href="../Assets/css/bootstrap-material-datetimepicker.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
 #end1 {
     width: 40%;
@@ -90,7 +91,7 @@
         <ul>
           <li><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
           <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
-          <li class="selected"><a href="../Add_Event"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Create Event</div></a></li>
+          <li><a class="selected" href="../Add_Event"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Create Event</div></a></li>
         </ul>
     </div><!--Class Navbar-->
     <div class="column content">
@@ -110,15 +111,15 @@
             <input type="radio" class="first" name="firstornot" checked>Insert not after last event</input>
             <br/>
             <div style="display: none" id="keterangan"><h5>Your departure location will taken from your previous event location</h5>
-            <input id="departure" name="departureLoc" type="hidden" value="<%=item.getEventLocation()%>"> <!--form hidden lokasi ngambil dari event sebelumnya -->
+            <input id="departure" name="departureLoc" type="hidden" value="<%=item.getEventLocation()%>" required/> <!--form hidden lokasi ngambil dari event sebelumnya -->
             </div>
             <br>
             <div id="demo" style="display:inline;">
                 <label for="fname">Departure Location :</label> <i class="material-icons" style="color:#8BC34A">room</i> <br>
-                <input id="start"name="startLoc" onchange='getSuggest()' type="text" id="start" placeholder="Search">
+                <input id="start"name="startLoc" onchange='getSuggest()' type="text" id="start" placeholder="Search" required>
             </div>
             <label for="fname">Event Location :</label> <i class="material-icons" style="color:red;">room</i><br>
-            <input id="end" name="endLoc" width="40px" onchange='getSuggest()' type="text" id="end" placeholder="Search">
+            <input id="end" name="endLoc" width="40px" onchange='getSuggest()' type="text" id="end" placeholder="Search" required>
                 <table style=" width: 100%;">
                     <tbody style="text-align: left;">
                         <tr>
@@ -136,7 +137,7 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td><input id="svCar1" type="radio"  name="travelmode" disabled></input></td>
+                            <td><input id="svCar1" type="radio"  name="travelmode" disabled required></input></td>
                             <th><i class="material-icons">directions_car</i></th>
                             <td> Driving Via Tolls</td>
                             <td></td>

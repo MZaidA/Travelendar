@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="../Assets/css/Style.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Login & Sign Up Page</title>
     </head>
     <body>
@@ -34,10 +35,10 @@
                             <tbody>
                                 <tr>
                                     <td><label for="email">Username</label></td>
-                                    <td><label for="pass">Password</label></td>
+                                    <td><input type="user" name="username"  placeholder="Username"></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="user" name="username"  placeholder="Username"></td>
+                                    <td><label for="pass">Password</label></td>
                                     <td><input type="password" name="password"  placeholder="Password"></td>
                                     <td><input type="submit" value="Login" style="padding: 5px 5px 5px 5px;"/></td>
                                 </tr>
@@ -53,7 +54,6 @@
             <div>
                 <div class="content-body">
                     <div class="kolom-kiri marginLeft">
-                        <img src="peta.png" width="700" height="600px">
                     </div>
                     <div class="kolom-kanan">
                         

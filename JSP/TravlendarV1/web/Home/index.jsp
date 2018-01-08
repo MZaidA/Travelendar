@@ -29,7 +29,7 @@ Author     : afadh
         <div class="row">
             <div class="navbar">
                 <ul>
-                    <li class="selected"><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
+                    <li><a class="selected" href="../Home"><img src="../Assets/icon/home.png" width="28" height=28 style="float:left;"><div class="text-navbar">Home</div></a></li>
                     <li><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
                     <li><a href="../Create_Event"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Create Event</div></a></li>
                 </ul>
@@ -41,7 +41,7 @@ Author     : afadh
                         <table class="column-seratus">
                             <tbody>
                                 <tr>
-                                    <td class="t3" style="width: 200px;">${item.eventName}</td>
+                                    <td class="t3">${item.eventName}</td>
                                     <td class="t4">${item.startDateStr}</td>
                                     <td class="text-align-center"><a class="action" href="#" onclick="showDetail(${loop.index+1})"><i class="material-icons">details</i></a>
                                         <a href="editForm.jsp?event_id=${item.event_id}" class="action"><i class="material-icons">mode_edit</i></a>

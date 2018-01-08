@@ -19,6 +19,7 @@
     <script src='../Assets/lib/jquery.min.js'></script>
     <script src='../Assets/lib/moment.min.js'></script>
     <script src='../Assets/lib/fullcalendar.min.js'></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Calendar</title>
          <%
             String username=(String)session.getAttribute("username"); 
@@ -82,7 +83,7 @@
     <div class="navbar">
         <ul>
           <li><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
-          <li class="selected"><a href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
+          <li><a class="selected" href="../Calendar"><img src="../Assets/icon/calendar1.png" width="28" height="28" style="float:left;"><div class="text-navbar">Calendar</div></a></li>
           <li><a href="../Create_Event"><img src="../Assets/icon/form.png" width="28" height="28" style="float:left;"><div class="text-navbar">Create Event</div></a></li>
         </ul>
     </div><!--Class Navbar-->
