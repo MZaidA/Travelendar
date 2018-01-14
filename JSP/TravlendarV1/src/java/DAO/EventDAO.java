@@ -29,7 +29,7 @@ public class EventDAO{
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");  
-            con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/b2db", "root", "");
+            con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/b2db", "b2", "b2");
         } catch(Exception e) {
             System.out.println(e);
         }
