@@ -127,8 +127,8 @@
                             <th><label for="fname">Event End :</label></th>
                         </tr>
                         <tr>
-                            <td><input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" onchange='getUnsSuggest()'/></td>
-                            <td><input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" /></td>
+                            <td><input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" onchange='getUnsSuggest()' required/></td>
+                            <td><input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" required/></td>
                         </tr>
                     </tbody>
                 </table>
@@ -144,7 +144,7 @@
                             <td id="stCar1"></td>
                         </tr>
                         <tr>
-                            <td><input id="svCar2" type="radio" name="travelmode" disabled></input></td>
+                            <td><input id="svCar2" type="radio" name="travelmode" disabled ></input></td>
                             <th><i class="material-icons">directions_car</i></th>
                             <td> Driving Avoid Tolls</td>
                             <td></td>

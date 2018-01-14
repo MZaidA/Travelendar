@@ -21,7 +21,22 @@ Author     : afadh
             List<Event> events = EventDAO.getAll(username);
             request.setAttribute("events", events);
             
-            
+            String departureLoc = null;
+            String eventLoc = null;
+            int index = events.size()-1;
+            if (index > 0){
+                departureLoc = events.get(0).getDepartureLocation();
+                eventLoc = events.get(index).getEventLocation();
+            }
+            else if(index == 0)
+            {
+                departureLoc = events.get(0).getDepartureLocation();
+                eventLoc = events.get(0).getEventLocation();
+                index = 0;
+            }
+            else{
+                index = 0;
+            }
 
            if(username == null)
         {
@@ -43,13 +58,13 @@ Author     : afadh
                 
                 <h4> Your Event List </h4>
                 <c:forEach items="${events}" var="item" varStatus="loop">
-                    <div class="boxstyle1">
+                    <div class="boxstyle1" name="box${loop.index+1}">
                         <table class="column-seratus">
                             <tbody>
                                 <tr>
                                     <td class="t3">${item.eventName}</td>
                                     <td class="t4">${item.startDateStr}</td>
-                                    <td class="text-align-center"><a class="action" href="#" onclick="showDetail(${loop.index+1})"><div class="tooltip"><div class="tooltiptext">Event Detail</div><i class="material-icons">details</i></div></a>
+                                    <td class="text-align-center"><a class="action" href="#box${loop.index+1}" onclick="showDetail(${loop.index+1})"><div class="tooltip"><div class="tooltiptext">Event Detail</div><i class="material-icons">details</i></div></a>
                                         <a href="editForm.jsp?event_id=${item.event_id}" class="action"><div class="tooltip"><div class="tooltiptext">Edit</div><i class="material-icons">mode_edit</i></div></a>
                                         <a href="delEvent.jsp?event_id=${item.event_id}" class="action"><div class="tooltip"><div class="tooltiptext">Delete</div><i class="material-icons">delete</i></div></a>
                                     </td>
@@ -76,7 +91,7 @@ Author     : afadh
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><a href="viewMap.jsp?departureLocation=${item.departureLocation}&eventLocation=${item.eventLocation}" class="action"><div class="tooltip"><div class="tooltiptext">Streetview</div><i class="material-icons">streetview</i></div></a></td>
+                                        <td><a href="viewMap.jsp?departureLocation=${item.departureLocation}&eventLocation=${item.eventLocation}" class="action"><div class="tooltip"><div class="tooltiptext">Route View</div><i class="material-icons">streetview</i></div></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -156,8 +171,8 @@ Author     : afadh
         directionsDisplay.addListener('directions_changed', function() {
           computeTotalDistance(directionsDisplay.getDirections());
         });
-
-        displayRoute('<%out.print(events.get(0).getDepartureLocation());%>', '<%out.print(events.get(events.size()-1).getEventLocation());%>', directionsService,
+        
+        displayRoute('<%out.print(departureLoc);%>', '<%out.print(eventLoc);%>', directionsService,
             directionsDisplay);
       }
 
@@ -165,10 +180,10 @@ Author     : afadh
         service.route({
           origin: origin,
           destination: destination,
-        waypoints: [
-                    <%for(int i=0; i<events.size()-1;i++) {%>
+          
+          waypoints: [
+                    <%for(int i=0; i<index;i++) {%>
                      {
-                        
                          location: '<%out.print(events.get(i).getEventLocation());%>',
                      },
                      <%}%>

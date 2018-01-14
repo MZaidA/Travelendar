@@ -11,7 +11,7 @@ String username=(String)session.getAttribute("username");
 %> 
 <div class="header">
 <img src="../Assets/icon/Logo KelompokB1v2.png" width="145" height="50" style="margin-left:30px;">
-    <a href="../Login_SignUp"><button class="buttonLogOut">LogOut</button></a>
+    <a href="../index.jsp"><button class="buttonLogOut">LogOut</button></a>
     <strong class="username"><%out.print(username);%></strong>
 <div class="wrapper"><img src="../Assets/icon/Logo KelompokB1v2.png" width="145" height="50" style="margin-left:30px;margin-top: 10px;"></div>
 </div>

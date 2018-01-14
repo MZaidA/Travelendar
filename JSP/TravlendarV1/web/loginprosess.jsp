@@ -13,7 +13,7 @@
 if(status){
     String username=request.getParameter("username"); 
     session.setAttribute("username",username); 
-    response.sendRedirect("../Home");
+    response.sendRedirect("Home");
     }  
 else  
     {  

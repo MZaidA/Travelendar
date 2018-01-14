@@ -359,7 +359,7 @@ verifform {
         margin-right: 10px;
         position: relative;
         float: right;
-	overflow:auto;
+	overflow:hidden;
 	width: 81%;
 }
 .column {

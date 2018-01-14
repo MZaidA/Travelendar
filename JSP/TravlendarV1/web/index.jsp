@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="../Assets/css/Style.css"/>
+        <link rel="stylesheet" href="Assets/css/Style.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Login & Sign Up Page</title>
     </head>
