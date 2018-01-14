@@ -5,7 +5,8 @@
 --%>
 
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.text.DateFormat, java.util.Date"%>
+<%@page import = "java.io.*,java.util.*, javax.servlet.*" %>
+<%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="DAO.EventDAO, Model.Event, java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -26,9 +27,13 @@
             List<Event> events = EventDAO.getAll(username);
             request.setAttribute("events", events);
             
+            
         if(username == null)
         {
             response.sendRedirect("../Login_SignUp");
+        }
+        else{
+        
         }
         %>
         <style>
@@ -51,7 +56,12 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
-			defaultDate: '2017/12/10',
+			defaultDate: '<%
+                                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                        Date date = new Date(); 
+                                        String waktu = sdf.format(date);
+                                        out.print(waktu);
+                                       %>',
 			navLinks: true, // can click day/week names to navigate views
 			editable: false,
                         businessHours: true, // display business hours
@@ -67,11 +77,8 @@
                                 },
                                 </c:forEach>
 			]
-                        
 		});
-		
 	});
-
 </script>
 </head>
 <body>
@@ -79,7 +86,7 @@
 <jsp:include page="../header.jsp" />
 
 <div class="row">
-    
+        
     <div class="navbar">
         <ul>
           <li><a href="../Home"><img src="../Assets/icon/home.png" width="30" height="30" style="float:left;"><div class="text-navbar">Home</div></a></li>
@@ -92,6 +99,7 @@
     <br />
 	<div id='calendar'></div>
     </div>
+    
 </div>
 </body>
 

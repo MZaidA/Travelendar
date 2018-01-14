@@ -356,6 +356,7 @@ verifform {
 .column.content
 {	
         margin-top: 30px;
+        margin-right: 10px;
         position: relative;
         float: right;
 	overflow:auto;
@@ -766,9 +767,34 @@ select:-moz-focusring {
 #map{
     width: 100%;
     height: 370px;
-
+    
 }
 
 .detail{
     display: none;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    opacity: 0.5;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }

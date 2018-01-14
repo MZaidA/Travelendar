@@ -107,8 +107,8 @@
             <label for="fname">Event Name :</label><br>
             <input type="text" id="eventName" name="eventName" placeholder="..." required/><br>
                 
-            <input type="radio" class="notfirst" name="firstornot" disabled>Insert after last event</input>
-            <input type="radio" class="first" name="firstornot" checked>Insert not after last event</input>
+            <input type="hidden" class="notfirst" name="firstornot" disabled><!--Insert after last event--></input>
+            <input type="hidden" class="first" name="firstornot" checked><!--Insert not after last event--></input>
             <br/>
             <div style="display: none" id="keterangan"><h5>Your departure location will taken from your previous event location</h5>
             <input id="departure" name="departureLoc" type="hidden" value="<%=item.getEventLocation()%>" required/> <!--form hidden lokasi ngambil dari event sebelumnya -->

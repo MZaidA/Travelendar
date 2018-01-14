@@ -91,8 +91,9 @@
         int id=Integer.valueOf(request.getParameter("event_id"));
         Event event=EventDAO.get(id);
     %>
-    <div class="column content">
-        <h4 style="font-family: 'Rubik', sans-serif;font-size:45px; text-align:center; color: navy; font-weight: bold;">Edit Form</h4>
+    <h4 style="font-family: 'Rubik', sans-serif;font-size:45px; text-align:center; color: navy; font-weight: bold;">Edit Form</h4>
+    <div class="column content" style="background-color: #f2f2f2;">
+        
         <br>
         <div class="column">
             <div class="form">
@@ -194,7 +195,8 @@
                     <input type="hidden" id="avoidTolls" name="avoidTolls"/>
                 </form>
         </div>
-</div>       
+    </div>       
+</div>
                         
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmLiRLe7nQvc6KDoomu7a-YFSATYVlKSU&libraries=places&callback=initMap"></script>
 
