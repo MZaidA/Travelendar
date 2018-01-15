@@ -62,5 +62,6 @@
     }
     else {
         System.out.println("FAIL");
+        response.sendRedirect("index.jsp");
     }
 %>
