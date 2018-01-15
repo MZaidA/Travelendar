@@ -19,6 +19,18 @@ Author     : GLDV
         <%
             String departureLocation = request.getParameter("departureLocation");
             String eventLocation = request.getParameter("eventLocation");
+            String travelMode = request.getParameter("travelMode");
+ 
+            Boolean tolls = false;
+            if(travelMode.equals("DRIVING via Tolls")){
+                travelMode = "DRIVING";
+                tolls = true;
+            }
+            else if(travelMode.equals("DRIVING Avoid Tolls")){
+                travelMode = "DRIVING";
+                tolls = false;
+            }
+            
             String username=(String)session.getAttribute("username");
         if(username == null)
         {
@@ -36,7 +48,6 @@ Author     : GLDV
             </div><!--Class Navbar-->
             <div class="column content" id="content">
                 <h4> Route </h4>
-                
                 <div id="map"></div>
             </div>
         </div>
@@ -74,8 +85,8 @@ Author     : GLDV
           //    out.println("{location: '"+listWaypoint.get(i).getLocation()+"'},");
           //}
           //%>]
-          travelMode: 'DRIVING',
-          avoidTolls: true
+          travelMode: '<%=travelMode%>',
+          avoidTolls: <%=tolls%>
         }, function(response, status) {
           if (status === 'OK') {
             display.setDirections(response);
@@ -96,7 +107,7 @@ Author     : GLDV
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmwISHnFG6x8zCNn0tjbDkRhooEzs_TKk&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpiwJQFpER11LAOFexFdhgj0EZzoT5VGg&callback=initMap">
     </script>
     </body>
 </html>

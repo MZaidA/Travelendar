@@ -91,7 +91,7 @@ Author     : afadh
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><a href="viewMap.jsp?departureLocation=${item.departureLocation}&eventLocation=${item.eventLocation}" class="action"><div class="tooltip"><div class="tooltiptext">Route View</div><i class="material-icons">streetview</i></div></a></td>
+                                        <td><a href="viewMap.jsp?departureLocation=${item.departureLocation}&eventLocation=${item.eventLocation}&travelMode=${item.travelMode}" class="action"><div class="tooltip"><div class="tooltiptext">Route View</div><i class="material-icons">streetview</i></div></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -210,7 +210,7 @@ Author     : afadh
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmwISHnFG6x8zCNn0tjbDkRhooEzs_TKk&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMOfYHwVv_X_iA7lN6SB-Sq8FoSN_uaJw&callback=initMap">
     </script>
     </body>
 </html>

@@ -252,7 +252,7 @@ verifform {
 .t3{
 
         white-space: nowrap; 
-        width: 100px;
+        width: 30%;
         overflow: hidden;
         text-overflow: ellipsis; 
         font-size:23px;
