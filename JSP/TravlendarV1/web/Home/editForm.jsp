@@ -106,10 +106,10 @@
                     <!--LOCATION GMAPS -->
                     </div>
                     <label for="fname">departure location :</label><br>
-                    <input id="start"name="startLoc" onchange='getSuggest()' type="text" id="start" placeholder="Search location" value="<%=event.getDepartureLocation()%>">
+                    <input id="start"name="startLoc" onchange='getSuggest()' type="text" id="start" placeholder="Search location" value="<%=event.getDepartureLocation()%>" required>
                     </br>
                     <label for="fname">event location :</label>
-                    <input id="end" name="endLoc" width="40px" onchange='getSuggest()' type="text" id="end" placeholder="Search location" value="<%=event.getEventLocation()%>">
+                    <input id="end" name="endLoc" width="40px" onchange='getSuggest()' type="text" id="end" placeholder="Search location" value="<%=event.getEventLocation()%>" required>
                     <br/>
                     <table style=" width: 100%;">
                     <tbody style="text-align: left;">
@@ -118,8 +118,8 @@
                             <th><label for="fname">event end :</label></th>
                         </tr>
                         <tr>
-                            <td><input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" value="<%=event.getStartDateTimeStr()%>" onchange='getUnsSuggest()'/></td>
-                            <td><input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" value="<%=event.getEndDateTimeStr()%>" /></td>
+                            <td><input onchange='getSuggest()' type="text" name="arrivalTime" id="date-start"  placeholder="Click Here" value="<%=event.getStartDateTimeStr()%>" onchange='getUnsSuggest()' required/></td>
+                            <td><input onchange='getSuggest()' type="text" name="endDate" id="date-end"  placeholder="Click Here" value="<%=event.getEndDateTimeStr()%>" required/></td>
                         </tr>
                     </tbody>
                     </table>
@@ -128,7 +128,7 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td><input id="svCar1" type="radio"  name="travelmode" disabled></input></td>
+                                    <td><input id="svCar1" type="radio"  name="travelmode" disabled required></input></td>
                                     <th><i class="material-icons">directions_car</i></th>
                                     <td> Driving Via Tolls</td>
                                     <td></td>
